@@ -1,4 +1,4 @@
-=
+" ===
 " === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：
 " ===
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -31,6 +31,7 @@ call plug#begin('~/.config/nvim/plug.vim')
 "PluginSearch:查找插件
 
 "以下是颜色主题
+Plug 'liuchengxu/space-vim-theme'
 Plug 'nlknguyen/papercolor-theme'
 Plug 'nightsense/snow'
 Plug 'nightsense/vimspectr'
@@ -50,6 +51,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lfv89/vim-interestingwords'
 Plug 'itchyny/vim-cursorword'
 " General Highlighter
+" Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
 " 多层括号配色
@@ -93,18 +95,18 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 
 
 "美化
-Plug 'itchyny/calendar.vim'         "日历，:Calendar 在 Vim 中查看日历
-Plug 'Yggdroot/indentLine'          " 缩进指示线
-Plug 'fadein/vim-FIGlet'           " 出现有趣的文字图像
-Plug 'lambdalisue/suda.vim'        " do stuff like :sudowrite
-Plug 'junegunn/goyo.vim'           " distraction free writing mode
-Plug 'junegunn/vim-peekaboo'       "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
-Plug 'matze/vim-move'                      " 代码块移动
-Plug 'DoxygenToolkit.vim'                  " 注释文档生成
-Plug 'VimTweak'                            " 背景透明插件
-Plug 'kshenoy/vim-signature'          " 增加书签
-Plug 'makerj/vim-pdf'                 "阅读pdf
-Plug 'mhinz/vim-startify'          " 此插件为 Vim 和 Neovim 提供一个启动屏幕
+Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
+Plug 'Yggdroot/indentLine'              " 缩进指示线
+Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
+Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
+Plug 'junegunn/goyo.vim'                " distraction free writing mode
+Plug 'junegunn/vim-peekaboo'            "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
+Plug 'matze/vim-move'                   " 代码块移动
+Plug 'DoxygenToolkit.vim'               " 注释文档生成
+Plug 'VimTweak'                         " 背景透明插件
+Plug 'kshenoy/vim-signature'            " 增加书签
+Plug 'makerj/vim-pdf'                   "阅读pdf
+Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
 
@@ -133,12 +135,12 @@ Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
 "补全
 Plug 'vim-scripts/indentpython.vim'        " 写python代码自动缩进
 Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
-Plug 'Valloric/YouCompleteMe'              " 自动补全
-Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
+" Plug 'Valloric/YouCompleteMe'              " 自动补全
+" Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
 Plug 'AutoComplPop'                        " 自动代码提示
-Plug 'othree/html5.vim'                    " html全能补全
-Plug 'rip-rip/clang_complete'
+" Plug 'othree/html5.vim'                    " html全能补全
+" Plug 'rip-rip/clang_complete'
 Plug 'rhysd/vim-clang-format'
 Plug 'Raimondi/delimitMate'
 Plug 'chxuan/cpp-mode'                     " 提供生成函数实现、函数声明/实现跳转、.h .cpp切换等功能
@@ -160,7 +162,7 @@ Plug 'Chiel92/vim-autoformat'              "格式化代码（或保存时自动
 Plug 'tell-k/vim-autopep8'                 " 按照pep8的标准自动格式化代码
 
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
-Plug 'fatih/vim-go', { 'tag': '*' }        " go主要插件
+Plug 'fatih/vim-go',{ 'for': ['go', 'vim-plug'], 'tag': '*' }        " go主要插件
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 
 Plug 'pechorin/any-jump.vim'
@@ -192,8 +194,12 @@ Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正�
 Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 
-
+"python
+Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 " css,js
+Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'mattn/emmet-vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
@@ -297,6 +303,7 @@ set splitbelow
 
 " 设定默认解码
 set bsdir=buffer
+set modifiable
 set fenc=utf-8
 set langmenu=zh_CN.UTF-8
 set fileencodings=utf-8,ucs-bom,latin1,gb2312,gb18030,cp936,gbk,big5
@@ -698,35 +705,90 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 " 查看已安装:CocList extensions
 " 更新命令:CocUpdate
 let g:coc_global_extensions = [
-    \ 'coc-css',
+    \ 'coc-angular',
+    \ 'coc-blade-formatter',
+    \ 'coc-browser',
+    \ 'coc-calc',
+    \ 'coc-cfn-lint',
     \ 'coc-clangd',
-    \ 'coc-diagnostic',
+    \ 'coc-clang-format-style-options',
     \ 'coc-cmake',
+    \ 'coc-css',
+    \ 'coc-cssmodules',
+    \ 'coc-deno',
+    \ 'coc-denoland',
+    \ 'coc-diagnostic',
+    \ 'coc-discord',
+    \ 'coc-discord-rpc',
+    \ 'coc-dash-complete',
+    \ 'coc-dot-complete',
+    \ 'coc-ecdict',
+    \ 'coc-elixir',
+    \ 'coc-ember',
     \ 'coc-emmet',
-    \ 'coc-git',
-    \ 'coc-highlight',
+    \ 'coc-erlang_ls',
+    \ 'coc-eslint',
     \ 'coc-explorer',
-    \ 'coc-pairs',
-    \ 'coc-flutter-tools',
-    \ 'coc-gitignore',
+    \ 'coc-floaterm',
+    \ 'coc-flow',
+    \ 'coc-flutter',
+    \ 'coc-fsharp',
+    \ 'coc-fzf-preview',
+    \ 'coc-gist',
+    \ 'coc-git',
+    \ 'coc-glslx',
+    \ 'coc-go',
+    \ 'coc-graphql',
+    \ 'coc-highlight',
     \ 'coc-html',
+    \ 'coc-htmlhint',
+    \ 'coc-html-css-support',
+    \ 'coc-java',
+    \ 'coc-jedi',
     \ 'coc-json',
+    \ 'coc-julia',
+    \ 'coc-just-complete',
     \ 'coc-lists',
+    \ 'coc-lsp-wl',
+    \ 'coc-markdownlint',
+    \ 'coc-metals',
+    \ 'coc-omnisharp',
+    \ 'coc-perl',
+    \ 'coc-php-cs-fixer',
+    \ 'coc-phpactor',
+    \ 'coc-phpls',
+    \ 'coc-psalm',
+    \ 'coc-powershell',
     \ 'coc-prettier',
     \ 'coc-prisma',
     \ 'coc-pyright',
     \ 'coc-python',
-    \ 'coc-snippets',
-    \ 'coc-sourcekit',
+    \ 'coc-r-lsp',
+    \ 'coc-reason',
+    \ 'coc-rls',
+    \ 'coc-rome',
+    \ 'coc-rust-analyzer',
+    \ 'coc-sh',
+    \ 'coc-stylelintplus',
     \ 'coc-stylelint',
-    \ 'coc-syntax',
+    \ 'coc-snippets',
+    \ 'coc-solargraph',
+    \ 'coc-sourcekit',
+    \ 'coc-spell-checker',
+    \ 'coc-sql',
+    \ 'coc-svelte',
+    \ 'coc-svg',
+    \ 'coc-swagger',
+    \ 'coc-tabnine',
     \ 'coc-tailwindcss',
     \ 'coc-tasks',
+    \ 'coc-texlab',
+    \ 'coc-toml',
     \ 'coc-translator',
-    \ 'coc-tslint-plugin',
     \ 'coc-tsserver',
     \ 'coc-vetur',
     \ 'coc-vimlsp',
+    \ 'coc-xml',
     \ 'coc-yaml',
     \ 'coc-yank']
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "\<TAB>" : coc#refresh()
@@ -1895,168 +1957,6 @@ let g:multi_cursor_quit_key='<Esc>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
-"寻找全局配置文件
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-
-"开始补全的字符数
-let g:ycm_min_num_of_chars_for_completion = 2
-
-"与syntastic有冲突，建议关闭
-" let g:ycm_show_diagnostics_ui = 0
-"let g:ycm_error_symbol = '✗'
-"let g:ycm_warning_symbol = '⚠'
-
-"jedi模块所在python解释器路径
-let g:ycm_python_binary_path = 'python'
-
-"选补全框内显示的补全条目的最大数量
-let g:ycm_max_num_candidates = 20
-
-"该选项控制基于identifiers-based引擎的最大候选补全项
-let g:ycm_max_num_identifier_candidates = 20
-
-
-" 设置YCM的日志记录级别，可以是debug，info，warning，error或critical。debug是最详细的
-" let g:ycm_log_level = 'info'
-
-let g:ycm_collect_identifiers_from_tags_files = 0
-
-"开启使用语言的一些关键字查询
-let g:ycm_seed_identifiers_with_syntax = 1
-
-"补全后自动关闭预览窗口
-let g:ycm_autoclose_preview_window_after_completion=1
-
-"在实现和声明之间跳转,并分屏打开
-let g:ycm_goto_buffer_command = 'horizontal-split'
-
-" let g:ycm_auto_trigger = 0   "turn off
-let g:ycm_auto_trigger = 1   "turn on ,打开ycm
-
-
-"关键字补全
-let g:ycm_seed_indetifiers_with_syntax = 1
-
-" 在注释中也可以补全
-let g:ycm_complete_in_comments=1
-
-
-" 在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-
-" 注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-let g:ycm_extra_conf_globlist = ['~/dev/*','!~/*']
-
-"不显示开启vim时是否检查ycm_extra_conf文件的信息，直接加载该文件
-let g:ycm_confirm_extra_conf=0
-
-"每次重新生成匹配项，禁止缓存匹配项
-let g:ycm_cache_omnifunc=0
-
-"在代码中高亮显示YCM诊断对应的内容，如果关闭，则会关闭错误和警告高亮功能，0表示关闭
-let g:ycm_enable_diagnostic_signs = 0
-
-"高亮显示代码中与诊断信息有关的文本或代码，0表示关闭
-let g:ycm_enable_diagnostic_highlighting = 0
-
-"当光标移到所在行时显示诊断信息
-let g:ycm_echo_current_diagnostic = 1
-
-
-map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
-
-
-"查找光标下的标识符并跳转到其声明，文件类型支持：c，cpp，objc，objcpp，cs，go，java，python，rust，typescript
-nnoremap  ;d :YcmCompleter GoToDeclaration<CR>
-nnoremap  g/ :YcmCompleter GetDoc<CR>
-nnoremap  gt :YcmCompleter GetType<CR>
-" 查找光标下的标识符并跳转到其定义
-nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-nnoremap gr :YcmCompleter GoToReferences<CR>
-
-"关闭YCM 自动弹出函数原型预览窗口
-" set completeopt=longest,menu
-" let g:ycm_add_preview_to_completeopt = 0
-
-" YCM默认会显示诊断信息，语言标注出来你代码问题,屏蔽YCM 的诊断信息
-let g:ycm_show_diagnostics_ui = 0
-
-"离开插入模式后自动关闭预览窗口
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-"回车即选中当前项
-inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
-
-"上下左右键的行为 会显示其他信息
-inoremap <expr> <Down>       pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>         pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>     pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-
-
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-"设置用于选择补全列表中的第一个选项以及进入补全列表后向下选择的快捷键
-let g:ycm_key_list_select_completion = [ '<TAB>' ,'<Down>']
-" let g:ycm_key_list_select_completion=['<C-n>','<Down>']
-
-"设置用于向上选择补全列表中的选项的快捷键，默认为shift+tab，和方向上键
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-" let g:ycm_key_list_previous_completion=['<c-p>','<Up>']
-
-"设置用于关闭补全列表的快捷键，默认为ctrl+y
-let g:ycm_key_list_stop_completion =  ['<C-y>']
-
-" let g:ycm_filetype_blacklist = {
-" \ 'tagbar' : 1,
-" \ 'qf' : 1,
-" \ 'notes' : 1,
-" \ 'markdown' : 1,
-" \ 'unite' : 1,
-" \ 'text' : 1,
-" \ 'vimwiki' : 1,
-" \ 'pandoc' : 1,
-" \ 'infolog' : 1,
-" \ 'mail' : 1
-" \}
-
-let g:ycm_filetype_specific_completion_to_disable = {
-            \ 'gitcommit': 1
-            \}
-
-" let g:ycm_filetype_whitelist = {
-" \ "c":1,
-" \ "cpp":1,
-" \ "objc":1,
-" \ "sh":1,
-" \ "zsh":1,
-" \ "zimbu":1,
-" \ }
-
-let g:ycm_semantic_triggers =  {
-            \   'c' : ['->', '.'],
-            \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-            \             're!\[.*\]\s'],
-            \   'ocaml' : ['.', '#'],
-            \   'cpp,objcpp' : ['->', '.', '::'],
-            \   'perl' : ['->'],
-            \   'php' : ['->', '::'],
-            \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-            \   'ruby' : ['.', '::'],
-            \   'lua' : ['.', ':'],
-            \   'erlang' : [':'],
-            \   'py' : ['.'],
-            \ }
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-            \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ }
-
-""""""""""""""""""""""jedi-vim配置""""""""""""""""""""""
-let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#popup_on_dot = 0
 
 """"""""""""""""""""""""""""""""""" AutoComplPop配置 """""""""""""""""
 " 输入一个字母即可补全
@@ -2081,11 +1981,6 @@ if !exists('g:AutoComplPop_Behavior')
 endif
 
 
-""""""""""""""""""""""""""""clang_complete配置""""""""""""""""""""""""""""
-
-
-let g:clang_library_path = '/usr/lib/llvm-10/lib'
-" "补全预处理指令，宏和常数，默认为0，不补全
 
 
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
@@ -2942,6 +2837,7 @@ if strftime('%H') >= 7 && strftime('%H') < 19
         \ 'phpx', 'professional','rainbow_autumn','relaxedgreen','redstring','NeoSolarized',
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
+        \ 'violet','space-vim-theme',
         \ ]
     autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
@@ -2958,14 +2854,14 @@ else
         \ 'carbonized-dark', 'SolarizedDark_modified' , 'colorful256','github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
-        \ 'vividchalk', 'PaperColor', 'gruvbox',
+        \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space-vim-theme',
         \ ]
         " \ 'vimspectr0-dark'   , 'vimspectr0-dark'    , 'vimspectr30-dark'  ,
         " \ 'vimspectr60-dark'  , 'vimspectr90-dark'   , 'vimspectr120-dark' ,
         " \ 'vimspectr150-dark' , 'vimspectr180-dark'  , 'vimspectr210-dark' ,
         " \ 'vimspectr240-dark' , 'vimspectr270-dark'  , 'vimspectr300-dark' ,
         " \ 'vimspectr330-dark' , 'vimspectrgrey-dark' ,
-    autocmd vimenter * ++nested colorscheme  cosmic_latte
+    autocmd vimenter * ++nested colorscheme
     hi CursorColumn      ctermbg=237
     hi CursorColumn      guibg= #3a3a3a
 endif
@@ -4086,21 +3982,6 @@ autocmd BufReadPost * cd %:p:h
 
 
 
-"""""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
-" ctrl+y  设置用于关闭补全列表的快捷键，默认为ctrl+y
-"  Tab         用来补全下一个
-"  Shift+Tab   用来补全上一个
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-"设置用于选择补全列表中的第一个选项以及进入补全列表后向下选择的快捷键
-" let g:ycm_key_list_select_completion = [ '<TAB>' ,'<Down>']
-" let g:ycm_key_list_select_completion=['<C-n>','<Down>']
-
-"设置用于向上选择补全列表中的选项的快捷键，默认为shift+tab，和方向上键
-" let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-" let g:ycm_key_list_previous_completion=['<c-p>','<Up>']
-
-"设置用于关闭补全列表的快捷键，默认为ctrl+y
-" let g:ycm_key_list_stop_completion =  ['<C-y>']
 
 """""""""""""""""""""""""""""""""""""""""  NERD Commenter   """"""""""""""""""""""""""""""""""""""""""""
 
