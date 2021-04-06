@@ -26,11 +26,11 @@ let g:polyglot_disabled = ['ftdetect']
 "set the runtime path to include Vundle and initialize
 
 call plug#begin('~/.config/nvim/plugged')
-"PluginInstall:安装插件
-"PluginClean:移除不要的插件
-"PluginUpdate:更新插件
-"PluginList:列出所有安装的插件
-"PluginSearch:查找插件
+" :PlugStatus 检查现在 plug 负责的插件状态
+" :PlugInstall 安装配置好的插件
+" :PlugUpdate 更新已安装的插件
+" :PlugClean 清理插件，需要现在 .vimrc 里面删除或注释掉
+" :PlugUpgrade 升级自身
 
 "以下是颜色主题
 Plug 'liuchengxu/space-vim-theme'
