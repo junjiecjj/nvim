@@ -187,7 +187,7 @@ Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 
 
@@ -959,7 +959,7 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_preview_win_floating = 1
 let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
+let g:gitgutter_sign_modified = ''
 let g:gitgutter_sign_removed = '▏'
 let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
@@ -1628,7 +1628,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ "Staged"    : "✚",
             \ "Untracked" : "✭",
             \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
+            \ "Unmerged"  : "",
             \ "Deleted"   : "✖",
             \ "Dirty"     : "✗",
             \ "Clean"     : "✔︎",
@@ -2612,14 +2612,14 @@ let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 set foldmethod=syntax
-let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_function             = ""
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
 let g:javascript_conceal_return               = "⇚"
 let g:javascript_conceal_undefined            = "¿"
 let g:javascript_conceal_NaN                  = "ℕ"
 let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_static               = ""
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = " "
@@ -4361,7 +4361,7 @@ autocmd BufReadPost * cd %:p:h
 " :wq -- 保存并退出。
 " ZZ -- 保存并退出。
 " :x -- 保存并退出。
-" :q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)
+" :q[uit] 退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)
 " :saveas newfilename -- 另存为
 
 
@@ -4442,3 +4442,4 @@ autocmd BufReadPost * cd %:p:h
 " 输入 "I"， 可视块模式 --> 编辑模式。（注意：必须使用 "I"）
 " 输入 "#" 字符，也就是注释的符号。
 " 按下 "Esc"， 编辑模式 --> 命令模式。
+
