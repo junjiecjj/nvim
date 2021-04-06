@@ -1,8 +1,8 @@
 =
 " === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：
 " ===
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
 
@@ -25,7 +25,7 @@ let g:polyglot_disabled = ['ftdetect']
 
 "set the runtime path to include Vundle and initialize
 
-call plug#begin('~/.config/nvim/plug.vim')
+call plug#begin('~/.config/nvim/plugged')
 "PluginInstall:安装插件
 "PluginClean:移除不要的插件
 "PluginUpdate:更新插件
