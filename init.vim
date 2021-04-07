@@ -845,8 +845,9 @@ imap <F9> <ESC>10zli
 nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " 上下分屏并在下方打开终端
-noremap <LEADER>t :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
-
+noremap <LEADER>td :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+" 左右分屏并在下方打开终端
+noremap <LEADER>tr :set splitright<CR>:vsplit<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <SPACE><SPACE> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -2619,15 +2620,22 @@ let g:vimtex_delim_toggle_mod_list = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""" voldikss/vim-floaterm插件 """""""""""""""""""""""""""""""""""""""""""
+" Set floaterm window's background to black
+hi Floaterm guibg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder guibg=orange guifg=cyan
+hi FloatermNC guibg=gray
 "floaterm设置
+set shell=/usr/bin/bash
 hi Floaterm guibg=black
 hi FloatermBorder guibg=none guifg=cyan
 let g:floaterm_position = 'center'
 let g:floaterm_wintype = 'floating'
 noremap  ftn :FloatermNew<CR>
 noremap  ftk :FloatermKill<CR>
-
-
+noremap  ftd :FloatermNext<CR>
+noremap  ftp :FloatermPrev<CR>
+noremap  ftt :FloatermToggle<CR>
 """"""""""""""""""""""""""""""""""""""" SirVer/ultisnips插件 """""""""""""""""""""""""""""""""""""""""""
 
 let g:UltiSnipsExpandTrigger="<tab>"
