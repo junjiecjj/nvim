@@ -787,6 +787,16 @@ if &termguicolors
 endif
 
 " }}}
+
+silent !mkdir -p ~/.config/nvim/tmp/backup
+silent !mkdir -p ~/.config/nvim/tmp/undo
+"silent !mkdir -p ~/.config/nvim/tmp/sessions
+set backupdir=~/.config/nvim/tmp/backup,.
+set directory=~/.config/nvim/tmp/backup,.
+if has('persistent_undo')
+	set undofile
+	set undodir=~/.config/nvim/tmp/undo,.
+endif
 """"""""""""""""""""""""""""""""快捷键定义"""""""""""""""""""""""""""""""""""""""""""''
 " Disable the default s key
 noremap s <nop>
@@ -4536,4 +4546,4 @@ autocmd BufReadPost * cd %:p:h
 " 输入 "I"， 可视块模式 --> 编辑模式。（注意：必须使用 "I"）
 " 输入 "#" 字符，也就是注释的符号。
 " 按下 "Esc"， 编辑模式 --> 命令模式。
-" 进入块选中，: Tabularized /=快读对齐
+
