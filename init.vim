@@ -79,7 +79,7 @@ Plug 'wincent/terminus'
 " Git
 Plug 'rhysd/conflict-marker.vim'          " Highlight, jump and resolve conflict markers quickly.
 Plug 'tpope/vim-fugitive'                 " 在vim中执行git命令
-Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+Plug 'gisphm/vim-gitignore', " { 'for': ['gitignore', 'vim-plug'] }
 if has('nvim') || has('patch-8.0.902')
     Plug 'mhinz/vim-signify'          " git/svn版本控制插件vim-signify
 else
@@ -113,6 +113,8 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 " Plug 'glepnir/galaxyline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hardcoreplayers/dashboard-nvim'
+Plug 'nvim-lua/telescope.nvim'
+Plug 'liuchengxu/vim-clap'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
@@ -194,7 +196,7 @@ Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 
 " 目录树
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
-Plug 'liuchengxu/vista.vim', {'on':'Vista'}   "tagbar的增强版
+Plug 'liuchengxu/vista.vim',  "{ 'on': ['Vista'] }       tagbar的增强版
 
 
 Plug 'fatih/vim-go',{ 'for': ['go', 'vim-plug'], 'tag': '*' }        " go主要插件
@@ -1395,7 +1397,7 @@ let g:fzf_action = { 'ctrl-e': 'edit' }
 "<Leader>f在当前目录搜索文件
 " Ctrl + f 查看文件列表
 nnoremap <silent> <Leader>ff :Files<CR>
-"nnoremap <silent> <Leader>ff :Files<CR>
+
 
 "<Leader>b切换Buffer中的文件
 nnoremap <silent> <Leader>fb :Buffers<CR>
@@ -1681,8 +1683,6 @@ sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
-
-
 """"""""""""""""""hardcoreplayers/dashboard-nvim设置""""""""""""""""""""""""""""""
 let g:dashboard_custom_header = [
        \ '',
@@ -1695,33 +1695,33 @@ let g:dashboard_custom_header = [
        \ '',
        \ '                       [Hello jj.Chen]',
        \ '',
-       \ ]
+\ ]
 let g:dashboard_preview_command = 'cat'
-let g:dashboard_preview_file = '~/.config/nvim/dashboard.cat'
 let g:dashboard_preview_file_height = 10
 let g:dashboard_preview_file_width = 80
-let g:dashboard_default_executive ='telescope'
+" let g:dashboard_default_executive ='telescope'
+" let g:dashboard_default_executive ='clap'
 let g:dashboard_default_executive ='fzf'
-" let g:dashboard_custom_shortcut={
-"       \ 'last_session'       : 'Ctrl X',
-"       \ 'find_history'       : 'Ctrl H',
-"       \ 'find_file'          : 'Ctrl P',
-"       \ 'new_file'           : 'Ctrl E',
-"       \ 'change_colorscheme' : 'Ctrl T',
-"       \ 'find_word'          : 'Ctrl F',
-"       \ 'book_marks'         : 'Ctrl M',
-"       \ }
+nmap ;ss :<C-u>SessionSave<CR>
+nmap ;sl :<C-u>SessionLoad<CR>
+nnoremap <silent> ;fh :DashboardFindHistory<CR>
+nnoremap <silent> ;ff :DashboardFindFile<CR>
+nnoremap <silent> ;cc :DashboardChangeColorscheme<CR>
+nnoremap <silent> ;fa :DashboardFindWord<CR>
+nnoremap <silent> ;fb :DashboardJumpMark<CR>
+nnoremap <silent> ;fn :DashboardNewFile<CR>
 let g:dashboard_custom_shortcut={
-			\ 'last_session'       : 'SPC s l',
-			\ 'find_history'       : 'SPC f h',
-			\ 'find_file'          : 'SPC f f',
-			\ 'new_file'           : 'SPC f n',
-			\ 'change_colorscheme' : 'SPC t c',
-			\ 'find_word'          : 'SPC f a',
-			\ 'book_marks'         : 'SPC f b',
-			\ }
-noremap <LEADER>fn :DashboardNewFile<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+\ 'last_session'       : 'SPC s l',
+\ 'find_history'       : 'SPC f h',
+\ 'find_file'          : 'SPC f f',
+\ 'new_file'           : 'SPC c n',
+\ 'change_colorscheme' : 'SPC t c',
+\ 'find_word'          : 'SPC f a',
+\ 'book_marks'         : 'SPC f b',
+\ }
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""itchyny/calendar.vim配置"""""""""""""""""""""""""""""
 
