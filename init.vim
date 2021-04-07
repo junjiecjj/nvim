@@ -1,13 +1,22 @@
-=
+"============
+"基本键位设置
+"============
+"     ^
+"     k
+" < h   l >
+"     j
+"     v
+
 " === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：
 " ===
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
 
 "如果你用的是 Vim，请把~/.config/nvim/autoload/plug.vim换成~/.vim/autoload/plug.vim
 
+let mapleader = '\'
 "不适用vi的键盘模式，使用vim自己的
 set nocompatible                             " required
 filetype on                                  " required开启探测文件类型,on off
@@ -44,8 +53,12 @@ Plug 'nightsense/cosmic_latte'
 Plug 'molokai'                             " 配色方案
 Plug 'morhetz/gruvbox'                     " 配色方案
 Plug 'jnurmine/Zenburn'
+"主题插件
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'hardcoreplayers/oceanic-material'
+Plug 'mhartington/oceanic-next'
 
-
+Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
@@ -97,8 +110,11 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 
 
 "美化
+" Plug 'glepnir/galaxyline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
-Plug 'Yggdroot/indentLine'              " 缩进指示线
+Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
 Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " distraction free writing mode
@@ -118,17 +134,24 @@ Plug 'scrooloose/nerdtree'                          " 添加树形目录
 Plug 'jistr/vim-nerdtree-tabs'                     " 想用tab键
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'        " 增强图标
+"新一代目录树defx
+Plug 'kristijanhusak/defx-git', {'on':'Defx'}
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'kristijanhusak/defx-icons'
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
 Plug 'godlygeek/tabular'                            " 快速对齐
 Plug 'ryanoasis/vim-devicons'                     " 在目录中为文件增加图标
 
+Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
+
 " FPGA
 Plug 'vhda/verilog_systemverilog.vim'     "verilog
 
 
 Plug 'fholgado/minibufexpl.vim'            " 多文档编辑
+Plug 'hardcoreplayers/vim-buffet'
 Plug 'vim-scripts/winmanager'              " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'        " vim多重光标选取插件
 Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
@@ -140,32 +163,42 @@ Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 " Plug 'Valloric/YouCompleteMe'              " 自动补全
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
-Plug 'AutoComplPop'                        " 自动代码提示
-" Plug 'othree/html5.vim'                    " html全能补全
-" Plug 'rip-rip/clang_complete'
+
+
+
+
+
+Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 Plug 'rhysd/vim-clang-format'
 Plug 'Raimondi/delimitMate'
 Plug 'chxuan/cpp-mode'                     " 提供生成函数实现、函数声明/实现跳转、.h .cpp切换等功能
-
+Plug 'tenfyzhong/CompleteParameter.vim',{'for':['lua', 'c', 'h', 'cpp', 'py', 'go', 'java', 'vim', 'json', 'hs']}
 
 
 " latex插件
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
+
+" 浮动终端
+Plug 'voldikss/vim-floaterm', { 'on': 'FloatermNew' }
 
 "代码块
 Plug 'SirVer/ultisnips'                    " 安装引擎
 Plug 'honza/vim-snippets'                  " 安装代码块集合
 
 
-
-
 "格式化代码
 Plug 'Chiel92/vim-autoformat'              "格式化代码（或保存时自动格式化）
 Plug 'tell-k/vim-autopep8'                 " 按照pep8的标准自动格式化代码
+Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 
+
+" 目录树
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
+Plug 'liuchengxu/vista.vim', {'on':'Vista'}   "tagbar的增强版
+
+
 Plug 'fatih/vim-go',{ 'for': ['go', 'vim-plug'], 'tag': '*' }        " go主要插件
-Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
+
 
 Plug 'pechorin/any-jump.vim'
 
@@ -178,17 +211,11 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'm
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
 
-
-
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
-
-
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " Plug 'w0rp/ale'
-
 
 
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
@@ -199,8 +226,10 @@ Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 "python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }   "为 Python 提供语义高亮
+
 " css,js
+Plug 'othree/html5.vim'                    " html全能补全
 Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'mattn/emmet-vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -211,10 +240,7 @@ Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql']}
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+
 
 "All of your Plugins must be added before the following line
 call plug#end()
@@ -226,25 +252,23 @@ set secure   "会关闭项目中的 shell autocmd write 等命令。
 " Prevent incorrect backgroung rendering
 let &t_ut=''     " 防止vim背景颜色错误
 set indentexpr=
-let mapleader = '\'
+
 set t_Co=256
 
 set virtualedit=block,onemore
-set splitbelow
-set splitright
+
 
 "让补全行为与一般IDE一样
 "set completeopt = preview,meun
 set completeopt=longest,noinsert,menuone,noselect,preview
-"在接受补全后不分裂出一个窗口显示接受的项
-"set completeopt-=preview
+
 
 "开启语法高亮功能
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
 " 块选择快速跳转问题
-set virtualedit=block
+
 set nostartofline
 
 let python_highlight_all=1
@@ -256,7 +280,7 @@ set number
 
 "高亮显示匹配的括号
 set showmatch
-set viewoptions=cursor,folds,slash,unix
+set viewoptions=folds,cursor,curdir,slash,unix
 " 光标移动到buffer的顶部和底部时保持3行距离
 set scrolloff=4
 
@@ -307,7 +331,6 @@ set splitbelow
 " 设定默认解码
 set bsdir=buffer
 set modifiable
-set fenc=utf-8
 set langmenu=zh_CN.UTF-8
 set fileencodings=utf-8,ucs-bom,latin1,gb2312,gb18030,cp936,gbk,big5
 set encoding=utf-8  "支持UTF8编码
@@ -330,20 +353,15 @@ map <leader>sa ggVG"
 autocmd BufEnter * exec "cd %:p:h"
 
 " 设置路径，多个路径用逗号分隔
-set path=.,"E:/Web/htdocs",,
+set path+=**
+
 
 " 显示 TAB 键-,空格-
-" set listchars=space:c 设置某个字符来显示一个空格
-" set listchars=trail:c 设置某个字符来显示一个行尾空格
-" set listchars=eol:c 设置某个字符来显示每行的行尾结束符
-" set listchars=tab:>-，则会用 >--- 显示 4 个长度的制表符
-"" set list
-" set listchars=tab:>-,trail:-
 set list
 "set listchars=tab:▸\ ,trail:▫
 " set listchars=tab:▸\ ,trail:▫,extends:>,precedes:<,eol:$
-set listchars=tab:▸\ ,trail:▫,extends:>,precedes:<
-
+set listchars=tab:▸\ ,nbsp:+,trail:▫,extends:>,precedes:<
+set listchars=tab:»·,nbsp:+,trail:·,extends:→,precedes:←
 
 "折叠
 "允许折叠
@@ -355,6 +373,10 @@ set foldmethod=indent
 set foldlevel=100
 set tw=0
 set formatoptions-=tc
+
+" What to save for views and sessions:
+set viewoptions=folds,cursor,curdir,slash,unix
+set sessionoptions=curdir,help,tabpages,winsize
 "自动换行是每行超过 n 个字的时候 vim 自动加上换行符用
 " set textwidth=70                   "来设置 n
 "自动折行 是把长的一行用多行显示 , 不在文件里加换行符用
@@ -386,11 +408,12 @@ set hlsearch
 exec "nohlsearch"
 " 开启增量搜索模式
 set incsearch
-
 "忽略大小写
 set ignorecase
-
 set smartcase
+set infercase
+set wrapscan
+
 set ts=4
 set ar
 set updatetime=300
@@ -472,6 +495,298 @@ set wildmenu                      " show a navigable menu for tab completion
 set wildmode=list:longest,full
 set wildchar=<Tab> wildcharm=<C-Z>
 
+hi BadWhitespace  ctermfg=15 ctermbg=15
+hi BadWhitespace  guifg= gray guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/          "表示不必要的空白字符
+
+" 让 vim 把连续数量的空格视为一个制表符,使得按退格键时可以一次删除4个空格"
+set softtabstop=4
+
+" 设置编辑时制表符占用空格数,设置所有的Tab和缩进为4个空格
+set tabstop=4
+
+" 设置格式化时制表符占用空格数,设定<<和>>命令移动时的宽度为4
+set shiftwidth=4
+
+" 在行和段开始处使用制表符
+set smarttab
+
+" 将制表符扩展为空格,使用空格来替换Tab
+set expandtab
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=nv
+set report=0
+set autochdir
+set fileformats=unix,dos,mac
+set magic
+set path+=**
+set isfname-==
+
+set synmaxcol=2500
+set formatoptions+=1
+set formatoptions-=t
+set formatoptions-=o
+if has('patch-7.3.541')
+	set formatoptions+=j
+endif
+
+if has('vim_starting')
+	set encoding=utf-8
+	scriptencoding utf-8
+endif
+
+if has('mac')
+	let g:clipboard = {
+				\   'name': 'macOS-clipboard',
+				\   'copy': {
+				\      '+': 'pbcopy',
+				\      '*': 'pbcopy',
+				\    },
+				\   'paste': {
+				\      '+': 'pbpaste',
+				\      '*': 'pbpaste',
+				\   },
+				\   'cache_enabled': 0,
+				\ }
+endif
+
+if has('clipboard')
+	set clipboard& clipboard+=unnamedplus
+endif
+
+" Wildmenu {{{
+" --------
+if has('wildmenu')
+	if ! has('nvim')
+		set wildmode=list:longest
+	endif
+
+	" if has('nvim')
+	"		set wildoptions=pum
+	" else
+	"		set nowildmenu
+	"		set wildmode=list:longest,full
+	"		set wildoptions=tagfile
+	" endif
+	set wildignorecase
+	set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
+	set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
+	set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
+	set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
+	set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
+	set wildcharm=<C-z>  " substitue for 'wildchar' (<Tab>) in macros
+endif
+" }}}
+
+" Vim Directories {{{
+" ---------------
+set nobackup
+set nowritebackup
+set undofile noswapfile
+set directory=$DATA_PATH/swap//,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
+set viewdir=$DATA_PATH/view/
+" Use the coc-spell-checker to do this
+" set spellfile=$VIM_PATH/spell/en.utf-8.add
+
+" History saving
+set history=2000
+
+if has('nvim') && ! has('win32') && ! has('win64')
+	set shada=!,'300,<50,@100,s10,h
+else
+	set viminfo='300,<10,@50,h,n$DATA_PATH/viminfo
+endif
+
+augroup user_persistent_undo
+	autocmd!
+	au BufWritePre /tmp/*          setlocal noundofile
+	au BufWritePre COMMIT_EDITMSG  setlocal noundofile
+	au BufWritePre MERGE_MSG       setlocal noundofile
+	au BufWritePre *.tmp           setlocal noundofile
+	au BufWritePre *.bak           setlocal noundofile
+augroup END
+
+" If sudo, disable vim swap/backup/undo/shada/viminfo writing
+if $SUDO_USER !=# '' && $USER !=# $SUDO_USER
+			\ && $HOME !=# expand('~'.$USER)
+			\ && $HOME ==# expand('~'.$SUDO_USER)
+
+	set noswapfile
+	set nobackup
+	set noundofile
+	if has('nvim')
+		set shada="NONE"
+	else
+		set viminfo="NONE"
+	endif
+endif
+
+" Secure sensitive information, disable backup files in temp directories
+if exists('&backupskip')
+	set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*
+	set backupskip+=.vault.vim
+endif
+
+" Disable swap/undo/viminfo/shada files in temp directories or shm
+augroup user_secure
+	autocmd!
+	silent! autocmd BufNewFile,BufReadPre
+				\ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim
+				\ setlocal noswapfile noundofile nobackup nowritebackup viminfo= shada=
+augroup END
+
+" }}}
+
+
+" Tabs and Indents {{{
+" ----------------
+set textwidth=100    " Text width maximum chars before wrapping
+set noexpandtab     " Don't expand tabs to spaces
+
+set softtabstop=-1  " Automatically keeps in sync with shiftwidth
+
+
+set shiftround      " Round indent to multiple of 'shiftwidth'
+
+if exists('&breakindent')
+	set breakindentopt=shift:2,min:20
+endif
+
+" }}}
+
+" Timing {{{
+" ------
+set timeout ttimeout
+set timeoutlen=500   " Time out on mappings
+set ttimeoutlen=10   " Time out on key codes
+set updatetime=100   " Idle time to write swap and trigger CursorHold
+set redrawtime=1500  " Time in milliseconds for stopping display redraw
+
+" }}}
+
+" Searching {{{
+" ---------
+
+
+set complete=.,w,b,k  " C-n completion: Scan buffers, windows and dictionary
+
+if exists('+inccommand')
+	set inccommand=nosplit
+endif
+
+if executable('rg')
+	set grepformat=%f:%l:%m
+	let &grepprg = 'rg --vimgrep' . (&smartcase ? ' --smart-case' : '')
+elseif executable('ag')
+	set grepformat=%f:%l:%m
+	let &grepprg = 'ag --vimgrep' . (&smartcase ? ' --smart-case' : '')
+endif
+
+" }}}
+
+" Behavior {{{
+" --------
+
+set linebreak                   " Break long lines at 'breakat'
+set breakat=\ \	;:,!?           " Long lines break chars
+
+set whichwrap+=h,l,<,>,[,],~    " Move to following line on certain keys
+
+set switchbuf=useopen,vsplit    " Jump to the first open window
+
+set diffopt=filler,iwhite       " Diff mode: show fillers, ignore whitespace
+set completeopt=menu,menuone    " Always show menu, even for one item
+set completeopt+=noselect,noinsert
+
+if exists('+completepopup')
+	set completeopt+=popup
+	set completepopup=height:4,width:60,highlight:InfoPopup
+endif
+
+" Use the new Neovim :h jumplist-stack
+if has('nvim-0.5')
+	set jumpoptions=stack
+endif
+
+if has('patch-8.1.0360') || has('nvim-0.4')
+	set diffopt+=internal,algorithm:patience
+	" set diffopt=indent-heuristic,algorithm:patience
+endif
+" }}}
+
+
+" Editor UI {{{
+
+
+set noshowmode          " Don't show mode on bottom
+set noruler             " Disable default status ruler
+set shortmess=aFc
+
+" set fillchars+=vert:\|  " add a bar for vertical splits
+" set fcs=eob:\           " hide ~ tila
+set list
+
+set title
+" Title length.
+set titlelen=95
+" Title string.
+let &g:titlestring="
+			\ %{expand('%:p:~:.')}%(%m%r%w%)
+			\ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"
+
+set showmatch           " Jump to matching bracket
+set matchpairs+=<:>     " Add HTML brackets to pair matching
+set matchtime=1         " Tenths of a second to show the matching paren
+
+
+set winwidth=30         " Minimum width for active window
+set winminwidth=10      " Minimum width for inactive windows
+" set winheight=4         " Minimum height for active window
+set winminheight=1      " Minimum height for inactive window
+set pumheight=15        " Pop-up menu's line height
+set helpheight=12       " Minimum help window height
+set previewheight=12    " Completion preview height
+
+
+set noequalalways       " Don't resize windows on split or close
+
+set display=lastline
+
+if has('folding') && has('vim_starting')
+	set foldenable
+	set foldmethod=indent
+	set foldlevelstart=99
+endif
+
+if has('nvim-0.4')
+	set signcolumn=yes:1
+else
+	set signcolumn=yes           " Always show signs column
+endif
+
+if has('conceal') && v:version >= 703
+	" For snippet_complete marker
+	set conceallevel=2 concealcursor=niv
+endif
+
+if exists('+previewpopup')
+	set previewpopup=height:10,width:60
+endif
+
+if &termguicolors
+	if exists('&pumblend')
+		set pumblend=10
+	endif
+	if exists('&winblend')
+		set winblend=10
+	endif
+endif
+
+" }}}
 """"""""""""""""""""""""""""""""快捷键定义"""""""""""""""""""""""""""""""""""""""""""''
 " Disable the default s key
 noremap s <nop>
@@ -484,6 +799,7 @@ nmap ;wq :wq<CR>
 nmap <Leader>w :w<CR>
 map Q :q<CR>
 map S :w!<CR>
+map <C-s> :w<CR>
 
 " Call figlet
 map ;x :r !figlet
@@ -539,10 +855,6 @@ else
     " map <Leader>ev :e ~/.vimrc<CR>
     map <Leader>ev :tabe ~/.vimrc<CR>
 endif
-" ===
-" === Goyo
-" ===
-map <LEADER>gy :Goyo<CR>
 
 if has('nvim')
     map <Leader>sv :source  ~/.config/nvim/init.vim<cr>
@@ -550,6 +862,9 @@ else
     map <Leader>sv :source  ~/.vimrc<cr>
 endif
 
+
+"""""""""""" Goyo"""""""""""
+map <LEADER>gy :Goyo<CR>
 
 
 " Indentation
@@ -633,8 +948,10 @@ let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 " ===
 " === Terminal Behaviors
 " ===
+set termguicolors
 let g:neoterm_autoscroll = 1
-" autocmd TermOpen term://* startinsert
+autocmd TermOpen term://* startinsert
+let g:space_vim_transp_bg = 1
 tnoremap <C-N> <C-\><C-N>
 tnoremap <C-O> <C-\><C-N><C-O>
 let g:terminal_color_0  = '#000000'
@@ -702,6 +1019,14 @@ endif
 " ===
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
+
+
+"""""""""""""""""""""""""""""""""voldikss/vim-translator设置'"""""""""""""""""
+nmap <silent> <Leader>ts <Plug>TranslateW
+vmap <silent> <Leader>ts <Plug>TranslateWV
+let g:translator_window_max_width=0.3
+let g:translator_window_max_height=0.3
+let g:translator_default_engines=['youdao' , 'google']
 
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
 " :checkhealth
@@ -797,14 +1122,20 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ 'coc-yank']
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-" inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <c-o> coc#refresh()
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+    " inoremap <silent><expr> <c-o> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
 function! Show_documentation()
     call CocActionAsync('highlight')
     if (index(['vim','help'], &filetype) >= 0)
@@ -814,22 +1145,22 @@ function! Show_documentation()
     endif
 endfunction
 nnoremap <LEADER>h :call Show_documentation()<CR>
-" set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
-" let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
-" let $NVIM_COC_LOG_LEVEL = 'debug'
-" let $NVIM_COC_LOG_FILE = '/Users/david/Desktop/log.txt'
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-nnoremap <c-c> :CocCommand<CR>
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap cc :CocCommand<CR>
 " Text Objects
-xmap kf <Plug>(coc-funcobj-i)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
-omap kf <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-xmap kc <Plug>(coc-classobj-i)
-omap kc <Plug>(coc-classobj-i)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 " Useful commands
@@ -837,7 +1168,7 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
@@ -1340,6 +1671,46 @@ sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
+
+
+""""""""""""""""""hardcoreplayers/dashboard-nvim设置""""""""""""""""""""""""""""""
+let g:dashboard_custom_header = [
+       \ '',
+       \ '███████╗██╗   ██╗ ██████╗ ██╗    ██╗   ██╗███████╗    ██╗',
+       \ '██╔════╝██║   ██║██╔═══██╗██║    ██║   ██║██╔════╝    ██║',
+       \ '█████╗  ██║   ██║██║   ██║██║    ██║   ██║█████╗      ██║',
+       \ '██╔══╝  ╚██╗ ██╔╝██║   ██║██║    ╚██╗ ██╔╝██╔══╝      ╚═╝',
+       \ '███████╗ ╚████╔╝ ╚██████╔╝███████╗╚████╔╝ ███████╗    ██╗',
+       \ '╚══════╝  ╚═══╝   ╚═════╝ ╚══════╝ ╚═══╝  ╚══════╝    ╚═╝',
+       \ '',
+       \ '                       [Hello jj.Chen]',
+       \ '',
+       \ ]
+let g:dashboard_preview_command = 'cat'
+let g:dashboard_preview_file = '~/.config/nvim/dashboard.cat'
+let g:dashboard_preview_file_height = 10
+let g:dashboard_preview_file_width = 80
+let g:dashboard_default_executive ='telescope'
+let g:dashboard_default_executive ='fzf'
+" let g:dashboard_custom_shortcut={
+"       \ 'last_session'       : 'Ctrl X',
+"       \ 'find_history'       : 'Ctrl H',
+"       \ 'find_file'          : 'Ctrl P',
+"       \ 'new_file'           : 'Ctrl E',
+"       \ 'change_colorscheme' : 'Ctrl T',
+"       \ 'find_word'          : 'Ctrl F',
+"       \ 'book_marks'         : 'Ctrl M',
+"       \ }
+let g:dashboard_custom_shortcut={
+			\ 'last_session'       : 'SPC s l',
+			\ 'find_history'       : 'SPC f h',
+			\ 'find_file'          : 'SPC f f',
+			\ 'new_file'           : 'SPC f n',
+			\ 'change_colorscheme' : 'SPC t c',
+			\ 'find_word'          : 'SPC f a',
+			\ 'book_marks'         : 'SPC f b',
+			\ }
+noremap <LEADER>fn :DashboardNewFile<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""itchyny/calendar.vim配置"""""""""""""""""""""""""""""
@@ -1384,6 +1755,9 @@ augroup END
 let g:suda#prompt = 'Mot de passe:'
 
 
+""""""""""""""""""""""""""""""""""""""""glepnir/galaxyline.nvim设置"""""""""""""""""""""""""""""""
+" luafile ~/.config/nvim/eviline.lua
+
 """"""""""""""""""""vim-calendar插件"""""""""""""""""""""""''
 
 "noremap \c :Calendar -position=here<CR>
@@ -1409,10 +1783,18 @@ augroup calendar-mappings
     autocmd FileType calendar nunmap <buffer> <C-p>
 augroup END
 
+
+
+
+
 """"""""""""""""""""""""""Yggdroot/indentLine插件"""""""""""""""""""""""""""""""""
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 let g:indent_guides_start_level           = 2  " 从第二层开始可视化显示缩进
-
+let g:indentLine_enabled = 1
+let g:indentLine_char='┆'
+let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
+let g:indentLine_concealcursor = 'niv'
+let g:indentLine_showFirstIndentLevel =1
 
 
 """"""""""""""""""""""""""""""""  vim-move配置   """""""""""""""""""""""""""""""""""""""""""
@@ -1725,6 +2107,114 @@ let g:NERDTreeExtensionHighlightColor['php'] = s:brown
 let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""'Defx设置"""""""""""""""""""""""""""""""""""""""""""""""''
+noremap <LEADER>df :Defx<CR>
+
+call defx#custom#option('_', {
+			\ 'resume': 1,
+			\ 'winwidth': 30,
+			\ 'split': 'vertical',
+			\ 'direction': 'topleft',
+			\ 'show_ignored_files': 0,
+			\ 'columns': 'mark:indent:git:icons:filename',
+			\ 'root_marker': '',
+			\ })
+
+call defx#custom#column('git', {
+			\   'indicators': {
+			\     'Modified'  : '•',
+			\     'Staged'    : '✚',
+			\     'Untracked' : 'ᵁ',
+			\     'Renamed'   : '≫',
+			\     'Unmerged'  : '≠',
+			\     'Ignored'   : 'ⁱ',
+			\     'Deleted'   : '✖',
+			\     'Unknown'   : '⁇'
+			\   }
+			\ })
+
+call defx#custom#column('mark', { 'readonly_icon': '', 'selected_icon': '' })
+
+augroup user_plugin_defx
+	autocmd!
+	autocmd FileType defx call <SID>defx_mappings()
+	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
+	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
+augroup END
+
+function! s:jump_dirty(dir) abort
+	let l:icons = get(g:, 'defx_git_indicators', {})
+	let l:icons_pattern = join(values(l:icons), '\|')
+
+	if ! empty(l:icons_pattern)
+		let l:direction = a:dir > 0 ? 'w' : 'bw'
+		return search(printf('\(%s\)', l:icons_pattern), l:direction)
+	endif
+endfunction
+
+function! s:defx_toggle_tree() abort
+	if defx#is_directory()
+		return defx#do_action('open_or_close_tree')
+	endif
+	return defx#do_action('multi', ['drop'])
+endfunction
+
+function! s:defx_mappings() abort
+	setlocal signcolumn=no expandtab
+	nnoremap <silent><buffer><expr> <CR>     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
+	nnoremap <silent><buffer><expr> <C-h>     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
+	nnoremap <silent><buffer><expr> c defx#do_action('copy')
+	nnoremap <silent><buffer><expr> m defx#do_action('move')
+	nnoremap <silent><buffer><expr> p defx#do_action('paste')
+	nnoremap <silent><buffer><expr> d defx#do_action('open')
+	nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
+	nnoremap <silent><buffer><expr> N defx#do_action('new_file')
+	nnoremap <silent><buffer><expr> M defx#do_action('new_multiple_files')
+	nnoremap <silent><buffer><expr> C defx#do_action('toggle_columns', 'mark:indent:icon:filename:type:size:time')
+	nnoremap <silent><buffer><expr> S defx#do_action('toggle_sort', 'time')
+	nnoremap <silent><buffer><expr> x defx#do_action('remove')
+	nnoremap <silent><buffer><expr> r defx#do_action('rename')
+	nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
+	nnoremap <silent><buffer><expr> l defx#do_action('execute_system')
+	nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
+	nnoremap <silent><buffer><expr> <C-h> defx#do_action('toggle_ignored_files')
+	nnoremap <silent><buffer><expr> ; defx#do_action('repeat')
+	nnoremap <silent><buffer><expr> a defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> ~ defx#do_action('cd')
+	nnoremap <silent><buffer><expr> q defx#do_action('quit')
+	nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+	nnoremap <silent><buffer><expr> * defx#do_action('toggle_select_all')
+	nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
+	nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
+	nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
+	nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
+	nnoremap <silent><buffer><expr> u   defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> 2u  defx#do_action('cd', ['../..'])
+	nnoremap <silent><buffer><expr> 3u  defx#do_action('cd', ['../../..'])
+	nnoremap <silent><buffer><expr> 4u  defx#do_action('cd', ['../../../..'])
+
+endfunction
+
+function! s:defx_toggle_tree() abort
+	if defx#is_directory()
+		return defx#do_action('open_or_close_tree')
+	endif
+	return defx#do_action('multi', ['drop'])
+endfunction
+
+function! s:defx_toggle_tree() abort
+	if defx#is_directory()
+		return defx#do_action('open_or_close_tree')
+	endif
+	return defx#do_action('multi', ['drop'])
+endfunction
+
+let g:defx_icons_column_length = 2
+let g:defx_icons_mark_icon = ''
+let g:defx_icons_parent_icon = ""
+
+
 """""""""""""""""""""""""""""""""""open-browser配置打开浏览器""""""""""""""""""""""""""""""""""""""""""
 " 参考：https://mounui.com/343.html
 "1. 正常模式下光标移动到url上输入 gx 即可打开网址，光标移动到词组上可用设置的引擎搜索改词组；
@@ -1770,8 +2260,10 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
+"""""""""""""""""""""""""""""""""""""""rhysd/accelerated-jk配置"""""""""""""""""""""""""""""""""""""""
+"Accelerated-ws设置
+nmap s <Plug>(accelerated_jk_gj)
+nmap w <Plug>(accelerated_jk_gk)
 """"""""""""""""""""""""""""""""""""""""""vhda/verilog_systemverilog.vim配置""""""""""""""""""""""""""""""""""""""""""""
 
 au BufRead,BufNewFile *.sv,  set filetype=verilog_systemverilog
@@ -1786,7 +2278,7 @@ autocmd filetype verilog set autoindent
 autocmd filetype systemverilog set autoindent
 
 set tags=tags
-set autochdir
+
 "   let mapleader="\<Space>"
 nnoremap <leader><Space>i :VerilogFollowInstance<CR>
 nnoremap <leader><Space>I :VerilogFollowPort<CR>
@@ -1922,6 +2414,19 @@ hi MBEVisibleChanged       guifg=#F1266F guibg=fg   ctermfg=1     ctermbg=240
 hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg   ctermfg=118   ctermbg=253
 hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg   ctermfg=196   ctermbg=240
 
+"""""""""""""""""""""Vim-buffet设置""""""""""""""""""""""
+
+"Vim-buffet设置
+nmap ;1 <Plug>BuffetSwitch(1)
+nmap ;2 <Plug>BuffetSwitch(2)
+nmap ;3 <Plug>BuffetSwitch(3)
+nmap ;4 <Plug>BuffetSwitch(4)
+nmap ;5 <Plug>BuffetSwitch(5)
+nmap ;6 <Plug>BuffetSwitch(6)
+nmap ;7 <Plug>BuffetSwitch(7)
+nmap ;8 <Plug>BuffetSwitch(8)
+nmap ;9 <Plug>BuffetSwitch(9)
+nmap ;0 <Plug>BuffetSwitch(10)
 
 " """"""""""""""""""""""""""""""""""""" WinManager 配置 """""""""""""""""""""""""""""""""""""
 
@@ -2003,7 +2508,14 @@ let g:clang_format#auto_format_on_insert_leave=1    "退出插入模式时自动
 " nnoremap <leader><leader>fp :FormatFunParam<cr>
 " nnoremap <leader><leader>if :FormatIf<cr>
 
+""""""""""""""""""""""""""""""""""""""""""" tenfyzhong/CompleteParameter.vim   """""""""""""""""""""""""""""""""""""""""""
 
+" CompleteParameter设置
+inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 
 """"""""""""""""""""""""""""""""""" vimtex插件配置  """""""""""""""""""""""""""""""""""""""""""
 " 按键    效果                                   模式
@@ -2092,6 +2604,15 @@ let g:vimtex_delim_toggle_mod_list = [
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""" voldikss/vim-floaterm插件 """""""""""""""""""""""""""""""""""""""""""
+"floaterm设置
+hi Floaterm guibg=black
+hi FloatermBorder guibg=none guifg=cyan
+let g:floaterm_position = 'center'
+let g:floaterm_wintype = 'floating'
+noremap <LEADER>ftn :FloatermNew<CR>
+noremap <LEADER>ftk :FloatermKill<CR>
+
 
 """"""""""""""""""""""""""""""""""""""" SirVer/ultisnips插件 """""""""""""""""""""""""""""""""""""""""""
 
@@ -2103,43 +2624,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 
-""""""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat格式化代码配置""""""""""""""""""""""""""""""""""""""""
-" sudo apt install astyle clang-format python-pep8 python3-pep8 python-autopep8 yapf  html-beautify ruby-beautify js-beautify
 
-"开启详细模式便于查错
-let g:autoformat_verbosemode=1
-"设置发生保存文件时执行格式化
-" au BufWrite *.sql,*.c,*.py,*.java,*.js :Autoformat
-
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-autocmd FileType vim,tex let b:autoformat_autoindent=0
-:retab
-
-" 我比较喜欢 google 风格的代码
-" let g:formatdef_clangformat_google = '"clang-format -style google -"'
-" let g:formatters_c = ['clangformat_google']
-
-let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
-let g:formatters_cpp = ['allman']
-let g:formatters_c = ['allman']
-
-let g:formatdef_sqlformat = '"sqlformat --keywords upper -"'
-let g:formatters_sql = ['sqlformat']
-
-"默认情况下是pep8，还可以选择google,facebook和chromium
-let g:formatter_yapf_style = 'pep8'
-
-let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
-let g:formatters_python = ['autopep8']
-
-" <!-- 指定html格式化工具，并设置缩进为两个空格 -->
-let g:formatdef_my_html = '"html-beautify -s 2"'
-let g:formatters_html = ['my_html']
-
-"F3自动格式化代码
-noremap <F3> :Autoformat<CR>:w<CR>
 
 """"""""""""""""""""""""""""""  majutsushi/tagbar配置 """"""""""""""""""""""""""""""""""""""
 
@@ -2223,7 +2708,8 @@ nmap  tl <Esc>:TlistToggle<Cr>
 
 
 " """""""""""""""""""""""""""""""""""""""""""" vim-go配置   """"""""""""""""""""""""""""""""""""""""""""
-
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_echo_go_info = 0
 let g:go_doc_popup_window = 1
 let g:go_def_mapping_enabled = 0
@@ -2439,6 +2925,12 @@ let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
 
+"""""""""""""""""""""""""""""Vim-table-mode设置""""""""""""""""""""""
+map <LEADER>tm :TableModeToggle<CR>
+
+"""""""""""""""""""Neoformat设置"""""""""""""""""""
+nnoremap <LEADER>fm :Neoformat<CR>
+
 """"""""""""""""""""""dkarter/bullets.vim"""""""""""""""
 
 " let g:bullets_set_mappings = 0
@@ -2457,7 +2949,21 @@ let g:bullets_enabled_file_types = [
 
 let g:SimpleFold_docstring_preview=1 "看到折叠代码的字符串
 "********************************************************************************************
-
+""""""""""""""""""""""""Vista设置"""""""""""""""""""""""""""""""
+noremap <LEADER>v :Vista<CR>
+let g:vista#renderer#enable_icon = 1
+let g:vista_disable_statusline = 1
+let g:vista_default_executive = 'ctags'
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_vimwiki_executive = 'markdown'
+let g:vista_executive_for = {
+			\ 'vimwiki': 'markdown',
+			\ 'pandoc': 'markdown',
+			\ 'markdown': 'toc',
+			\ 'yaml': 'coc',
+			\ 'typescript': 'coc',
+			\ 'typescriptreact': 'coc',
+			\ }
 
 """""""""""""""""""""""""""""""""""""""""配置w0rp/ale"""""""""""""""""""""""""""""""""""""""
 "let g:ale_set_loclist = 0
@@ -2560,7 +3066,14 @@ let g:ale_linters = {
 """""""""""""""""""""""""""""""" scrooloose/nerdcommenter 插件 """"""""""""""""""""""""""""""""""""""""""""
 "The NERD Commenter
 "注释符号后面空一格
-let g:NERDSpaceDelims=1
+let g:NERDSpaceDelims            = 1
+let g:NERDCompactSexyComs        = 1
+let g:NERDDefaultAlign           = 'left'
+let g:NERDAltDelims_java         = 1
+let g:NERDCustomDelimiters       = {'c': {'left': '/*', 'right': '*/'}}
+let g:NERDCommentEmptyLines      = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines    = 1
 
 "let mapleader="\"
 
@@ -2814,6 +3327,11 @@ let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
 
+""""""""""""""""""""''prettier/vim-prettier配置""""""""""""""""""""""""""""""
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#autoformat = 0
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""自定义"配色方案"""""""""""""""""""""""""""""""""""'""'""
 
 " "/usr/share/vim/vim81/colors/ 目录中包含了大多数文件类型的语法高亮插件。
@@ -2972,38 +3490,10 @@ hi SpecialKey         cterm=bold
 hi SpecialKey      guifg=#00FFFF  gui=bold
 """""""""""""""""""""""""""""""""""""""""""""""设置颜色结束"""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""ayu配置"""""""""""""""""""""
-" set background=dark
-set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
-
 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-hi BadWhitespace  ctermfg=15 ctermbg=15
-hi BadWhitespace  guifg= gray guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/          "表示不必要的空白字符
-
-" 让 vim 把连续数量的空格视为一个制表符,使得按退格键时可以一次删除4个空格"
-set softtabstop=4
-
-" 设置编辑时制表符占用空格数,设置所有的Tab和缩进为4个空格
-set tabstop=4
-
-" 设置格式化时制表符占用空格数,设定<<和>>命令移动时的宽度为4
-set shiftwidth=4
-
-" 在行和段开始处使用制表符
-set smarttab
-
-" 将制表符扩展为空格,使用空格来替换Tab
-set expandtab
-
-
 
 
 
@@ -3538,7 +4028,7 @@ autocmd Filetype c,cpp,h inoremap {<CR> {<CR>}<Esc>O
 
 
 " Compile function
-map <F5> :call CompileRunGcc()<CR>
+map r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
@@ -3561,19 +4051,56 @@ func! CompileRunGcc()
     exec "MarkdownPreview"
   elseif &filetype == 'vimwiki'
     exec "MarkdownPreview"
-  endif
-endfunc
-
-
-map <F6> :call CompileBuildrrr()<CR>
-func! CompileBuildrrr()
-  exec "w"
   if &filetype == 'vim'
-    exec "source $MYVIMRC"
-  elseif &filetype == 'markdown'
-    exec "echo"
+    exec "source ~/.config/nvim/init.vim"
   endif
 endfunc
+
+"这里嘛。。是用来一键编译代码的
+noremap <M-r> :call CompileRunGcc_girl()<CR>
+func! CompileRunGcc_girl()
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -10
+    :term ./%<
+    exec "!rm -rf ./%<"
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python3 %
+  elseif &filetype == 'html'
+    silent! exec "!" google-chrome-stable " % &"
+  elseif &filetype == 'markdown'
+    exec "InstantMarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+  elseif &filetype == 'dart'
+    exec "CocCommand flutter.run -d ".g:flutter_default_device
+    CocCommand flutter.dev.openDevLog
+  elseif &filetype == 'javascript'
+    set splitbelow
+    :sp
+    :term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run .
+  endif
+endfunc
+
+
 
 """"""""""""""""""""""""""""""""""""""""C语言的编译运行"""""""""""""""""""""""""""""""""""""""""
 
@@ -3716,439 +4243,6 @@ autocmd BufReadPost * cd %:p:h
 "##################################################################
 "#################  插件的快捷键           ##########
 "##################################################################
-" Leader键为'\'
-
-" 定义的快捷键为：
-" \q  退出
-" \w  保存
-
-" ctrl + i    相对/绝对行号的切换
-
-" nmap <F1> :TagbarToggle<CR>
-"
-" imap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
-" nmap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
-" 当你再按一下<F2>键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
-
-" F3自动格式化代码
-" noremap <F3> :Autoformat<CR>:w<CR>
-
-" map <F4> :Ack -i
-" imap <F4> :Ack -i
-" F4       相当于输入:ACK -i 查找
-
-"一键执行python代码
-" map <F5> :call RunPython()<CR> "一键执行python代码
-" <F5>编译C/C++/java/，<F6>运行C/C++/java
-" <F5>解释运行python/sh
-
-" <F7>C,C++的调试
-
-" 在 Normal 和 Insert 模式下都可以按 <F8><F9> 来水平滚动了。
-
-
-
-
-
-"设置taglist打开关闭的快捷键F10，就是F10会显示代码中的函数，变量，类，宏等
-" map <F10> <Esc>:TlistToggle<Cr>
-
-" F11   前一个颜色
-" map <F11> :PreviousColorScheme<CR>
-
-" F12   后一个颜色
-" map <F12> :NextColorScheme<CR>
-
-
-"""""""""""""""""""""""""""""" 行号"""""""""""""""""""""""
-" ctrl-i进行相对行号/绝对行号切换
-" nnoremap <C-i> :call NumberToggle()<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""" VeriLog配置""""""""""""""""""""""""""""""""""""""""""""
-
-"建立一个库
-"nmap <Leader>vb <Esc>:!vlib work<CR>
-"编译一个vhd/v文件
-"nmap <silent> <Leader>ms :ModSimComp<cr><cr>
-
-
-" """""""""""""""""""""""""""""""""""""""""""" vim-go配置   """"""""""""""""""""""""""""""""""""""""""""
-" vim-go custom mappings
-" au FileType go nmap <Leader>gs <Plug>(go-implements)
-" au FileType go nmap <Leader>gi <Plug>(go-info)
-" au FileType go nmap <Leader>gd <Plug>(go-doc)
-" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-" au FileType go nmap <leader>gr <Plug>(go-run)
-" au FileType go nmap <leader>gb <Plug>(go-build)
-" au FileType go nmap <leader>gt <Plug>(go-test)
-" au FileType go nmap <leader>gc <Plug>(go-coverage)
-" au FileType go nmap <Leader>ds <Plug>(go-def-split)
-" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-" au FileType go nmap <Leader>ge <Plug>(go-rename)
-
-
-
-""""""""""""""""""""""""""""""""  vim-move配置   """""""""""""""""""""""""""""""""""""""""""
-
-" let g:move_key_modifier = 'C'
-
-" <C-k>   Move current line/selection up
-" <C-j>   Move current line/selection down
-" <C-h>   Move current character/selection left
-" <C-l>   Move current character/selection right
-
-
-"""""""""""""""""""""""""""""""""  Ack快捷键 """""""""""""""""""""""""""""""""""""""""""""""
-" F4 搜索
-
-" map <F4> :Ack -i
-" imap <F4> :Ack -i
-
-" 以后在普通模式下输入Ctrl+U便可以自动输入:Ack 了
-" map <Leader>ack :Ack<space>
-
-
-""""""""""""""""""""""""""""""""""""""" change-colorscheme 配置  """""""""""""""""""""""""""""""""""""""
-" map <F12> :NextColorScheme<CR>
-
-" map <F11> :PreviousColorScheme<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""  cpp-mode   """""""""""""""""""""""""""""""""""""""""""
-
-
-" nnoremap <leader>y :CopyCode<cr>
-" nnoremap <leader>p :PasteCode<cr>
-" nnoremap <leader>U :GoToFunImpl<cr>
-" nnoremap <silent> <leader>a :Switch<cr>
-" nnoremap <leader><leader>fp :FormatFunParam<cr>
-" nnoremap <leader><leader>if :FormatIf<cr>
-
-
-"""""""""""""""""""""""""""""""""" vim surround 配置 """"""""""""""""""""""""""""""""""""""""""
-" 命令行模式
-" ds "              删除一个配对符号 (delete a surrounding)
-" cs "              更改一个配对符号 (change a surrounding)
-" cS "              更改一个配对符号 (change a  surrounding),原配对号内的文本做新一行
-" ys "              增加一个配对符号 (yank a surrounding)
-" yS "              在新的行增加一个配对符号并进行缩进
-" yss "             在整行增加一个配对符号
-" ySs/Yss  "        在整行增加一个配对符号，配对符号单独成行并进行缩进
-
-"  插入模式
-" Ctrl + s                    增加一个配对符号
-" Ctrl +s, Ctrl +s        在整行增加一个配对符号，配对符号单独成行并进行缩进
-
-" 可视模式
-" S         选中的部分括起来
-" gS        选中的括起来，括号内文本做新一行
-
-" 如
-" ds"回车           删除"hello, world" -> hello,world
-" cs"(回车          替换 "hello,world"  -> (hello,world)
-" cst" 回车            替换-标签(t=tag)  ==> <a>abc</a>a>  -> "abc"
-" cst<html>回车        替换标签 ==> <a>abc</a>a>  -> <html>abc</html>html>
-" cS"(回车           "hello,world"  -> (
-"                                 hello,world
-"                          )
-" ysw(回车           会在当前光标所在单词w的周围增加一个 () 配对   hello world  ->  hello ( world )
-
-" ysw<em回车         hello world  ->   <em>hello</em> world
-
-
-" ySw[         hello world -> hello [
-"                                         world
-"                                     ]
-
-" yss"        添加一整行 Hello,world -> "Hello,world"
-" ySS"        添加括起来，括号内文本做新一行 Hello,world -> "
-"                                                            Hello,world
-"                                                           "
-" ySS<div回车               hello world  ->       <div>
-"                                                 hello world
-"                                                 </div>
-
-" 可视模式：
-" S(回车         hello world ->  ( hello world )
-" gS(          hello world   ->         (
-"                                           hello world
-"                                       )
-
-
-
-
-"""""""""""""""""""""""""""""""""""" Easymotion配置 """"""""""""""""""""""""""""""""""""""
-" 接下来的是，在normal模式下输入以下命令就可以实现快速查找，查找后会把目标地址以a,b,c..等标记标出，然后按下响应的快捷键就可快速跳转
-" \\w    # 向后查找单词(find word after)
-" \\W    # 向前查找单词(find word before)
-" \\e    # 向后查找，定位到词尾(find word end after)
-" \\E    # 向前查找，位位到词尾(find word end before)
-" \\f    # 向后查找单字(find letter after)
-" \\F    # 向前查找单字(find letter before)
-" \\s    #快捷键<leader><leader>s(即\\s), 然后输入要搜索的字母, 这个跳转是双向的
-
-
-" 行内跳转(hl)
-" map <Leader><leader>h <Plug>(easymotion-linebackward)
-" map <Leader><leader>l <Plug>(easymotion-lineforward)
-
-" 行级跳转(jk)
-" map <Leader><Leader>j <Plug>(easymotion-j)
-" map <Leader><Leader>k <Plug>(easymotion-k)
-" 重复上一次操作, 类似repeat插件, 很强大
-" map <Leader><leader>. <Plug>(easymotion-repeat)
-
-"""""""""""""""""""""""""""""""""""""""" 配置ctrlP """"""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <leader>cf  :CtrlP<CR>
-" nnoremap <leader>b  :CtrlPBuffer<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""" fzf 配置""""""""""""""""""""""""""""""""""""""""""""""
-
-" Ctrl + e 查看当前 Buffer，两次 Ctrl + e 快速切换上次打开的 Buffer
-"  \ff 查看文件列表
-"  <Leader>fb 切换Buffer中的文件
-"  <Leader>fp 在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
-"  <Leader>fh 在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
-
-
-
-""""""""""""""""""""""""""""""""""""""""" LeaderF 设置  """""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl + p 打开文件搜索
-"  \f   打开函数列表
-"  \f\   文件搜索
-" \lh    历史打开过的文件
-"  \F     函数搜索（仅当前文件里），依赖ctags插件
-"  \rg    模糊搜索，很强大的功能，迅速秒搜
-
-
-"""""""""""""""""""""""""""Ctags配置""""""""""""""""""""""""""""""""
-" 配置为生产ctags的快捷键
-" map <Leadf>ct :!ctags <CR>
-
-"更新ctags标签文件快捷键设置
-" noremap <Leadf>ct :!ctags -R<CR>
-
-""""""""""""""""""""""""""""""""""""""  Tagbar配置 """"""""""""""""""""""""""""""""""""""
-
-" 映射 tagbar 的快捷键
-" nmap <F1> :TagbarToggle<CR>
-" nmap <Leader>tb :TagbarToggle<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""   Tag List  """"""""""""""""""""""""""""""""""""""""""""""
-"设置taglist打开关闭的快捷键F10，就是F10会显示代码中的函数，变量，类，宏等
-" map <F10> <Esc>:TlistToggle<Cr>
-
-
-"将 \t 表示为在命令行模式下输入命令：
-" nmap <Leader>tl <Esc>:TlistToggle<Cr>
-
-""""""""""""""""""""""""""""""""""" vimtex插件配置  """""""""""""""""""""""""""""""""""""""""""
-" 按键    效果                                   模式
-" \li     文件信息显示                           n
-" \lt     打开目录                               n
-" \ll     编译文档                               n
-" \lv     查看文档                               n
-" \lc     清除latex编译文件                      n
-" \ls     查看文档, 并跳到当前光标所在的位置.    n
-" dse     删除光标周围的\begin \end环境          n
-" dsc     删除光标周围的\command{}环境           n
-" ds$     删除光标周围的$$ 环境                  n
-" dsd     删除光标周围的括号                     n
-" cse     修改光标周围的\begin \end环境          n
-" cs$     修改光标周围的\command{}环境           n
-" csd     修改光标周围的括号模式                 n
-" tsc     \command{}和\command*{}的互换          n
-" tse     \begin{env}和\begin{env*}的互换        n
-" tsd     (...)和\left( ... \right )的互换       n
-
-" 当你再按一下<F2>键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
-
-"""""""""""""""""""""""""""""""""""open-browser配置打开浏览器""""""""""""""""""""""""""""""""""""""""""
-"  可视模式下输入 gx  即可搜索选中的内容；a
-
-"""""""""""""""""""""""""""""""""""""""  ULtisnips 插件 """""""""""""""""""""""""""""""""""""""""""
-
-" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""open-browser配置打开浏览器""""""""""""""""""""""""""""""""""""""""""
-" 参考：https://mounui.com/343.html
-"1. 正常模式下光标移动到url上输入 gx 即可打开网址，光标移动到词组上可用设置的引擎搜索改词组；
-"2. 可视模式下输入 gx  即可搜索选中的内容；
-
-""""""""""""""""""""""""""""""""""""""""vim-autoformat格式化代码配置""""""""""""""""""""""""""""""""""""""""
-
-"F3自动格式化代码
-
-
-
-
-"""""""""""""""""""""""""""""""""""""""""  NERD Commenter   """"""""""""""""""""""""""""""""""""""""""""
-
-"let mapleader="\"
-
-" \ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
-" \cc，注释当前行
-" \c，切换注释/非注释状态
-" \cs，以”性感”的方式注释
-" \cA，在当前行尾添加注释符，并进入Insert模式
-" \cu，取消注释
-" Normal模式下，几乎所有命令前面都可以指定行数。  比如  输入 6\cs的意思就是以性感方式注释光标所在行开始6行代码
-" Visual模式下执行命令，会对选中的特定区块进行注释/反注释
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""开始配置nerdtree"""""""""""""""""""""""""""""""""""""""""""""""
-" \fd 打开目录
-
-
-"""""""""""""""""""""""""""""""""""  多文档编辑MiniBufExplorer """""""""""""""""""""""""""""""""""
-
-" 显示/隐藏 MiniBufExplorer 窗口
-" map <Leader>hm :MBEToggle<cr>
-" buffer 切换快捷键
-" alt + b下一个buffer
-"map <M-n> :MBEbn<cr>
-" alt + p上一个buffer
-"map <M-p> :MBEbp<cr>
-
-" ctrl + tab下一个buffer
-    " map <C-tab> :MBEbn<CR>
-" ctrl + shift + tab下一个buffer
-" map <C-M-tab> :MBEbp<CR>
-" // 打开当前buffer的下一个buffer
-" :bn
-
-" // 打开当强buffer的上一个buffer
-" :bp
-
-" // 打开编号为<num>(即每个buffer前面的数字)的buffer,
-" :b<num>
-
-
-" 是用<C-箭头键>切换到上下左右窗口中去
-
-
-""""""""""""""""""""""""""""""""""""" WinManager 配置 """""""""""""""""""""""""""""""""""""
-" 配置Ctrl + 方向键在窗口之间切换
-"   Ctrl + Up   切换到上面的窗口
-"   Ctrl + Down 切换到下面的窗口
-"   Ctrl + left  切换到左边的窗口
-"   Ctrl + right    切换到右边的窗口
-
-" 配置Ctrl + h,l,k,j键在窗口之间切换
-"   Ctrl + k   切换到上面的窗口
-"   Ctrl + j 切换到下面的窗口
-"   Ctrl + h  切换到左边的窗口
-"   Ctrl + l    切换到右边的窗口
-""""""""""""""""""""""""""""" Vim-multiple-cursors(vim多重光标选取插件)   """""""""""""""""""""""""""""
-" 2G - 跳转到第2行
-" fp - 移动光标到字符p
-" <C-n> - 即Ctrl+n, 选择当前单词poorly_named_var
-" <C-n><C-n> - 每按一次<C-n>向下选取一个同样的单词, 这里选择下面的两个pooly_named_var
-" c - 按c开始修改,选中后, 可以进行增删替换a/c/x等
-" name - 输入要修改的内容, 这里是name
-" 按<Esc>回到正常的模式
-
-
-
-"""""""""""""""""""""""""""""""""""""""""配置ale""""""""""""""""""""""""""""""""""""""""
-"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
-"<Leader>s触发/关闭语法检查
-"<Leader>d查看错误或警告的详细信息
-
-
-
-
-"###############################################
-" ################## 其他
-"#####################################################
-
-"  Ctrl+A全选，Ctrl+C复制，Ctrl+V粘贴
-
-"  Ctrl-j 切换到下方的分割窗口
-"  Ctrl-k 切换到上方的分割窗口
-"  Ctrl-l 切换到右侧的分割窗口
-"  Ctrl-h 切换到左侧的分割窗口
-
-" F5   一键执行python代码
-" <F5>编译C/C++/java/，<F6>运行C/C++/javascript
-" <F7>C,C++的调试
-" 在 Normal 和 Insert 模式下都可以按 <F8><F9> 来水平滚动了。
-"
-
-" shift+up上翻半页
-" shift+down下翻半页
-" shift+left上翻一页
-" shift+right下翻一页
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"---------------- 窗口、标签页、缓冲区的切换--------------------------------
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"组合快捷键：
-" Ctrl-j 切换到下方的分割窗口
-" Ctrl-k 切换到上方的分割窗口
-" Ctrl-l 切换到右侧的分割窗口
-" Ctrl-h 切换到左侧的分割窗口
-" Ctrl-w 遍历切换窗口
-
-" Ctrl-q 关闭当前窗口，如果只剩最后一个了，则退出 vim
-" Ctrl-t 当前窗口移动到新标签页
-" Ctrl-o 关闭出当前窗口之外的所有窗口
-" 用空格代替za进行折叠代码
-
-
-" " 移动窗口
-" Ctrl+shift+j当前窗口向上面移动
-"nnoremap <C-S-j> <C-W>J
-" Ctrl+shift+k当前窗口向上方移动
-"nnoremap <C-S-k> <C-W>K
-" Ctrl+shift+l 当前窗口向右边移动
-"nnoremap <C-S-l> <C-W>L
-" Ctrl+shift+h当前窗口向左边移动
-"nnoremap <C-S-h> <C-W>H
-
-" 多窗口分屏时改变窗口大小 +/- 3
-" nnoremap <M-left>  :vertical resize -2<cr>
-" nnoremap <M-down>  :resize +2<cr>
-" nnoremap <M-up>    :resize -2<cr>
-" nnoremap <M-right> :vertical resize +2<cr>
-
-"#################################### 多标签页切换####################################
-
-" noremap <silent><tab>tn :tabnew<cr>
-" noremap <silent><tab>tc :tabclose<cr>
-" noremap <silent><leader>t :tabnew<cr>
-" noremap <silent><leader>c :tabclose<cr>
-" noremap <silent><tab>n :tabn<cr>
-" noremap <silent><tab>p :tabp<cr>
-
-" noremap <silent><s-tab> :tabnext<CR>
-
-
-" 正常模式下切换到确切的 tab
-" noremap <leader>1 1gt
-" noremap <leader>2 2gt
-" noremap <leader>3 3gt
-" noremap <leader>4 4gt
-" noremap <leader>5 5gt
-" noremap <leader>6 6gt
-" noremap <leader>7 7gt
-" noremap <leader>8 8gt
-" noremap <leader>9 9gt
-" noremap <leader>0 :tablast<CR>
-
-" buffer 切换快捷键
-" alt + b下一个buffer
-" map <M-n> :bn<cr>
-" alt + p上一个buffer
-" map <M-p> :bp<cr>
-" ctrl + tab下一个buffer
-" map <C-tab> :bn<CR>
-" ctrl + shift + tab下一个buffer
-" map <C-M-tab> :bp<CR>
 
 
 " "########################################################
@@ -4442,4 +4536,4 @@ autocmd BufReadPost * cd %:p:h
 " 输入 "I"， 可视块模式 --> 编辑模式。（注意：必须使用 "I"）
 " 输入 "#" 字符，也就是注释的符号。
 " 按下 "Esc"， 编辑模式 --> 命令模式。
-
+" 进入块选中，: Tabularized /=快读对齐
