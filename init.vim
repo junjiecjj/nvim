@@ -345,11 +345,11 @@ set mouse=a
 "指定在选择文本时，光标所在位置也属于被选中的范围。
 set selection=inclusive
 
-" 实现按 \sa 全选当前文件所有文本的效果
-map <leader>sa ggVG"
+
 
 " 在被分割的窗口间显示空白，便于阅读
-" set fillchars=vert:\ ,stl:\ ,stlnc:\
+"set fillchars=vert:\ ,stl:\ ,stlnc:\
+set fillchars=vert:\|
 
 " 进入当前编辑的文件的目录
 autocmd BufEnter * exec "cd %:p:h"
@@ -728,8 +728,8 @@ set noshowmode          " Don't show mode on bottom
 set noruler             " Disable default status ruler
 set shortmess=aFc
 
-" set fillchars+=vert:\|  " add a bar for vertical splits
-" set fcs=eob:\           " hide ~ tila
+"set fillchars+=vert:\|  " add a bar for vertical splits
+" set fcs=eob:\            " hide ~ tila
 set list
 
 set title
@@ -800,6 +800,8 @@ if has('persistent_undo')
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
 """"""""""""""""""""""""""""""""快捷键定义"""""""""""""""""""""""""""""""""""""""""""''
+" 实现按 \sa 全选当前文件所有文本的效果
+map <leader>sa ggVG"
 " Disable the default s key
 noremap s <nop>
 
@@ -2622,8 +2624,8 @@ hi Floaterm guibg=black
 hi FloatermBorder guibg=none guifg=cyan
 let g:floaterm_position = 'center'
 let g:floaterm_wintype = 'floating'
-noremap <LEADER>ftn :FloatermNew<CR>
-noremap <LEADER>ftk :FloatermKill<CR>
+noremap  ftn :FloatermNew<CR>
+noremap  ftk :FloatermKill<CR>
 
 
 """"""""""""""""""""""""""""""""""""""" SirVer/ultisnips插件 """""""""""""""""""""""""""""""""""""""""""
