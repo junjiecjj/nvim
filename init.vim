@@ -2621,10 +2621,10 @@ let g:vimtex_delim_toggle_mod_list = [
 
 """"""""""""""""""""""""""""""""""""""" voldikss/vim-floaterm插件 """""""""""""""""""""""""""""""""""""""""""
 " Set floaterm window's background to black
-hi Floaterm guibg=black
+hi Floaterm guibg=black   ctermbg=232
 " Set floating window border line color to cyan, and background to orange
-hi FloatermBorder guibg=orange guifg=cyan
-hi FloatermNC guibg=gray
+hi FloatermBorder guibg=orange guifg=cyan ctermbg=220  ctermfg=46
+hi FloatermNC guibg=gray   ctermbg=246
 "floaterm设置
 set shell=/usr/bin/bash
 hi Floaterm guibg=black
