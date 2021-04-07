@@ -1320,7 +1320,8 @@ noremap ;gi :FzfGitignore<CR>
 
 """""""""""""""""""""""""" brooth/far.vim插件""""""""""""""""""""""""""""""""""""
 
-noremap <Leader>f :F  **/*<left><left><left><left><left>
+" noremap <Leader>f :F  **/*<left><left><left><left><left>
+noremap <Leader>f :F   %<left><left>
 let g:far#mapping = {
         \ "replace_undo" : ["l"],
         \ }
@@ -1330,8 +1331,8 @@ set regexpengine=1        " use old regexp engine
 set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
 
 " shortcut for far.vim find
-nnoremap <silent> <Leader>f  :Farf<cr>
-vnoremap <silent> <Leader>f  :Farf<cr>
+nnoremap <silent> ;f  :Farf<cr>
+vnoremap <silent> ;f  :Farf<cr>
 
 " shortcut for far.vim replace
 nnoremap <silent> <Leader>r  :Farr<cr>
