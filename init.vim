@@ -1697,6 +1697,7 @@ let g:dashboard_custom_header = [
        \ '',
 \ ]
 let g:dashboard_preview_command = 'cat'
+let g:dashboard_preview_pipeline = 'lolcat'
 let g:dashboard_preview_file_height = 10
 let g:dashboard_preview_file_width = 80
 " let g:dashboard_default_executive ='telescope'
@@ -1706,10 +1707,10 @@ nmap ;ss :<C-u>SessionSave<CR>
 nmap ;sl :<C-u>SessionLoad<CR>
 nnoremap <silent> ;fh :DashboardFindHistory<CR>
 nnoremap <silent> ;ff :DashboardFindFile<CR>
-nnoremap <silent> ;cc :DashboardChangeColorscheme<CR>
+nnoremap <silent> ;tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> ;fa :DashboardFindWord<CR>
 nnoremap <silent> ;fb :DashboardJumpMark<CR>
-nnoremap <silent> ;fn :DashboardNewFile<CR>
+nnoremap <silent> ;cn :DashboardNewFile<CR>
 let g:dashboard_custom_shortcut={
 \ 'last_session'       : 'SPC s l',
 \ 'find_history'       : 'SPC f h',
