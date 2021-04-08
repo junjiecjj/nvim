@@ -1413,7 +1413,7 @@ nnoremap <silent><nowait> <space>ot  :<C-u>Clap tags<CR>
 nnoremap <silent><nowait> <space>os  :<C-u>Clap colors<CR>
 nnoremap <silent><nowait> <space>og  :<C-u>Clap grep2<CR>
 
-let g:which_key_map1.o = {
+let g:which_key_map = {
 			\ 'name' : '+clap',
 			\ 'p' : 'clap',
 			\ 'b' : 'buffers',
@@ -1713,7 +1713,7 @@ sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
 """"""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
-let g:dashboard_default_header = eval
+let g:dashboard_default_header = "eval"
 let g:dashboard_custom_header = [
        \ '',
        \ '███████╗██╗   ██╗ ██████╗ ██╗    ██╗   ██╗███████╗    ██╗',
@@ -1760,7 +1760,7 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : 'SPC f b',
 \ }
 
-let g:dashboard_custom_shortcut_icon['last_session'] = ' '
+let g:dashboard_custom_shortcut_icon['last_session'] = ' '
 let g:dashboard_custom_shortcut_icon['find_history'] = 'ﭯ '
 let g:dashboard_custom_shortcut_icon['find_file'] = ' '
 let g:dashboard_custom_shortcut_icon['new_file'] = ' '
