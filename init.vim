@@ -55,7 +55,7 @@ Plug 'morhetz/gruvbox'                     " 配色方案
 Plug 'jnurmine/Zenburn'
 "主题插件
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'hardcoreplayers/oceanic-material'
+Plug 'glepnir/oceanic-material'
 Plug 'mhartington/oceanic-next'
 
 Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
@@ -96,7 +96,10 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }               "查找替�
 Plug 'rking/ag.vim'                          " 查找工具)
 " CSharp
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
+Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] }      " omnisharp-vim dependency
+Plug 'glepnir/dashboard-nvim'                                   " 启动vim时启动界面美化
+Plug 'nvim-lua/telescope.nvim'                                      " 在vim中搜索文件
+Plug 'liuchengxu/vim-clap'                                         " 在vim中搜索文件
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }                    " 在vim中搜索文件
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " 在vim中搜索文件
 Plug 'junegunn/fzf.vim'
@@ -112,9 +115,6 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 "美化
 " Plug 'glepnir/galaxyline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'hardcoreplayers/dashboard-nvim'
-Plug 'nvim-lua/telescope.nvim'
-Plug 'liuchengxu/vim-clap'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
@@ -153,7 +153,7 @@ Plug 'vhda/verilog_systemverilog.vim'     "verilog
 
 
 Plug 'fholgado/minibufexpl.vim'            " 多文档编辑
-Plug 'hardcoreplayers/vim-buffet'
+Plug 'bagrat/vim-buffet'                    "类似minibuf管理多buffer的
 Plug 'vim-scripts/winmanager'              " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'        " vim多重光标选取插件
 Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
@@ -223,6 +223,7 @@ Plug 'sheerun/vim-polyglot'                  " 语法高亮
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
 Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
+Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 
 "python
@@ -1391,7 +1392,44 @@ endfunction
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 
-""""""""""""""""""""""""""""""""""""""""""""" fzf 配置""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""" liuchengxu/vim-clap 配置""""""""""""""""""""""""""""""""""""""""""""""
+let g:clap_layout = { 'relative': 'editor' }
+let g:clap_layout = { 'width': '95%', 'col': '5%' }
+let g:clap_theme = 'material_design_dark'
+let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
+
+" vim-clap
+nnoremap <silent><nowait> <space>op  :<C-u>Clap<CR>
+nnoremap <silent><nowait> <space>ob  :<C-u>Clap buffers<CR>
+nnoremap <silent><nowait> <space>oc  :<C-u>Clap command<CR>
+nnoremap <silent><nowait> <space>oh  :<C-u>Clap history<CR>
+nnoremap <silent><nowait> <space>of  :<C-u>Clap files ++finder=rg --ignore --hidden --files<CR>
+nnoremap <silent><nowait> <space>oq  :<C-u>Clap quickfix<CR>
+nnoremap <silent><nowait> <space>oj  :<C-u>Clap jumps<CR>
+nnoremap <silent><nowait> <space>om  :<C-u>Clap marks<CR>
+nnoremap <silent><nowait> <space>ow  :<C-u>Clap windows<CR>
+nnoremap <silent><nowait> <space>ot  :<C-u>Clap tags<CR>
+nnoremap <silent><nowait> <space>os  :<C-u>Clap colors<CR>
+nnoremap <silent><nowait> <space>og  :<C-u>Clap grep2<CR>
+
+let g:which_key_map1.o = {
+			\ 'name' : '+clap',
+			\ 'p' : 'clap',
+			\ 'b' : 'buffers',
+			\ 'c' : 'command',
+			\ 'h' : 'file history',
+			\ 'f' : 'search file',
+			\ 'q' : 'quickfix list',
+			\ 'j' : 'jumps',
+			\ 'm' : 'marks',
+			\ 'w' : 'windows',
+			\ 't' : 'tags',
+			\ 's' : 'colors',
+			\ 'g' : 'find word',
+			\ }
+
+""""""""""""""""""""""""""""""""""""""""""""" junegunn/fzf.vim配置""""""""""""""""""""""""""""""""""""""""""""""
 
 
 " Ctrl + , 查看当前 Buffer，两次 Ctrl + e 快速切换上次打开的 Buffer
@@ -1412,14 +1450,7 @@ nnoremap <silent> <Leader>fp :Lines<CR>
 "<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
 nnoremap <silent> <Leader>fh :History<CR>
 
-"调用Rg进行搜索，包含隐藏文件
-"这样输入:Rg <keyword>会调用ripgrep来递归搜索当前目录
-command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>), 1,
-            \   <bang>0 ? fzf#vim#with_preview('up:60%')
-            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \   <bang>0)
+
 
 
 " This is the default extra key bindings
@@ -1474,8 +1505,6 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
-
-
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
 command! -bang -nargs=* GGrep
@@ -1483,6 +1512,14 @@ command! -bang -nargs=* GGrep
             \   'git grep --line-number '.shellescape(<q-args>), 0,
             \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
+"调用Rg进行搜索，包含隐藏文件
+"这样输入:Rg <keyword>会调用ripgrep来递归搜索当前目录
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
 " Override Colors command. You can safely do this in your .vimrc as fzf.vim
 " will not override existing commands.
 command! -bang Colors
@@ -1497,32 +1534,10 @@ command! -bang -nargs=* Ag
 nnoremap <silent> <Leader>A :Ag<CR>
 
 
-"调用Rg进行搜索，包含隐藏文件
-"这样输入:Rg <keyword>会调用ripgrep来递归搜索当前目录
-command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-            \   <bang>0 ? fzf#vim#with_preview('up:60%')
-            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \   <bang>0)
-
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 
 """"""""""""""""""""""""""""""""""""""""" LeaderF 设置  """""""""""""""""""""""""""""""""""""""""""""""
@@ -1537,18 +1552,25 @@ let g:Lf_ShortcutF = '<C-p>'
 noremap lf :LeaderfFunction<cr>
 "函数搜索（仅当前文件里），依赖ctags插件
 nnoremap <silent> lf :Leaderf function<CR>
-
+nnoremap <silent> lf :LeaderfFunction<CR>
 "文件搜索
 nnoremap <silent> <Leader>lf :Leaderf file<CR>
-
+nnoremap <silent> <Leader>lf :LeaderfFile<CR>
 "历史打开过的文件
 nnoremap <silent> <Leader>lh :Leaderf mru<CR>
-
+nnoremap <silent> <Leader>lh :LeaderfMru<CR>
 "Buffer
 nnoremap <silent> <Leader>lb :Leaderf buffer<CR>
+nnoremap <silent> <Leader>lb :LeaderfBuffer<CR>
 
+" 搜索当前文件中有的某个单词
+nnoremap <silent> <Leader>lw :Leaderf line<CR>
 
+" 更换颜色
+nnoremap <silent> <Leader>lc :Leaderf colorscheme<CR>
 
+" 是召回上一个命令的最后搜索结果
+nnoremap <silent> <Leader>lr Leaderf --recall<CR>
 "模糊搜索，很强大的功能，迅速秒搜
 nnoremap <silent> <Leader>rg :Leaderf rg<CR>
 
@@ -1562,6 +1584,9 @@ nnoremap <silent> <Leader>rg :Leaderf rg<CR>
 " <C-T> : 在新标签打开
 " <C-P> : 预览结果
 
+" 使用 popup window /floating window 预览
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -1687,7 +1712,8 @@ sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
-""""""""""""""""""hardcoreplayers/dashboard-nvim设置""""""""""""""""""""""""""""""
+""""""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
+let g:dashboard_default_header = eval
 let g:dashboard_custom_header = [
        \ '',
        \ '███████╗██╗   ██╗ ██████╗ ██╗    ██╗   ██╗███████╗    ██╗',
@@ -1700,6 +1726,15 @@ let g:dashboard_custom_header = [
        \ '                       [Hello jj.Chen]',
        \ '',
 \ ]
+let g:dashboard_custom_header = [
+\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\]
+
 let g:dashboard_preview_command = 'cat'
 let g:dashboard_preview_pipeline = 'lolcat'
 let g:dashboard_preview_file_height = 10
@@ -1725,32 +1760,16 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : 'SPC f b',
 \ }
 
-
+let g:dashboard_custom_shortcut_icon['last_session'] = ' '
+let g:dashboard_custom_shortcut_icon['find_history'] = 'ﭯ '
+let g:dashboard_custom_shortcut_icon['find_file'] = ' '
+let g:dashboard_custom_shortcut_icon['new_file'] = ' '
+let g:dashboard_custom_shortcut_icon['change_colorscheme'] = ' '
+let g:dashboard_custom_shortcut_icon['find_word'] = ' '
+let g:dashboard_custom_shortcut_icon['book_marks'] = ' '
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""itchyny/calendar.vim配置"""""""""""""""""""""""""""""
 
-"noremap \c :Calendar -position=here<CR>
-noremap \\ :Calendar -view=clock -position=here<CR>
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-augroup calendar-mappings
-    autocmd!
-    " diamond cursor
-    autocmd FileType calendar nmap <buffer> k <Plug>(calendar_up)
-    autocmd FileType calendar nmap <buffer> h <Plug>(calendar_left)
-    autocmd FileType calendar nmap <buffer> j <Plug>(calendar_down)
-    autocmd FileType calendar nmap <buffer> l <Plug>(calendar_right)
-    autocmd FileType calendar nmap <buffer> <c-k> <Plug>(calendar_move_up)
-    autocmd FileType calendar nmap <buffer> <c-h> <Plug>(calendar_move_left)
-    autocmd FileType calendar nmap <buffer> <c-j> <Plug>(calendar_move_down)
-    autocmd FileType calendar nmap <buffer> <c-l> <Plug>(calendar_move_right)
-    autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
-    autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
-    " unmap <C-n>, <C-p> for other plugins
-    autocmd FileType calendar nunmap <buffer> <C-n>
-    autocmd FileType calendar nunmap <buffer> <C-p>
-augroup END
 
 """"""""""""""""""""""""""suda配置"""""""""""""""""""""""""""""""""
 "This plugin was built while :w !sudo tee % > /dev/null trick does not work on neovim.
@@ -1773,7 +1792,7 @@ let g:suda#prompt = 'Mot de passe:'
 """"""""""""""""""""""""""""""""""""""""glepnir/galaxyline.nvim设置"""""""""""""""""""""""""""""""
 " luafile ~/.config/nvim/eviline.lua
 
-""""""""""""""""""""vim-calendar插件"""""""""""""""""""""""''
+""""""""""""""""""""itchyny/calendar.vim插件"""""""""""""""""""""""''
 
 "noremap \c :Calendar -position=here<CR>
 let g:calendar_frame = 'default'
@@ -1797,8 +1816,6 @@ augroup calendar-mappings
     autocmd FileType calendar nunmap <buffer> <C-n>
     autocmd FileType calendar nunmap <buffer> <C-p>
 augroup END
-
-
 
 
 
@@ -2429,8 +2446,11 @@ hi MBEVisibleChanged       guifg=#F1266F guibg=fg   ctermfg=1     ctermbg=240
 hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg   ctermfg=118   ctermbg=253
 hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg   ctermfg=196   ctermbg=240
 
-"""""""""""""""""""""Vim-buffet设置""""""""""""""""""""""
-
+"""""""""""""""""""""bagrat/vim-buffet设置""""""""""""""""""""""
+" Note: Make sure the function is defined before `vim-buffet` is loaded.
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+endfunction
 "Vim-buffet设置
 nmap ;1 <Plug>BuffetSwitch(1)
 nmap ;2 <Plug>BuffetSwitch(2)
@@ -3099,23 +3119,26 @@ let g:NERDToggleCheckAllLines    = 1
 
 "let mapleader="\"
 
-" \ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
-" \cc，注释当前行
-" \c，切换注释/非注释状态
-" \cs，以”性感”的方式注释
-" \cA，在当前行尾添加注释符，并进入Insert模式
-" \cu，取消注释
-" Normal模式下，几乎所有命令前面都可以指定行数。  比如  输入 6\cs的意思就是以性感方式注释光标所在行开始6行代码
-" Visual模式下执行命令，会对选中的特定区块进行注释/反注释
+"  \ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
+"  \cc 注释当前行和选中行
+"  \c，切换注释/非注释状态
+"  \cs 添加性感的注释，代码开头介绍部分通常使用该注释
+"  \cA，在当前行尾添加注释符，并进入Insert模式
+"  \cu，取消注释
+"  Normal模式下，几乎所有命令前面都可以指定行数。  比如  输入 6\cs的意思就是以性感方式注释光标所在行开始6行代码
+"  Visual模式下执行命令，会对选中的特定区块进行注释/反注释
+
+"  \cn 没有发现和\cc有区别
+"  \c<空格> 如果被选区域有部分被注释，则对被选区域执行取消注释操作，其它情况执行反转注释操作
+"  \cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
+"  \ci 执行反转注释操作，选中区域注释部分取消注释，非注释部分添加注释
+"  \cy 添加注释，并复制被添加注释的部分
+"  \c$ 注释当前光标到改行结尾的内容
+"  \cl \cb 左对齐和左右对其，左右对其主要针对/**/
 
 
 "  vim原本的注释快捷键是 \ci，一次注释，操作两次是取消注释
 "    n\ci是注释n行
-
-
-
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -3283,10 +3306,32 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
+
+let g:spaceline_seperate_style = 'arrow'
+let g:spaceline_colorscheme = 'space'
+let g:spaceline_scroll_chars = [
+  \  ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'
+  \  ]
+
+" two char wide fade-in blocks
+let g:spaceline_scroll_chars = [
+  \ '  ', '░ ', '▒ ', '▓ ', '█ ', '█░', '█▒', '█▓', '██'
+  \ ]
+
+" three char wide solid horizontal bar
+let g:spaceline_scroll_chars = [
+  \ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
+  \ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
+  \ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
+  \ '█▉ ', '██ ', '██▏', '██▎', '██▍',
+  \ '██▌', '██▋', '██▊', '██▉', '███'
+  \ ]
+
+let g:spaceline_scroll_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
+
 
 " """"""""""""""""""""""""""""""""配置lightline""""""""""""""""""""""""""""""""
-
-
 " " wombat, solarized, powerline, powerlineish,jellybeans, molokai, seoul256, darcula, selenized_dark,
 " " Tomorrow, Tomorrow_Night, Tomorrow_Night_Blue,Tomorrow_Night_Bright, Tomorrow_Night_Eighties,
 " " PaperColor,landscape, one, materia, material, OldHope, nord, deus,srcery_drk, ayu_mirage and 16color
@@ -3294,7 +3339,7 @@ endif
 " "molokai,landscape,solarized,
 
 " let g:lightline = {
-"             \ 'colorscheme': 'solarized',
+"             \ 'colorscheme': 'ayu_mirage',
 "             \ 'active': {
 "             \   'left': [ [ 'mode', 'paste' ],
 "             \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ],
