@@ -43,6 +43,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 "以下是颜色主题
 Plug 'liuchengxu/space-vim-theme'
+Plug 'ashfinal/vim-colors-violet'
 Plug 'nlknguyen/papercolor-theme'
 Plug 'nightsense/snow'
 Plug 'nightsense/vimspectr'
@@ -1760,13 +1761,13 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : 'SPC f b',
 \ }
 
-let g:dashboard_custom_shortcut_icon['last_session'] = ' '
-let g:dashboard_custom_shortcut_icon['find_history'] = 'ﭯ '
-let g:dashboard_custom_shortcut_icon['find_file'] = ' '
-let g:dashboard_custom_shortcut_icon['new_file'] = ' '
-let g:dashboard_custom_shortcut_icon['change_colorscheme'] = ' '
-let g:dashboard_custom_shortcut_icon['find_word'] = ' '
-let g:dashboard_custom_shortcut_icon['book_marks'] = ' '
+" let g:dashboard_custom_shortcut_icon['last_session'] = ' '
+" let g:dashboard_custom_shortcut_icon['find_history'] = 'ﭯ '
+" let g:dashboard_custom_shortcut_icon['find_file'] = ' '
+" let g:dashboard_custom_shortcut_icon['new_file'] = ' '
+" let g:dashboard_custom_shortcut_icon['change_colorscheme'] = ' '
+" let g:dashboard_custom_shortcut_icon['find_word'] = ' '
+" let g:dashboard_custom_shortcut_icon['book_marks'] = ' '
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -3416,7 +3417,7 @@ map <Leader>c8 :set background=light<CR>:colorscheme solarized8_flat<CR>AirlineT
 map <Leader>c9 :set background=light<CR>:colorscheme flattened_light<CR>AirlineTheme dracula<CR>
 map <Leader>c10 :set background=light<CR>:colorscheme vividchalk<CR>AirlineTheme dracula<CR>
 
-if strftime('%H') >= 7 && strftime('%H') < 19
+if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
