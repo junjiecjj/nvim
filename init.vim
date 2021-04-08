@@ -1429,7 +1429,11 @@ let g:which_key_map = {
 			\ 's' : 'colors',
 			\ 'g' : 'find word',
 			\ }
-
+let g:clap_provider_quick_open = {
+      \ 'source': ['~/.vimrc','~/.config/nvim/init.vim', '~/.spacevim', '~/.bashrc', '~/.tmux.conf'],
+      \ 'sink': 'e',
+      \ 'description': 'Quick open some dotfiles',
+      \ }
 """"""""""""""""""""""""""""""""""""""""""""" junegunn/fzf.vim配置""""""""""""""""""""""""""""""""""""""""""""""
 
 
