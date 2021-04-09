@@ -833,11 +833,11 @@ noremap - Nzz
 
 " 水平滚动
 " 向左
-map <F8> 10zh
-imap <F8> <ESC>10zhi
+map \fl 10zh
+" imap <F8> <ESC>10zhi
 " 向右
-map <F9> 10zl
-imap <F9> <ESC>10zli
+map \fr 10zl
+" imap <F9> <ESC>10zli
 " 这个时候在 Normal 和 Insert 模式下都可以按 <F8><F9> 来水平滚动了。
 
 
@@ -1056,7 +1056,7 @@ let g:solarized_bold=1
 let g:solarized_italic=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
-letg:solarized_hitrail=0
+let g:solarized_hitrail=0
 let g:solarized_menu=1
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
 " :checkhealth
@@ -1622,11 +1622,11 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ack_prg = "ag --vimgrep --smart-case"
 
 
-map <F4> :Ack -i
-imap <F4> :Ack -i
+" map <F4> :Ack -i
+" imap <F4> :Ack -i
 
 " 以后在普通模式下输入Ctrl+U便可以自动输入:Ack 了
-map <Leader>ack :Ack<space>
+map <Leader>ack :Ack -i<space>
 
 
 """""""""""""""""""""""""""""""""""""" easymotion/vim-easymotion配置 """"""""""""""""""""""""""""""""""""""
@@ -2621,7 +2621,7 @@ let g:Tex_EnvLabelprefix_equation = "eq:"
 "在vim里, 我们可以用: !pdflatex %   来编译当前文档. 其中, %代表当前文档名. 结果如下
 
 
-imap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
+" imap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
 nmap <Leader>tx <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
 " 当你再按一下<F2>键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
 
@@ -2702,9 +2702,9 @@ autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
 
 " 将开启tagbar的快捷键设置为　 tb
 nmap  tb :TagbarToggle<CR>
-nmap <F1> :TagbarToggle<CR>
-map <F1> :TagbarToggle<CR>
-map! <F1> <Esc> :TagbarToggle<CR>
+nmap tb :TagbarToggle<CR>
+map tb :TagbarToggle<CR>
+map! tb <Esc> :TagbarToggle<CR>
 "开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_autopreview = 0
 "关闭排序,即按标签本身在文件中的位置排序
@@ -2758,7 +2758,7 @@ let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 20
 
 "设置taglist打开关闭的快捷键F10，就是F10会显示代码中的函数，变量，类，宏等
-map <F10> <Esc>:TlistToggle<Cr>
+map tl <Esc>:TlistToggle<Cr>
 
 
 "将 \t 表示为在命令行模式下输入命令：
