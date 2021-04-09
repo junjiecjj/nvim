@@ -54,6 +54,7 @@ Plug 'nightsense/cosmic_latte'
 Plug 'molokai'                             " 配色方案
 Plug 'morhetz/gruvbox'                     " 配色方案
 Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 "主题插件
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'glepnir/oceanic-material'
@@ -1045,6 +1046,18 @@ let g:translator_window_max_width=0.3
 let g:translator_window_max_height=0.3
 let g:translator_default_engines=['youdao' , 'google']
 
+
+"""""""""""""""""""""""""""""""""""""""""""altercation/vim-colors-solarized""""""""""""""""""""""""""""
+
+let g:solarized_termcolors=256
+let g:solarized_termtrans=0
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_italic=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+letg:solarized_hitrail=0
+let g:solarized_menu=1
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
 " :checkhealth
 " 安装命令:CocInstall 插件名
@@ -1202,7 +1215,7 @@ nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " nnoremap <leader>tl :CocList todolist<CR>
 " nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
-noremap <silent> <leader>ts :CocList tasks<CR>
+noremap <silent> <leader>ct :CocList tasks<CR>
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
@@ -1396,7 +1409,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 """"""""""""""""""""""""""""""""""""""""""""" liuchengxu/vim-clap 配置""""""""""""""""""""""""""""""""""""""""""""""
 let g:clap_layout = { 'relative': 'editor' }
-let g:clap_layout = { 'width': '95%', 'col': '5%' }
+" let g:clap_layout = { 'width': '95%', 'col': '5%' }
 let g:clap_theme = 'material_design_dark'
 let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
 
