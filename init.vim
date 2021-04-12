@@ -143,7 +143,7 @@ Plug 'kristijanhusak/defx-git', {'on':'Defx'}
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'kristijanhusak/defx-icons'
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
-" Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
+Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
 Plug 'godlygeek/tabular'                            " 快速对齐
 Plug 'ryanoasis/vim-devicons'                     " 在目录中为文件增加图标
