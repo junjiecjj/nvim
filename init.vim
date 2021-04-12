@@ -143,7 +143,7 @@ Plug 'kristijanhusak/defx-git', {'on':'Defx'}
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'kristijanhusak/defx-icons'
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
-Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
+" Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
 Plug 'godlygeek/tabular'                            " 快速对齐
 Plug 'ryanoasis/vim-devicons'                     " 在目录中为文件增加图标
@@ -160,16 +160,12 @@ Plug 'vim-scripts/winmanager'              " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'        " vim多重光标选取插件
 Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
 
-
 "补全
 Plug 'vim-scripts/indentpython.vim'        " 写python代码自动缩进
 Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 " Plug 'Valloric/YouCompleteMe'              " 自动补全
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
-
-
-
 
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
@@ -1224,6 +1220,32 @@ let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'jj.Chen'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
+
+"""""""""""""""""""""""lfv89/vim-interestingwords""""""""""""""""""""""""""""""
+
+let g:interestingWordsDefaultMappings = 0
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
+
+let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+let g:interestingWordsRandomiseColors = 1
+
+
+"""""""""""""""""""""""""RRethy/vim-illuminate""""""""""""""""""""""""""""""""""
+let g:Illuminate_ftblacklist = ['nerdtree']
+let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'cpp', 'tex', 'js', 'java', 'v', 'sv']
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+augroup END
+
 
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
@@ -3680,9 +3702,6 @@ nnoremap tee :w !sudo tee %<cr>
 " ctrl-d 下翻半页,d = down
 
 
-
-
-
 " shift+up上翻半页，向上滚半个屏幕；
 nmap <S-up>  <C-u>
 vmap <S-up>  <C-u>
@@ -3808,7 +3827,6 @@ nnoremap <M-right> :vertical resize +2<cr>
 " map <Right> :vertical resize+5
 " 方向键 左 使左右屏幕减少 5 个宽度
 " map <Left> :vertical resize-5
-
 
 
 nnoremap html :%TOhtml<cr>
