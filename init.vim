@@ -26,11 +26,8 @@ filetype indent on           " 为特定文件类型载入相关缩进文件
 " 打开文件类型检测, 加了这句才可以用智能补全
 filetype plugin indent on
 
-let g:polyglot_disabled = ['markdown.plugin']
-let g:polyglot_disabled = ['autoindent']
-let g:polyglot_disabled = ['sensible']
-let g:polyglot_disabled = ['ftdetect']
-
+"sheerun/vim-polyglot插件配置disable
+let g:polyglot_disabled = ['markdown.plugin','autoindent','sensible','ftdetect','latex']
 
 "set the runtime path to include Vundle and initialize
 
@@ -100,7 +97,9 @@ Plug 'rking/ag.vim'                          " 查找工具)
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] }      " omnisharp-vim dependency
 Plug 'glepnir/dashboard-nvim'                                   " 启动vim时启动界面美化
-Plug 'nvim-lua/telescope.nvim'                                      " 在vim中搜索文件
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'liuchengxu/vim-clap'                                         " 在vim中搜索文件
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }                    " 在vim中搜索文件
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " 在vim中搜索文件
@@ -111,7 +110,6 @@ Plug 'tpope/vim-surround'                         "快速将括号、‘’、�
 
 "代码调试
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
-
 
 
 "美化
@@ -1810,7 +1808,36 @@ let g:dashboard_custom_shortcut={
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+""""""""""""""""""""""""""nvim-telescope/telescope.nvim配置"""""""""""""""""""""""""""""""""
+" Find files using Telescope command-line sugar.
+nnoremap /ff <cmd>Telescope find_files<cr>
+nnoremap /fg <cmd>Telescope live_grep<cr>
+nnoremap /fb <cmd>Telescope buffers<cr>
+nnoremap /fh <cmd>Telescope help_tags<cr>
 
+" Using lua functions
+nnoremap /ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap /fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap /fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap /fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+
+highlight TelescopeSelection      guifg=#D79921 gui=bold  ctermfg=11 " selected item
+highlight TelescopeSelectionCaret guifg=#CC241D  ctermfg=9  " selection caret
+highlight TelescopeMultiSelection guifg=#928374  ctermfg=241  " multisections
+highlight TelescopeNormal         guibg=#000000   ctermfg=0 " floating windows created by telescope.
+
+" Border highlight groups.
+highlight TelescopeBorder         guifg=#ffffff      ctermfg=15
+highlight TelescopePromptBorder   guifg=#ffffff      ctermfg=15
+highlight TelescopeResultsBorder  guifg=#ffffff      ctermfg=15
+highlight TelescopePreviewBorder  guifg=#ffffff      ctermfg=15
+
+" Used for highlighting characters that you match.
+highlight TelescopeMatching       guifg=blue        ctermfg=12
+
+" Used for the prompt prefix
+highlight TelescopePromptPrefix   guifg=red        ctermfg=
 """"""""""""""""""""""""""suda配置"""""""""""""""""""""""""""""""""
 "This plugin was built while :w !sudo tee % > /dev/null trick does not work on neovim.
 " Re-open a current file with sudo
@@ -2630,7 +2657,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-let g:polyglot_disabled = ['latex']
 "估计大家都打开了换行时自动对齐的功能，但是有没有发现这样一个问题，在用 itemize 的时候，每一个 item 都会自动缩进两个，非常麻烦
 let g:tex_indent_items=0
 
