@@ -2537,16 +2537,16 @@ nmap ;0 <Plug>BuffetSwitch(10)
 
 
 " " 配置Ctrl + 方向键在窗口之间切换
-nmap <silent> <C-up> :wincmd k<CR>
-nmap <silent> <C-down> :wincmd j<CR>
-nmap <silent> <C-left> :wincmd h<CR>
-nmap <silent> <C-right> :wincmd l<CR>
+" nmap <silent> <C-up> :wincmd k<CR>
+" nmap <silent> <C-down> :wincmd j<CR>
+" nmap <silent> <C-left> :wincmd h<CR>
+" nmap <silent> <C-right> :wincmd l<CR>
 
 " 配置Ctrl + h j k l在窗口之间切换
-" nmap <silent> <C-k> :wincmd k<CR>
-" nmap <silent> <C-j> :wincmd j<CR>
-" nmap <silent> <C-h> :wincmd h<CR>
-" nmap <silent> <C-l> :wincmd l<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 
 " 以上两种方式根据快捷键分配来选择用哪种
 
@@ -3746,18 +3746,18 @@ nmap <S-right>  <C-f>
 vmap <S-right>  <C-f>
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-M-left> 5<C-y>
-noremap <C-M-right> 5<C-e>
-inoremap <C-M-left> <Esc>5<C-y>a
-inoremap <C-M-right> <Esc>5<C-e>a
+noremap <C-left> 5<C-y>
+noremap <C-right> 5<C-e>
+inoremap <C-left> <Esc>5<C-y>a
+inoremap <C-right> <Esc>5<C-e>a
 " ctrl+alt+left向上翻一行，向上滚一行屏幕，光标不动
-nmap <C-M-up>  <C-y>
-vmap <C-M-up>  <C-y>
-inoremap <C-M-up> <Esc><C-y>a
+nmap <C-up>  <C-y>
+vmap <C-up>  <C-y>
+inoremap <C-up> <Esc><C-y>a
 " ctrl+alt+right向下翻一行，向下滚一行屏幕，光标不动
-nmap <C-M-down>  <C-e>
-vmap <C-M-down>  <C-e>
-inoremap <C-M-down> <Esc><C-e>a
+nmap <C-down>  <C-e>
+vmap <C-down>  <C-e>
+inoremap <C-down> <Esc><C-e>a
 " 光标在当前行的基础上再跳 20 行：20+enter 键
 
 " U/E keys for 5 times u/e (faster navigation)
@@ -3788,20 +3788,20 @@ noremap srv <C-w>b<C-w>H
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "########################### 切换窗口####################################
-nnoremap <C-down> <C-W>j
-nnoremap <C-up> <C-W>k
-nnoremap <C-right> <C-W>l
-nnoremap <C-left> <C-W>h
+" nnoremap <C-down> <C-W>j
+" nnoremap <C-up> <C-W>k
+" nnoremap <C-right> <C-W>l
+" nnoremap <C-left> <C-W>h
 "组合快捷键：
 " Ctrl-down 切换到下方的分割窗口
 " Ctrl-up 切换到上方的分割窗口
 " Ctrl-right 切换到右侧的分割窗口
 " Ctrl-left 切换到左侧的分割窗口
 
-" nnoremap <C-j> <C-W>j
-" nnoremap <C-k> <C-W>k
-" nnoremap <C-l> <C-W>l
-" nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
 "组合快捷键：
 " Ctrl-j 切换到下方的分割窗口
 " Ctrl-k 切换到上方的分割窗口
