@@ -312,10 +312,16 @@ if has('gui_running')
         set guifont=DejaVu_Sans_Mono:h10:cANSI
         set guifont=Fira_Code:h10:cANSI
         set guifont=JetBrains_Mono_Regular:h8:cANSI
+        set guifont=FiraCode_Nerd_Font_Mono:h8:cANSI
+        set guifont=JetBrainsMono_Nerd_Font_Mono:h8:cANSI
+        set guifont=SauceCodePro_Nerd_Font_Mono:h8:cANSI
     else
         set guifont=DejaVu\ Sans\ Mono\ 12
         set guifont=Fira\ Code\ 12
         set guifont=JetBrains\ Mono\ Regular\ 9
+        set guifont=FiraCode\ Nerd\ Font\ Mono:h8:cANSI
+        set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h8:cANSI
+        set guifont=SauceCodePro\ Nerd\ Font\ Mono:h8:cANSI
       " set guifont=DejaVu\ Sans\ Mono\ 10
     endif
   endif
