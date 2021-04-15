@@ -319,9 +319,9 @@ if has('gui_running')
         set guifont=DejaVu\ Sans\ Mono\ 12
         set guifont=Fira\ Code\ 12
         set guifont=JetBrains\ Mono\ Regular\ 9
-        set guifont=FiraCode\ Nerd\ Font\ Mono:h8:cANSI
-        set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h8:cANSI
-        set guifont=SauceCodePro\ Nerd\ Font\ Mono:h8:cANSI
+        set guifont=FiraCode\ Nerd\ Font\ Mono\ 9
+        set guifont=JetBrainsMono\ Nerd\ Font\ Mono\ 9
+        set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 9
       " set guifont=DejaVu\ Sans\ Mono\ 10
     endif
   endif
