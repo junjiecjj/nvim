@@ -78,7 +78,7 @@ Plug 'wincent/terminus'
 " Git
 Plug 'rhysd/conflict-marker.vim'          " Highlight, jump and resolve conflict markers quickly.
 Plug 'tpope/vim-fugitive'                 " 在vim中执行git命令
-Plug 'gisphm/vim-gitignore', " { 'for': ['gitignore', 'vim-plug'] }
+" Plug 'gisphm/vim-gitignore', " { 'for': ['gitignore', 'vim-plug'] }
 if has('nvim') || has('patch-8.0.902')
     Plug 'mhinz/vim-signify'          " git/svn版本控制插件vim-signify
 else
@@ -219,7 +219,7 @@ Plug 'sheerun/vim-polyglot'                  " 语法高亮
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
 Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
-Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
+" Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 
 "python
@@ -1837,7 +1837,7 @@ highlight TelescopePreviewBorder  guifg=#ffffff      ctermfg=15
 highlight TelescopeMatching       guifg=blue        ctermfg=12
 
 " Used for the prompt prefix
-highlight TelescopePromptPrefix   guifg=red        ctermfg=
+highlight TelescopePromptPrefix   guifg=red        ctermfg=9
 """"""""""""""""""""""""""suda配置"""""""""""""""""""""""""""""""""
 "This plugin was built while :w !sudo tee % > /dev/null trick does not work on neovim.
 " Re-open a current file with sudo
@@ -3372,30 +3372,30 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
-
-let g:spaceline_seperate_style = 'arrow'
-let g:spaceline_colorscheme = 'space'
-let g:spaceline_scroll_chars = [
-  \  ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'
-  \  ]
-
-" two char wide fade-in blocks
-let g:spaceline_scroll_chars = [
-  \ '  ', '░ ', '▒ ', '▓ ', '█ ', '█░', '█▒', '█▓', '██'
-  \ ]
-
-" three char wide solid horizontal bar
-let g:spaceline_scroll_chars = [
-  \ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
-  \ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
-  \ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
-  \ '█▉ ', '██ ', '██▏', '██▎', '██▍',
-  \ '██▌', '██▋', '██▊', '██▉', '███'
-  \ ]
-
-let g:spaceline_scroll_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
-
+" " """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
+"
+" let g:spaceline_seperate_style = 'arrow'
+" let g:spaceline_colorscheme = 'space'
+" let g:spaceline_scroll_chars = [
+"   \  ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'
+"   \  ]
+"
+" " two char wide fade-in blocks
+" let g:spaceline_scroll_chars = [
+"   \ '  ', '░ ', '▒ ', '▓ ', '█ ', '█░', '█▒', '█▓', '██'
+"   \ ]
+"
+" " three char wide solid horizontal bar
+" let g:spaceline_scroll_chars = [
+"   \ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
+"   \ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
+"   \ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
+"   \ '█▉ ', '██ ', '██▏', '██▎', '██▍',
+"   \ '██▌', '██▋', '██▊', '██▉', '███'
+"   \ ]
+"
+" let g:spaceline_scroll_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
+"
 
 " """"""""""""""""""""""""""""""""配置lightline""""""""""""""""""""""""""""""""
 " " wombat, solarized, powerline, powerlineish,jellybeans, molokai, seoul256, darcula, selenized_dark,
