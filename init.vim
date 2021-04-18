@@ -238,7 +238,7 @@ Plug 'maksimr/vim-jsbeautify'                                        " 格式化
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
-            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql']}
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'php'] }
 
 
 "All of your Plugins must be added before the following line
@@ -3710,11 +3710,13 @@ inoremap <C-x> <Esc>"+x
 :inoremap ( ()<ESC>i
 :inoremap { {<CR>}<ESC>O
 :inoremap [ []<ESC>i
+:inoremap 《 《》<ESC>i
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap 》 <c-r>=ClosePair('》')<CR>
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
