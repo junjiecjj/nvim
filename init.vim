@@ -812,6 +812,7 @@ noremap s <nop>
 nmap ;q :q<CR>
 " 定义快捷键保存当前窗口内容并离开
 nmap ;wq :wq<CR>
+nmap ;w :w<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 map Q :q<CR>
@@ -845,7 +846,8 @@ map \fr 10zl
 " === Other useful stuff
 " ===
 " 打开新标签页并在新标签页打开终端
-nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+"nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+nnoremap /t :tabe<CR>:term sh -c 'st'<CR>
 
 " 上下分屏并在下方打开终端
 noremap <LEADER>td :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
@@ -3771,7 +3773,8 @@ inoremap <C-M-down> <Esc><C-e>a
 " U/E keys for 5 times u/e (faster navigation)
 noremap U 5k
 noremap D 5j
-
+noremap h 5h
+noremap l 5l
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 " 向左分屏
