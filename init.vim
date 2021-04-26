@@ -18,7 +18,7 @@ endif
 " ===
 " if empty(glob('~/.vim/autoload/plug.vim'))
 "     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+"   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 " endif
 
 "如果你用的是 Vim，请把~/.config/nvim/autoload/plug.vim换成~/.vim/autoload/plug.vim
