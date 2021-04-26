@@ -810,9 +810,12 @@ noremap s <nop>
 
 " 定义快捷键关闭当前分割窗口
 nmap ;q :q<CR>
+nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容并离开
 nmap ;wq :wq<CR>
-nmap ;w :w<CR>
+nmap ;w :w!<CR>
+nmap <Leader>wq :wq<CR>
+nmap <Leader>w :w!<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 map Q :q<CR>
