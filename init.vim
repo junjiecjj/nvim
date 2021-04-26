@@ -3888,8 +3888,10 @@ noremap <silent><tab>t :tabnew<cr>
 noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
 noremap <silent><tab><right> :tabn<cr>
+noremap <silent>\= :tabn<cr>
 " 上一个标签页
 noremap <silent><tab><left> :tabp<cr>
+noremap <silent>\- :tabn<cr>
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
 
