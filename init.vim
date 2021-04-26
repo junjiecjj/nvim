@@ -7,12 +7,19 @@
 "     j
 "     v
 
-" === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：
+" === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：neovim+vim-plug
 " ===
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
+
+" === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：vim+vim-plug
+" ===
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+" endif
 
 "如果你用的是 Vim，请把~/.config/nvim/autoload/plug.vim换成~/.vim/autoload/plug.vim
 
