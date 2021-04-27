@@ -144,9 +144,20 @@ Plug 'jistr/vim-nerdtree-tabs'                     " 想用tab键
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'        " 增强图标
 "新一代目录树defx
-Plug 'kristijanhusak/defx-git', {'on':'Defx'}
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'}
-Plug 'kristijanhusak/defx-icons'
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'kristijanhusak/defx-git', {'on':'Defx'}
+  Plug 'kristijanhusak/defx-icons'
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'kristijanhusak/defx-git', {'on':'Defx'}
+  Plug 'kristijanhusak/defx-icons'
+endif
+
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
@@ -2227,6 +2238,22 @@ let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""'Defx设置"""""""""""""""""""""""""""""""""""""""""""""""''
 noremap <LEADER>df :Defx<CR>
+let g:defx_icons_enable_syntax_highlight = 1
+" 开关快捷键,【-search=`expand('%:p')`】表示打开defx树后，光标自动放在当前buffer上
+noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
+
+
+"打开vim自动打开defx
+func! ArgFunc() abort
+    let s:arg = argv(0)
+    if isdirectory(s:arg)
+        return s:arg
+    else
+        return fnamemodify(s:arg, ':h')
+    endif
+endfunc
+" autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
+
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
@@ -2236,6 +2263,8 @@ call defx#custom#option('_', {
 			\ 'show_ignored_files': 0,
 			\ 'columns': 'mark:indent:git:icons:filename',
 			\ 'root_marker': '',
+			\ 'buffer_name': '',
+			\ 'toggle': 1,
 			\ })
 
 call defx#custom#column('git', {
@@ -2313,24 +2342,10 @@ function! s:defx_mappings() abort
 
 endfunction
 
-function! s:defx_toggle_tree() abort
-	if defx#is_directory()
-		return defx#do_action('open_or_close_tree')
-	endif
-	return defx#do_action('multi', ['drop'])
-endfunction
-
-function! s:defx_toggle_tree() abort
-	if defx#is_directory()
-		return defx#do_action('open_or_close_tree')
-	endif
-	return defx#do_action('multi', ['drop'])
-endfunction
 
 let g:defx_icons_column_length = 2
 let g:defx_icons_mark_icon = ''
 let g:defx_icons_parent_icon = ""
-
 
 """""""""""""""""""""""""""""""""""open-browser配置打开浏览器""""""""""""""""""""""""""""""""""""""""""
 " 参考：https://mounui.com/343.html
