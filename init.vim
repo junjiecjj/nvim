@@ -1839,16 +1839,16 @@ let g:dashboard_custom_shortcut={
 
 """"""""""""""""""""""""""nvim-telescope/telescope.nvim配置"""""""""""""""""""""""""""""""""
 " Find files using Telescope command-line sugar.
-nnoremap /ff <cmd>Telescope find_files<cr>
-nnoremap /fg <cmd>Telescope live_grep<cr>
-nnoremap /fb <cmd>Telescope buffers<cr>
-nnoremap /fh <cmd>Telescope help_tags<cr>
+nnoremap [ff <cmd>Telescope find_files<cr>
+nnoremap [fg <cmd>Telescope live_grep<cr>
+nnoremap [fb <cmd>Telescope buffers<cr>
+nnoremap [fh <cmd>Telescope help_tags<cr>
 
 " Using lua functions
-nnoremap /ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap /fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap /fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap /fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap ,ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap ,fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap ,fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap ,fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 highlight TelescopeSelection      guifg=#D79921 gui=bold  ctermfg=11 " selected item
@@ -1867,6 +1867,7 @@ highlight TelescopeMatching       guifg=blue        ctermfg=12
 
 " Used for the prompt prefix
 highlight TelescopePromptPrefix   guifg=red        ctermfg=9
+
 """"""""""""""""""""""""""suda配置"""""""""""""""""""""""""""""""""
 "This plugin was built while :w !sudo tee % > /dev/null trick does not work on neovim.
 " Re-open a current file with sudo
