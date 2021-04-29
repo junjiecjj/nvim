@@ -53,6 +53,7 @@ Plug 'nightsense/snow'
 Plug 'nightsense/vimspectr'
 Plug 'nightsense/carbonized'
 Plug 'nightsense/stellarized'
+Plug 'junegunn/seoul256.vim'
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'nightsense/cosmic_latte'
 Plug 'molokai'                             " 配色方案
@@ -93,7 +94,7 @@ else
 endif
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 
@@ -127,6 +128,7 @@ Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go'
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
 Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " distraction free writing mode
+Plug 'junegunn/limelight.vim'           " 与 Goyo, seoul256 为同一开发者，联合使用效果最佳。不适用于写代码和看代码
 Plug 'junegunn/vim-peekaboo'            "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
 Plug 'matze/vim-move'                   " 代码块移动
 Plug 'DoxygenToolkit.vim'               " 注释文档生成
@@ -185,7 +187,6 @@ Plug 'ervandew/supertab'                   " 补全记忆插件
 
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
-Plug 'rhysd/vim-clang-format'
 Plug 'Raimondi/delimitMate'
 Plug 'chxuan/cpp-mode'                     " 提供生成函数实现、函数声明/实现跳转、.h .cpp切换等功能
 Plug 'tenfyzhong/CompleteParameter.vim',{'for':['lua', 'c', 'h', 'cpp', 'py', 'go', 'java', 'vim', 'json', 'hs']}
@@ -206,6 +207,7 @@ Plug 'honza/vim-snippets'                  " 安装代码块集合
 Plug 'Chiel92/vim-autoformat'              "格式化代码（或保存时自动格式化）
 Plug 'tell-k/vim-autopep8'                 " 按照pep8的标准自动格式化代码
 Plug 'sbdchd/neoformat', {'on':'Neoformat'}
+Plug 'rhysd/vim-clang-format'
 
 
 " 目录树
@@ -239,8 +241,9 @@ Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正�
 Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
+Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
 
-"python
+" python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }   "为 Python 提供语义高亮
@@ -867,8 +870,8 @@ map \fr 10zl
 " === Other useful stuff
 " ===
 " 打开新标签页并在新标签页打开终端
-"nnoremap ;t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
-nnoremap ;t :tabe<CR>:term sh -c 'st'<CR>
+"nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
 
 " 上下分屏并在下方打开终端
 noremap <LEADER>td :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
@@ -904,8 +907,6 @@ else
 endif
 
 
-"""""""""""" Goyo"""""""""""
-map <LEADER>gy :Goyo<CR>
 
 
 " Indentation
@@ -1303,6 +1304,18 @@ let g:rainbow_conf = {
             \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Goyo和junegunn/limelight.vim配置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <LEADER>gy :Goyo<CR>
+
+
+let g:limelight_default_coefficient = 0.5    " 设置隐藏区域的黑暗度, 值越大越暗
+let g:limelight_paragraph_span = 2           " 设置暗光的跨度, 暗光所能照亮的范围
+let g:limelight_priority = -1                " 暗光优先级, 防止搜索的高亮效果被覆盖
+autocmd! User GoyoEnter Limelight            " 进入 Goyo 专注插件时, 同时开启暗光效果
+autocmd! User GoyoLeave Limelight!           " 离开 Goyo 专注插件时, 同时退出暗光效果
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""rainbow_parenthsis配置""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -1867,7 +1880,6 @@ highlight TelescopeMatching       guifg=blue        ctermfg=12
 
 " Used for the prompt prefix
 highlight TelescopePromptPrefix   guifg=red        ctermfg=9
-
 """"""""""""""""""""""""""suda配置"""""""""""""""""""""""""""""""""
 "This plugin was built while :w !sudo tee % > /dev/null trick does not work on neovim.
 " Re-open a current file with sudo
@@ -2423,7 +2435,11 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 """"""""""""""""""""""" godlygeek/tabular插件""""""""""""""""
 
-vmap ga :Tabularize /
+
+" :Tabularize /,/ : 将整个缓冲区的所有行按照 , 符号进行对齐
+" :'<,'>Tabularize /,/ : 对高亮选中范围内的行进行对齐
+" :Tabularize /,/l1/c1/r0 : 按照 , 进行对齐，并且为每个分割的文本区域内的文本指定对齐方式，l, c, r 分别为左中右对齐，1 代表空距离分隔符一个空格
+" abc,def,ghi a,b a,b,c :Tabularize /,/r1c1l0 abc , def, ghi a , b a , b , c'>'
 
 """""""""""""""""""""""""""""""""""""""vim-devicons配置"""""""""""""""""""""""""""""""""""""""
 "加上这样一句配置，作用是当剩余的窗口都不是文件编辑窗口时，自动退出 vim。就是你都不编辑文件了，还剩个 NerdTree 窗口在那里时自动退出 GVim（执行:qa!)。
@@ -2681,6 +2697,22 @@ endif
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
 
 let g:clang_format#auto_format_on_insert_leave=1    "退出插入模式时自动格式化
+
+" let g:clang_format#style_options = {
+"             \ "AccessModifierOffset" : -4,
+"             \ "AllowShortIfStatementsOnASingleLine" : "true",
+"             \ "AlwaysBreakTemplateDeclarations" : "true",
+" }
+"
+" " map to <Leader>cf in C++ code
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" " if you install vim-operator-user
+" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" " " Toggle auto formatting:
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""  cpp-mode   """""""""""""""""""""""""""""""""""""""""""
@@ -2814,8 +2846,35 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 
+"""""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
 
+let g:autoformat_verbosemode=1 "开启详细模式便于查错
+autocmd BufWrite *.sql,*.c,*.cpp,*.py,*.java,*.js :Autoformat "设置发生保存事件时执行格式化
 
+"F3自动格式化代码
+noremap \af :Autoformat<CR>
+let g:autoformat_verbosemode=1
+au BufWrite * :Autoformat  " 保存的时候 格式化"
+let g:clang_format#auto_format=1 " 自动检测.clang-format作为配置的格式"
+
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
+let g:formatdef_hl_js='"js-beautify"'
+let g:formatdef_hl_c='"clang-format -style=\"{BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, PointerAlignment: Right, ColumnLimit: 150, SpacesBeforeTrailingComments: 1}\""' "指定格式化的方式, 使用配置参数
+let g:formatters_c = ['hl_c']
+let g:formatters_cpp = ['hl_c']
+let g:formatters_json = ['hl_js']
+let g:formatters_js = ['hl_js']
+let g:formatdef_sqlformat = '"sqlformat --keywords upper -"'
+let g:formatters_sql = ['sqlformat']
+
+"保存时自动格式化指定文件类型代码
+""au BufWrite * :Autoformat
+"autocmd BufWrite *.sql,*.c,*.py,*.java,*.js :Autoformat "设置发生保存事件时执行格式化
+
+"""""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
+autocmd FileType python noremp <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
 
 """"""""""""""""""""""""""""""  majutsushi/tagbar配置 """"""""""""""""""""""""""""""""""""""
 
@@ -2971,9 +3030,6 @@ let g:cpp_concepts_highlight=1
 let g:cpp_no_function_highlight=1
 
 let c_no_curly_error = 1
-
-
-
 
 
 
@@ -3288,6 +3344,11 @@ let g:NERDToggleCheckAllLines    = 1
 
 "  vim原本的注释快捷键是 \ci，一次注释，操作两次是取消注释
 "    n\ci是注释n行
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""tpope/vim-commentary配置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gcc: 注释或反注释
+" gcap: 注释一段
+" gc: visual 模式下直接注释所有已选择的行
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -3718,7 +3779,6 @@ hi SpecialKey      guifg=#00FFFF  gui=bold
 if has("autocmd")
     autocmd BufRead,BufNewFile *.c,*.h set expandtab
 endif
-"autocmd FileType python noremp <buffer> <F8>:call Autopep8()<CR> "设置快捷键代替autopep8
 "为python添加pep8的代码风格
 au BufNewFile,BufRead *.py,*.php,*.c,*.sh,*.cpp,*.java,*.ruby,*.perl
             \ set tabstop=4 | "tab宽度"
@@ -4159,8 +4219,8 @@ if (g:iswindows && g:isGUI)
     source $VIMRUNTIME/vimrc_example.vim
     source $VIMRUNTIME/mswin.vim
     behave mswin
-    set diffexpr=MyDiff1()
-    function MyDiff1()
+    set diffexpr=MyDiff()
+    function MyDiff()
         let opt = '-a --binary '
         if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
         if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
