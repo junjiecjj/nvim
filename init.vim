@@ -135,6 +135,7 @@ Plug 'DoxygenToolkit.vim'               " 注释文档生成
 Plug 'VimTweak'                         " 背景透明插件
 Plug 'kshenoy/vim-signature'            " 增加书签
 Plug 'makerj/vim-pdf'                   "阅读pdf
+Plug 'machakann/vim-highlightedyank'    " 使 yank 的文档半透明高亮
 Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
@@ -2434,12 +2435,14 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 """"""""""""""""""""""" godlygeek/tabular插件""""""""""""""""
-
+vmap ;t= :Tabularize /=
 
 " :Tabularize /,/ : 将整个缓冲区的所有行按照 , 符号进行对齐
 " :'<,'>Tabularize /,/ : 对高亮选中范围内的行进行对齐
 " :Tabularize /,/l1/c1/r0 : 按照 , 进行对齐，并且为每个分割的文本区域内的文本指定对齐方式，l, c, r 分别为左中右对齐，1 代表空距离分隔符一个空格
 " abc,def,ghi a,b a,b,c :Tabularize /,/r1c1l0 abc , def, ghi a , b a , b , c'>'
+
+
 
 """""""""""""""""""""""""""""""""""""""vim-devicons配置"""""""""""""""""""""""""""""""""""""""
 "加上这样一句配置，作用是当剩余的窗口都不是文件编辑窗口时，自动退出 vim。就是你都不编辑文件了，还剩个 NerdTree 窗口在那里时自动退出 GVim（执行:qa!)。
