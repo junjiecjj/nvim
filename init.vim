@@ -2694,23 +2694,7 @@ endif
 
 
 
-"""""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
 
-let g:clang_format#auto_format_on_insert_leave=1    "退出插入模式时自动格式化
-
-" let g:clang_format#style_options = {
-"             \ "AccessModifierOffset" : -4,
-"             \ "AllowShortIfStatementsOnASingleLine" : "true",
-"             \ "AlwaysBreakTemplateDeclarations" : "true",
-" }
-"
-" " map to <Leader>cf in C++ code
-" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" " if you install vim-operator-user
-" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-" " " Toggle auto formatting:
-" nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2845,6 +2829,20 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
+
+"""""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
+
+let g:clang_format#auto_format_on_insert_leave=1    "退出插入模式时自动格式化
+
+
+"
+" " map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" " if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" " " Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
 
