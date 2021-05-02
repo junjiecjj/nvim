@@ -1,4 +1,5 @@
-"============
+
+
 "基本键位设置
 "============
 "     ^
@@ -6,7 +7,6 @@
 " < h   l >
 "     j
 "     v
-
 " === Auto load for first time usesneovim 配置文件最前面，有这么一段代码：neovim+vim-plug
 " ===
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -135,7 +135,6 @@ Plug 'DoxygenToolkit.vim'               " 注释文档生成
 Plug 'VimTweak'                         " 背景透明插件
 Plug 'kshenoy/vim-signature'            " 增加书签
 Plug 'makerj/vim-pdf'                   "阅读pdf
-Plug 'machakann/vim-highlightedyank'    " 使 yank 的文档半透明高亮
 Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
@@ -160,7 +159,6 @@ else
   Plug 'kristijanhusak/defx-git', {'on':'Defx'}
   Plug 'kristijanhusak/defx-icons'
 endif
-
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
@@ -244,7 +242,7 @@ Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正�
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
 
-" python
+"python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }   "为 Python 提供语义高亮
@@ -832,12 +830,9 @@ noremap s <nop>
 
 " 定义快捷键关闭当前分割窗口
 nmap ;q :q<CR>
-nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容并离开
 nmap ;wq :wq<CR>
-nmap ;w :w!<CR>
-nmap <Leader>wq :wq<CR>
-nmap <Leader>w :w!<CR>
+nmap ;w :w<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 map Q :q<CR>
@@ -872,7 +867,8 @@ map \fr 10zl
 " ===
 " 打开新标签页并在新标签页打开终端
 "nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
-nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
+nnoremap /t :tabe<CR>:term sh -c 'st'<CR>
+
 
 " 上下分屏并在下方打开终端
 noremap <LEADER>td :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
@@ -908,6 +904,8 @@ else
 endif
 
 
+"""""""""""" Goyo"""""""""""
+map <LEADER>gy :Goyo<CR>
 
 
 " Indentation
@@ -1305,18 +1303,6 @@ let g:rainbow_conf = {
             \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Goyo和junegunn/limelight.vim配置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <LEADER>gy :Goyo<CR>
-
-
-let g:limelight_default_coefficient = 0.5    " 设置隐藏区域的黑暗度, 值越大越暗
-let g:limelight_paragraph_span = 2           " 设置暗光的跨度, 暗光所能照亮的范围
-let g:limelight_priority = -1                " 暗光优先级, 防止搜索的高亮效果被覆盖
-autocmd! User GoyoEnter Limelight            " 进入 Goyo 专注插件时, 同时开启暗光效果
-autocmd! User GoyoLeave Limelight!           " 离开 Goyo 专注插件时, 同时退出暗光效果
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""rainbow_parenthsis配置""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -1808,12 +1794,15 @@ let g:dashboard_custom_header = [
        \ '',
 \ ]
 let g:dashboard_custom_header = [
-\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+			\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+			\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+			\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+			\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+			\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+			\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+			\ '',
+			\ '                       [Hello jj.Chen]',
+			\ '',
 \]
 
 let g:dashboard_preview_command = 'cat'
@@ -2257,47 +2246,6 @@ let g:defx_icons_enable_syntax_highlight = 1
 noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
 nmap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
 
-" Exit Vim if defxTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:defx') |
-\ quit | endif
-
-" 在打开多个tab的情况下，当前tab里只有一个buffer和nerd树，当关闭buffer时，自动关闭当前标签页的nerd树
-autocmd BufEnter * if tabpagenr('$') > 1 && winnr('$') == 1 && exists('b:defx') |
-    \ tabclose | endif
-
-"打开vim自动打开defx
-func! ArgFunc() abort
-    let s:arg = argv(0)
-    if isdirectory(s:arg)
-        return s:arg
-    else
-        return fnamemodify(s:arg, ':h')
-    endif
-endfunc
-" autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
-
-" 在新tab页打开文件
-func! MyT(context) abort
-    if isdirectory(get(a:context.targets, 0)) == 0
-        call defx#call_action('drop', 'tabe')
-    endif
-endfunc
-
-" 给cd快捷键写的
-func! MyCD(context) abort
-    if isdirectory(get(a:context.targets, 0))
-        execute 'cd' . get(a:context.targets, 0)
-    else
-        execute 'cd' . fnamemodify(defx#get_candidate().action__path, ':h')
-    endif
-endfunc
-
-
-" 给 ter 快捷键写的
-func! MyTER(context) abort
-    call MyCD(a:context)
-    shell
-endfunc
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
@@ -2354,10 +2302,7 @@ function! s:defx_mappings() abort
 	setlocal signcolumn=no expandtab
 	nnoremap <silent><buffer><expr> <CR>     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
 	nnoremap <silent><buffer><expr> <C-h>     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
-    nnoremap <silent><buffer><expr> t        defx#do_action('call', 'MyT')
     nnoremap <silent><buffer><expr> dd       defx#do_action('remove_trash')
-    nnoremap <silent><buffer><expr> ter      defx#do_action('call', 'MyTER')
-    nnoremap <silent><buffer><expr> CD       defx#do_action('call', 'MyCD')
     nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth - 10)
     nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth + 10)
     nnoremap <silent><buffer><expr> j        line('.') == line('$') ? 'gg' : 'j'
@@ -2402,9 +2347,7 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> 2u  defx#do_action('cd', ['../..'])
 	nnoremap <silent><buffer><expr> 3u  defx#do_action('cd', ['../../..'])
 	nnoremap <silent><buffer><expr> 4u  defx#do_action('cd', ['../../../..'])
-
 endfunction
-
 
 let g:defx_icons_column_length = 2
 let g:defx_icons_mark_icon = ''
@@ -2437,11 +2380,11 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 """"""""""""""""""""""" godlygeek/tabular插件""""""""""""""""
 vmap ;t= :Tabularize /=
 
+
 " :Tabularize /,/ : 将整个缓冲区的所有行按照 , 符号进行对齐
 " :'<,'>Tabularize /,/ : 对高亮选中范围内的行进行对齐
 " :Tabularize /,/l1/c1/r0 : 按照 , 进行对齐，并且为每个分割的文本区域内的文本指定对齐方式，l, c, r 分别为左中右对齐，1 代表空距离分隔符一个空格
 " abc,def,ghi a,b a,b,c :Tabularize /,/r1c1l0 abc , def, ghi a , b a , b , c'>'
-
 
 
 """""""""""""""""""""""""""""""""""""""vim-devicons配置"""""""""""""""""""""""""""""""""""""""
@@ -2697,9 +2640,6 @@ endif
 
 
 
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""  cpp-mode   """""""""""""""""""""""""""""""""""""""""""
@@ -2835,7 +2775,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
 
-let g:clang_format#auto_format_on_insert_leave=1    "退出插入模式时自动格式化
+let g:clang_format#auto_format_on_insert_leave = 0    "退出插入模式时自动格式化
 
 
 "
@@ -2876,6 +2816,7 @@ let g:formatters_sql = ['sqlformat']
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremp <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
+
 
 """"""""""""""""""""""""""""""  majutsushi/tagbar配置 """"""""""""""""""""""""""""""""""""""
 
@@ -3031,6 +2972,9 @@ let g:cpp_concepts_highlight=1
 let g:cpp_no_function_highlight=1
 
 let c_no_curly_error = 1
+
+
+
 
 
 
@@ -3346,15 +3290,13 @@ let g:NERDToggleCheckAllLines    = 1
 "  vim原本的注释快捷键是 \ci，一次注释，操作两次是取消注释
 "    n\ci是注释n行
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""tpope/vim-commentary配置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gcc: 注释或反注释
 " gcap: 注释一段
 " gc: visual 模式下直接注释所有已选择的行
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 
 """"""""""""""""""""""""""""""""vim-emmet配置""""""""""""""""""""""""""""""""
 
@@ -3627,20 +3569,21 @@ map <Leader>c8 :set background=light<CR>:colorscheme solarized8_flat<CR>AirlineT
 map <Leader>c9 :set background=light<CR>:colorscheme flattened_light<CR>AirlineTheme dracula<CR>
 map <Leader>c10 :set background=light<CR>:colorscheme vividchalk<CR>AirlineTheme dracula<CR>
 
+
 if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
         \ 'cosmic_latte','carbonized-light', 'ayu', 'blacklight', 'bmichaelsen', 'c16gui',
         \ 'cake16', 'carrot', 'cleanphp', 'colorful',  'flattened_light','github','PaperColor',
-        \ 'gobo','greygull', 'gruvbox', 'habiLight', 'navajo',  'nicotine','fine_blue',
+        \ 'gabo','greygull', 'gruvbox', 'habiLight', 'navajo',  'nicotine','fine_blue',
         \ 'nightshade_print_modified','nightshade_print', 'pencil', 'earth','tcsoft',
         \ 'phpx', 'professional','rainbow_autumn','relaxedgreen','redstring','NeoSolarized',
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
         \ 'violet','space-vim-theme',
         \ ]
-    " autocmd vimenter * ++nested colorscheme PaperColor
+    autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
     hi CursorColumn      guibg= #bcbcbc
         " \ 'vimspectr0-light'  , 'vimspectr0-light'   , 'vimspectr30-light' ,
@@ -3662,15 +3605,14 @@ else
         " \ 'vimspectr150-dark' , 'vimspectr180-dark'  , 'vimspectr210-dark' ,
         " \ 'vimspectr240-dark' , 'vimspectr270-dark'  , 'vimspectr300-dark' ,
         " \ 'vimspectr330-dark' , 'vimspectrgrey-dark' ,
-    " autocmd vimenter * ++nested colorscheme lilydjwg_dark_modified
+    autocmd vimenter * ++nested colorscheme
     hi CursorColumn      ctermbg=237
     hi CursorColumn      guibg= #3a3a3a
 endif
 
-exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
+" exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
 " exe 'colorscheme '.themes[localtime() % len(themes)]
 " autocmd vimenter * ++nested colorscheme solarized8_higt
-
 
 
 " 黑色：carbonized_dark, SolarizedDark_modified ,NeoSolarized, colorful256, drakblack, earth, fine_blue, flattened_dark , github, lilydjwg_dark_modified, molokai, solarized8 , solarized8_flat, solarized8_low, solarized8_higt,umber_green,
@@ -3780,6 +3722,7 @@ hi SpecialKey      guifg=#00FFFF  gui=bold
 if has("autocmd")
     autocmd BufRead,BufNewFile *.c,*.h set expandtab
 endif
+"autocmd FileType python noremp <buffer> <F8>:call Autopep8()<CR> "设置快捷键代替autopep8
 "为python添加pep8的代码风格
 au BufNewFile,BufRead *.py,*.php,*.c,*.sh,*.cpp,*.java,*.ruby,*.perl
             \ set tabstop=4 | "tab宽度"
@@ -4018,6 +3961,7 @@ let g:tablineclosebutton=1
 
 "#################################### 多标签页切换####################################
 
+
 " 新建标签页
 noremap <silent><tab>t :tabnew<cr>
 " 关闭标签页
@@ -4069,6 +4013,7 @@ noremap <leader>0 :tablast<CR>
 " :tabfirst   切换到第一个标签
 
 "######################################## 缓冲区#################################
+
 
 " ctrl + tab下一个buffer
 map <C-tab> :bn<CR>
@@ -4816,4 +4761,3 @@ autocmd BufReadPost * cd %:p:h
 " 输入 "I"， 可视块模式 --> 编辑模式。（注意：必须使用 "I"）
 " 输入 "#" 字符，也就是注释的符号。
 " 按下 "Esc"， 编辑模式 --> 命令模式。
-
