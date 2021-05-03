@@ -135,6 +135,9 @@ Plug 'DoxygenToolkit.vim'               " 注释文档生成
 Plug 'VimTweak'                         " 背景透明插件
 Plug 'kshenoy/vim-signature'            " 增加书签
 Plug 'makerj/vim-pdf'                   "阅读pdf
+Plug 'bronson/vim-trailing-whitespace'   " 显示文档中代码末尾多余的空格
+Plug 'chrisbra/changesPlugin'             "显示vim文档哪些行被修改的插件
+Plug 'vim-utils/vim-man'                " 在vim中查看相关函数等的man手册，支持水平窗口和垂直窗口打开。
 Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
@@ -1068,6 +1071,30 @@ vmap <silent> <Leader>ts <Plug>TranslateWV
 let g:translator_window_max_width=0.3
 let g:translator_window_max_height=0.3
 let g:translator_default_engines=['youdao' , 'google']
+
+
+  """"""""""""""""""""""""""""""""""""""vim-trailing-whitespace" **********
+  " <leader> + space 去掉末尾空格快捷键
+  nnoremap <leader><space> :FixWhitespace<cr>
+
+
+" ********** """"""""""""""""""""""""""""""vim-utils/vim-man" **********
+" <leader>m 新建水平窗口打开man
+map <leader>m <Plug>(Man)
+" <leader>v 新建垂直窗口打开man
+map <leader>v <Plug>(Vman)
+
+
+ " ********** "chrisbra/ChangesPlugin 文件显示修改痕迹" **********
+  let g:changes_autocmd=1
+  let g:changes_use_icons = 0
+  " let g:changes_respect_SignColumn = 1
+  let g:changes_sign_text_utf8 = 1
+  
+  " let g:changes_linehi_diff = 1
+  " hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
+  " hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
+  " hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 
 
 """""""""""""""""""""""""""""""""""""""""""altercation/vim-colors-solarized""""""""""""""""""""""""""""
@@ -2801,6 +2828,7 @@ let g:clang_format#auto_format=1 " 自动检测.clang-format作为配置的格�
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 1
 let g:autoformat_remove_trailing_spaces = 1
+
 let g:formatdef_hl_js='"js-beautify"'
 let g:formatdef_hl_c='"clang-format -style=\"{BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, PointerAlignment: Right, ColumnLimit: 150, SpacesBeforeTrailingComments: 1}\""' "指定格式化的方式, 使用配置参数
 let g:formatters_c = ['hl_c']
@@ -2813,6 +2841,32 @@ let g:formatters_sql = ['sqlformat']
 "保存时自动格式化指定文件类型代码
 ""au BufWrite * :Autoformat
 "autocmd BufWrite *.sql,*.c,*.py,*.java,*.js :Autoformat "设置发生保存事件时执行格式化
+  " 格式化为allman风格
+nnoremap <leader>fa :call RunFormatAllman() <cr>
+  " 格式化为kr风格
+nnoremap <leader>fk :call RunFormatKr() <cr>
+
+func! RunFormatAllman()
+      " exec "w" " 这2条命令是利用vim外部调用功能, 二选一
+      " exec "!astyle --mode=c --style=allman -S -Y -p -xg -U -k3 -W3 -n %"
+    let g:formatdef_my_fmt = '"astyle --mode=c --style=allman -S -Y -p -xg -U -k3 -W3 -n "'
+    silent exec "Autoformat"
+endfunc
+
+func! RunFormatKr()
+      " exec "w"   " 这2条命令是利用vim外部调用功能, 二选一
+      " exec "!astyle --mode=c --style=kr -S -Y -p -xg -U -k3 -W3 -n %"
+    let g:formatdef_my_fmt = '"astyle --mode=c --style=kr -S -Y -p -xg -U -k3 -W3 -n "'
+    silent exec "Autoformat"
+endfunc
+
+" let g:formatters_c = ['allman']
+" let g:formatters_cpp = ['allman']
+" let g:formatters_java = ['allman']
+  " au BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremp <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
