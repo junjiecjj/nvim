@@ -135,6 +135,7 @@ Plug 'DoxygenToolkit.vim'               " 注释文档生成
 Plug 'VimTweak'                         " 背景透明插件
 Plug 'kshenoy/vim-signature'            " 增加书签
 Plug 'makerj/vim-pdf'                   "阅读pdf
+Plug 'machakann/vim-highlightedyank'    " 使 yank 的文档半透明高亮
 Plug 'bronson/vim-trailing-whitespace'   " 显示文档中代码末尾多余的空格
 Plug 'chrisbra/changesPlugin'             "显示vim文档哪些行被修改的插件
 Plug 'vim-utils/vim-man'                " 在vim中查看相关函数等的man手册，支持水平窗口和垂直窗口打开。
