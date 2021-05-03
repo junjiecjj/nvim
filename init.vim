@@ -870,8 +870,8 @@ map \fr 10zl
 " === Other useful stuff
 " ===
 " 打开新标签页并在新标签页打开终端
-"nnoremap /t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
-nnoremap /t :tabe<CR>:term sh -c 'st'<CR>
+"nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
 
 
 " 上下分屏并在下方打开终端
@@ -907,9 +907,6 @@ else
     map <Leader>sv :source  ~/.vimrc<cr>
 endif
 
-
-"""""""""""" Goyo"""""""""""
-map <LEADER>gy :Goyo<CR>
 
 
 " Indentation
@@ -1065,6 +1062,26 @@ endif
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
 
+"""""""""""" Goyo和junegunn/limelight"""""""""""
+map <LEADER>gy    :Goyo<CR>
+xmap <Leader>gy   :Goyo<CR>
+let g:limelight_default_coefficient = 0.5   " 设置隐藏区域的黑暗度, 值越大越暗
+let g:limelight_paragraph_span = 2      " 设置暗光的跨度, 暗光所能照亮的范围
+let g:limelight_priority = -1        " 暗光优先级, 防止搜索的高亮效果被覆盖
+autocmd! User GoyoEnter Limelight   " 进入 Goyo 专注插件时, 同时开启暗光效果
+autocmd! User GoyoLeave Limelight!   " 离开 Goyo 专注插件时, 同时退出暗光效果
+
+"""""""""""""""""""""""""""""""""""""""""""altercation/vim-colors-solarized""""""""""""""""""""""""""""
+
+let g:solarized_termcolors=256
+let g:solarized_termtrans=0
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_italic=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+let g:solarized_hitrail=0
+let g:solarized_menu=1
 
 """""""""""""""""""""""""""""""""voldikss/vim-translator设置'"""""""""""""""""
 nmap <silent> <Leader>ts <Plug>TranslateW
@@ -1087,28 +1104,18 @@ map <leader>v <Plug>(Vman)
 
 
  " ********** "chrisbra/ChangesPlugin 文件显示修改痕迹" **********
-  let g:changes_autocmd=1
-  let g:changes_use_icons = 0
-  " let g:changes_respect_SignColumn = 1
-  let g:changes_sign_text_utf8 = 1
-  
-  " let g:changes_linehi_diff = 1
-  " hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
-  " hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
-  " hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
+let g:changes_autocmd=1
+let g:changes_use_icons = 0
+" let g:changes_respect_SignColumn = 1
+let g:changes_sign_text_utf8 = 1
+
+let g:changes_linehi_diff = 1
+" hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
+" hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
+" hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 
 
-"""""""""""""""""""""""""""""""""""""""""""altercation/vim-colors-solarized""""""""""""""""""""""""""""
 
-let g:solarized_termcolors=256
-let g:solarized_termtrans=0
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_italic=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-let g:solarized_hitrail=0
-let g:solarized_menu=1
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
 " :checkhealth
 " 安装命令:CocInstall 插件名
@@ -1876,10 +1883,10 @@ nnoremap [fb <cmd>Telescope buffers<cr>
 nnoremap [fh <cmd>Telescope help_tags<cr>
 
 " Using lua functions
-nnoremap ,ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap ,fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap ,fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap ,fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap ]ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap ]fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap ]fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap ]fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 highlight TelescopeSelection      guifg=#D79921 gui=bold  ctermfg=11 " selected item
@@ -2269,7 +2276,7 @@ let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""'Defx设置"""""""""""""""""""""""""""""""""""""""""""""""''
 noremap <LEADER>df :Defx<CR>
-let g:defx_icons_enable_syntax_highlight = 1
+
 " 开关快捷键,【-search=`expand('%:p')`】表示打开defx树后，光标自动放在当前buffer上
 noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
 nmap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
@@ -2806,68 +2813,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:clang_format#auto_format_on_insert_leave = 0    "退出插入模式时自动格式化
 
 
-"
-" " map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" " if you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-" " " Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
 
-let g:autoformat_verbosemode=1 "开启详细模式便于查错
-autocmd BufWrite *.sql,*.c,*.cpp,*.py,*.java,*.js :Autoformat "设置发生保存事件时执行格式化
-
-"F3自动格式化代码
-noremap \af :Autoformat<CR>
-let g:autoformat_verbosemode=1
-au BufWrite * :Autoformat  " 保存的时候 格式化"
-let g:clang_format#auto_format=1 " 自动检测.clang-format作为配置的格式"
-
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 1
-let g:autoformat_remove_trailing_spaces = 1
-
-let g:formatdef_hl_js='"js-beautify"'
-let g:formatdef_hl_c='"clang-format -style=\"{BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, PointerAlignment: Right, ColumnLimit: 150, SpacesBeforeTrailingComments: 1}\""' "指定格式化的方式, 使用配置参数
-let g:formatters_c = ['hl_c']
-let g:formatters_cpp = ['hl_c']
-let g:formatters_json = ['hl_js']
-let g:formatters_js = ['hl_js']
-let g:formatdef_sqlformat = '"sqlformat --keywords upper -"'
-let g:formatters_sql = ['sqlformat']
-
-"保存时自动格式化指定文件类型代码
-""au BufWrite * :Autoformat
-"autocmd BufWrite *.sql,*.c,*.py,*.java,*.js :Autoformat "设置发生保存事件时执行格式化
-  " 格式化为allman风格
-nnoremap <leader>fa :call RunFormatAllman() <cr>
-  " 格式化为kr风格
-nnoremap <leader>fk :call RunFormatKr() <cr>
-
-func! RunFormatAllman()
-      " exec "w" " 这2条命令是利用vim外部调用功能, 二选一
-      " exec "!astyle --mode=c --style=allman -S -Y -p -xg -U -k3 -W3 -n %"
-    let g:formatdef_my_fmt = '"astyle --mode=c --style=allman -S -Y -p -xg -U -k3 -W3 -n "'
-    silent exec "Autoformat"
-endfunc
-
-func! RunFormatKr()
-      " exec "w"   " 这2条命令是利用vim外部调用功能, 二选一
-      " exec "!astyle --mode=c --style=kr -S -Y -p -xg -U -k3 -W3 -n %"
-    let g:formatdef_my_fmt = '"astyle --mode=c --style=kr -S -Y -p -xg -U -k3 -W3 -n "'
-    silent exec "Autoformat"
-endfunc
-
-" let g:formatters_c = ['allman']
-" let g:formatters_cpp = ['allman']
-" let g:formatters_java = ['allman']
-  " au BufWrite * :Autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremp <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
@@ -3612,16 +3560,16 @@ autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,
 " "/usr/share/vim/vim81/colors/ 目录中包含了大多数文件类型的语法高亮插件。
 " hi clear
 
-map <Leader>c1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_color<CR>
+map <Leader>c1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme xtermlight<CR>
 map <Leader>c2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_color<CR>
 map <Leader>c3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_color<CR>
 map <Leader>c4 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_color<CR>
 map <Leader>c5 :set background=dark<CR>:colorscheme vividchalk<CR>AirlineTheme base16_color<CR>
 
-map <Leader>c6 :set background=light<CR>:colorscheme colorful<CR>AirlineTheme dracula<CR>
-map <Leader>c7 :set background=light<CR>:colorscheme NeoSolarized<CR>AirlineTheme dracula<CR>
-map <Leader>c8 :set background=light<CR>:colorscheme solarized8_flat<CR>AirlineTheme dracula<CR>
-map <Leader>c9 :set background=light<CR>:colorscheme flattened_light<CR>AirlineTheme dracula<CR>
+map <Leader>c6 :set background=light<CR>:colorscheme colorful<CR>AirlineTheme xtermlight<CR>
+map <Leader>c7 :set background=light<CR>:colorscheme NeoSolarized<CR>AirlineTheme solarized_flood<CR>
+map <Leader>c8 :set background=light<CR>:colorscheme solarized8_flat<CR>AirlineTheme biogoo<CR>
+map <Leader>c9 :set background=light<CR>:colorscheme flattened_light<CR>AirlineTheme light<CR>
 map <Leader>c10 :set background=light<CR>:colorscheme vividchalk<CR>AirlineTheme dracula<CR>
 
 
@@ -3631,14 +3579,14 @@ if strftime('%H') >= 7 && strftime('%H') < 22
     let themes = [
         \ 'cosmic_latte','carbonized-light', 'ayu', 'blacklight', 'bmichaelsen', 'c16gui',
         \ 'cake16', 'carrot', 'cleanphp', 'colorful',  'flattened_light','github','PaperColor',
-        \ 'gabo','greygull', 'gruvbox', 'habiLight', 'navajo',  'nicotine','fine_blue',
+        \ 'gobo','greygull', 'gruvbox', 'habiLight', 'navajo',  'nicotine','fine_blue',
         \ 'nightshade_print_modified','nightshade_print', 'pencil', 'earth','tcsoft',
         \ 'phpx', 'professional','rainbow_autumn','relaxedgreen','redstring','NeoSolarized',
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
         \ 'violet','space-vim-theme',
         \ ]
-    autocmd vimenter * ++nested colorscheme PaperColor
+    " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
     hi CursorColumn      guibg= #bcbcbc
         " \ 'vimspectr0-light'  , 'vimspectr0-light'   , 'vimspectr30-light' ,
@@ -3660,12 +3608,12 @@ else
         " \ 'vimspectr150-dark' , 'vimspectr180-dark'  , 'vimspectr210-dark' ,
         " \ 'vimspectr240-dark' , 'vimspectr270-dark'  , 'vimspectr300-dark' ,
         " \ 'vimspectr330-dark' , 'vimspectrgrey-dark' ,
-    autocmd vimenter * ++nested colorscheme
+    " autocmd vimenter * ++nested colorscheme lilydjwg_dark_modified
     hi CursorColumn      ctermbg=237
     hi CursorColumn      guibg= #3a3a3a
 endif
 
-" exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
+exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
 " exe 'colorscheme '.themes[localtime() % len(themes)]
 " autocmd vimenter * ++nested colorscheme solarized8_higt
 
