@@ -1110,9 +1110,9 @@ let g:changes_use_icons = 0
 let g:changes_sign_text_utf8 = 1
 
 let g:changes_linehi_diff = 1
-" hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
-" hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
-" hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
+hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
+hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
+hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 
 
 
