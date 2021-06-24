@@ -1,5 +1,6 @@
 
 
+
 "基本键位设置
 "============
 "     ^
@@ -826,123 +827,6 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""新增配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 启动 Vim 的时候，它会帮你打开你的 vimrc ⽂件
-autocmd VimEnter * nested edit ~/_gvimrc
-
-"临时文件管理设置
-"  如果文件夹不存在，则新建文件夹
-" if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
-	" call mkdir($HOME.'/.vim/files')
-" endif
-"  备份⽂件
-set backup
-set backupdir =$HOME/.vim/files/backup/
-set backupext =-vimbackup
-set backupskip =
-"  交换⽂件
-set directory =$HOME/.vim/files/swap//
-set updatecount =100
-"  撤销文件
-set undofile
-set undodir =$HOME/.vim/files/undo/
-" viminfo  文件
-set viminfo ='100,n$HOME/.vim/files/info/viminfo
-
-" s symbol：查找使⽤该符号的引用
-" g global：查找该全局符号的定义
-" c calls：查找调用当前方法的位置
-" t text：查找出现该⽂本的位置
-" e egrep：使⽤ egrep 搜索当前单词
-" f file：打开文件名
-" i includes：查询引文了当前文件的⽂件
-" d depends：查找当前方法调用的⽅法
-nnoremap <buffer> <leader>cs :cscope find s <c-r>=expand('<cword>')<cr><cr>
-nnoremap <buffer> <leader>cg :cscope find g <c-r>=expand('<cword>')<cr><cr>
-nnoremap <buffer> <leader>cc :cscope find c <c-r>=expand('<cword>')<cr><cr>
-nnoremap <buffer> <leader>ct :cscope find t <c-r>=expand('<cword>')<cr><cr>
-nnoremap <buffer> <leader>ce :cscope find e <c-r>=expand('<cword>')<cr><cr>
-nnoremap <buffer> <leader>cf :cscope find f <c-r>=expand('<cfile>')<cr><cr>
-nnoremap <buffer> <leader>ci :cscope find i ^<c-r>=expand('<cfile>')<cr>$<cr>
-nnoremap <buffer> <leader>cd :cscope find d <c-r>=expand('<cword>')<cr><cr>
-
-"任何的 Python 文件中使用  % （向前）或  g% （向后）在这三个片断之间跳转
-autocmd FileType python let b:match_words = '\<if\>:\<elif\>:\<else\>'
-
-"始终使用n下一个，N上一个
-nnoremap <expr> n 'Nn'[v:searchforward]
-nnoremap <expr> N 'nN'[v:searchforward]
-
-"命令行模式用ctrl+p/n进行上下
-" cnoremap <c-n> <down>
-" cnoremap <c-p> <up>
-
-" 智能 Ctrl-l
-nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
-
-
-
-"快速把当前行上衣或者下移一行
-nnoremap [e :<c-u>execute 'move -1-'.v:count1<cr>
-nnoremap ]e :<c-u>execute  'move +'.v:count1<cr>
-
-" 速添加空行
-nnoremap [s :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap ]s :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-"快速跳转到源/头文件
-autocmd BufLeave *.{c,cpp} mark C
-autocmd BufLeave *.h mark H
-
-"在GUI中快速该表字体的大小
-command! Bigger :let &guifont = substitude(&guifont, '\d\+$', '\=submatch(0)+1',")
-command! Smaller :let &guifont = substitude(&guifont, '\d\+$', '\=submatch(0)-1',")
-
-"根据模式改变光标模式
-if empty($TMUX)
-	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-	let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-else
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-	let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-endif
-
-"防止水平滑动的时候失去选择
-xnoremap < <gv
-xnoremap > >gv
-
-"选择当前行至末尾，排除换行符
-nnoremap L g_
-
-
-
-" 重新载入保存文件
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
-autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
-
-" 更加智能的当前高亮
-autocmd InsertLeave,WinEnter * set cursorline
-autocmd InsertEnter,WinLeave * set nocursorline
-
-set complete-=i " disable scanning included files
-set complete-=t " disable searching tags
-
-" 光标放到当前行末尾之后，默认情况下你是不可能做到的，但是可能通过设置virtualedit 选项达到目的
-"set virtualedit=all
-"
-
-
-"删除行尾空格
-nnoremap ;se  :%s/\s*$//g<CR>
-
-"删除行首空格
-nnoremap ;sh  :%s/^\s*//g<CR>
-
-"删除所有空格行
-nnoremap ;ss   :g/^$/d<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""快捷键定义"""""""""""""""""""""""""""""""""""""""""""''
 " 实现按 \sa 全选当前文件所有文本的效果
 map <leader>sa ggVG"
@@ -1230,7 +1114,6 @@ let g:changes_linehi_diff = 1
 hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
 hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
 hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
@@ -3830,11 +3713,125 @@ hi SpecialKey         cterm=bold
 hi SpecialKey      guifg=#00FFFF  gui=bold
 """""""""""""""""""""""""""""""""""""""""""""""设置颜色结束"""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""新增配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 启动 Vim 的时候，它会帮你打开你的 vimrc ⽂件
+autocmd VimEnter * nested edit ~/_gvimrc
 
+"临时文件管理设置
+"  如果文件夹不存在，则新建文件夹
+" if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
+	" call mkdir($HOME.'/.vim/files')
+" endif
+"  备份⽂件
+set backup
+set backupdir =$HOME/.vim/files/backup/
+set backupext =-vimbackup
+set backupskip =
+"  交换⽂件
+set directory =$HOME/.vim/files/swap//
+set updatecount =100
+"  撤销文件
+set undofile
+set undodir =$HOME/.vim/files/undo/
+" viminfo  文件
+set viminfo ='100,n$HOME/.vim/files/info/viminfo
+
+" s symbol：查找使⽤该符号的引用
+" g global：查找该全局符号的定义
+" c calls：查找调用当前方法的位置
+" t text：查找出现该⽂本的位置
+" e egrep：使⽤ egrep 搜索当前单词
+" f file：打开文件名
+" i includes：查询引文了当前文件的⽂件
+" d depends：查找当前方法调用的⽅法
+nnoremap <buffer> <leader>cs :cscope find s <c-r>=expand('<cword>')<cr><cr>
+nnoremap <buffer> <leader>cg :cscope find g <c-r>=expand('<cword>')<cr><cr>
+nnoremap <buffer> <leader>cc :cscope find c <c-r>=expand('<cword>')<cr><cr>
+nnoremap <buffer> <leader>ct :cscope find t <c-r>=expand('<cword>')<cr><cr>
+nnoremap <buffer> <leader>ce :cscope find e <c-r>=expand('<cword>')<cr><cr>
+nnoremap <buffer> <leader>cf :cscope find f <c-r>=expand('<cfile>')<cr><cr>
+nnoremap <buffer> <leader>ci :cscope find i ^<c-r>=expand('<cfile>')<cr>$<cr>
+nnoremap <buffer> <leader>cd :cscope find d <c-r>=expand('<cword>')<cr><cr>
+
+"任何的 Python 文件中使用  % （向前）或  g% （向后）在这三个片断之间跳转
+autocmd FileType python let b:match_words = '\<if\>:\<elif\>:\<else\>'
+
+"始终使用n下一个，N上一个
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
+
+"命令行模式用ctrl+p/n进行上下
+" cnoremap <c-n> <down>
+" cnoremap <c-p> <up>
+
+" 智能 Ctrl-l
+nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+
+
+"快速把当前行上衣或者下移一行
+nnoremap [e :<c-u>execute 'move -1-'.v:count1<cr>
+nnoremap ]e :<c-u>execute  'move +'.v:count1<cr>
+
+" 速添加空行
+nnoremap [s :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]s :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+"快速跳转到源/头文件
+autocmd BufLeave *.{c,cpp} mark C
+autocmd BufLeave *.h mark H
+
+"在GUI中快速该表字体的大小
+command! Bigger :let &guifont = substitude(&guifont, '\d\+$', '\=submatch(0)+1',")
+command! Smaller :let &guifont = substitude(&guifont, '\d\+$', '\=submatch(0)-1',")
+
+"根据模式改变光标模式
+if empty($TMUX)
+	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+	let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+else
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif
+
+"防止水平滑动的时候失去选择
+xnoremap < <gv
+xnoremap > >gv
+
+"选择当前行至末尾，排除换行符
+nnoremap L g_
+
+
+
+" 重新载入保存文件
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
+
+" 更加智能的当前高亮
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+set complete-=i " disable scanning included files
+set complete-=t " disable searching tags
+
+" 光标放到当前行末尾之后，默认情况下你是不可能做到的，但是可能通过设置virtualedit 选项达到目的
+"set virtualedit=all
+"
+
+
+"删除行尾空格
+nnoremap ;se  :%s/\s*$//g<CR>
+
+"删除行首空格
+nnoremap ;sh  :%s/^\s*//g<CR>
+
+"删除所有空格行
+nnoremap ;ss   :g/^$/d<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 
 
@@ -3871,6 +3868,37 @@ autocmd FileType javascript,html,css,xml set ts=2
 autocmd FileType javascript,html,css,xml set sts=2
 
 
+""""""""""""""""""""""""""""""""""""""   """"""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""Ctrl+Up变大 Down变小 Home还原(假设你原来的字体是10)"""""""""""""""""""""""""""""""""""""""""""""""
+let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
+let s:minfontsize = 6
+let s:maxfontsize = 16
+ 
+function! AdjustFontSize(amount)
+   if has("gui_gtk2") && has("gui_running")
+     let fontname = substitute(&guifont, s:pattern, '\1', '')
+     let cursize = substitute(&guifont, s:pattern, '\2', '')
+     if (cursize < s:minfontsize) || (cursize > s:maxfontsize)
+       let cursize = 10
+     endif
+       let newsize = cursize + a:amount
+      if (a:amount > 1)
+        let newsize = a:amount
+     endif
+      if (newsize >= s:minfontsize) && (newsize <= s:maxfontsize)
+       let newfont = fontname . " " . newsize
+       let &guifont = newfont
+     endif
+   else
+     echoerr "You need to run the GTK2 version of Vim to use this function."
+   endif
+endfunction
+ 
+map <C-;> :call AdjustFontSize(1) <CR>
+map <C-.> :call AdjustFontSize(-1) <CR>
+map <C-Home> :call AdjustFontSize(10) <CR>
+
 ""--------------------vim原本的快捷键映射变更-----------------------------
 "###################################################
 "复制粘贴快捷键
@@ -3903,7 +3931,6 @@ inoremap <C-x> <Esc>"+x
 
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
-
 
 
 
