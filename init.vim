@@ -3736,7 +3736,7 @@ set complete-=t " disable searching tags
 
 
 "删除行尾空格
-nnoremap ;se  :%s/\s*$//g<CR>
+nnoremap ;se  :%s/\s\+$//g<CR>
 
 "删除行首空格
 nnoremap ;sh  :%s/^\s*//g<CR>
