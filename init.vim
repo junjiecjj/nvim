@@ -601,9 +601,9 @@ nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
 
 
 " 上下分屏并在下方打开终端
-noremap <LEADER>td :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+noremap ;t :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 " 左右分屏并在下方打开终端
-noremap <LEADER>tr :set splitright<CR>:vsplit<CR>:res +10<CR>:term<CR>
+noremap ;r :set splitright<CR>:vsplit<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <SPACE><SPACE> <Esc>/<++><CR>:nohlsearch<CR>c4l
