@@ -514,10 +514,11 @@ set whichwrap+=<,>,b,s,[,]
 
 " 命令模式下，底部操作指令按下 Tab 键自动补全。第一次按下 Tab，会显示所有匹配的操作指令的清单；第二次按下 Tab，会依次选择各个指令。
 " Show command autocomplete
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.dll,*.exe,*.jpg,*.gif,*.png
 set wildmenu                      " show a navigable menu for tab completion
 " set wildmode=list:longest,full
 set wildchar=<Tab> wildcharm=<C-Z>
+set suffixes=.bak,~,.o,.h,.info,.swp,.obj
 
 hi BadWhitespace  ctermfg=15 ctermbg=15
 hi BadWhitespace  guifg= gray guibg=darkred
@@ -830,7 +831,6 @@ let g:coc_global_extensions = [
     \ 'coc-discord-rpc',
     \ 'coc-dash-complete',
     \ 'coc-dot-complete',
-    \ 'coc-ecdict',
     \ 'coc-elixir',
     \ 'coc-ember',
     \ 'coc-emmet',
@@ -2539,7 +2539,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
 "寻找全局配置文件
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 "开始补全的字符数
 let g:ycm_min_num_of_chars_for_completion = 2
@@ -4016,7 +4016,7 @@ set showtabline=1
 
 
 " 若要在右上角启用关闭按钮，请将以下内容添加到 ~/.vimrc
-set suffixes=.bak,~,.o,.h,.info,.swp,.obj
+
 let g:tablineclosebutton=1
 
 "#################################### 多标签页切换####################################
