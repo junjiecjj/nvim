@@ -84,7 +84,7 @@ Plug 'luochen1990/rainbow'
 Plug 'kien/rainbow_parentheses.vim'
 
 Plug 'wincent/terminus'   " 终端增强
-
+Plug 'craigemery/vim-autotag'
 
 " Git
 Plug 'rhysd/conflict-marker.vim'          " Highlight, jump and resolve conflict markers quickly.
@@ -2720,7 +2720,9 @@ if !exists('g:AutoComplPop_Behavior')
                 \ })
 endif
 
-
+"""""""""""""""""""""""""""""""""""Ycraigemery/vim-autotag 配置 """"""""""""""""""""""""""""""""""""""""""
+let g:autotagTagsFile=".tags"
+let g:autotagStartMethod='fork'
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
 
