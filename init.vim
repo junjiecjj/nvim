@@ -567,7 +567,7 @@ nmap ;w :w<CR>
 nmap <Leader>w :w<CR>
 map Q :q<CR>
 map S :w!<CR>
-map <C-s> :w<CR>
+
 
 " Call figlet
 map ;x :r !figlet
@@ -3828,6 +3828,9 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 "sudo apt-get install vim-gnome
 noremap <C-a> ggvG$
 inoremap <C-a> <Esc>ggvG$
+" Ctrl+A全选复制，
+"noremap <C-a> ggyG$
+"inoremap <C-a> <Esc>ggyG$
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 " vnoremap <C-C> "+y<Esc>
