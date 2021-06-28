@@ -1,6 +1,4 @@
 
-
-
 "基本键位设置
 "============
 "     ^
@@ -782,11 +780,15 @@ if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
 
-" ===
-" === vim-illuminate
-" ===
-let g:Illuminate_delay = 750
-hi illuminatedWord cterm=undercurl gui=undercurl
+
+"""""""""""""""""""""""""""""""""voldikss/vim-translator设置'"""""""""""""""""
+nmap <silent> <Leader>ts <Plug>TranslateW
+vmap <silent> <Leader>ts <Plug>TranslateWV
+let g:translator_window_max_width=0.3
+let g:translator_window_max_height=0.3
+let g:translator_default_engines=['youdao' , 'google']
+
+
 
 """""""""""" Goyo和junegunn/limelight"""""""""""
 map <LEADER>gy    :Goyo<CR>
@@ -797,7 +799,7 @@ let g:limelight_priority = -1        " 暗光优先级, 防止搜索的高亮效
 autocmd! User GoyoEnter Limelight   " 进入 Goyo 专注插件时, 同时开启暗光效果
 autocmd! User GoyoLeave Limelight!   " 离开 Goyo 专注插件时, 同时退出暗光效果
 
-"""""""""""""""""""""""""""""""""""""""""""altercation/vim-colors-solarized""""""""""""""""""""""""""""
+""""""""""""""""""""""""altercation/vim-colors-solarized"""""""""""""""""""""
 
 let g:solarized_termcolors=256
 let g:solarized_termtrans=0
@@ -808,6 +810,23 @@ let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
 let g:solarized_hitrail=0
 let g:solarized_menu=1
+
+"""""""""""""""""""""""lfv89/vim-interestingwords""""""""""""""""""""""""""""""
+
+let g:interestingWordsDefaultMappings = 0
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
+
+let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+let g:interestingWordsRandomiseColors = 1
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
 " :checkhealth
@@ -973,13 +992,6 @@ let g:snips_author = 'jj.Chen'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
-"""""""""""""""""""""""""""""""""voldikss/vim-translator设置'"""""""""""""""""
-nmap <silent> <Leader>ts <Plug>TranslateW
-vmap <silent> <Leader>ts <Plug>TranslateWV
-let g:translator_window_max_width=0.3
-let g:translator_window_max_height=0.3
-let g:translator_default_engines=['youdao' , 'google']
-
 
   """"""""""""""""""""""""""""""""""""""vim-trailing-whitespace" **********
   " <leader> + space 去掉末尾空格快捷键
@@ -1005,23 +1017,6 @@ hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
 hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 
 
-
-"""""""""""""""""""""""lfv89/vim-interestingwords""""""""""""""""""""""""""""""
-
-let g:interestingWordsDefaultMappings = 0
-nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
-vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
-nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
-
-nnoremap <silent> n :call WordNavigation(1)<cr>
-nnoremap <silent> N :call WordNavigation(0)<cr>
-
-let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
-
-let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
-let g:interestingWordsRandomiseColors = 1
-
-
 """""""""""""""""""""""""RRethy/vim-illuminate""""""""""""""""""""""""""""""""""
 let g:Illuminate_ftblacklist = ['nerdtree']
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'cpp', 'tex', 'js', 'java', 'v', 'sv']
@@ -1030,6 +1025,9 @@ augroup illuminate_augroup
     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 augroup END
 
+
+let g:Illuminate_delay = 750
+hi illuminatedWord cterm=undercurl gui=undercurl
 
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
@@ -1648,6 +1646,11 @@ let g:suda#prompt = 'Mot de passe:'
 """"""""""""""""""""""""""""""""""""""""glepnir/galaxyline.nvim设置"""""""""""""""""""""""""""""""
 " luafile ~/.config/nvim/eviline.lua
 
+""""""""""""""""""""junegunn/vim-easy-align 插件"""""""""""""""""""""""''
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
 """"""""""""""""""""itchyny/calendar.vim插件"""""""""""""""""""""""''
 
 "noremap \c :Calendar -position=here<CR>
@@ -1996,7 +1999,7 @@ let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""'Defx设置"""""""""""""""""""""""""""""""""""""""""""""""''
+""""""""""""""""""""Shougo/defx.nvim设置"""""""""""""""""""""""""""""""""''
 noremap <LEADER>df :Defx<CR>
 
 " 开关快捷键,【-search=`expand('%:p')`】表示打开defx树后，光标自动放在当前buffer上
