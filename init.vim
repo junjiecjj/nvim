@@ -575,8 +575,8 @@ nnoremap  V  <C-v>
 
 " Search
 map <LEADER><CR> :nohlsearch<CR>
-noremap = nzz
-noremap - Nzz
+nnoremap = nzz
+nnoremap - Nzz
 
 
 
@@ -1744,7 +1744,7 @@ let g:startify_custom_footer = [
 """""""""""""""""""""""""""""""Undotree插件"""""""""""""""""""""""""""""""""""""""""""
 
 let g:undotree_DiffAutoOpen = 0
-noremap L :UndotreeToggle<CR>
+nnoremap L :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -3908,10 +3908,10 @@ inoremap <C-M-down> <Esc><C-e>a
 " 光标在当前行的基础上再跳 20 行：20+enter 键
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap U 5k
-noremap D 5j
-noremap h 5h
-noremap l 5l
+nnoremap U 5k
+nnoremap D 5j
+nnoremap h 5h
+nnoremap l 5l
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 " 向左分屏
@@ -3924,13 +3924,13 @@ map sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 map sl :set splitright<CR>:vsplit<CR>
 
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+nnoremap sh <C-w>t<C-w>K
 " Place the two screens side by side
-noremap sv <C-w>t<C-w>H
+nnoremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
-noremap srv <C-w>b<C-w>H
+nnoremap srh <C-w>b<C-w>K
+nnoremap srv <C-w>b<C-w>H
 
 "---------------- 窗口、标签页、缓冲区的切换--------------------------------
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -4035,6 +4035,19 @@ noremap <silent><S-tab> :tabnext<CR>
 
 "Vim默认最多只能打开10个标签页。你可以用set tabpagemax=15改变这个限制。
 set tabpagemax=15
+
+
+" Move around tabs with tn and tp
+nnoremap tn  :tabn<CR>
+nnoremap tp  :tabp<CR>
+
+" Create a new tab with tu
+nnoremap tu :tabe<CR>
+nnoremap tU :tab split<CR>
+
+" Move the tabs with tmn and tmp
+nnoremap tmn :-tabmove<CR>
+nnoremap tmp :+tabmove<CR>
 
 " 正常模式下切换到确切的 tab
 noremap <leader>1 1gt
@@ -4311,7 +4324,7 @@ autocmd Filetype c,cpp,h inoremap {<CR> {<CR>}<Esc>O
 
 
 " Compile function
-map <M-e> :call CompileRunGcc()<CR>
+map r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
