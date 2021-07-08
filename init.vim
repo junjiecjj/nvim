@@ -170,7 +170,14 @@ Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 Plug 'Valloric/YouCompleteMe'              " 自动补全
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
-
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-github'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-pyclang'
+Plug 'ncm2/ncm2-vim'
+Plug 'oncomouse/ncm2-biblatex'
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 Plug 'Raimondi/delimitMate'
@@ -2530,6 +2537,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
 
+
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
 "寻找全局配置文件
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
@@ -2691,6 +2699,37 @@ let g:ycm_semantic_triggers =  {
 
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置结束""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""" NCM2 配置 """""""""""""""""
+"缓存
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" 补全模式,具体详情请看下文
+set completeopt=menu,noinsert
+set shortmess+=c
+inoremap <c-c> <ESC>
+" 延迟弹窗,这样提示更加流畅
+let ncm2#popup_delay = 5
+"输入几个字母开始提醒:[[最小优先级,最小长度]]
+"如果是输入的是[[1,3],[7,2]],那么优先级在1-6之间,会在输入3个字符弹出,如果大于等于7,则2个字符弹出----优先级概念请参考文档中 ncm2-priority 
+let ncm2#complete_length = [[1, 1]]
+"模糊匹配模式,详情请输入:help ncm2查看相关文档
+let g:ncm2#matcher = 'substrfuzzy'
+" 回车即选中当前项
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"使用tab键向下选择弹框菜单
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
+"使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
+"inoremap <expr> <S> pumvisible() ? "\<C-p>" : "\<S>"
+
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name' : 'css',
+        \ 'priority': 9,
+        \ 'subscope_enable': 1,
+        \ 'scope': ['css','scss'],
+        \ 'mark': 'css',
+        \ 'word_pattern': '[\w\-]+',
+        \ 'complete_pattern': ':\s*',
+        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+        \ })
 """"""""""""""""""""""""""""""""""" AutoComplPop配置 """""""""""""""""
 " 输入一个字母即可补全
 "let g:acp_behaviorKeywordLength = 1
@@ -4087,13 +4126,13 @@ noremap <leader>0 :tablast<CR>
 
 
 " ctrl + tab下一个buffer
-map <C-tab> :bn<CR>
-nnoremap <C-tab> :bn<CR>
+" map <C-tab> :bn<CR>
+" nnoremap <C-tab> :bn<CR>
 nnoremap  ]b :bn<CR>
 nnoremap  ;e :bn<CR>
 " ctrl + shift + tab下一个buffer
-map <C-M-tab> :bp<CR>
-nnoremap <C-M-tab> :bp<CR>
+" map <C-M-tab> :bp<CR>
+" nnoremap <C-M-tab> :bp<CR>
 nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
 
