@@ -177,7 +177,7 @@ Plug 'ncm2/ncm2-github'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-pyclang'
 Plug 'ncm2/ncm2-vim'
-Plug "ncm2/ncm2-match-highlight"
+Plug 'ncm2/ncm2-match-highlight'
 Plug 'oncomouse/ncm2-biblatex'
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
