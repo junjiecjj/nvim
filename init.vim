@@ -177,6 +177,7 @@ Plug 'ncm2/ncm2-github'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-pyclang'
 Plug 'ncm2/ncm2-vim'
+Plug "ncm2/ncm2-match-highlight"
 Plug 'oncomouse/ncm2-biblatex'
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
@@ -2719,6 +2720,9 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
 "使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
 "inoremap <expr> <S> pumvisible() ? "\<C-p>" : "\<S>"
+" 指定 Python 版本
+let g:ncm2_jedi#python_version = 3
+let g:ncm2#match_highlight = 'sans-serif'
 
 au User Ncm2Plugin call ncm2#register_source({
         \ 'name' : 'css',
