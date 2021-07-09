@@ -1445,10 +1445,12 @@ map <Leader>ack :Ack -i<space>
 
 
 """""""""""""""""""""""""""""""""""""" easymotion/vim-easymotion配置 """"""""""""""""""""""""""""""""""""""
-" \\w    # 向后查找单词(find word after)
-" \\W    # 向前查找单词(find word before)
+" \\w    # 向后查找单词(find word after),定位到词首
+" \\W    # 向后查找单词(find word before)
 " \\e    # 向后查找，定位到词尾(find word end after)
-" \\E    # 向前查找，位位到词尾(find word end before)
+" \\E    # 向后查找，位位到词尾(find word end before)
+" \\b    # 向前查找单字，定位到词尾(find word end after)
+" \\B    # 向前查找单字，位位到词尾(find word end before)
 " \\f    # 向后查找单字(find letter after)
 " \\F    # 向前查找单字(find letter before)
 " \\s    #快捷键<leader><leader>s(即\\s), 然后输入要搜索的字母, 这个跳转是双向的
@@ -1457,7 +1459,7 @@ let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " 行内跳转(hl)
-map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><leader>h <Plug>()
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 
 " 行级跳转(jk)
@@ -1466,6 +1468,8 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
+" 使用 ss 启用
+nmap ss <Plug>(easymotion-s2)
 "注意：以上操作都是在本界面，也就是在当前所在屏幕的大小里面能显示的界面
 
 """""""""""""""""""""""""""""""""" 'tpope/vim-surround'配置 """"""""""""""""""""""""""""""""""""""""""
