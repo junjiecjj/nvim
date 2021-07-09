@@ -1015,16 +1015,19 @@ map <leader>v <Plug>(Vman)
 
  " ********** "chrisbra/ChangesPlugin 文件显示修改痕迹" **********
 let g:changes_autocmd=1
-let g:changes_use_icons = 0
+let g:changes_use_icons = 1
 " let g:changes_respect_SignColumn = 1
 let g:changes_sign_text_utf8 = 1
 
-let g:changes_linehi_diff = 1
-hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
-hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
-hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
+let g:changes_linehi_diff = 0
+hi ChangesSignTextAdd ctermbg=None ctermfg=green guibg=None  guifg=green
+hi ChangesSignTextDel ctermbg=None  ctermfg=red   guibg=None  guifg=red
+hi ChangesSignTextCh  ctermbg=None   ctermfg=blue guibg=None   guifg=blue
 
-
+" let g:changes_linehi_diff = 1
+" hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
+" hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
+" hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 """""""""""""""""""""""""RRethy/vim-illuminate""""""""""""""""""""""""""""""""""
 let g:Illuminate_ftblacklist = ['nerdtree']
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'cpp', 'tex', 'js', 'java', 'v', 'sv']
