@@ -1543,7 +1543,7 @@ sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
 """"""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
-let g:dashboard_default_header = "eval"
+" let g:dashboard_default_header = "eval"
 let g:dashboard_custom_header = [
        \ '',
        \ '███████╗██╗   ██╗ ██████╗ ██╗    ██╗   ██╗███████╗    ██╗',
@@ -1583,7 +1583,7 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : 'SPC f b',
 \ }
 
-" let g:dashboard_custom_shortcut_icon['last_session'] = ' '
+" let g:dashboard_custom_shortcut_icon['last_session'] = ' '
 " let g:dashboard_custom_shortcut_icon['find_history'] = 'ﭯ '
 " let g:dashboard_custom_shortcut_icon['find_file'] = ' '
 " let g:dashboard_custom_shortcut_icon['new_file'] = ' '
@@ -2002,7 +2002,7 @@ noremap <LEADER>df :Defx<CR>
 
 " 开关快捷键,【-search=`expand('%:p')`】表示打开defx树后，光标自动放在当前buffer上
 noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
-nmap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
+" nnoremap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
 
 
 call defx#custom#option('_', {
@@ -2539,165 +2539,165 @@ let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
 
 
-"""""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
-"寻找全局配置文件
-let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-
-"开始补全的字符数
-let g:ycm_min_num_of_chars_for_completion = 2
-
-"与syntastic有冲突，建议关闭
+" """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
+" "寻找全局配置文件
+" let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"
+" "开始补全的字符数
+" let g:ycm_min_num_of_chars_for_completion = 2
+"
+" "与syntastic有冲突，建议关闭
+" " let g:ycm_show_diagnostics_ui = 0
+" "let g:ycm_error_symbol = '✗'
+" "let g:ycm_warning_symbol = '⚠'
+"
+" "jedi模块所在python解释器路径
+" let g:ycm_python_binary_path = 'python'
+"
+" "选补全框内显示的补全条目的最大数量
+" let g:ycm_max_num_candidates = 20
+"
+" "该选项控制基于identifiers-based引擎的最大候选补全项
+" let g:ycm_max_num_identifier_candidates = 20
+"
+"
+" " 设置YCM的日志记录级别，可以是debug，info，warning，error或critical。debug是最详细的
+" " let g:ycm_log_level = 'info'
+"
+" let g:ycm_collect_identifiers_from_tags_files = 0
+"
+" "开启使用语言的一些关键字查询
+" let g:ycm_seed_identifiers_with_syntax = 1
+"
+" "补全后自动关闭预览窗口
+" let g:ycm_autoclose_preview_window_after_completion=1
+"
+" "在实现和声明之间跳转,并分屏打开
+" let g:ycm_goto_buffer_command = 'horizontal-split'
+"
+" " let g:ycm_auto_trigger = 0   "turn off
+" let g:ycm_auto_trigger = 1   "turn on ,打开ycm
+"
+"
+" "关键字补全
+" let g:ycm_seed_indetifiers_with_syntax = 1
+"
+" " 在注释中也可以补全
+" let g:ycm_complete_in_comments=1
+"
+"
+" " 在字符串输入中也能补全
+" let g:ycm_complete_in_strings = 1
+"
+" " 注释和字符串中的文字也会被收入补全
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"
+" let g:ycm_extra_conf_globlist = ['~/dev/*','!~/*']
+"
+" "不显示开启vim时是否检查ycm_extra_conf文件的信息，直接加载该文件
+" let g:ycm_confirm_extra_conf=0
+"
+" "每次重新生成匹配项，禁止缓存匹配项
+" let g:ycm_cache_omnifunc=0
+"
+" "在代码中高亮显示YCM诊断对应的内容，如果关闭，则会关闭错误和警告高亮功能，0表示关闭
+" let g:ycm_enable_diagnostic_signs = 0
+"
+" "高亮显示代码中与诊断信息有关的文本或代码，0表示关闭
+" let g:ycm_enable_diagnostic_highlighting = 0
+"
+" "当光标移到所在行时显示诊断信息
+" let g:ycm_echo_current_diagnostic = 1
+"
+"
+" map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
+"
+"
+" "查找光标下的标识符并跳转到其声明，文件类型支持：c，cpp，objc，objcpp，cs，go，java，python，rust，typescript
+" nnoremap <leader>gg :YcmCompleter GoToDeclaration<CR>
+"
+" " 查找光标下的标识符并跳转到其定义
+" nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+"
+"
+" "关闭YCM 自动弹出函数原型预览窗口
+" " set completeopt=longest,menu
+" " let g:ycm_add_preview_to_completeopt = 0
+"
+" " YCM默认会显示诊断信息，语言标注出来你代码问题,屏蔽YCM 的诊断信息
 " let g:ycm_show_diagnostics_ui = 0
-"let g:ycm_error_symbol = '✗'
-"let g:ycm_warning_symbol = '⚠'
-
-"jedi模块所在python解释器路径
-let g:ycm_python_binary_path = 'python'
-
-"选补全框内显示的补全条目的最大数量
-let g:ycm_max_num_candidates = 20
-
-"该选项控制基于identifiers-based引擎的最大候选补全项
-let g:ycm_max_num_identifier_candidates = 20
-
-
-" 设置YCM的日志记录级别，可以是debug，info，warning，error或critical。debug是最详细的
-" let g:ycm_log_level = 'info'
-
-let g:ycm_collect_identifiers_from_tags_files = 0
-
-"开启使用语言的一些关键字查询
-let g:ycm_seed_identifiers_with_syntax = 1
-
-"补全后自动关闭预览窗口
-let g:ycm_autoclose_preview_window_after_completion=1
-
-"在实现和声明之间跳转,并分屏打开
-let g:ycm_goto_buffer_command = 'horizontal-split'
-
-" let g:ycm_auto_trigger = 0   "turn off
-let g:ycm_auto_trigger = 1   "turn on ,打开ycm
-
-
-"关键字补全
-let g:ycm_seed_indetifiers_with_syntax = 1
-
-" 在注释中也可以补全
-let g:ycm_complete_in_comments=1
-
-
-" 在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-
-" 注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-let g:ycm_extra_conf_globlist = ['~/dev/*','!~/*']
-
-"不显示开启vim时是否检查ycm_extra_conf文件的信息，直接加载该文件
-let g:ycm_confirm_extra_conf=0
-
-"每次重新生成匹配项，禁止缓存匹配项
-let g:ycm_cache_omnifunc=0
-
-"在代码中高亮显示YCM诊断对应的内容，如果关闭，则会关闭错误和警告高亮功能，0表示关闭
-let g:ycm_enable_diagnostic_signs = 0
-
-"高亮显示代码中与诊断信息有关的文本或代码，0表示关闭
-let g:ycm_enable_diagnostic_highlighting = 0
-
-"当光标移到所在行时显示诊断信息
-let g:ycm_echo_current_diagnostic = 1
-
-
-map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
-
-
-"查找光标下的标识符并跳转到其声明，文件类型支持：c，cpp，objc，objcpp，cs，go，java，python，rust，typescript
-nnoremap <leader>gg :YcmCompleter GoToDeclaration<CR>
-
-" 查找光标下的标识符并跳转到其定义
-nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-
-
-"关闭YCM 自动弹出函数原型预览窗口
-" set completeopt=longest,menu
-" let g:ycm_add_preview_to_completeopt = 0
-
-" YCM默认会显示诊断信息，语言标注出来你代码问题,屏蔽YCM 的诊断信息
-let g:ycm_show_diagnostics_ui = 0
-
-"离开插入模式后自动关闭预览窗口
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-"回车即选中当前项
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-
-"上下左右键的行为 会显示其他信息
-inoremap <expr> <Down>       pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>         pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>     pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-
-
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-"设置用于选择补全列表中的第一个选项以及进入补全列表后向下选择的快捷键
-let g:ycm_key_list_select_completion = [ '<TAB>' ,'<Down>']
-" let g:ycm_key_list_select_completion=['<C-n>','<Down>']
-
-"设置用于向上选择补全列表中的选项的快捷键，默认为shift+tab，和方向上键
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-" let g:ycm_key_list_previous_completion=['<c-p>','<Up>']
-
-"设置用于关闭补全列表的快捷键，默认为ctrl+y
-let g:ycm_key_list_stop_completion =  ['<C-y>']
-
-" let g:ycm_filetype_blacklist = {
-" \ 'tagbar' : 1,
-" \ 'qf' : 1,
-" \ 'notes' : 1,
-" \ 'markdown' : 1,
-" \ 'unite' : 1,
-" \ 'text' : 1,
-" \ 'vimwiki' : 1,
-" \ 'pandoc' : 1,
-" \ 'infolog' : 1,
-" \ 'mail' : 1
-" \}
-
-let g:ycm_filetype_specific_completion_to_disable = {
-            \ 'gitcommit': 1
-            \}
-
-" let g:ycm_filetype_whitelist = {
-" \ "c":1,
-" \ "cpp":1,
-" \ "objc":1,
-" \ "sh":1,
-" \ "zsh":1,
-" \ "zimbu":1,
-" \ }
-
-let g:ycm_semantic_triggers =  {
-            \   'c' : ['->', '.'],
-            \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-            \             're!\[.*\]\s'],
-            \   'ocaml' : ['.', '#'],
-            \   'cpp,objcpp' : ['->', '.', '::'],
-            \   'perl' : ['->'],
-            \   'php' : ['->', '::'],
-            \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-            \   'ruby' : ['.', '::'],
-            \   'lua' : ['.', ':'],
-            \   'erlang' : [':'],
-            \   'py' : ['.'],
-            \ }
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-            \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ }
-
-
+"
+" "离开插入模式后自动关闭预览窗口
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"
+" "回车即选中当前项
+" inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+"
+" "上下左右键的行为 会显示其他信息
+" inoremap <expr> <Down>       pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up>         pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr> <PageDown>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+" inoremap <expr> <PageUp>     pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+"
+"
+" "youcompleteme  默认tab  s-tab 和自动补全冲突
+" "设置用于选择补全列表中的第一个选项以及进入补全列表后向下选择的快捷键
+" let g:ycm_key_list_select_completion = [ '<TAB>' ,'<Down>']
+" " let g:ycm_key_list_select_completion=['<C-n>','<Down>']
+"
+" "设置用于向上选择补全列表中的选项的快捷键，默认为shift+tab，和方向上键
+" let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+" " let g:ycm_key_list_previous_completion=['<c-p>','<Up>']
+"
+" "设置用于关闭补全列表的快捷键，默认为ctrl+y
+" let g:ycm_key_list_stop_completion =  ['<C-y>']
+"
+" " let g:ycm_filetype_blacklist = {
+" " \ 'tagbar' : 1,
+" " \ 'qf' : 1,
+" " \ 'notes' : 1,
+" " \ 'markdown' : 1,
+" " \ 'unite' : 1,
+" " \ 'text' : 1,
+" " \ 'vimwiki' : 1,
+" " \ 'pandoc' : 1,
+" " \ 'infolog' : 1,
+" " \ 'mail' : 1
+" " \}
+"
+" let g:ycm_filetype_specific_completion_to_disable = {
+"             \ 'gitcommit': 1
+"             \}
+"
+" " let g:ycm_filetype_whitelist = {
+" " \ "c":1,
+" " \ "cpp":1,
+" " \ "objc":1,
+" " \ "sh":1,
+" " \ "zsh":1,
+" " \ "zimbu":1,
+" " \ }
+"
+" let g:ycm_semantic_triggers =  {
+"             \   'c' : ['->', '.'],
+"             \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+"             \             're!\[.*\]\s'],
+"             \   'ocaml' : ['.', '#'],
+"             \   'cpp,objcpp' : ['->', '.', '::'],
+"             \   'perl' : ['->'],
+"             \   'php' : ['->', '::'],
+"             \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+"             \   'ruby' : ['.', '::'],
+"             \   'lua' : ['.', ':'],
+"             \   'erlang' : [':'],
+"             \   'py' : ['.'],
+"             \ }
+" let g:ycm_semantic_triggers =  {
+"             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"             \ 'cs,lua,javascript': ['re!\w{2}'],
+"             \ }
+"
+"
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置结束""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""" NCM2 配置 """""""""""""""""
