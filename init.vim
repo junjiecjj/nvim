@@ -129,7 +129,7 @@ Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " 提供一个专注阅读和写作的环境
 Plug 'junegunn/limelight.vim'           " 与 Goyo, seoul256 为同一开发者，联合使用效果最佳。不适用于写代码和看代码
 Plug 'junegunn/vim-peekaboo'            "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
-Plug 'matze/vim-move'                   " 代码块移动
+" Plug 'matze/vim-move'                   " 代码块移动
 " Plug 'DoxygenToolkit.vim'               " 注释文档生成
 " Plug 'VimTweak'                         " 背景透明插件
 Plug 'kshenoy/vim-signature'            " 增加书签
@@ -4012,6 +4012,10 @@ nnoremap <C-left> <C-W>h
 " Ctrl-h 切换到左侧的分割窗口
 " 注意，这里的ctrl+hjkl与WinManager的ctrl+上下左右是一样的左右，也就是切换窗口,这里的快捷键覆盖了winmanager的快捷键
 
+" nnoremap <A-j> <C-W>j
+" nnoremap <A-k> <C-W>k
+" nnoremap <A-l> <C-W>l
+" nnoremap <A-h> <C-W>h
 
 nnoremap <C-w> <C-W>w
 nnoremap <C-q> <C-W>q
@@ -4025,14 +4029,14 @@ nnoremap <space> za
 " 用空格代替za进行折叠代码
 
 " " 移动窗口
-" Ctrl+shift+j当前窗口向上面移动
-nnoremap <C-S-j> <C-w>J
-" Ctrl+shift+k当前窗口向上方移动
-nnoremap <C-S-k> <C-w>K
-" Ctrl+shift+l 当前窗口向右边移动
-nnoremap <C-S-l> <C-w>L
-" Ctrl+shift+h当前窗口向左边移动
-nnoremap <C-S-h> <C-w>H
+" alt+j当前窗口向上面移动
+nnoremap <A-j> <C-w>J
+" alt+k当前窗口向上方移动
+nnoremap <A-k> <C-w>K
+" alt+l 当前窗口向右边移动
+nnoremap <A-l> <C-w>L
+" alt+h当前窗口向左边移动
+nnoremap <A-h> <C-w>H
 
 
 " 多窗口分屏时改变窗口大小 +/- 3
