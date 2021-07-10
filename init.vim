@@ -162,6 +162,7 @@ Plug 'fholgado/minibufexpl.vim'            " 多文档编辑
 Plug 'bagrat/vim-buffet'                   " 类似minibuf管理多buffer的
 Plug 'vim-scripts/winmanager'              " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'        " vim多重光标选取插件
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " 比vim-multiple-cursor更好用的多光标插件
 Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
 
 "补全
@@ -1379,7 +1380,7 @@ command! -bang -nargs=? -complete=dir Files
 " sudo apt-get install ctags
 
 " Ctrl + p 打开文件搜索
-let g:Lf_ShortcutF = '<C-p>'
+let g:Lf_ShortcutF = '<C-s>'
 
 "\p 打开函数列表
 noremap lf :LeaderfFunction<cr>
@@ -2391,6 +2392,15 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+""""""""""""""""""""""""""""" Vim-multiple-cursors(vim多重光标选取插件)   """""""""""""""""""""""""""""
+let g:VM_theme = 'iceblue'
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = '<C-Down>'
+let g:VM_maps["Select Cursor Up"]   = '<C-Up>'
+let g:VM_maps["Select l"] = '<C-Right>'
+let g:VM_maps["Select h"] = '<C-Left>'
+let g:VM_theme = 'iceblue'
+let g:VM_highlight_matches = 'underline'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -3995,20 +4005,20 @@ nnoremap srv <C-w>b<C-w>H
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "########################### 切换窗口####################################
-nnoremap <C-down> <C-W>j
-nnoremap <C-up> <C-W>k
-nnoremap <C-right> <C-W>l
-nnoremap <C-left> <C-W>h
+" nnoremap <C-down> <C-W>j
+" nnoremap <C-up> <C-W>k
+" nnoremap <C-right> <C-W>l
+" nnoremap <C-left> <C-W>h
 "组合快捷键：
 " Ctrl-down 切换到下方的分割窗口
 " Ctrl-up 切换到上方的分割窗口
 " Ctrl-right 切换到右侧的分割窗口
 " Ctrl-left 切换到左侧的分割窗口
 
-" nnoremap <C-j> <C-W>j
-" nnoremap <C-k> <C-W>k
-" nnoremap <C-l> <C-W>l
-" nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
 "组合快捷键：
 " Ctrl-j 切换到下方的分割窗口
 " Ctrl-k 切换到上方的分割窗口
@@ -4905,3 +4915,25 @@ autocmd BufReadPost * cd %:p:h
 " 输入 "I"， 可视块模式 --> 编辑模式。（注意：必须使用 "I"）
 " 输入 "#" 字符，也就是注释的符号。
 " 按下 "Esc"， 编辑模式 --> 命令模式。
+"
+
+" y0 复制到行首
+" y$ 复制到行尾
+"
+" cw        更改单词，并复制到剪切板
+" "ayy      复制到剪切板并命名为a
+" "ap       粘贴a剪切板中的内容
+" dG      删除光标所在行直到最后一行
+" d->     删除右边一个单词
+" d3->    删除右边三个字符
+" cw      删除一个单词并进入插入模式
+" c6->    删除右边6个单词并进入插入模式
+" ciw     编辑当前单词
+" ci"     删除"中的内容,并编辑
+" di"     删除"中的内容
+" yi"     复制"中的内容
+" fv      查找v字母并跳转
+" df:     删除直到:的内容
+" yf:     复制直到:的内容
+" cf:     删除直到:并进入插入模式
+
