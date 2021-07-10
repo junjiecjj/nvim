@@ -4936,4 +4936,3 @@ autocmd BufReadPost * cd %:p:h
 " df:     删除直到:的内容
 " yf:     复制直到:的内容
 " cf:     删除直到:并进入插入模式
-
