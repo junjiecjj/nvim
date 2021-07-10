@@ -2392,7 +2392,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-""""""""""""""""""""""""""""" Vim-multiple-cursors(vim多重光标选取插件)   """""""""""""""""""""""""""""
+""""""""""""""""""""""""""""" mg979/vim-visual-multi(vim多重光标选取插件)   """""""""""""""""""""""""""""
 let g:VM_theme = 'iceblue'
 let g:VM_maps = {}
 let g:VM_maps["Select Cursor Down"] = '<C-Down>'
@@ -2544,7 +2544,6 @@ hi FloatermBorder guibg=orange guifg=cyan ctermbg=220  ctermfg=46
 hi FloatermNC guibg=gray   ctermbg=246
 "floaterm设置
 let g:floaterm_shell='/bin/zsh'
-
 let g:floaterm_position = 'center'
 let g:floaterm_wintype = 'floating'
 noremap  ftn :FloatermNew<CR>
@@ -2735,14 +2734,14 @@ inoremap <c-c> <ESC>
 " 延迟弹窗,这样提示更加流畅
 let ncm2#popup_delay = 5
 "输入几个字母开始提醒:[[最小优先级,最小长度]]
-"如果是输入的是[[1,3],[7,2]],那么优先级在1-6之间,会在输入3个字符弹出,如果大于等于7,则2个字符弹出----优先级概念请参考文档中 ncm2-priority 
+"如果是输入的是[[1,3],[7,2]],那么优先级在1-6之间,会在输入3个字符弹出,如果大于等于7,则2个字符弹出----优先级概念请参考文档中 ncm2-priority
 let ncm2#complete_length = [[1, 1]]
 "模糊匹配模式,详情请输入:help ncm2查看相关文档
 let g:ncm2#matcher = 'substrfuzzy'
 " 回车即选中当前项
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 "使用tab键向下选择弹框菜单
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>" 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
 "inoremap <expr> <S> pumvisible() ? "\<C-p>" : "\<S>"
 " 指定 Python 版本
@@ -3976,10 +3975,14 @@ inoremap <C-M-down> <Esc><C-e>a
 " 光标在当前行的基础上再跳 20 行：20+enter 键
 
 " U/E keys for 5 times u/e (faster navigation)
-nnoremap U 5k
-nnoremap D 5j
+nnoremap K 5k
+nnoremap J 5j
+nnoremap U 10k
+nnoremap D 10j
 nnoremap h 5h
 nnoremap l 5l
+nnoremap H 10h
+nnoremap L 10l
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 " 向左分屏
