@@ -2543,9 +2543,8 @@ hi Floaterm guibg=black   ctermbg=232
 hi FloatermBorder guibg=orange guifg=cyan ctermbg=220  ctermfg=46
 hi FloatermNC guibg=gray   ctermbg=246
 "floaterm设置
-set shell=/usr/bin/bash
-hi Floaterm guibg=black
-hi FloatermBorder guibg=none guifg=cyan
+let g:floaterm_shell='/bin/zsh'
+
 let g:floaterm_position = 'center'
 let g:floaterm_wintype = 'floating'
 noremap  ftn :FloatermNew<CR>
