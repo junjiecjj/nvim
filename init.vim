@@ -115,7 +115,8 @@ Plug 'mileszs/ack.vim'                          " 强大的文本搜索工具
 Plug 'easymotion/vim-easymotion'                " 强大的搜索定位，快速移动
 Plug 'tpope/vim-surround'                         "快速将括号、‘’、“”、[]等替换
 
-"代码调试
+
+" 代码调试
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
 
 
@@ -223,9 +224,10 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'fatih/vim-go',{ 'for': ['go', 'vim-plug'], 'tag': '*' }        " go主要插件
 
 
-Plug 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim'       "快速跳转
 
-" Markdown
+
+"Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'   , {'for': 'markdown'}
@@ -271,6 +273,7 @@ Plug 'prettier/vim-prettier', {
 call plug#end()
 
 
+:set vb t_vb=        "可以关闭错误提示音
 set secure   "会关闭项目中的 shell autocmd write 等命令。
 
 
@@ -380,8 +383,6 @@ set selection=inclusive
 "set fillchars=vert:\ ,stl:\ ,stlnc:\
 set fillchars=vert:\|
 
-" 进入当前编辑的文件的目录
-autocmd BufEnter * exec "cd %:p:h"
 
 " 设置路径，多个路径用逗号分隔
 set path+=**
@@ -604,7 +605,11 @@ map \fr 10zl
 " ===
 " 打开新标签页并在新标签页打开终端
 "nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
-nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
+" nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
+
+" 打开终端并切换到输入模式
+map <leader>z :sp term://zsh<CR><c-w>J:res 10<CR>A
+tnoremap <Esc> <C-\><C-n>
 
 
 " 上下分屏并在下方打开终端
@@ -628,19 +633,28 @@ noremap <LEADER>q <C-w>j:q<CR>
 
 if has('nvim')
     " map <Leader>ev :e ~/.config/nvim/init.vim<CR>  "新缓冲去打开文件"
-    map <Leader>ev :tabe ~/.config/nvim/init.vim<CR>    "新标签页打开"
+    map <Leader>e :tabe ~/.config/nvim/init.vim<CR>    "新标签页打开"
 else
     " map <Leader>ev :e ~/.vimrc<CR>
-    map <Leader>ev :tabe ~/.vimrc<CR>
+    map <Leader>e :tabe ~/.vimrc<CR>
 endif
 
 if has('nvim')
-    map <Leader>sv :source  ~/.config/nvim/init.vim<cr>
+    map <Leader>s :source  ~/.config/nvim/init.vim<cr>
 else
-    map <Leader>sv :source  ~/.vimrc<cr>
+    map <Leader>s :source  ~/.vimrc<cr>
 endif
 
+" 快速编辑 init.vim
+map <leader>e :e! ~/.config/nvim/init.vim<CR>
 
+" 自动命令，每次写入.vimrc后，都会执行这个自动命令，source一次~/.vimrc
+" autocmd! bufwritepost $HOME/.vimrc source %
+autocmd! BufWritePost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
+" 读文件时自动设定当前目录为刚读入文件所在的目录
+" autocmd BufReadPost * cd %:p:h
+" 进入当前编辑的文件的目录
+autocmd BufEnter * exec "cd %:p:h"
 
 " Indentation
 nnoremap < <<
@@ -3515,11 +3529,53 @@ endif
 
 """"""""""""""""""""""""""""any-jump配置"""""""""""""""""""""""""
 
-nnoremap j :AnyJump<CR>
+nnoremap <Leader>j :AnyJump<CR>
+
+" Visual mode: jump to selected text in visual mode
+xnoremap <leader>j :AnyJumpVisual<CR>
+
+" Normal mode: open previous opened file (after jump)
+nnoremap <leader>ab :AnyJumpBack<CR>
+
+" Normal mode: open last closed search window again
+nnoremap <leader>al :AnyJumpLastResults<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
+" Or override all default colors
+let g:any_jump_colors = {
+      \"plain_text":         "Comment",
+      \"preview":            "Comment",
+      \"preview_keyword":    "Operator",
+      \"heading_text":       "Function",
+      \"heading_keyword":    "Identifier",
+      \"group_text":         "Comment",
+      \"group_name":         "Function",
+      \"more_button":        "Operator",
+      \"more_explain":       "Comment",
+      \"result_line_number": "Comment",
+      \"result_text":        "Statement",
+      \"result_path":        "String",
+      \"help":               "Comment"
+      \}
 
+" Disable default any-jump keybindings (default: 0)
+let g:any_jump_disable_default_keybindings = 1
+
+" Remove comments line from search results (default: 1)
+let g:any_jump_remove_comments_from_results = 1
+
+" Custom ignore files
+" default is: ['*.tmp', '*.temp']
+let g:any_jump_ignored_files = ['*.tmp', '*.temp']
+
+" Search references only for current file type
+" (default: false, so will find keyword in all filetypes)
+let g:any_jump_references_only_for_current_filetype = 0
+
+" Disable search engine ignore vcs untracked files
+" (default: false, search engine will ignore vcs untracked files)
+let g:any_jump_disable_vcs_ignore = 0
 """"""""""""""""""""''prettier/vim-prettier配置""""""""""""""""""""""""""""""
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
@@ -3797,6 +3853,10 @@ set complete-=t " disable searching tags
 
 "删除行尾空格
 nnoremap ;se  :%s/\s\+$//g<CR>
+" 去除空白
+nmap wb :%s/\s\+$//ge<CR>
+autocmd BufWritePre *.lua,*.[hcm],*.cpp,*.c,*.mm,*.sh,*.py normal wb
+
 
 "删除行首空格
 nnoremap ;sh  :%s/^\s*//g<CR>
@@ -3975,12 +4035,12 @@ inoremap <C-M-down> <Esc><C-e>a
 " 光标在当前行的基础上再跳 20 行：20+enter 键
 
 " U/E keys for 5 times u/e (faster navigation)
-nnoremap K 5k
-nnoremap J 5j
-nnoremap U 10k
-nnoremap D 10j
+nnoremap k 5k
+nnoremap j 5j
 nnoremap h 5h
 nnoremap l 5l
+nnoremap U 10k
+nnoremap D 10j
 nnoremap H 10h
 nnoremap L 10l
 
@@ -4423,7 +4483,7 @@ func! CompileRunGcc()
   elseif &filetype == 'vimwiki'
     exec "MarkdownPreview"
   if &filetype == 'vim'
-    exec "source ~/.config/nvim/init.vim"
+    " exec "source ~/.config/nvim/init.vim"
   endif
 endfunc
 
@@ -4603,12 +4663,6 @@ endfunc
 """"""""""""""""""""""""""""""""""""""新文件标题""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-:set vb t_vb=
-"自动命令，每次写入.vimrc后，都会执行这个自动命令，source一次~/.vimrc
-" autocmd! bufwritepost $HOME/.vimrc source %
-autocmd! bufwritepost .vimrc source   ~/.vimrc
-" 读文件时自动设定当前目录为刚读入文件所在的目录
-autocmd BufReadPost * cd %:p:h
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "##################################################################
