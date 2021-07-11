@@ -142,7 +142,7 @@ Plug 'glepnir/dashboard-nvim'             " 启动vim时启动界面美化
 Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
-
+Plug 'chxuan/change-colorscheme'         "快速改变颜色主题
 
 Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
@@ -2977,14 +2977,14 @@ highlight link EchoDocPopup Pmenu
 """"""""""""""""""""""""""""""""""""""" change-colorscheme 配置  """""""""""""""""""""""""""""""""""""""
 
 map <F12> :NextColorScheme<CR>
-map <Leader>nc :NextColorScheme<CR>
+map nc :NextColorScheme<CR>
 imap <F12> <ESC> :NextColorScheme<CR>
-imap <Leader>nc <ESC> :NextColorScheme<CR>
+" imap <Leader>nc <ESC> :NextColorScheme<CR>
 
 map <F11> :PreviousColorScheme<CR>
-map <Leader>pc :PreviousColorScheme<CR>
+map pc :PreviousColorScheme<CR>
 imap <F11> <ESC> :PreviousColorScheme<CR>
-imap <Leader>pc <ESC> :PreviousColorScheme<CR>
+" imap <Leader>pc <ESC> :PreviousColorScheme<CR>
 
 
 
