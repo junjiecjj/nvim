@@ -1563,7 +1563,7 @@ vmap . S>
 " # go
 " ./install_gadget.py --enable-go
 
-let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 function! s:read_template_into_buffer(template)
     " has to be a function to avoid the extra space fzf#run insers otherwise
     execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
@@ -3644,6 +3644,7 @@ hi User8 cterm=None ctermfg=249 ctermbg=240
 " hi clear
 
 
+
 if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
     let ayucolor="light"  " for light version of theme
@@ -4404,15 +4405,15 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""C语言的编译运行"""""""""""""""""""""""""""""""""""""""""
-"一键执行python代码
-map <F5> :call RunPython()<CR> "一键执行python代码
-
-func! RunPython()
-    exec "W"
-    if &filetype=='python'
-        exec"!time ipython %"
-    endif
-endfunc                       "或者把python3.6改为python解释器的位置：/home/jack/anaconda3/bin/python3
+" "一键执行python代码
+" map <F5> :call RunPython()<CR> "一键执行python代码
+"
+" func! RunPython()
+"     exec "W"
+"     if &filetype=='python'
+"         exec"!time ipython %"
+"     endif
+" endfunc                       "或者把python3.6改为python解释器的位置：/home/jack/anaconda3/bin/python3
 
 
 "C,C++的调试
