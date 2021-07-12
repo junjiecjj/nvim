@@ -1,0 +1,80 @@
+{
+    "configurations": {
+        "Python: Attach To Vim": {
+            "variables": {
+                "port": "5678",
+                "host": "localhost"
+            },
+            "adapter": "multi-session",
+            "configuration": {
+                "request": "attach"
+            }
+        },
+        "Python: Run current script": {
+            "adapter": "debugpy",
+            "configuration": {
+                "request": "launch",
+                "program": "${file}",
+                "args": ["*${args:--update-gadget-config}"],
+                "justMyCode#json": "${justMyCode:true}"
+            }
+        },
+        "Cpp: Launch": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "name": "Cpp: Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/a.out",
+                "args": [],
+                "cwd": "${workspaceRoot}",
+                "environment": [],
+                "externalConsole": true,
+                "MIMode": "gdb"
+            }
+        },
+        "Cpp: Attach": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "name": "Cpp: Attach",
+                "type": "cppdbg",
+                "request": "attach",
+                "program": "${workspaceRoot}/a.out",
+                "MIMode": "gdb"
+            }
+        },
+        "Vim - run a test": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/src/vim",
+                "args": [
+                    "-f",
+                    "-u",
+                    "unix.vim",
+                    "-U",
+                    "NONE",
+                    "--noplugin",
+                    "--not-a-term",
+                    "-S",
+                    "runtest.vim",
+                    "${Test}.vim"
+                ],
+                "cwd": "${workspaceRoot}/src/testdir",
+                "environment": [
+                    {
+                        "name": "VIMRUNTIME",
+                        "value": "${workspaceRoot}/runtime"
+                    }
+                ],
+                "externalConsole": true,
+                "stopAtEntry": true,
+                "MIMode": "lldb",
+                "logging": {
+                    "engineLogging": false
+                }
+            }
+        }
+    }
+}
