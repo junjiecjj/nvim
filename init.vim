@@ -1535,6 +1535,21 @@ nmap ss <Plug>(easymotion-s2)
 " gS(          hello world   ->         (
 "                                           hello world
 "                                       )
+vmap " S"
+vmap ' S'
+vmap ` S`
+vmap [ S[
+vmap ( S(
+vmap { S{
+vmap } S}
+vmap ] S]
+vmap ) S)
+vmap . S>
+
+" 比如下面代码我想快速在 iostream加上<>那么可以这样操作：
+"
+" ve 选中iostream这个单词
+" > 给iostream加上尖括号
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -2172,7 +2187,7 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 """"""""""""""""""""""" godlygeek/tabular插件""""""""""""""""
-vmap ;t= :Tabularize /=
+vmap ;t= :Tabularize /=<CR>
 
 
 " :Tabularize /,/ : 将整个缓冲区的所有行按照 , 符号进行对齐
@@ -3628,18 +3643,6 @@ hi User8 cterm=None ctermfg=249 ctermbg=240
 " "/usr/share/vim/vim81/colors/ 目录中包含了大多数文件类型的语法高亮插件。
 " hi clear
 
-map <Leader>c1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme xtermlight<CR>
-map <Leader>c2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_color<CR>
-map <Leader>c3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_color<CR>
-map <Leader>c4 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_color<CR>
-map <Leader>c5 :set background=dark<CR>:colorscheme vividchalk<CR>AirlineTheme base16_color<CR>
-
-map <Leader>c6 :set background=light<CR>:colorscheme colorful<CR>AirlineTheme xtermlight<CR>
-map <Leader>c7 :set background=light<CR>:colorscheme NeoSolarized<CR>AirlineTheme solarized_flood<CR>
-map <Leader>c8 :set background=light<CR>:colorscheme solarized8_flat<CR>AirlineTheme biogoo<CR>
-map <Leader>c9 :set background=light<CR>:colorscheme flattened_light<CR>AirlineTheme light<CR>
-map <Leader>c10 :set background=light<CR>:colorscheme vividchalk<CR>AirlineTheme dracula<CR>
-
 
 if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
@@ -4255,7 +4258,7 @@ highlight TabLineSel     term=bold         cterm=bold   ctermbg=Red  ctermfg=yel
 
 " 定义颜色
 hi SelectTabLine     term=Bold     cterm=Bold         ctermfg=196  guifg=#FF0000     ctermbg=black  guibg=#000000
-hi SelectPageNum     term=Bold     cterm=Bold         ctermfg=Red   guifg=#FF0000    ctermbg=black  guibg=#000000
+hi SelectPageNum     term=Bold     cterm=Bold         ctermfg=red   guifg=#FF0000    ctermbg=black  guibg=#000000
 hi Selectkuohao      term=Bold     cterm=Bold         ctermfg=10   guifg=#00FF00     ctermbg=black  guibg=#000000
 
 
