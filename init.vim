@@ -1604,12 +1604,12 @@ let g:dashboard_preview_file_width = 80
 let g:dashboard_default_executive ='fzf'
 nmap ;ss :<C-u>SessionSave<CR>
 nmap ;sl :<C-u>SessionLoad<CR>
-nnoremap <silent> ;fh :DashboardFindHistory<CR>
-nnoremap <silent> ;ff :DashboardFindFile<CR>
-nnoremap <silent> ;tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> ;dh :DashboardFindHistory<CR>
+nnoremap <silent> ;df :DashboardFindFile<CR>
+nnoremap <silent> ;dc :DashboardChangeColorscheme<CR>
 nnoremap <silent> ;fa :DashboardFindWord<CR>
 nnoremap <silent> ;fb :DashboardJumpMark<CR>
-nnoremap <silent> ;cn :DashboardNewFile<CR>
+nnoremap <silent> ;dn :DashboardNewFile<CR>
 let g:dashboard_custom_shortcut={
 \ 'last_session'       : 'SPC s l',
 \ 'find_history'       : 'SPC f h',
@@ -1632,16 +1632,16 @@ let g:dashboard_custom_shortcut={
 
 """"""""""""""""""""""""""nvim-telescope/telescope.nvim配置"""""""""""""""""""""""""""""""""
 " Find files using Telescope command-line sugar.
-nnoremap [ff <cmd>Telescope find_files<cr>
-nnoremap [fg <cmd>Telescope live_grep<cr>
-nnoremap [fb <cmd>Telescope buffers<cr>
-nnoremap [fh <cmd>Telescope help_tags<cr>
+nnoremap [tf <cmd>Telescope find_files<cr>
+nnoremap [tg <cmd>Telescope live_grep<cr>
+nnoremap [tb <cmd>Telescope buffers<cr>
+nnoremap [th <cmd>Telescope help_tags<cr>
 
 " Using lua functions
-nnoremap ]ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap ]fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap ]fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap ]fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap ]tf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap ]tg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap ]tb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap ]th <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 highlight TelescopeSelection      guifg=#D79921 gui=bold  ctermfg=11 " selected item
