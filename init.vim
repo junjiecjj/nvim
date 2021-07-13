@@ -45,6 +45,7 @@ call plug#begin('~/.config/nvim/plugged')
 " :PlugUpgrade 升级自身
 
 "以下是颜色主题
+Plug 'flazz/vim-colorschemes'       "大批颜色集合
 Plug 'liuchengxu/space-vim-theme'
 Plug 'ashfinal/vim-colors-violet'
 Plug 'nlknguyen/papercolor-theme'
@@ -228,13 +229,16 @@ Plug 'pechorin/any-jump.vim'       "快速跳转
 
 
 "Markdown
+Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
 Plug 'plasticboy/vim-markdown'
-Plug 'suan/vim-instant-markdown'   , {'for': 'markdown'}
+Plug 'suan/vim-instant-markdown'   , {'for': 'markdown', 'do': 'yarn install'}
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
+Plug 'ferrine/md-img-paste.vim'        "从粘贴板 paste
+Plug 'demonlord1997/markdown-org', {'for':'markdown'}
 
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
@@ -567,7 +571,7 @@ map <leader>sa ggVG"
 noremap s <nop>
 
 " 定义快捷键关闭当前分割窗口
-nmap ;q :q<CR>
+" nmap ;q :q<CR>
 " 定义快捷键保存当前窗口内容并离开
 nmap ;wq :wq<CR>
 nmap ;w :w<CR>
@@ -608,7 +612,7 @@ map \fr 10zl
 " nnoremap \t :tabe<CR>:term sh -c 'st'<CR>
 
 " 打开终端并切换到输入模式
-map <leader>z :sp term://zsh<CR><c-w>J:res 10<CR>A
+map <leader>t :sp term://zsh<CR><c-w>J:res 10<CR>A
 tnoremap <Esc> <C-\><C-n>
 
 
@@ -1023,9 +1027,9 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " ********** """"""""""""""""""""""""""""""vim-utils/vim-man" **********
 " <leader>m 新建水平窗口打开man
-map <leader>m <Plug>(Man)
+map <leader>hh <Plug>(Man)
 " <leader>v 新建垂直窗口打开man
-map <leader>v <Plug>(Vman)
+map <leader>vh <Plug>(Vman)
 
 
  " ********** "chrisbra/ChangesPlugin 文件显示修改痕迹" **********
@@ -2787,27 +2791,6 @@ au User Ncm2Plugin call ncm2#register_source({
         \ 'complete_pattern': ':\s*',
         \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
         \ })
-""""""""""""""""""""""""""""""""""" AutoComplPop配置 """""""""""""""""
-" 输入一个字母即可补全
-"let g:acp_behaviorKeywordLength = 1
-" 自动弹出是由键映射，对于通过移动来避免自动弹出是很有用
-let g:AutoComplPop_MappingDriven = 1
-" 修改GUI高亮参数 该设置全局有效
-hi Pmenu     ctermfg=0    ctermbg=241    guibg=#444444
-hi PmenuSel   ctermfg=196    ctermbg=251   guibg=#555555 guifg=#ffffff
-
-" 加载PHP函数字典，配置PHP函数自动补全，注意文件位置
-au FileType php setlocal dict+=$VIM/vimfiles/bundle/AutoComplPop/dict/php_funclist.txt
-" PHP提示触发
-if !exists('g:AutoComplPop_Behavior')
-    let g:AutoComplPop_Behavior = {}
-    let g:AutoComplPop_Behavior['php'] = []
-    call add(g:AutoComplPop_Behavior['php'], {
-                \ 'command' : "\<C-x>\<C-o>",
-                \ 'pattern' : printf('\(->\|::\|\$\)\k\{%d,}$', 0),
-                \ 'repeat' : 0,
-                \ })
-endif
 
 """""""""""""""""""""""""""""""""""Ycraigemery/vim-autotag 配置 """"""""""""""""""""""""""""""""""""""""""
 let g:autotagTagsFile=".tags"
@@ -2835,9 +2818,7 @@ autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
 
 
 " 将开启tagbar的快捷键设置为　 tb
-nmap  tb :TagbarToggle<CR>
-nmap tb :TagbarToggle<CR>
-map tb :TagbarToggle<CR>
+nnoremap  tb :TagbarToggle<CR>
 map! tb <Esc> :TagbarToggle<CR>
 "开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_autopreview = 0
@@ -2991,18 +2972,15 @@ highlight link EchoDocPopup Pmenu
 
 """"""""""""""""""""""""""""""""""""""" change-colorscheme 配置  """""""""""""""""""""""""""""""""""""""
 
-map <F12> :NextColorScheme<CR>
+" map <F12> :NextColorScheme<CR>
 map nc :NextColorScheme<CR>
-imap <F12> <ESC> :NextColorScheme<CR>
+" imap <F12> <ESC> :NextColorScheme<CR>
 " imap <Leader>nc <ESC> :NextColorScheme<CR>
 
-map <F11> :PreviousColorScheme<CR>
+" map <F11> :PreviousColorScheme<CR>
 map pc :PreviousColorScheme<CR>
-imap <F11> <ESC> :PreviousColorScheme<CR>
+" imap <F11> <ESC> :PreviousColorScheme<CR>
 " imap <Leader>pc <ESC> :PreviousColorScheme<CR>
-
-
-
 
 
 
@@ -3016,13 +2994,28 @@ noremap <Leadf>ct :!ctags -R<CR>
 
 
 """"""""""""""""""""""""""""iamcco/markdown-preview.nvim配置""""""""""""""""""""""""""
+"  设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览
+let g:mkdp_auto_start = 1
 
-let g:mkdp_auto_start = 0
+" " 在切换 buffer 的时候自动关闭预览窗口，设置为 0 则在切换 buffer 的时候不自动关闭预览窗口
 let g:mkdp_auto_close = 1
+
+" 在切换 buffer 的时候自动关闭预览窗口，设置为 0 则在切换 buffer 的时候不自动关闭预览窗口
+let g:mkdp_auto_close = 1
+" " 设置为 1 则只有在保存文件，或退出插入模式的时候更新预览，默认为 0，实时更新预览
 let g:mkdp_refresh_slow = 0
+
+" 指定预览主题，默认Github
+let g:mkdp_markdown_css=''
+" " 设置为 1 则所有文件都可以使用 MarkdownPreview 进行预览，默认只有 markdown文件可以使用改命令
 let g:mkdp_command_for_global = 0
+
+" 设置为 1, 在使用的网络中的其他计算机也能访问预览页面默认只监听本地（127.0.0.1），其他计算机不能访问
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
+" 指定浏览器路径
+" let g:mkdp_path_to_chrome="chrome"
+let g:mkdp_path_to_chrome = "google-chrome-stable"
 let g:mkdp_browser = 'google-chrome-stable'
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
@@ -3047,9 +3040,11 @@ let g:mkdp_page_title = '「${name}」'
 
 
 " example
-nmap <M-p> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <M-t> <Plug>MarkdownPreviewToggle
+nmap <silent> <M-p> <Plug>MarkdownPreview     " 普通模式
+imap <silent> <M-p> <Plug>MarkdownPreview     " 插入模式
+nmap <silent> <M-s> <Plug>MarkdownPreviewStop  " 普通模式
+imap <silent> <M-s> <Plug>MarkdownPreviewStop  " 插入模式
+nmap <silent> <M-t> <Plug>MarkdownPreviewToggle
 
 let g:vimwiki_list = [{
   \ 'automatic_nested_syntaxes':1,
@@ -3088,6 +3083,24 @@ autocmd Filetype markdown inoremap ,l --------<Enter>
 
 
 
+""""""""""""""""""""""""" demonlord1997/markdown-org 插件配置  """""""""""""""""""""""""""""""""""""""""""
+
+let g:default_quick_keys =  0  " 1将启用默认配置，0不启用
+let g:org#style#border = 2
+let g:org#style#bordercolor = 'keyword'
+let g:org#style#color = 'Identifier'
+let g:language_path = {
+            \ "python":"python",
+            \ "python3":"python3",
+            \ "go": "go",
+            \ "c": "gcc",
+            \ "cpp": "g++",
+            \ "c++": "g++",
+            \ "javascript": "node",
+            \ }
+nnoremap <silent> <M-b> :call org#main#runCodeBlock()<CR>
+nnoremap <silent> <S-M-l> :call org#main#runLanguage()<CR>
+
 """"""""""""""""""""""""" suan/vim-instant-markdown 插件配置  """""""""""""""""""""""""""""""""""""""""""
 
 "  vim-instant-markdown 是一款实时显示 markdown 效果的插件，要使用这款插件需要先安装 node.js 和 npm，可以在终端执行
@@ -3100,7 +3113,7 @@ autocmd Filetype markdown inoremap ,l --------<Enter>
 
 "安装完成以后，你只要打开一个.md 文件，Vim 就会自动打开一个浏览器窗口，实现实时预览。如果你不想自动打开预览窗口的话，你可以在 /etc/vim/vimrc 中写入
 let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 let g:instant_markdown_autoscroll = 1
 " map <F12> :InstantMarkdownPreview<CR>
 map <Leader>md :InstantMarkdownPreview<CR>
@@ -3109,6 +3122,14 @@ au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown 
 
 let g:jsx_ext_required = 0
 
+""""""""""""""""""ferrine/md-img-paste.vim配置""""""""""""""""""""""""""""
+
+"设置默认储存文件夹。这里表示储存在当前文档所在文件夹下的'pic'文件夹下，相当于 ./pic/
+let g:mdip_imgdir = 'pic' 
+"设置默认图片名称。当图片名称没有给出时，使用默认图片名称
+let g:mdip_imgname = 'image'
+"设置快捷键，个人喜欢 Ctrl+p 的方式，比较直观
+autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>F%i
 
 """"""""""""""""""mzlogin/vim-markdown-toc""""""""""""""""""""""""""""
 
@@ -3453,9 +3474,9 @@ nmap <Leader>9 <Plug>AirlineSelectTab9
 " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
 nmap ;- <Plug>AirlineSelectPrevTab
 " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
-nmap ;+ <Plug>AirlineSelectNextTab
+nmap ;= <Plug>AirlineSelectNextTab
 " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
-nmap <leader>q :bp<cr>:bd #<cr>
+nmap ;q :bp<cr>:bd #<cr>
 " 修改了一些个人不喜欢的字符
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -3948,28 +3969,28 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 " nnoremap(normal)模式下生效
 
 
-" Ctrl+A全选，Ctrl+C复制，Ctrl+V粘贴
+" alt+A全选，alt+C复制，alt+V粘贴
 "sudo apt-get install vim-gnome
-noremap <C-a> ggvG$
-inoremap <C-a> <Esc>ggvG$
+noremap <M-a> ggvG$
+inoremap <M-a> <Esc>ggvG$
 " Ctrl+A全选复制，
 "noremap <C-a> ggyG$
 "inoremap <C-a> <Esc>ggyG$
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 " vnoremap <C-C> "+y<Esc>
-nnoremap <C-c> "+y
-vnoremap <C-c> "+y<Esc>
+nnoremap <M-c> "+y
+vnoremap <M-c> "+y<Esc>
 
 "nnoremap <C-V> "+p
 "inoremap <C-V> <Esc>"+pa
-nnoremap <C-v> "+p
-inoremap <C-v> <Esc>"+pa
-nnoremap <C-v> "+gp
+nnoremap <M-v> "+p
+inoremap <M-v> <Esc>"+pa
+nnoremap <M-v> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
-map <C-x> "+x
-inoremap <C-x> <Esc>"+x
+map <M-x> "+x
+inoremap <M-x> <Esc>"+x
 
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
@@ -4110,13 +4131,13 @@ nnoremap <space> za
 
 " " 移动窗口
 " alt+j当前窗口向上面移动
-nnoremap <A-j> <C-w>J
+nnoremap <M-j> <C-w>J
 " alt+k当前窗口向上方移动
-nnoremap <A-k> <C-w>K
+nnoremap <M-k> <C-w>K
 " alt+l 当前窗口向右边移动
-nnoremap <A-l> <C-w>L
+nnoremap <M-l> <C-w>L
 " alt+h当前窗口向左边移动
-nnoremap <A-h> <C-w>H
+nnoremap <M-h> <C-w>H
 
 
 " 多窗口分屏时改变窗口大小 +/- 3
