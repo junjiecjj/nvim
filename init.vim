@@ -2873,12 +2873,10 @@ let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 20
 
 "设置taglist打开关闭的快捷键F10，就是F10会显示代码中的函数，变量，类，宏等
-map tl <Esc>:TlistToggle<Cr>
-
+" map tl <Esc>:TlistToggle<Cr>
 
 "将 \t 表示为在命令行模式下输入命令：
-nmap  tl <Esc>:TlistToggle<Cr>
-
+nnoremap  tl <Esc>:TlistToggle<Cr>
 
 
 
