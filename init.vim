@@ -3675,7 +3675,7 @@ if strftime('%H') >= 7 && strftime('%H') < 22
         \ 'phpx', 'professional','rainbow_autumn','relaxedgreen','redstring','NeoSolarized',
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
-        \ 'violet','space_vim_theme',
+        \ 'violet','space_vim_theme','Atelier_LakesideLight','Atelier_SeasideLight',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
