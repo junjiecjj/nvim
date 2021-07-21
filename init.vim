@@ -3971,11 +3971,13 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 
 " alt+A全选，alt+C复制，alt+V粘贴
 "sudo apt-get install vim-gnome
-" noremap <M-a> ggvG$
-" inoremap <M-a> <Esc>ggvG$
+" Ctrl+a全选
+noremap <C-a> ggvG$
+inoremap <C-a> <Esc>ggvG$
 " Ctrl+A全选复制，
-noremap <C-a> ggyG$
-inoremap <C-a> <Esc>ggyG$
+" noremap <C-a> ggyG$
+" inoremap <C-a> <Esc>ggyG$
+
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 nnoremap <C-c> "+y
