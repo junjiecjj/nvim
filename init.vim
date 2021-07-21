@@ -585,7 +585,9 @@ map S :w!<CR>
 map ;x :r !figlet
 " Save & quit
 
-nnoremap  V  <C-v>
+" v进入可视模式，V进入行可视模式，alt-v进入块可视模式
+nnoremap  <M-v>  <C-v>
+
 
 " Search
 map <LEADER><CR> :nohlsearch<CR>
@@ -3969,26 +3971,26 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 
 " alt+A全选，alt+C复制，alt+V粘贴
 "sudo apt-get install vim-gnome
-noremap <M-a> ggvG$
-inoremap <M-a> <Esc>ggvG$
+" noremap <M-a> ggvG$
+" inoremap <M-a> <Esc>ggvG$
 " Ctrl+A全选复制，
-"noremap <C-a> ggyG$
-"inoremap <C-a> <Esc>ggyG$
+noremap <C-a> ggyG$
+inoremap <C-a> <Esc>ggyG$
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
-" vnoremap <C-C> "+y<Esc>
-nnoremap <M-c> "+y
-vnoremap <M-c> "+y<Esc>
+nnoremap <C-c> "+y
+vnoremap <C-c> "+y<Esc>
 
-"nnoremap <C-V> "+p
-"inoremap <C-V> <Esc>"+pa
-nnoremap <M-v> "+p
-inoremap <M-v> <Esc>"+pa
-nnoremap <M-v> "+gp
+nnoremap <C-V> "+p
+inoremap <C-V> <Esc>"+pa
+nnoremap <C-v> "+gp
+" nnoremap <M-v> "+p
+" inoremap <M-v> <Esc>"+pa
+" nnoremap <M-v> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
-map <M-x> "+x
-inoremap <M-x> <Esc>"+x
+map <C-x> "+x
+inoremap <C-x> <Esc>"+x
 
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
