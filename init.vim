@@ -400,11 +400,28 @@ set listchars=tab:▸\ ,nbsp:+,trail:▫,extends:→,precedes:←
 " set listchars=tab:»·,nbsp:+,trail:·,extends:→,precedes:←
 
 "折叠
-"允许折叠
-set foldenable
+"允许折叠,启动vim时关闭折叠
+set nofoldenable
 
 "更具每行的缩进开启折叠 ，manual为手动折叠
 set foldmethod=indent
+" set foldmethod=syntax
+
+" 用空格代替za进行折叠代码
+nnoremap <space> za
+
+" za :打开或者关闭折叠
+" zm ：关闭所有折叠
+" zM ：关闭所有折叠及其嵌套的折叠
+" zr：打开所有折叠及其嵌套的折叠
+" zR：打开所有折叠
+" zc：折叠
+" zC：对所在范围内所有嵌套进行折叠
+" zo：展开折叠
+" zO：对所在范围内所有嵌套的折叠垫展开
+" zd：删除在光标下的折叠
+" zD：删除循环光标下的折叠，即嵌套删除折叠
+
 
 set foldlevel=100
 set tw=0
@@ -4125,12 +4142,12 @@ nnoremap <C-w> <C-W>w
 nnoremap <C-q> <C-W>q
 nnoremap <C-t> <C-W>T
 nnoremap <C-S-o> <C-W>o
-nnoremap <space> za
+
 " Ctrl-w 遍历切换窗口
 " Ctrl-q 关闭当前窗口，如果只剩最后一个了，则退出 vim
 " Ctrl-t 当前窗口移动到新标签页
 " Ctrl-shift-o 关闭出当前窗口之外的所有窗口
-" 用空格代替za进行折叠代码
+
 
 " " 移动窗口
 " alt+j当前窗口向上面移动
