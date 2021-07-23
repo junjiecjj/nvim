@@ -3970,6 +3970,7 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 
 
 " alt+A全选，alt+C复制，alt+V粘贴
+"  Ubuntu上安装的vim默认是不支持系统剪切板的，需要安装
 "sudo apt-get install vim-gnome
 " Ctrl+a全选
 noremap <C-a> ggvG$
