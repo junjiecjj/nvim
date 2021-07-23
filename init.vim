@@ -208,6 +208,7 @@ Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 
 
 " 目录树
+Plug 'vim-scripts/taglist.vim'
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
 Plug 'liuchengxu/vista.vim',  "{ 'on': ['Vista'] }       tagbar的增强版
 Plug 'mbbill/undotree'                              " Undo Tree
@@ -2886,6 +2887,9 @@ let Tlist_Use_SingleClick=1
 "taglist窗口显示在右侧，缺省为左侧
 let Tlist_Use_Right_Window = 1
 " let Tlist_Use_Right_Window = 0
+
+" 自动更新
+let Tlist_Auto_Update = 1
 
 "设置taglist窗口大小
 "let Tlist_WinHeight = 100
