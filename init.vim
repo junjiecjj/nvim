@@ -50,6 +50,10 @@ Plug 'liuchengxu/space-vim-theme'
 Plug 'ashfinal/vim-colors-violet'
 Plug 'nlknguyen/papercolor-theme'
 Plug 'nightsense/snow'
+Plug 'chriskempson/base16-vim'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'sainnhe/gruvbox-material'
 Plug 'nightsense/vimspectr'
 Plug 'nightsense/carbonized'
 Plug 'nightsense/stellarized'
@@ -129,6 +133,10 @@ Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go'
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
 Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " 提供一个专注阅读和写作的环境
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
+Plug 'dpelle/vim-LanguageTool'
+Plug 'ron89/thesaurus_query.vim'
 Plug 'junegunn/limelight.vim'           " 与 Goyo, seoul256 为同一开发者，联合使用效果最佳。不适用于写代码和看代码
 Plug 'junegunn/vim-peekaboo'            "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
 " Plug 'matze/vim-move'                   " 代码块移动
@@ -439,12 +447,19 @@ set  nowrap
 " set wrap
 
 "只有遇到指定的符号（比如空格、连词号和其他标点符号），才发生折行。也就是说，不会在单词内部折行。
-set  linebreak
+" set  linebreak
+" 我们可以使用以下命令，取消自定义折行：
+set nolinebreak
+
 
 "指定折行处与编辑窗口的右边缘之间空出的字符数。"
 set  wrapmargin=2
 "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用。"
 set  sidescrolloff=15
+
+" 默认设置 set sidescroll=0 之下，当光标到达屏幕边缘时，将自动扩展显示 1/2 屏幕的文本。
+" 通过使用 set sidescroll=1 设置，可以实现更加平滑的逐个字符扩展显示。
+set sidescroll=1
 
 set  novisualbell
 "出错时，不要闪烁 set novisualbell 。
