@@ -50,6 +50,9 @@ Plug 'liuchengxu/space-vim-theme'
 Plug 'ashfinal/vim-colors-violet'
 Plug 'nlknguyen/papercolor-theme'
 Plug 'nightsense/snow'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'colepeters/spacemacs-theme.vim'
