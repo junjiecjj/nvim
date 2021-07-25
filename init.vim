@@ -842,6 +842,10 @@ if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
 
+"""""""""""""""""""""""""""  wakatime/vim-wakatime """"""""""""""""""""""""""""""
+let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
+let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
+
 
 """""""""""""""""""""""""""""""""voldikss/vim-translator设置'"""""""""""""""""
 nmap <silent> <Leader>ts <Plug>TranslateW
