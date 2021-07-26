@@ -3766,7 +3766,7 @@ else
         \ 'carbonized-dark', 'SolarizedDark_modified' , 'colorful256','github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
-        \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucrio','palenight','rigel','dogrun',
+        \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucario','palenight','rigel','dogrun',
         \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight',
         \ ]
         " \ 'vimspectr0-dark'   , 'vimspectr0-dark'    , 'vimspectr30-dark'  ,
