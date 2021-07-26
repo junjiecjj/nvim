@@ -97,6 +97,14 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'vim-scripts/donbass.vim'
 Plug 'tjammer/blandon.vim'
 Plug 'lorry-lee/vim-ayumi'
+Plug 'severij/vadelma'
+Plug 'megantiu/true.vim'
+Plug 'whzup/greent.vim'
+Plug 'stulzer/mitormk-laser'
+Plug 'atrnh/magical-girl-vim'
+Plug 'rktjmp/lush.nvim'
+Plug 'alaric/nortia.nvim'
+
 
 
 " 翻译
@@ -3750,6 +3758,7 @@ if strftime('%H') >= 7 && strftime('%H') < 22
         \ 'violet','space_vim_theme','Atelier_LakesideLight','Atelier_SeasideLight',
 	\ 'kemonofriends','one','onehalflight','lucario','gruvbox8_soft','ayumi','vim-theme',
         \ 'flatui','rakr-light','rakr','lighting','fruchtig','tatami','snowtrek','donbass','blandon',
+	\ 'vadelma','greent','fruits','nortia-nvim',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
@@ -3767,7 +3776,7 @@ else
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucario','palenight','rigel','dogrun',
-        \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight',
+        \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight','true','purpura','mitormk-laser',
         \ ]
         " \ 'vimspectr0-dark'   , 'vimspectr0-dark'    , 'vimspectr30-dark'  ,
         " \ 'vimspectr60-dark'  , 'vimspectr90-dark'   , 'vimspectr120-dark' ,
