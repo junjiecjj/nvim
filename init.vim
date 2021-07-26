@@ -3748,8 +3748,8 @@ if strftime('%H') >= 7 && strftime('%H') < 22
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
         \ 'violet','space_vim_theme','Atelier_LakesideLight','Atelier_SeasideLight',
-	\ 'kemonofriends','one','onehalflight','lucario','gruvbox8_soft','ayumi','vim-theme'
-        \ 'flatui','rakr-light','rakr','lighting','fruchtig','tatami','snowtrek','donbass','blandon'
+	\ 'kemonofriends','one','onehalflight','lucario','gruvbox8_soft','ayumi','vim-theme',
+        \ 'flatui','rakr-light','rakr','lighting','fruchtig','tatami','snowtrek','donbass','blandon',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
