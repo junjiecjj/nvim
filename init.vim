@@ -72,7 +72,16 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'glepnir/oceanic-material'
 Plug 'mhartington/oceanic-next'
 Plug 'Rigellute/rigel'
+Plug 'raphamorim/lucario'
+Plug 'Rigellute/shades-of-purple.vim'
+Plug 'rakr/vim-one'
+Plug 'wadackel/vim-dogrun'
+Plug 'john2x/flatui.vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'evturn/cosmic-barf'
+Plug 'kjssad/quantum.vim'
+Plug 'protesilaos/prot16-vim'
+Plug 'yassinebridi/vim-purpura'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'tamlok/detorte'
 Plug 'rakr/vim-colors-rakr'
@@ -3739,7 +3748,8 @@ if strftime('%H') >= 7 && strftime('%H') < 22
         \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
         \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
         \ 'violet','space_vim_theme','Atelier_LakesideLight','Atelier_SeasideLight',
-	\ 'kemonofriends',
+	\ 'kemonofriends','one','onehalflight','lucario','gruvbox8_soft','ayumi','vim-theme'
+        \ 'flatui','rakr-light','rakr','lighting','fruchtig','tatami','snowtrek','donbass','blandon'
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
@@ -3756,7 +3766,8 @@ else
         \ 'carbonized-dark', 'SolarizedDark_modified' , 'colorful256','github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
-        \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','tokyonight','palenight',
+        \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucrio','palenight','rigel','dogrun',
+        \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight',
         \ ]
         " \ 'vimspectr0-dark'   , 'vimspectr0-dark'    , 'vimspectr30-dark'  ,
         " \ 'vimspectr60-dark'  , 'vimspectr90-dark'   , 'vimspectr120-dark' ,
