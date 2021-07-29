@@ -3797,11 +3797,15 @@ endif
 
 " 白色：cosmic_latte，carbonized_light, ayu,NeoSolarized, blacklight, bmichaelsen, c16gui, cake16, carrot, cleanphp, colorful,  flattened_light,github,gabo,greygull, gruvbox, habLight, navajo,  nicotine,nightshade_print_modified,nightshade_print, pencil, petrel, phpx, , , ,professional,rainbow_autumn,relaxedgreen,redstring,seagull,sf,snow,solarized8 , solarized8_flat, solarized8_low, solarized8_higt,stellarized, thegoodluck,winter,zellner,
 
-autocmd FileType  c,cpp      colorscheme  kemonofriends
-autocmd FileType  sh         colorscheme  true
-autocmd FileType  python     colorscheme  PaperColor
-autocmd FileType  vim        colorscheme  seagull
-autocmd FileType  text        colorscheme  seagull
+autocmd FileType  c,cpp            colorscheme   kemonofriends
+autocmd FileType  sh               colorscheme   true
+autocmd FileType  python           colorscheme   purpura
+autocmd FileType  vim              colorscheme   donbass
+autocmd FileType  text             colorscheme   seagull
+autocmd FileType  xterm            colorscheme   ayumi
+autocmd FileType  markdown         colorscheme   donbass
+autocmd FileType  zsh              colorscheme   default
+
 
 
 "光标所在的屏幕行 ,是让光标所在行整一行都显示下划线的，就是加一条水平下划线）
