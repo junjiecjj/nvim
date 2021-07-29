@@ -3804,7 +3804,7 @@ autocmd FileType  vim              colorscheme   donbass
 autocmd FileType  text             colorscheme   seagull
 autocmd FileType  xterm            colorscheme   ayumi
 autocmd FileType  markdown         colorscheme   donbass
-autocmd FileType  zsh              colorscheme   default
+autocmd FileType  zsh              colorscheme   fruchtig
 
 
 
