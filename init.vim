@@ -3809,13 +3809,14 @@ autocmd FileType  xterm            colorscheme   ayumi
 autocmd FileType  markdown         colorscheme   donbass
 autocmd FileType  zsh              colorscheme   fruchtig
 
-nnoremap 1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_color<CR>
-nnoremap 2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_color<CR>
-nnoremap 3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_color<CR>
-nnoremap 4 :set background=dark<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_color<CR>
-nnoremap 5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_color<CR>
-nnoremap 6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_color<CR>
-nnoremap 7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_color<CR>
+nnoremap 1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_colors<CR>
+nnoremap 2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_colors<CR>
+nnoremap 3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_colors<CR>
+nnoremap 4 :set background=dark<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_colors<CR>
+nnoremap 5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_colors<CR>
+nnoremap 6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_colors<CR>
+nnoremap 7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_colors<CR>
+
 
 nnoremap 11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme dracula<CR>
 nnoremap 12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme dracula<CR>
