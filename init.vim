@@ -3799,7 +3799,7 @@ endif
 
 autocmd FileType  c,cpp      colorscheme  kemonofriends
 autocmd FileType  sh         colorscheme  true
-autocmd FileType  python     colorscheme  purpura
+autocmd FileType  python     colorscheme  PaperColor
 autocmd FileType  vim        colorscheme  seagull
 autocmd FileType  text        colorscheme  seagull
 
