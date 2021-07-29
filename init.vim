@@ -66,7 +66,10 @@ Plug 'nightsense/cosmic_latte'
 Plug 'crusoexia/vim-monokai'               " 配色方案
 Plug 'morhetz/gruvbox'                     " 配色方案
 Plug 'jnurmine/Zenburn'
+Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
+Plug 'romainl/flattened'
+Plug 'overcache/NeoSolarized'
 "主题插件
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'glepnir/oceanic-material'
@@ -104,6 +107,8 @@ Plug 'stulzer/mitormk-laser'
 Plug 'atrnh/magical-girl-vim'
 Plug 'rktjmp/lush.nvim'
 Plug 'alaric/nortia.nvim'
+Plug 'stulzer/mitormk-laser'
+Plug 'stulzer/heroku-colorscheme'
 
 
 
@@ -656,8 +661,6 @@ map S :w!<CR>
 map ;x :r !figlet
 " Save & quit
 
-" v进入可视模式，V进入行可视模式，alt-v进入块可视模式
-nnoremap  <M-v>  <C-v>
 
 
 " Search
@@ -3806,7 +3809,23 @@ autocmd FileType  xterm            colorscheme   ayumi
 autocmd FileType  markdown         colorscheme   donbass
 autocmd FileType  zsh              colorscheme   fruchtig
 
+nnoremap 1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_color<CR>
+nnoremap 2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_color<CR>
+nnoremap 3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_color<CR>
+nnoremap 4 :set background=dark<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_color<CR>
+nnoremap 5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_color<CR>
+nnoremap 6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_color<CR>
+nnoremap 7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_color<CR>
 
+nnoremap 11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme dracula<CR>
+nnoremap 12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme dracula<CR>
+nnoremap 13 :set background=light<CR>:colorscheme solarized8_flat<CR>:AirlineTheme dracula<CR>
+nnoremap 14 :set background=light<CR>:colorscheme flattened_light<CR>:AirlineTheme dracula<CR>
+nnoremap 15 :set background=light<CR>:colorscheme seagull<CR>:AirlineTheme dracula<CR>
+nnoremap 16 :set background=light<CR>:colorscheme PaperColor<CR>:AirlineTheme dracula<CR>
+nnoremap 17 :set background=light<CR>:colorscheme kemonofriends<CR>:AirlineTheme dracula<CR>
+nnoremap 18 :set background=light<CR>:colorscheme donbass<CR>:AirlineTheme dracula<CR>
+nnoremap 19 :set background=light<CR>:colorscheme greent<CR>:AirlineTheme dracula<CR>
 
 "光标所在的屏幕行 ,是让光标所在行整一行都显示下划线的，就是加一条水平下划线）
 " hi CursorLine       ctermbg=234   cterm=underline
@@ -4070,20 +4089,27 @@ inoremap <C-a> <Esc>ggvG$
 " inoremap <C-a> <Esc>ggyG$
 
 
+" v进入可视模式，V进入行可视模式，alt-v进入块可视模式
+" nnoremap  <M-v>  <C-v>
+
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
-nnoremap <C-V> "+p
-inoremap <C-V> <Esc>"+pa
-nnoremap <C-v> "+gp
-" nnoremap <M-v> "+p
-" inoremap <M-v> <Esc>"+pa
-" nnoremap <M-v> "+gp
+" nnoremap <C-V> "+p
+" inoremap <C-V> <Esc>"+pa
+" nnoremap <C-v> "+gp
+
+
+" nnoremap <M-c> "+y
+" vnoremap <M-c> "+y<Esc>
+nnoremap <M-v> "+p
+inoremap <M-v> <Esc>"+pa
+nnoremap <M-v> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
-map <C-x> "+x
-inoremap <C-x> <Esc>"+x
+map <M-x> "+x
+inoremap <M-x> <Esc>"+x
 
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
