@@ -3788,7 +3788,7 @@ else
     hi CursorColumn      guibg= #3a3a3a
 endif
 
-exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
+" exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
 " exe 'colorscheme '.themes[localtime() % len(themes)]
 " autocmd vimenter * ++nested colorscheme solarized8_higt
 
@@ -3799,7 +3799,7 @@ exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
 
 autocmd FileType  c,cpp      colorscheme  kemonofriends
 autocmd FileType  sh         colorscheme  true
-autocmd FileType  python     colorscheme  true
+autocmd FileType  python     colorscheme  purpura
 autocmd FileType  vim        colorscheme  seagull
 autocmd FileType  text        colorscheme  seagull
 
