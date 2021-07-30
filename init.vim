@@ -3725,47 +3725,35 @@ if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
-        \ 'cosmic_latte','carbonized-light', 'ayu', 'blacklight', 'bmichaelsen', 'c16gui',
-        \ 'cake16', 'carrot', 'cleanphp', 'colorful',  'flattened_light','github','PaperColor',
-        \ 'gobo','greygull', 'gruvbox', 'habiLight', 'navajo',  'nicotine','fine_blue',
-        \ 'nightshade_print_modified','nightshade_print', 'pencil', 'earth','tcsoft',
-        \ 'phpx', 'professional','rainbow_autumn','relaxedgreen','redstring','NeoSolarized',
-        \ 'seagull','sf','snow','solarized8', 'solarized8_flat', 'solarized8_low',
-        \ 'solarized8_higt','stellarized', 'thegoodluck','winter','zellner','darkblack',
-        \ 'violet','space_vim_theme','Atelier_LakesideLight','Atelier_SeasideLight',
-	\ 'kemonofriends','one','onehalflight','lucario','gruvbox8_soft','ayumi','vim-theme',
-        \ 'flatui','rakr-light','rakr','lighting','fruchtig','tatami','snowtrek','donbass','blandon',
-	\ 'vadelma','greent','fruit','nortia-nvim',
+        \ 'cosmic_latte', 'carbonized-light', 'ayu', 'c16gui', 'cake16', 'carrot', 'cleanphp', 
+        \ 'colorful',  'flattened_light', 'github', 'PaperColor', 'gobo', 'gruvbox', 'habiLight', 
+        \ 'navajo',  'nicotine', 'fine_blue', 'nightshade_print_modified', 'nightshade_print', 
+        \ 'pencil', 'earth', 'tcsoft',  'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized',
+        \ 'seagull', 'sf', 'snow', 'solarized8', 'solarized8_light_higt', 'solarized8_higt', 'stellarized',
+        \ 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
+	    \ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi', 'vim-theme',
+        \ 'flatui', 'rakr-light', 'rakr', 'lighting', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
+	    \ 'vadelma', 'greent', 'fruit', 'nortia-nvim',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
     hi CursorColumn      guibg= #bcbcbc
-        " \ 'vimspectr0-light'  , 'vimspectr0-light'   , 'vimspectr30-light' ,
-        " \ 'vimspectr60-light' , 'vimspectr90-light'  , 'vimspectr120-light',
-        " \ 'vimspectr150-light', 'vimspectr180-light' , 'vimspectr210-light',
-        " \ 'vimspectr240-light', 'vimspectr270-light' , 'vimspectr300-light',
-        " \ 'vimspectr330-light', 'vimspectrgrey-light',
 else
     set background=dark
     let ayucolor="mirage"  " for light version of theme
     let themes = [
-        \ 'carbonized-dark', 'SolarizedDark_modified' , 'colorful256','github','NeoSolarized',
+        \ 'carbonized-dark', 'SolarizedDark_modified' , 'solarized8_dark_higt' , 'colorful256','github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucario','palenight','rigel','dogrun',
         \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight','true','purpura','mitormk-laser',
         \ ]
-        " \ 'vimspectr0-dark'   , 'vimspectr0-dark'    , 'vimspectr30-dark'  ,
-        " \ 'vimspectr60-dark'  , 'vimspectr90-dark'   , 'vimspectr120-dark' ,
-        " \ 'vimspectr150-dark' , 'vimspectr180-dark'  , 'vimspectr210-dark' ,
-        " \ 'vimspectr240-dark' , 'vimspectr270-dark'  , 'vimspectr300-dark' ,
-        " \ 'vimspectr330-dark' , 'vimspectrgrey-dark' ,
     " autocmd vimenter * ++nested colorscheme lilydjwg_dark_modified
     hi CursorColumn      ctermbg=237
     hi CursorColumn      guibg= #3a3a3a
 endif
 
-" exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
+exe 'autocmd vimenter * ++nested colorscheme '.themes[localtime() % len(themes)]
 " exe 'colorscheme '.themes[localtime() % len(themes)]
 " autocmd vimenter * ++nested colorscheme solarized8_higt
 
@@ -3774,14 +3762,14 @@ endif
 
 " 白色：cosmic_latte，carbonized_light, ayu,NeoSolarized, blacklight, bmichaelsen, c16gui, cake16, carrot, cleanphp, colorful,  flattened_light,github,gabo,greygull, gruvbox, habLight, navajo,  nicotine,nightshade_print_modified,nightshade_print, pencil, petrel, phpx, , , ,professional,rainbow_autumn,relaxedgreen,redstring,seagull,sf,snow,solarized8 , solarized8_flat, solarized8_low, solarized8_higt,stellarized, thegoodluck,winter,zellner,
 
-autocmd FileType  c,cpp            colorscheme   kemonofriends
-autocmd FileType  sh               colorscheme   true
-autocmd FileType  python           colorscheme   purpura
-autocmd FileType  vim              colorscheme   donbass
-autocmd FileType  text             colorscheme   seagull
-autocmd FileType  xterm            colorscheme   ayumi
-autocmd FileType  markdown         colorscheme   donbass
-autocmd FileType  zsh              colorscheme   fruchtig
+" autocmd FileType  c,cpp            colorscheme   kemonofriends
+" autocmd FileType  sh               colorscheme   true
+" autocmd FileType  python           colorscheme   purpura
+" autocmd FileType  vim              colorscheme   donbass
+" autocmd FileType  text             colorscheme   seagull
+" autocmd FileType  xterm            colorscheme   ayumi
+" autocmd FileType  markdown         colorscheme   donbass
+" autocmd FileType  zsh              colorscheme   fruchtig
 
 nnoremap c1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_colors<CR>
 nnoremap c2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_colors<CR>
