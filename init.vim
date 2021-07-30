@@ -301,7 +301,7 @@ Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " 美化状态栏
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
-Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
+" Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
@@ -3700,44 +3700,18 @@ let g:prettier#autoformat = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 
-"""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
-function! Buf_total_num()
-    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-endfunction
-function! File_size(f)
-    let l:size = getfsize(expand(a:f))
-    if l:size == 0 || l:size == -1 || l:size == -2
-        return ''
-    endif
-    if l:size < 1024
-        return l:size.' bytes'
-    elseif l:size < 1024*1024
-        return printf('%.1f', l:size/1024.0).'k'
-    elseif l:size < 1024*1024*1024
-        return printf('%.1f', l:size/1024.0/1024.0) . 'm'
-    else
-        return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
-    endif
-endfunction
-set statusline=%<%1*[B-%n]%*
-" TOT is an abbreviation for total
-set statusline+=%2*[TOT:%{Buf_total_num()}]%*
-set statusline+=%3*\ %{File_size(@%)}\ %*
-set statusline+=%4*\ %F\ %*
-set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
-set statusline+=%6*\ %m%r%y\ %*
-set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
-set statusline+=%8*\ %P\ %*
-" default bg for statusline is 236 in space-vim-dark
-hi User1 cterm=bold ctermfg=232 ctermbg=179
-hi User2 cterm=None ctermfg=214 ctermbg=242
-hi User3 cterm=None ctermfg=251 ctermbg=240
-hi User4 cterm=bold ctermfg=169 ctermbg=239
-hi User5 cterm=None ctermfg=208 ctermbg=238
-hi User6 cterm=None ctermfg=246 ctermbg=237
-hi User7 cterm=None ctermfg=250 ctermbg=238
-hi User8 cterm=None ctermfg=249 ctermbg=240
-
+" """""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+"
+" set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
+" set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
+" set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
+" set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
+" set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
+" hi User1 cterm=none ctermfg=25 ctermbg=0
+" hi User2 cterm=none ctermfg=208 ctermbg=0
+" hi User3 cterm=none ctermfg=169 ctermbg=0
+" hi User4 cterm=none ctermfg=100 ctermbg=0
+" hi User5 cterm=none ctermfg=green ctermbg=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""自定义"配色方案"""""""""""""""""""""""""""""""""""'""'""
@@ -3809,24 +3783,23 @@ autocmd FileType  xterm            colorscheme   ayumi
 autocmd FileType  markdown         colorscheme   donbass
 autocmd FileType  zsh              colorscheme   fruchtig
 
-nnoremap 1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_colors<CR>
-nnoremap 2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_colors<CR>
-nnoremap 3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_colors<CR>
-nnoremap 4 :set background=dark<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_colors<CR>
-nnoremap 5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_colors<CR>
-nnoremap 6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_colors<CR>
-nnoremap 7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_colors<CR>
+nnoremap c1 :set background=dark<CR>:colorscheme lilydjwg_dark<CR> :AirlineTheme base16_colors<CR>
+nnoremap c2 :set background=dark<CR>:colorscheme lilydjwg_dark_modified<CR>:AirlineTheme base16_colors<CR>
+nnoremap c3 :set background=dark<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_colors<CR>
+nnoremap c4 :set background=dark<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_colors<CR>
+nnoremap c5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme base16_colors<CR>
+nnoremap c6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_colors<CR>
+nnoremap c7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_colors<CR>
 
-
-nnoremap 11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme dracula<CR>
-nnoremap 12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme dracula<CR>
-nnoremap 13 :set background=light<CR>:colorscheme solarized8_flat<CR>:AirlineTheme dracula<CR>
-nnoremap 14 :set background=light<CR>:colorscheme flattened_light<CR>:AirlineTheme dracula<CR>
-nnoremap 15 :set background=light<CR>:colorscheme seagull<CR>:AirlineTheme dracula<CR>
-nnoremap 16 :set background=light<CR>:colorscheme PaperColor<CR>:AirlineTheme dracula<CR>
-nnoremap 17 :set background=light<CR>:colorscheme kemonofriends<CR>:AirlineTheme dracula<CR>
-nnoremap 18 :set background=light<CR>:colorscheme donbass<CR>:AirlineTheme dracula<CR>
-nnoremap 19 :set background=light<CR>:colorscheme greent<CR>:AirlineTheme dracula<CR>
+nnoremap c11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme dracula<CR>
+nnoremap c12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme dracula<CR>
+nnoremap c13 :set background=light<CR>:colorscheme solarized8_flat<CR>:AirlineTheme dracula<CR>
+nnoremap c14 :set background=light<CR>:colorscheme flattened_light<CR>:AirlineTheme dracula<CR>
+nnoremap c15 :set background=light<CR>:colorscheme seagull<CR>:AirlineTheme dracula<CR>
+nnoremap c16 :set background=light<CR>:colorscheme PaperColor<CR>:AirlineTheme dracula<CR>
+nnoremap c17 :set background=light<CR>:colorscheme kemonofriends<CR>:AirlineTheme dracula<CR>
+nnoremap c18 :set background=light<CR>:colorscheme donbass<CR>:AirlineTheme dracula<CR>
+nnoremap c19 :set background=light<CR>:colorscheme greent<CR>:AirlineTheme dracula<CR>
 
 "光标所在的屏幕行 ,是让光标所在行整一行都显示下划线的，就是加一条水平下划线）
 " hi CursorLine       ctermbg=234   cterm=underline
