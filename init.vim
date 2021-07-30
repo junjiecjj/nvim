@@ -3727,13 +3727,11 @@ if strftime('%H') >= 7 && strftime('%H') < 22
     let themes = [
         \ 'cosmic_latte', 'carbonized-light', 'ayu', 'c16gui', 'cake16', 'carrot', 'cleanphp', 
         \ 'colorful',  'flattened_light', 'github', 'PaperColor', 'gobo', 'gruvbox', 'habiLight', 
-        \ 'navajo',  'nicotine', 'fine_blue', 'nightshade_print_modified', 'nightshade_print', 
-        \ 'pencil', 'earth', 'tcsoft',  'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized',
-        \ 'seagull', 'sf', 'snow', 'solarized8', 'solarized8_light_higt', 'solarized8_higt', 'stellarized',
-        \ 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
-	    \ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi', 'vim-theme',
-        \ 'flatui', 'rakr-light', 'rakr', 'lighting', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
-	    \ 'vadelma', 'greent', 'fruit', 'nortia-nvim',
+        \ 'navajo',  'fine_blue', 'nightshade_print_modified', 'nightshade_print', 'pencil', 'earth', 'tcsoft', 
+	\ 'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized', 'seagull', 'sf', 'snow', 'solarized8', 'solarized8_light_higt',
+	\ 'solarized8_higt', 'stellarized', 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
+	\ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi', 'vim-theme','flatui', 'rakr-light', 'rakr',
+	\ 'lighting', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',  'vadelma', 'greent', 'fruit', 'nortia-nvim',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
