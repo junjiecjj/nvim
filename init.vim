@@ -109,7 +109,7 @@ Plug 'rktjmp/lush.nvim'
 Plug 'alaric/nortia.nvim'
 Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/heroku-colorscheme'
-
+Plug 'vim-scripts/nightshade.vim'
 
 
 " 翻译
