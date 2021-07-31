@@ -3490,13 +3490,9 @@ let g:PaperColor_Theme_Options = {
 "选择主题
 
 let airlinethemes = [
-    \ '"alduin"', '"angr"', '"atomic"', '"ayu"', '"ayu_dark"', '"ayu_light"','"ayu_mirage"', '"badwolf"', '"base16"', '"base16_3024"','"base16_adwaita"','"papercolor"',
-    \ '"base16_apathy"','"base16_ashes"' ,'"base16_atelierdune"' ,'"base16_atelierforest"' ,'"base16_atelierheath"' ,
-    \ '"base16_atelierlakeside"' ,'"base16_atelierseaside"' ,'"base16_bespin"' ,'"base16_brewer"' ,'"base16_bright"' ,'"base16_chalk"' ,
-    \ '"base16_classic"','"base16_codeschool"','"base16_colors"' ,'"base16_default"' ,'"base16_eighties"' ,'"base16_gruvbox_dark_hard"' ,
-    \ '"base16_greenscreen"' ,'"base16_monokai"' ,'"base16_oceanicnext"' ,'"base16_shapeshifter"' ,'"base16_tomorrow"' ,'"biogoo"' ,
-    \ '"distinguished"' ,'"google_light"' ,'"jellybeans"' ,'"onedark"','"powerlineish"' ,'"seoul256"' ,'"solarized_flood"' ,'"xtermlight"' ,'"wombat"',
-    \ '"base16_google"','"base16color"','"molokai"','"papercolor"','"term_light"','"solarized"','"term_light"',
+    \ '"badwolf"',  '"base16_3024"', '"base16_apathy"', '"base16_atelierdune"' ,'"base16_atelierforest"' , '"base16_atelierseaside"' ,
+    \ '"base16_bespin"' ,'"base16_brewer"' ,'"base16_colors"'  , '"base16_shapeshifter"' , '"powerlineish"', '"solarized_flood"',
+    \ '"xtermlight"' , '"base16_google"',
     \ ]
 
 exe 'let g:airline_theme= '.airlinethemes[localtime() % len(airlinethemes)]
@@ -3725,13 +3721,15 @@ if strftime('%H') >= 7 && strftime('%H') < 22
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
-        \ 'cosmic_latte', 'carbonized-light', 'ayu', 'c16gui', 'cake16', 'carrot', 'cleanphp', 
-        \ 'colorful',  'flattened_light', 'github', 'PaperColor', 'gobo', 'gruvbox', 'habiLight', 
-        \ 'navajo',  'fine_blue', 'nightshade_print_modified', 'nightshade_print', 'pencil', 'earth', 'tcsoft', 
-	\ 'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized', 'seagull', 'sf', 'snow', 'solarized8', 'solarized8_light_higt',
-	\ 'solarized8_higt', 'stellarized', 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
-	\ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi', 'vim-theme','flatui', 'rakr-light', 'rakr',
-	\ 'lighting', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',  'vadelma', 'greent', 'fruit', 'nortia-nvim',
+        \ 'cosmic_latte', 'carbonized-light', 'ayu', 'c16gui', 'cake16', 'carrot', 'cleanphp',
+        \ 'colorful',  'flattened_light', 'github', 'PaperColor', 'gobo', 'gruvbox', 'habiLight',
+        \ 'navajo',  'fine_blue', 'nightshade_print_modified', 'nightshade_print',
+        \ 'pencil', 'earth', 'tcsoft',  'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized',
+        \ 'seagull',  'snow', 'solarized8', 'solarized8_light_higt', 'solarized8_higt', 'stellarized',
+        \ 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
+	    \ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi',
+        \ 'flatui', 'rakr-light', 'rakr', 'lightning', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
+	    \ 'vadelma', 'greent', 'fruit', 'nortia-nvim',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
     hi CursorColumn      ctermbg=250
@@ -3741,7 +3739,7 @@ else
     let ayucolor="mirage"  " for light version of theme
     let themes = [
         \ 'carbonized-dark', 'SolarizedDark_modified' , 'solarized8_dark_higt' , 'colorful256','github','NeoSolarized',
-        \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel',
+        \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'vividchalk', 'PaperColor', 'gruvbox','violet','space_vim_theme','lucario','palenight','rigel','dogrun',
         \ 'shades-of-purple','coblat','coblat2','quantum','tatami','cosmic-barf','tokyonight','true','purpura','mitormk-laser',
@@ -3777,15 +3775,15 @@ nnoremap c5 :set background=dark<CR>:colorscheme flattened_dark<CR>:AirlineTheme
 nnoremap c6 :set background=dark<CR>:colorscheme true<CR>:AirlineTheme base16_colors<CR>
 nnoremap c7 :set background=dark<CR>:colorscheme purpura<CR>:AirlineTheme base16_colors<CR>
 
-nnoremap c11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme dracula<CR>
-nnoremap c12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme dracula<CR>
-nnoremap c13 :set background=light<CR>:colorscheme solarized8_flat<CR>:AirlineTheme dracula<CR>
-nnoremap c14 :set background=light<CR>:colorscheme flattened_light<CR>:AirlineTheme dracula<CR>
-nnoremap c15 :set background=light<CR>:colorscheme seagull<CR>:AirlineTheme dracula<CR>
-nnoremap c16 :set background=light<CR>:colorscheme PaperColor<CR>:AirlineTheme dracula<CR>
-nnoremap c17 :set background=light<CR>:colorscheme kemonofriends<CR>:AirlineTheme dracula<CR>
-nnoremap c18 :set background=light<CR>:colorscheme donbass<CR>:AirlineTheme dracula<CR>
-nnoremap c19 :set background=light<CR>:colorscheme greent<CR>:AirlineTheme dracula<CR>
+nnoremap c11 :set background=light<CR>:colorscheme colorful<CR>:AirlineTheme base16_colors<CR>
+nnoremap c12 :set background=light<CR>:colorscheme NeoSolarized<CR>:AirlineTheme base16_colors<CR>
+nnoremap c13 :set background=light<CR>:colorscheme solarized8_flat<CR>:AirlineTheme base16_colors<CR>
+nnoremap c14 :set background=light<CR>:colorscheme flattened_light<CR>:AirlineTheme base16_colors<CR>
+nnoremap c15 :set background=light<CR>:colorscheme seagull<CR>:AirlineTheme base16_colors<CR>
+nnoremap c16 :set background=light<CR>:colorscheme PaperColor<CR>:AirlineTheme base16_colors<CR>
+nnoremap c17 :set background=light<CR>:colorscheme kemonofriends<CR>:AirlineTheme base16_colors<CR>
+nnoremap c18 :set background=light<CR>:colorscheme donbass<CR>:AirlineTheme base16_colors<CR>
+nnoremap c19 :set background=light<CR>:colorscheme greent<CR>:AirlineTheme base16_colors<CR>
 
 "光标所在的屏幕行 ,是让光标所在行整一行都显示下划线的，就是加一条水平下划线）
 " hi CursorLine       ctermbg=234   cterm=underline
