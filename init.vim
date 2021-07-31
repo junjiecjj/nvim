@@ -967,7 +967,6 @@ let g:coc_global_extensions = [
     \ 'coc-flow',
     \ 'coc-flutter',
     \ 'coc-fsharp',
-    \ 'coc-fzf-preview',
     \ 'coc-gist',
     \ 'coc-git',
     \ 'coc-glslx',
@@ -3738,7 +3737,7 @@ else
     set background=dark
     let ayucolor="mirage"  " for light version of theme
     let themes = [
-        \ 'carbonized-dark', 'SolarizedDark_modified' , 'solarized8_dark_higt' , 'github','NeoSolarized',
+        \ 'carbonized-dark', 'SolarizedDark_modified' , 'solarized8_dark_high' , 'github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel','dogrun',
