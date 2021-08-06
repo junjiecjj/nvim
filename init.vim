@@ -3724,7 +3724,7 @@ if strftime('%H') >= 7 && strftime('%H') < 22
         \ 'colorful',  'flattened_light', 'github', 'PaperColor', 'gobo', 'gruvbox', 'habiLight',
         \ 'navajo',  'fine_blue', 'nightshade_print_modified', 'nightshade_print',
         \ 'pencil', 'earth', 'tcsoft',  'phpx', 'professional', 'rainbow_autumn', 'NeoSolarized',
-        \ 'seagull',  'snow', 'solarized8', 'solarized8_light_higt', 'solarized8_higt', 'stellarized',
+        \ 'seagull',  'snow', 'solarized8', 'solarized8_light_high', 'solarized8_high', 'stellarized',
         \ 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
 	    \ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi',
         \ 'flatui', 'rakr-light', 'rakr', 'lightning', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
