@@ -4041,36 +4041,28 @@ map <C-Home> :call AdjustFontSize(10) <CR>
 " Ctrl+a全选
 noremap <C-a> ggvG$
 inoremap <C-a> <Esc>ggvG$
-" Ctrl+A全选复制，
+" Ctrl+A全选并复制，
 " noremap <C-a> ggyG$
 " inoremap <C-a> <Esc>ggyG$
 
 
 " v进入可视模式，V进入行可视模式，alt-v进入块可视模式
-" nnoremap  <M-v>  <C-v>
+" nmap  <M-v>  <C-v>
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
-" nnoremap <C-V> "+p
-" inoremap <C-V> <Esc>"+pa
-" nnoremap <C-v> "+gp
-
-
-" nnoremap <M-c> "+y
-" vnoremap <M-c> "+y<Esc>
-nnoremap <M-v> "+p
-inoremap <M-v> <Esc>"+pa
-nnoremap <M-v> "+gp
+nnoremap <C-space> "+p
+inoremap <C-space> <Esc>"+pa
+nnoremap <C-space> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
-map <M-x> "+x
-inoremap <M-x> <Esc>"+x
+map <C-x> "+x
+inoremap <C-x> <Esc>"+x
 
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
-
 
 
 "括号等的自动补全
