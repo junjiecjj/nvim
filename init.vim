@@ -3522,8 +3522,6 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 
 
-
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -3716,7 +3714,7 @@ autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,
 
 
 
-if strftime('%H') >= 7 && strftime('%H') < 22
+if strftime('%H') >= 7 && strftime('%H') < 24
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
@@ -3843,8 +3841,6 @@ hi Folded          guifg=#66CD00
 hi Directory       ctermfg=46               cterm=bold
 hi Directory       guifg=#00FF00               gui=bold
 
-
-
 " complete menu
 hi Pmenu      ctermfg=0       ctermbg=243
 hi Pmenu      guifg=#000000    guibg=darkgrey
@@ -3867,6 +3863,7 @@ hi  TabLineFill   ctermfg=2     ctermbg=246     term=Bold   cterm=bold
 " " 窗口尾部的'~'和 '@'
 hi NonText         ctermfg=1  cterm=bold
 hi NonText         guifg=#FF0000  cterm=bold
+
 " " "特殊键，字符和'listchars'
 hi SpecialKey         cterm=bold
 hi SpecialKey      guifg=#00FFFF  gui=bold
@@ -3924,8 +3921,6 @@ xnoremap > >gv
 "选择当前行至末尾，排除换行符
 nnoremap L g_
 
-
-
 " 重新载入保存文件
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWritePost ~/.Xdefaults call system('xrdb --merge ~/.Xdefaults')
@@ -3939,7 +3934,6 @@ set complete-=t " disable searching tags
 
 " 光标放到当前行末尾之后，默认情况下你是不可能做到的，但是可能通过设置virtualedit 选项达到目的
 "set virtualedit=all
-"
 
 
 "删除行尾空格
@@ -3958,8 +3952,6 @@ nnoremap ;ss   :g/^$/d<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 
 "由于 Tab 键在不同的编辑器缩进不一致，该设置自动将 Tab 转为空格。
 if has("autocmd")
@@ -3994,7 +3986,7 @@ autocmd FileType javascript,html,css,xml set ts=2
 autocmd FileType javascript,html,css,xml set sts=2
 
 
-""""""""""""""""""""""""""""""""""""""   """"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""Ctrl+Up变大 Down变小 Home还原(假设你原来的字体是10)"""""""""""""""""""""""""""""""""""""""""""""""
 let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
