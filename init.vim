@@ -1249,6 +1249,9 @@ let g:rcsv_colorpairs = [['red', 'red'], ['blue', 'blue'], ['green', 'green'], [
 let g:db_ui_use_nerd_fonts=1
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""" francoiscabrol/ranger.vim """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:ranger_map_keys = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""""" dkarter/bullets.vim """"""""""""""""""""""""""""""""""""""""""""""""""
 " Bullets.vim
 let g:bullets_enabled_file_types = [
