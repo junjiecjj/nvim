@@ -128,6 +128,11 @@ Plug 'RRethy/vim-illuminate'
 " 多层括号配色
 Plug 'luochen1990/rainbow'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'mechatroner/rainbow_csv'
+
+" Plug 'kristijanhusak/vim-packager'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 
 Plug 'wincent/terminus'   " 终端增强
 Plug 'craigemery/vim-autotag'
@@ -222,6 +227,7 @@ Plug 'gorodinskiy/vim-coloresque'          " 颜色符号显示对应颜色
 Plug 'vim-scripts/indentpython.vim'        " 写python代码自动缩进
 Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 Plug 'Valloric/YouCompleteMe'              " 自动补全
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
 Plug 'ncm2/ncm2'
@@ -260,6 +266,7 @@ Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 
 " 目录树
 Plug 'vim-scripts/taglist.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
 Plug 'liuchengxu/vista.vim',  "{ 'on': ['Vista'] }       tagbar的增强版
 Plug 'mbbill/undotree'                              " Undo Tree
@@ -273,6 +280,12 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'kristijanhusak/defx-git', {'on':'Defx'}
 Plug 'kristijanhusak/defx-icons'
+
+" vim集成Ranger
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'Lokaltog/neoranger'
+
 
 Plug 'fatih/vim-go',{ 'for': ['go', 'vim-plug'], 'tag': '*' }        " go主要插件
 
@@ -571,7 +584,12 @@ set cursorcolumn
 " 设置中文帮助
 set helplang=cn
 
-
+autocmd InsertLeave * call ToggleCursor()
+autocmd InsertEnter * call ToggleCursor()
+function ToggleCursor() abort
+	set cursorline!
+	set cursorcolumn!
+endfunction
 
 " 输入的命令显示出来，看的清楚些
 set showcmd
@@ -896,6 +914,17 @@ let g:translator_window_max_height=0.3
 let g:translator_default_engines=['youdao' , 'google']
 
 
+""""""""""""""""""""""" vim自带插件matchit配置 """""""""""""""""""""""""""""""""
+let b:match_word='\<begin\>:\<end\>,'
+    \ . '\<while\>:\<continue\>:<break\>:\<endwhile\>,'
+    \ . '\<if\>:\<else if\>:<else\>,'
+    \ . '\<module\>:\<endmodule\>,'
+    \ . '\<task\>:\<endtask\>,'
+    \ . '\<function\>:\<endfunction\>,'
+    \ . '\<program\>:\<endprogram\>'
+let b:matchit_ignorecase=1    "开启 忽略大小写
+
+" 设置完成后，在关键字如begin上按%，光标就会跳转到与之匹配的end上，灰常慌便
 
 """""""""""" Goyo和junegunn/limelight"""""""""""
 map <LEADER>gy    :Goyo<CR>
@@ -1161,6 +1190,9 @@ let g:rainbow_conf = {
             \       'tex': {
             \           'parentheses': [['(',')'], ['\[','\]'], ['\\begin{.*}','\\end{.*}']],
             \       },
+            \       'html': {
+            \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+            \       },
             \       'css': 0,
             \       'stylus': 0,
             \   }
@@ -1203,6 +1235,46 @@ au Syntax * RainbowParenthesesLoadBraces
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""" mechatroner/rainbow_csv """"""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd BufNewFile,BufRead *.csv   set filetype=csv_semicolon
+autocmd BufNewFile,BufRead *.dat   set filetype=csv_pipe
+let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
+let g:disable_rainbow_csv_autodetect = 1
+
+let g:rcsv_colorpairs = [['red', 'red'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['darkblue', 'darkblue'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""" kristijanhusak/vim-dadbod-ui """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:db_ui_use_nerd_fonts=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""" dkarter/bullets.vim """"""""""""""""""""""""""""""""""""""""""""""""""
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+
+let g:bullets_enable_in_empty_buffers = 0 " default = 1
+let g:bullets_set_mappings = 0 " default = 1
+let g:bullets_mapping_leader = '<M-b>' " default = ''
+let g:bullets_delete_last_bullet_if_empty = 0 " default = 1
+let g:bullets_line_spacing = 2 " default = 1
+let g:bullets_pad_right = 1 " default = 1
+" let g:bullets_pad_right = 0
+let g:bullets_max_alpha_characters = 2 " default = 2
+" let g:bullets_max_alpha_characters = 1
+let g:bullets_outline_levels = ['ROM', 'ABC', 'num', 'abc', 'rom', 'std-', 'std*', 'std+'] " default
+" let g:bullets_outline_levels = ['num', 'abc', 'std-']
+let g:bullets_renumber_on_change = 1 " default = 1
+
+
+
+
+
 
 """"""""""""""""""""""""""""""""wincent/terminus插件"""""""""""""""""""""""""""""""
 let g:TerminusFocusReporting=0
@@ -2905,6 +2977,29 @@ let g:tagbar_autopreview = 0
 let g:tagbar_sort = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+""""""""""""""""""""""""""""""""""""""""""   ludovicchabant/vim-gutentags  """"""""""""""""""""""""""""""""""""""""""""""
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+
+
 """"""""""""""""""""""""""""""""""""""""""   Tag List  """"""""""""""""""""""""""""""""""""""""""""""
 
 "TagList插件依赖ctags插件
@@ -4038,16 +4133,14 @@ inoremap <C-a> <Esc>ggvG$
 " inoremap <C-a> <Esc>ggyG$
 
 
-" v进入可视模式，V进入行可视模式，alt-v进入块可视模式
-" nmap  <M-v>  <C-v>
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
-nnoremap <C-space> "+p
-inoremap <C-space> <Esc>"+pa
-nnoremap <C-space> "+gp
+nnoremap <C-z> "+p
+inoremap <C-z> <Esc>"+pa
+nnoremap <C-z> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
 map <C-x> "+x
@@ -4056,6 +4149,8 @@ inoremap <C-x> <Esc>"+x
 " map <C-z> "+u
 " inoremap <C-z> <Esc>"+u
 
+" v进入可视模式，V进入行可视模式，alt-v进入块可视模式
+" nnoremap  <M-v>  <C-v>
 
 "括号等的自动补全
 :inoremap ( ()<ESC>i
