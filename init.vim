@@ -2615,7 +2615,6 @@ endif
 
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""  cpp-mode   """""""""""""""""""""""""""""""""""""""""""
@@ -2656,22 +2655,28 @@ imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 " tse     \begin{env}和\begin{env*}的互换        n
 " tsd     (...)和\left( ... \right )的互换       n
 
+let g:tex_flavor='latex'
+let g:vimtex_texcount_custom_arg=' -ch -total'
+"映射VimtexCountWords！\lw 在命令模式下enter此命令可统计中英文字符的个数
+au FileType tex map <buffer> <silent>  <leader>lw :VimtexCountWords!  <CR><CR>
 "let g:vimtex_view_method = ''
-let g:vimtex_view_general_viewer = 'llpp'
+" let g:vimtex_view_general_viewer = 'llpp'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method='zathura'
+let g:Tex_ViewRule_pdf='zathura'
 let g:vimtex_mappings_enabled = 0
 let g:vimtex_text_obj_enabled = 0
 let g:vimtex_motion_enabled = 0
 let maplocalleader=' '
-
+"编译过程中忽略警告信息
+let g:vimtex_quickfix_open_on_warning=0
 "如果用了自动补全的插件, 需要设置:不然会变得好慢.
 let g:vimtex_fold_manual=1
-
+let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_latexmk_options='-pdf -pdflatex="xelatex -synctex=1 \%S \%O" -verbose -file-line-error -interaction=nonstopmode'
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:Tex_ViewRule_pdf='evince'
 let g:livepreview_previewer='open -a Skim'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_view_automatic=1
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
@@ -2688,8 +2693,10 @@ let g:Tex_EnvLabelprefix_equation = "eq:"
 
 
 " imap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
-nmap <Leader>tx <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
-" 当你再按一下<F2>键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
+" nmap <Leader>tx <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
+nmap <Leader>tx <ESC>:w<CR>:!xelatex  % &&<ESC> :VimtexView<CR><CR>
+nmap tc <ESC>:VimtexTocToggle<CR><CR>
+" 当你再按一下\tx键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
 
 " imap和nmap是定义映射的命令. 开头的i代表insert模式的映射, n代表normal模式下的映射. 如果想定义一个对于所有模式的映射, 可以直接用map来定义.
 " <F2>: 是映射的快捷键.
@@ -2703,10 +2710,6 @@ nmap <Leader>tx <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
 let g:vimtex_delim_toggle_mod_list = [
             \ ['\left', '\right'],
             \ ['\mleft', '\mright'],
-            \]
-
-
-let g:vimtex_delim_toggle_mod_list = [
             \ ['\bigl', '\bigr'],
             \ ['\Bigl', '\Bigr'],
             \ ['\biggl', '\biggr'],
@@ -2715,11 +2718,48 @@ let g:vimtex_delim_toggle_mod_list = [
 
 
 
-" set spell   "经常写英文的人会用得到的，一不小心打错单词了，Vim 会在单词上加一个下划线提示。你还可以把你认为正确的特殊单词加到字典里面
-" autocmd BufNewFile,BufRead *.tex set spell     " 把这句话加到 .vimrc 里面可以在打开 .tex 文件的时候自动进行拼写检查。
-" set spelllang=en
+"这里是LaTeX编译引擎的设置，这里默认LaTeX编译方式为-pdf(pdfLaTeX),
+"vimtex提供了magic comments来为文件设置编译方式
+"例如，我在tex文件开头输入 % !TEX program = xelatex   即指定-xelatex （xelatex）编译文件
+let g:vimtex_compiler_latexmk_engines = {
+    \ 'xelatex'          : '-xelatex',
+    \ '_'                : '-xelatex',
+    \ 'pdflatex'         : '-pdf',
+    \ 'dvipdfex'         : '-pdfdvi',
+    \ 'lualatex'         : '-lualatex',
+    \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+    \ 'context (luatex)' : '-pdf -pdflatex=context',
+    \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+    \}
+let g:vimtex_compiler_latexrun_engines={'_':'xelatex'}
 
-" autocmd FileType * setlocal spell spelllang=en_us,cjk
+"这里是设置latexmk工具的可选参数
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-shell-escape',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+
+let g:vimtex_toc_config = { 
+    \ 'name' : 'TOC', 
+    \ 'layers' : ['content', 'todo', 'include'], 
+    \ 'split_width' : 25, 
+    \ 'todo_sorted' : 0, 
+    \ 'show_help' : 1, 
+    \ 'show_numbers' : 1, 
+    \}
+" 这样，我们使用命令 :VimtexTocToggle 即可唤出 vimtex 自动生成的 TOC：
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -3218,11 +3258,11 @@ let g:mkdp_page_title = '「${name}」'
 
 
 " example
-nmap <silent> <M-p> <Plug>MarkdownPreview     " 普通模式
-imap <silent> <M-p> <Plug>MarkdownPreview     " 插入模式
-nmap <silent> <M-s> <Plug>MarkdownPreviewStop  " 普通模式
-imap <silent> <M-s> <Plug>MarkdownPreviewStop  " 插入模式
-nmap <silent> <M-t> <Plug>MarkdownPreviewToggle
+nmap <silent> <F8>  <Plug>MarkdownPreview     " 普通模式
+imap <silent> <F8>  <Plug>MarkdownPreview     " 插入模式
+nmap <silent> <F9>  <Plug>MarkdownPreviewStop  " 普通模式
+imap <silent> <F9>  <Plug>MarkdownPreviewStop  " 插入模式
+nmap <silent> <M-t>  <Plug>MarkdownPreviewToggle
 
 let g:vimwiki_list = [{
   \ 'automatic_nested_syntaxes':1,
@@ -3242,22 +3282,6 @@ let g:taskwiki_sort_orders={"C": "pri-"}
 let g:taskwiki_syntax = 'markdown'
 let g:taskwiki_markdown_syntax='markdown'
 let g:taskwiki_markup_syntax='markdown'
-"autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
-autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
-autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
-autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
-autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
-autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
-autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
-autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
-autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
-autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap ,l --------<Enter>
 
 
 
@@ -3837,7 +3861,7 @@ else
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel','dogrun',
-        \ 'shades-of-purple','coblat','cobaltish','tatami','cosmic-barf','tokyonight','true','purpura',
+        \ 'shades-of-purple','cobalt','cobaltish','tatami','cosmic-barf','tokyonight','true','purpura',
         \ ]
     " autocmd vimenter * ++nested colorscheme lilydjwg_dark_modified
     hi CursorColumn      ctermbg=237
@@ -4429,11 +4453,29 @@ nnoremap  ;a :bp<CR>
 
 " :e 文档名        这是在进入vim后，不离开 vim 的情形下打开其他文档。
 
+""""""""""""""""""""""""""""""""""""""" Markdown 快捷键""""""""""""""""""""""""""""""""""""""""
+"autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
+autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
+autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
+autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
+autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
+autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
+autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,l --------<Enter>
+
+
 "############################### 美化标签栏方法1 #######################################
 " TabLine (普通标签样式)／TabLineSel (选中状态标签的样式)。
 highlight TabLine        term=underline    cterm=bold    ctermfg=9   ctermbg=4
 highlight TabLineSel     term=bold         cterm=bold   ctermbg=Red  ctermfg=yellow
-
 
 
 " 定义颜色
