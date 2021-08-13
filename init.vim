@@ -1604,7 +1604,7 @@ let g:ack_prg = "ag --vimgrep --smart-case"
 " imap <F4> :Ack -i
 
 " 以后在普通模式下输入Ctrl+U便可以自动输入:Ack 了
-map <Leader>ack :Ack -i<space>
+map <Leader>ak :Ack <space>-i<space>
 
 
 """""""""""""""""""""""""""""""""""""" easymotion/vim-easymotion配置 """"""""""""""""""""""""""""""""""""""
