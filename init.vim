@@ -407,19 +407,21 @@ set linespace=0
 if has('gui_running')
     "colorscheme desert
     if has('gui_win32')
-        set guifont=DejaVu_Sans_Mono:h10:cANSI
-        set guifont=Fira_Code:h10:cANSI
-        set guifont=JetBrains_Mono_Regular:h8:cANSI
-        set guifont=FiraCode_Nerd_Font_Mono:h8:cANSI
-        set guifont=JetBrainsMono_Nerd_Font_Mono:h8:cANSI
-        set guifont=SauceCodePro_Nerd_Font_Mono:h8:cANSI
+        " set guifont=DejaVu_Sans_Mono:h10:cANSI
+        " set guifont=Fira_Code:h10:cANSI
+        " set guifont=JetBrains_Mono_Regular:h8:cANSI
+        " set guifont=FiraCode_Nerd_Font_Mono:h8:cANSI
+        set guifont=JetBrainsMono_Nerd_Font:h8:cANSI
+        " set guifont=JetBrainsMono_Nerd_Font_Mono:h8:cANSI
+        " set guifont=SauceCodePro_Nerd_Font_Mono:h8:cANSI
     else
-        set guifont=DejaVu\ Sans\ Mono\ 12
-        set guifont=Fira\ Code\ 12
-        set guifont=JetBrains\ Mono\ Regular\ 9
-        set guifont=FiraCode\ Nerd\ Font\ Mono\ 9
-        set guifont=JetBrainsMono\ Nerd\ Font\ Mono\ 9
-        set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 9
+        " set guifont=DejaVu\ Sans\ Mono\ 12
+        " set guifont=Fira\ Code\ 12
+        " set guifont=JetBrains\ Mono\ Regular\ 9
+        " set guifont=FiraCode\ Nerd\ Font\ Mono\ 9
+        set guifont=JetBrainsMono\ Nerd\ Font\ 9
+        " set guifont=JetBrainsMono\ Nerd\ Font\ Mono\ 9
+        " set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 9
       " set guifont=DejaVu\ Sans\ Mono\ 10
     endif
   endif
@@ -445,7 +447,6 @@ set mouse=a
 " set selectmode=mouse,key
 "指定在选择文本时，光标所在位置也属于被选中的范围。
 set selection=inclusive
-
 
 
 " 在被分割的窗口间显示空白，便于阅读
@@ -626,8 +627,7 @@ set wildmenu                      " show a navigable menu for tab completion
 set wildchar=<Tab> wildcharm=<C-Z>
 set suffixes=.bak,~,.o,.h,.info,.swp,.obj
 
-hi BadWhitespace  ctermfg=15 ctermbg=15
-hi BadWhitespace  guifg= gray guibg=darkred
+hi BadWhitespace  ctermfg=15 ctermbg=15  guifg= gray guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/          "表示不必要的空白字符
 
 " 让 vim 把连续数量的空格视为一个制表符,使得按退格键时可以一次删除4个空格"
@@ -785,7 +785,7 @@ vnoremap <LEADER>st :s/    /\t/g
 
 """"""""""""""""""""""""""""""""""""""""""" 行号   """"""""""""""""""""""""""""""""""""""""""""
 " <F3> 行号开关
-" nnoremap <F3> :call HideNumber()<CR>
+nnoremap <F3> :call HideNumber()<CR>
 
 function! HideNumber()
     if(&relativenumber == &number)
@@ -1151,10 +1151,6 @@ hi ChangesSignTextAdd ctermbg=None ctermfg=green guibg=None  guifg=green
 hi ChangesSignTextDel ctermbg=None  ctermfg=red   guibg=None  guifg=red
 hi ChangesSignTextCh  ctermbg=None   ctermfg=blue guibg=None   guifg=blue
 
-" let g:changes_linehi_diff = 1
-" hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
-" hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
-" hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
 """""""""""""""""""""""""RRethy/vim-illuminate""""""""""""""""""""""""""""""""""
 let g:Illuminate_ftblacklist = ['nerdtree']
 let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'cpp', 'tex', 'js', 'java', 'v', 'sv']
@@ -1276,13 +1272,8 @@ let g:bullets_renumber_on_change = 1 " default = 1
 
 
 
-
-
-
 """"""""""""""""""""""""""""""""wincent/terminus插件"""""""""""""""""""""""""""""""
 let g:TerminusFocusReporting=0
-
-
 
 """""""""""""""""" vim-signify插件配置""""""""""""""""""""
 let g:signify_vcs_list = ['git','svn']
@@ -1343,7 +1334,6 @@ vnoremap <silent> ;f  :Farf<cr>
 " shortcut for far.vim replace
 nnoremap <silent> <Leader>r  :Farr<cr>
 vnoremap <silent> <Leader>r  :Farr<cr>
-
 
 
 " """"""""""""""""""""""""OmniSharp/omnisharp-vim插件"""""""""""""""""""""""""
@@ -2716,8 +2706,6 @@ let g:vimtex_delim_toggle_mod_list = [
             \ ['\Biggl', '\Biggr'],
             \]
 
-
-
 "这里是LaTeX编译引擎的设置，这里默认LaTeX编译方式为-pdf(pdfLaTeX),
 "vimtex提供了magic comments来为文件设置编译方式
 "例如，我在tex文件开头输入 % !TEX program = xelatex   即指定-xelatex （xelatex）编译文件
@@ -3175,10 +3163,6 @@ let g:cpp_no_function_highlight=1
 let c_no_curly_error = 1
 
 
-
-
-
-
 """""""""""""""""""""""""""""""""""" echodoc 配置    """"""""""""""""""""""""""""""""""""""""""""""
 "底部不显示三种模式,不然echodoc.vim会冲突
 " set noshowmode
@@ -3256,7 +3240,6 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
 
-
 " example
 nmap <silent> <F8>  <Plug>MarkdownPreview     " 普通模式
 imap <silent> <F8>  <Plug>MarkdownPreview     " 插入模式
@@ -3282,8 +3265,6 @@ let g:taskwiki_sort_orders={"C": "pri-"}
 let g:taskwiki_syntax = 'markdown'
 let g:taskwiki_markdown_syntax='markdown'
 let g:taskwiki_markup_syntax='markdown'
-
-
 
 """"""""""""""""""""""""" demonlord1997/markdown-org 插件配置  """""""""""""""""""""""""""""""""""""""""""
 
@@ -3357,8 +3338,6 @@ let g:bullets_enabled_file_types = [
             \ 'gitcommit',
             \ 'scratch'
             \]
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -4368,20 +4347,21 @@ noremap <silent><tab>t :tabnew<cr>
 noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
 noremap <silent><tab><right> :tabn<cr>
-noremap <silent>\= :tabn<cr>
+noremap <silent>]t :tabn<cr>
+noremap <silent>;n :tabn<cr>
+nnoremap tn  :tabn<CR>
 " 上一个标签页
 noremap <silent><tab><left> :tabp<cr>
-noremap <silent>\- :tabn<cr>
+noremap <silent>[t :tabp<cr>
+noremap <silent>;p :tabp<cr>
+nnoremap tp  :tabp<CR>
+
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
 
 "Vim默认最多只能打开10个标签页。你可以用set tabpagemax=15改变这个限制。
 set tabpagemax=15
 
-
-" Move around tabs with tn and tp
-nnoremap tn  :tabn<CR>
-nnoremap tp  :tabp<CR>
 
 " Create a new tab with tu
 nnoremap tu :tabe<CR>
