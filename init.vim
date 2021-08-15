@@ -202,7 +202,7 @@ Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一�
 " :h startify
 " :h startify-faq
 Plug 'chxuan/change-colorscheme'         "快速改变颜色主题
-Plug 'norcalli/nvim-colorizer.lua'       " 自动更改包含十六进制值文本的背景颜色
+" Plug 'norcalli/nvim-colorizer.lua'       " 自动更改包含十六进制值文本的背景颜色
 Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
@@ -325,7 +325,7 @@ Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正�
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 
 
 "python
@@ -3872,7 +3872,7 @@ if strftime('%H') >= 7 && strftime('%H') < 24
         \ 'seagull',  'snow', 'solarized8', 'solarized8_light_high', 'solarized8_high', 'stellarized',
         \ 'thegoodluck', 'winter', 'violet', 'space_vim_theme', 'Atelier_LakesideLight', 'Atelier_SeasideLight',
 	    \ 'kemonofriends', 'one', 'onehalflight', 'lucario', 'gruvbox8_soft', 'ayumi',
-        \ 'flatui', 'rakr-light', 'rakr', 'lightning', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
+        \ 'rakr-light', 'rakr', 'lightning', 'fruchtig', 'tatami', 'snowtrek', 'donbass', 'blandon',
 	    \ 'vadelma', 'greent', 'fruit', 'nortia-nvim',
         \ ]
     " autocmd vimenter * ++nested colorscheme PaperColor
