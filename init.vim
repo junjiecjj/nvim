@@ -174,10 +174,12 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 
 
 "美化
-" Plug 'glepnir/galaxyline.nvim'
+" Plug 'akinsho/nvim-bufferline.lua'    " 基于lua编写的 buffer栏插件
+" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}    "基于lua编写的 状态栏插件
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
+Plug 'nathanaelkane/vim-indent-guides'    " 缩进指示线
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
 Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " 提供一个专注阅读和写作的环境
@@ -200,16 +202,21 @@ Plug 'mhinz/vim-startify'               " 此插件为 Vim 和 Neovim 提供一�
 " :h startify
 " :h startify-faq
 Plug 'chxuan/change-colorscheme'         "快速改变颜色主题
-
+Plug 'norcalli/nvim-colorizer.lua'       " 自动更改包含十六进制值文本的背景颜色
 Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
 Plug 'tyru/open-browser.vim'                        " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                           " 函数参数提示
 Plug 'ryanoasis/vim-devicons'                     " 在目录中为文件增加图标
+Plug 'mtdl9/vim-log-highlighting'     "日志高亮
 
-Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
-" FPGA
+" Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
+
+Plug 'editorconfig/editorconfig-vim'   " 编辑器配置插件。
+
+
+"FPGA
 Plug 'vhda/verilog_systemverilog.vim'     "verilog
 
 " 快速对齐
@@ -318,6 +325,8 @@ Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正�
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
+Plug 'bling/vim-bufferline'
+
 
 "python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -961,7 +970,6 @@ let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '
 
 let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
 let g:interestingWordsRandomiseColors = 1
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""COC-vim配置"""""""""""""""""""""""""""
@@ -1870,6 +1878,13 @@ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_
 let g:indentLine_concealcursor = 'niv'
 let g:indentLine_showFirstIndentLevel =1
 
+""""""""""""""""""""""""""""""""  nathanaelkane/vim-indent-guides """"""""""""""""""""""""""""""""
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+hi IndentGuidesOdd  guibg=red   ctermbg=3
+hi IndentGuidesEven guibg=green ctermbg=4
 
 """"""""""""""""""""""""""""""""  vim-move配置   """""""""""""""""""""""""""""""""""""""""""
 
@@ -2326,7 +2341,10 @@ let g:openbrowser_search_engines = {
             \}
 
 
+"""""""""""""""""""""""""""""" editorconfig/editorconfig-vim """"""""""""""""""""""""""""""
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
+let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
 """""""""""""""""""""'lucasicf/vim-smooth-scroll插件""""""""""""""""""""""""""""""
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -2361,10 +2379,8 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""rhysd/accelerated-jk配置"""""""""""""""""""""""""""""""""""""""
-"Accelerated-ws设置
-nmap s <Plug>(accelerated_jk_gj)
-nmap w <Plug>(accelerated_jk_gk)
+
+
 """"""""""""""""""""""""""""""""""""""""""vhda/verilog_systemverilog.vim配置""""""""""""""""""""""""""""""""""""""""""""
 
 au BufRead,BufNewFile *.sv,  set filetype=verilog_systemverilog
@@ -2444,7 +2460,7 @@ set errorformat=\*\*\ %tRROR:\ %f(%l):\ %m,\*\*\ %tRROR:\ %m,\*\*\ %tARNING:\ %m
 
 
 
-"""""""""""""""""""""""""""""""""""  多文档编辑MiniBufExplorer """""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""  多文档编辑fholgado/minibufexpl.vim """""""""""""""""""""""""""""""""""
 " vim 的多文档编辑涉及三个概念:buffer、window、tab。vim 把加载进内存的文件叫做 buffer,buffer 不一定可见；
 " 若要 buffer 可见，则必须通过 window 作为载体呈现；同个看面上的多个 window 组合成一个 tab。
 " vim 中每打开一个文件，vim 就对应的创建一个 buffer, 多个文件就有多个 buffer, 但默认你只能看到最后 buffer 对应 window，通过插件 MiniBufExplorer
@@ -3497,8 +3513,12 @@ let g:NERDToggleCheckAllLines    = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""  mtdl9/vim-log-highlighting """"""""""""""""""""""""""""""""""""""""
+" Add custom level identifiers
+" au rc Syntax log syn keyword logLevelError MY_CUSTOM_ERROR_KEYWORD
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""tpope/vim-commentary配置"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gcc: 注释或反注释
+" gcc: 注释或反注释,ngcc,n为行数
 " gcap: 注释一段
 " gc: visual 模式下直接注释所有已选择的行
 
@@ -3656,7 +3676,33 @@ nmap ;q :bp<cr>:bd #<cr>
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""" bling/vim-bufferline """""""""""""""""""""""""""""""""""""""""""
+" 表示缓冲线是否应自动回显到命令栏
+let g:bufferline_echo = 1
+
+" 缓冲区左侧使用的分隔符
+let g:bufferline_active_buffer_left = '['
+
+" 表示缓冲区已修改的符号
+let g:bufferline_modified = '+'
+
+" 表示是否应显示缓冲区编号
+let g:bufferline_show_bufnr = 1
+
+ " 默认，不旋转，不滚动
+" let g:bufferline_rotate = 0
+
+" 以固定的当前缓冲区位置滚动
+" let g:bufferline_rotate = 1
+
+" 在没有固定当前缓冲区位置的情况下滚动
+let g:bufferline_rotate = 2
+
+
+
 " " """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
 "
 " let g:spaceline_seperate_style = 'arrow'
