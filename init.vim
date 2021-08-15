@@ -2697,9 +2697,6 @@ let g:Tex_EnvLabelprefix_equation = "eq:"
 "我们知道, 在Terminal里, 用pdflatex testLaTeX.tex
 "在vim里, 我们可以用: !pdflatex %   来编译当前文档. 其中, %代表当前文档名. 结果如下
 
-
-" imap <F2> <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
-" nmap <Leader>tx <ESC>:w<CR>:!xelatex  % && open %:r.pdf<CR><CR>
 nmap <Leader>tx <ESC>:w<CR>:!xelatex  % &&<ESC> :VimtexView<CR><CR>
 nmap tc <ESC>:VimtexTocToggle<CR><CR>
 " 当你再按一下\tx键, 就可以编译+打开文档了. 在这里, 我们解析一下这一行代码的含义.
