@@ -3857,8 +3857,7 @@ autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,
 " hi clear
 
 
-
-if strftime('%H') >= 7 && strftime('%H') < 24
+if strftime('%H') >= 7 && strftime('%H') < 23
     set background=light
     let ayucolor="light"  " for light version of theme
     let themes = [
