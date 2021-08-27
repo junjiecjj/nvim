@@ -179,7 +179,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
-Plug 'nathanaelkane/vim-indent-guides'    " 缩进指示线
+" Plug 'nathanaelkane/vim-indent-guides'    " 缩进指示线
 Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
 Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
 Plug 'junegunn/goyo.vim'                " 提供一个专注阅读和写作的环境
@@ -326,7 +326,6 @@ Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正�
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
 " Plug 'bling/vim-bufferline'
-
 
 "python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -1878,13 +1877,13 @@ let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_
 let g:indentLine_concealcursor = 'niv'
 let g:indentLine_showFirstIndentLevel =1
 
-""""""""""""""""""""""""""""""""  nathanaelkane/vim-indent-guides """"""""""""""""""""""""""""""""
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-hi IndentGuidesOdd  guibg=red   ctermbg=3
-hi IndentGuidesEven guibg=green ctermbg=4
+" """"""""""""""""""""""""""""""""  nathanaelkane/vim-indent-guides """"""""""""""""""""""""""""""""
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_auto_colors = 0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+" hi IndentGuidesOdd  guibg=red   ctermbg=3
+" hi IndentGuidesEven guibg=green ctermbg=4
 
 """"""""""""""""""""""""""""""""  vim-move配置   """""""""""""""""""""""""""""""""""""""""""
 
