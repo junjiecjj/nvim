@@ -4333,13 +4333,13 @@ nnoremap <C-S-o> <C-W>o
 
 " " 移动窗口
 " alt+j当前窗口向上面移动
-nnoremap <M-j> <C-w>J
+nnoremap <S-M-j> <C-w>J
 " alt+k当前窗口向上方移动
-nnoremap <M-k> <C-w>K
+nnoremap <S-M-k> <C-w>K
 " alt+l 当前窗口向右边移动
-nnoremap <M-l> <C-w>L
+nnoremap <S-M-l> <C-w>L
 " alt+h当前窗口向左边移动
-nnoremap <M-h> <C-w>H
+nnoremap <S-M-h> <C-w>H
 
 
 " 多窗口分屏时改变窗口大小 +/- 3
@@ -4454,11 +4454,13 @@ noremap <leader>0 :tablast<CR>
 " nnoremap <C-tab> :bn<CR>
 nnoremap  ]b :bn<CR>
 nnoremap  ;e :bn<CR>
+nnoremap  <M-l> :bn<CR>
 " ctrl + shift + tab下一个buffer
 " map <C-M-tab> :bp<CR>
 " nnoremap <C-M-tab> :bp<CR>
 nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
+nnoremap  <M-h> :bp<CR>
 
 " :buffers或:ls或:files 显示缓冲区列表。
 " ctrl+^：在最近两个缓冲区间切换。
@@ -4469,7 +4471,6 @@ nnoremap  ;a :bp<CR>
 " :nbw(ipeout) -- 彻底删除第n个缓冲区。
 " :nbd(elete) -- 删除第n个缓冲区，并未真正删除，还在unlisted列表中。
 " :ba[ll] -- 把所有的缓冲区在当前页中打开，每个缓冲区占一个窗口。
-
 
 
 " :e 文档名        这是在进入vim后，不离开 vim 的情形下打开其他文档。
