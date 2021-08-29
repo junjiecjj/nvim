@@ -4387,15 +4387,17 @@ noremap <silent><tab>t :tabnew<cr>
 " 关闭标签页
 noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
-noremap <silent><tab><right> :tabn<cr>
-noremap <silent>]t :tabn<cr>
-noremap <silent>;n :tabn<cr>
-nnoremap tn  :tabn<CR>
+noremap <silent><tab><right> :tabnext<cr>
+noremap <silent>]t :tabnext<cr>
+noremap <silent>;n :tabnext<cr>
+nnoremap tn  :tabnext<CR>
+nnoremap <M-k>  :tabnext<CR>
 " 上一个标签页
-noremap <silent><tab><left> :tabp<cr>
-noremap <silent>[t :tabp<cr>
-noremap <silent>;p :tabp<cr>
-nnoremap tp  :tabp<CR>
+noremap <silent><tab><left> :tabprevious<cr>
+noremap <silent>[t :tabprevious<cr>
+noremap <silent>;p :tabprevious<cr>
+nnoremap tp  :tabprevious<CR>
+nnoremap <M-j>  :tabprevious<CR>
 
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
