@@ -685,8 +685,6 @@ map S :w!<CR>
 
 " Call figlet
 map ;x :r !figlet
-" Save & quit
-
 
 
 " Search
@@ -698,10 +696,10 @@ nnoremap - Nzz
 
 " 水平滚动
 " 向左
-map \fl 10zh
+map \ll 10zh
 " imap <F8> <ESC>10zhi
 " 向右
-map \fr 10zl
+map \rr 10zl
 " imap <F9> <ESC>10zli
 " 这个时候在 Normal 和 Insert 模式下都可以按 <F8><F9> 来水平滚动了。
 
@@ -4185,9 +4183,9 @@ inoremap <C-a> <Esc>ggvG$
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
-nnoremap <C-z> "+p
-inoremap <C-z> <Esc>"+pa
-nnoremap <C-z> "+gp
+nnoremap <C-s> "+p
+inoremap <C-s> <Esc>"+pa
+nnoremap <C-s> "+gp
 " "+gp  粘贴并且移动光标到粘贴内容后
 
 map <C-x> "+x
