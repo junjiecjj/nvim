@@ -210,6 +210,12 @@ Plug 'Shougo/echodoc.vim'                           " 函数参数提示
 Plug 'ryanoasis/vim-devicons'                     " 在目录中为文件增加图标
 Plug 'mtdl9/vim-log-highlighting'     "日志高亮
 
+" 时钟
+Plug 'danilamihailov/beacon.nvim'
+
+
+
+
 
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
@@ -906,6 +912,22 @@ au BufReadPost *.nfo call RestoreFileEncodings()
 if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
+
+
+"""""""""""""""""""""""""""" danilamihailov/beacon.nvim """"""""""""""""""""""""""""
+highlight Beacon guibg=white ctermbg=15
+let g:beacon_size = 40
+let g:beacon_show_jumps = 0
+let g:beacon_minimal_jump = 10
+let g:beacon_shrink = 0
+let g:beacon_fade = 0
+" let g:beacon_ignore_buffers = [\w*git*\w]
+" let g:beacon_ignore_filetypes = ['fzf']
+
+" :Beacon highlight current position (even if plugin is disabled)
+" :BeaconToggle toggle g:beacon_enable variable
+" :BeaconOn enable Beacon
+" :BeaconOff disable Beacon
 
 """""""""""""""""""""""""""  wakatime/vim-wakatime """"""""""""""""""""""""""""""
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
