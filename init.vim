@@ -214,9 +214,6 @@ Plug 'mtdl9/vim-log-highlighting'     "日志高亮
 Plug 'danilamihailov/beacon.nvim'
 
 
-
-
-
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
 Plug 'editorconfig/editorconfig-vim'   " 编辑器配置插件。
@@ -917,10 +914,10 @@ endif
 """""""""""""""""""""""""""" danilamihailov/beacon.nvim """"""""""""""""""""""""""""
 highlight Beacon guibg=white ctermbg=15
 let g:beacon_size = 40
-let g:beacon_show_jumps = 0
+let g:beacon_show_jumps = 1
 let g:beacon_minimal_jump = 10
-let g:beacon_shrink = 0
-let g:beacon_fade = 0
+let g:beacon_shrink = 1
+let g:beacon_fade = 1
 " let g:beacon_ignore_buffers = [\w*git*\w]
 " let g:beacon_ignore_filetypes = ['fzf']
 
@@ -1155,7 +1152,7 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
 
-  """"""""""""""""""""""""""""""""""""""vim-trailing-whitespace" **********
+""""""""""""""""""""""""""""""""""""""vim-trailing-whitespace" **********
   " <leader> + space 去掉末尾空格快捷键
   nnoremap <leader><space> :FixWhitespace<cr>
 
@@ -4409,13 +4406,13 @@ noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
 noremap <silent><tab><right> :tabnext<cr>
 noremap <silent>]t :tabnext<cr>
-noremap <silent>;n :tabnext<cr>
+noremap <silent>`n :tabnext<cr>
 nnoremap tn  :tabnext<CR>
 nnoremap <M-k>  :tabnext<CR>
 " 上一个标签页
 noremap <silent><tab><left> :tabprevious<cr>
 noremap <silent>[t :tabprevious<cr>
-noremap <silent>;p :tabprevious<cr>
+noremap <silent>`p :tabprevious<cr>
 nnoremap tp  :tabprevious<CR>
 nnoremap <M-j>  :tabprevious<CR>
 
@@ -4476,12 +4473,14 @@ noremap <leader>0 :tablast<CR>
 " nnoremap <C-tab> :bn<CR>
 nnoremap  ]b :bn<CR>
 nnoremap  ;e :bn<CR>
+nnoremap  `e :bn<CR>
 nnoremap  <M-l> :bn<CR>
 " ctrl + shift + tab下一个buffer
 " map <C-M-tab> :bp<CR>
 " nnoremap <C-M-tab> :bp<CR>
 nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
+nnoremap  `a :bp<CR>
 nnoremap  <M-h> :bp<CR>
 
 " :buffers或:ls或:files 显示缓冲区列表。
