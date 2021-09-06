@@ -699,10 +699,10 @@ nnoremap - Nzz
 
 " 水平滚动
 " 向左
-map \ll 10zh
+map  `ll 20zh
 " imap <F8> <ESC>10zhi
 " 向右
-map \rr 10zl
+map `rr 20zl
 " imap <F9> <ESC>10zli
 " 这个时候在 Normal 和 Insert 模式下都可以按 <F8><F9> 来水平滚动了。
 
@@ -3203,7 +3203,7 @@ highlight link EchoDocPopup Pmenu
 
 """"""""""""""""""""""""""""""""""""""" change-colorscheme 配置  """""""""""""""""""""""""""""""""""""""
 
-" map <F12> :NextColorScheme<CR>
+" map <F2>> :NextColorScheme<CR>
 map nc :NextColorScheme<CR>
 " imap <F12> <ESC> :NextColorScheme<CR>
 " imap <Leader>nc <ESC> :NextColorScheme<CR>
@@ -4818,7 +4818,7 @@ autocmd BufNewFile *.py,*.cpp,*.v,*.sv,*.[ch],*.sh,*.java  exec ":call SetTitle(
 function! SetTitle()
     "如果文件类型为.sh文件
     if &filetype == 'sh'
-        call setline(1,"\#!/bin/bash")
+        call setline(1,"\#! /usr/bin/env bash")
         call append(line("."),"\#########################################################################")
         call append(line(".")+1, "\# File Name: ".expand("%"))
         call append(line(".")+2, "\# Author:陈俊杰")
