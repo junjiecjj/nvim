@@ -110,6 +110,7 @@ Plug 'alaric/nortia.nvim'
 Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'vim-scripts/nightshade.vim'
+Plug 'rainglow/vim'
 
 
 " 翻译
@@ -3894,10 +3895,10 @@ else
     set background=dark
     let ayucolor="mirage"  " for light version of theme
     let themes = [
-        \ 'carbonized-dark', 'SolarizedDark_modified' , 'solarized8_dark_high' , 'github','NeoSolarized',
+        \ 'solarized8_dark_high' , 'github','NeoSolarized',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
-        \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel','dogrun',
+        \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel',
         \ 'shades_of_purple','cobalt','cobaltish','cosmic-barf','tokyonight','true','purpura',
         \ ]
     " autocmd vimenter * ++nested colorscheme lilydjwg_dark_modified
@@ -4894,11 +4895,12 @@ function! SetTitle()
             call append(line(".")+17, "#include<locale.h>")
             call append(line(".")+18, "#include<time.h>")
             call append(line(".")+19, "#include<complex.h>")
-            call append(line(".")+20, "")
+            call append(line(".")+20, "#include<stdbool.h>")
             call append(line(".")+21, "")
-            call append(line(".")+22, "int main(int argc, char *argv[])")
-            call append(line(".")+23, "{")
-            call append(line(".")+24, "}")
+            call append(line(".")+22,, "")
+            call append(line(".")+23, "int main(int argc, char *argv[])")
+            call append(line(".")+24, "{")
+            call append(line(".")+25, "}")
         else
             call append(line(".")+9, " ")
 
