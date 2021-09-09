@@ -686,6 +686,16 @@ nmap <Leader>w :w<CR>
 map Q :q<CR>
 map S :w!<CR>
 
+if has('nvim')
+    nnoremap pi  :PlugInstall<CR>
+    nnoremap pcl  :PlugClean<CR>
+    nnoremap ps  :PlugStatus<CR>
+    nnoremap pu  :PlugUpdate<CR>
+    nnoremap pU  :PlugUpgrade<CR>
+   
+else
+    nnoremap pi  :PluginInstall<CR>
+endif
 
 " Call figlet
 map ;x :r !figlet
