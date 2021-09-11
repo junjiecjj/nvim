@@ -149,7 +149,7 @@ else
 endif
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 
@@ -692,7 +692,6 @@ if has('nvim')
     nnoremap ps  :PlugStatus<CR>
     nnoremap pu  :PlugUpdate<CR>
     nnoremap pU  :PlugUpgrade<CR>
-   
 else
     nnoremap pi  :PluginInstall<CR>
 endif
@@ -1319,13 +1318,18 @@ let g:agit_no_default_mappings = 1
 
 
 
-" “”“”“”“”“”“”“”“”“”“”“”“”“”“”“”“”“”“”kdheepak/lazygit.nvim插件"""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""" jesseduffield/lazygit.nvim插件"""""""""""""""""""""""""""""""""""""
 noremap <c-g> :LazyGit<CR>
+nnoremap <silent> <leader>lg :LazyGit<CR>
 let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
 
+if has('nvim') && executable('nvr')
+  let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
 """""""""""""""""""""""""""""""""airblade/vim-gitgutter插件"""""""""""""""""""""""""""""""""""
 
 " let g:gitgutter_signs = 0
@@ -1340,13 +1344,37 @@ let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+nmap <leader>hd :GitGutterDisable<CR>
+nmap <leader>he :GitGutterEnable<CR>
+
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+let g:gitgutter_sign_added = 'xx'
+let g:gitgutter_sign_modified = 'yy'
+let g:gitgutter_sign_removed = 'zz'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_removed_above_and_below = '{'
+let g:gitgutter_sign_modified_removed = 'ww'
+
 
 
 """"""""""""""""""""""""""""" fszymanski/fzf-gitignore  插件"""""""""""""""""""""""""""
 noremap ;gi :FzfGitignore<CR>
+
+
+"""""""""""""""""""""""""""""" tpope/vim-fugitive""""""""""""""""""""""""""""""""""""""
+
+" :Gblame其实就是执行git blame命令，然后直接在vim中将git的输出结果与源代码一一对应起来。这样当你读团队代码的时候发现了一个坑，然后想知道是谁写的这个坑的时候，只需要:Gblame一下，结果立马呈现。
 
 
 
@@ -2011,11 +2039,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap nt :NERDTreeToggle<CR>
+nmap fl :NERDTreeToggle<CR>
 
 " ctrl + d 打开目录
 " map <C-d> :NERDTreeToggle<CR>
-map nt :NERDTreeToggle<CR>
+nmap nt :NERDTreeToggle<CR>
 
 " 设置NERDTree子窗口位置
 let NERDTreeWinPos="left"
@@ -3650,8 +3678,8 @@ let g:airline#extensions#tabline#enabled = 1
 " tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_section_b = '%{strftime("%m/%d/%y - %H:%M")}'
-let g:airline_section_y = 'BN: %{bufnr("%")}'
+" let g:airline_section_b = '%{strftime("%m/%d/%y - %H:%M")}'
+" let g:airline_section_y = 'BN: %{bufnr("%")}'
 " 设置中文提示
 language messages zh_CN.utf-8
 " 设置中文帮助
@@ -4734,7 +4762,6 @@ augroup END
 
 " 大括号补全
 autocmd Filetype c,cpp,h inoremap {<CR> {<CR>}<Esc>O
-
 
 
 " Compile function
