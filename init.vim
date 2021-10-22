@@ -1007,7 +1007,6 @@ let g:interestingWordsRandomiseColors = 1
 let g:coc_global_extensions = [
     \ 'coc-angular',
     \ 'coc-browser',
-    \ 'coc-calc',
     \ 'coc-cfn-lint',
     \ 'coc-clangd',
     \ 'coc-cmake',
@@ -1020,16 +1019,10 @@ let g:coc_global_extensions = [
     \ 'coc-discord-rpc',
     \ 'coc-dash-complete',
     \ 'coc-dot-complete',
-    \ 'coc-elixir',
-    \ 'coc-ember',
-    \ 'coc-emmet',
     \ 'coc-erlang_ls',
     \ 'coc-eslint',
     \ 'coc-explorer',
     \ 'coc-floaterm',
-    \ 'coc-flow',
-    \ 'coc-flutter',
-    \ 'coc-fsharp',
     \ 'coc-gist',
     \ 'coc-git',
     \ 'coc-glslx',
@@ -1047,7 +1040,6 @@ let g:coc_global_extensions = [
     \ 'coc-lists',
     \ 'coc-lsp-wl',
     \ 'coc-markdownlint',
-    \ 'coc-metals',
     \ 'coc-omnisharp',
     \ 'coc-perl',
     \ 'coc-php-cs-fixer',
@@ -1062,15 +1054,12 @@ let g:coc_global_extensions = [
     \ 'coc-r-lsp',
     \ 'coc-reason',
     \ 'coc-rls',
-    \ 'coc-rome',
     \ 'coc-rust-analyzer',
     \ 'coc-sh',
     \ 'coc-stylelintplus',
     \ 'coc-stylelint',
     \ 'coc-solargraph',
-    \ 'coc-sourcekit',
     \ 'coc-spell-checker',
-    \ 'coc-sql',
     \ 'coc-svg',
     \ 'coc-swagger',
     \ 'coc-tabnine',
@@ -1079,7 +1068,6 @@ let g:coc_global_extensions = [
     \ 'coc-texlab',
     \ 'coc-toml',
     \ 'coc-translator',
-    \ 'coc-tsserver',
     \ 'coc-vetur',
     \ 'coc-vimlsp',
     \ 'coc-xml',
@@ -3113,12 +3101,14 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 if has("cscope")
   set csprg=/usr/bin/cscope
-  set csto=1
+  set csto=0
   set cst
   set nocsverb
   " add any database in current directory
   if filereadable("cscope.out")
       cs add cscope.out
+  elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
   endif
   set csverb
 endif
@@ -3134,7 +3124,7 @@ nmap wf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap wi :cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap wd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-
+" 有了这个快捷键，我们使用cscope的效率就提升了，加上 ctrl+] ， ctrl+o , ctrl+t  我们看项目代码基本就比较舒服了。
 nmap Ws :vert scs find s <C-R>=expand("<cword>")<CR><CR>
 nmap Wg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 nmap Wc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
