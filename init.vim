@@ -241,15 +241,15 @@ Plug 'Valloric/YouCompleteMe'              " 自动补全
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-github'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-vim'
-Plug 'ncm2/ncm2-match-highlight'
-Plug 'oncomouse/ncm2-biblatex'
+" Plug 'ncm2/ncm2'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-github'
+" Plug 'ncm2/ncm2-jedi'
+" Plug 'ncm2/ncm2-pyclang'
+" Plug 'ncm2/ncm2-vim'
+" Plug 'ncm2/ncm2-match-highlight'
+" Plug 'oncomouse/ncm2-biblatex'
 
 Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 Plug 'Raimondi/delimitMate'
@@ -1067,7 +1067,6 @@ let g:coc_global_extensions = [
     \ 'coc-sh',
     \ 'coc-stylelintplus',
     \ 'coc-stylelint',
-    \ 'coc-snippets',
     \ 'coc-solargraph',
     \ 'coc-sourcekit',
     \ 'coc-spell-checker',
@@ -2257,7 +2256,7 @@ noremap <LEADER>df :Defx<CR>
 
 " 开关快捷键,【-search=`expand('%:p')`】表示打开defx树后，光标自动放在当前buffer上
 noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
-" nnoremap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
+nnoremap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
 
 
 call defx#custom#option('_', {
@@ -3007,40 +3006,40 @@ let g:UltiSnipsEditSplit="vertical"
 "
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置结束""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""" NCM2 配置 """""""""""""""""
-"缓存
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" 补全模式,具体详情请看下文
-set completeopt=menu,noinsert
-set shortmess+=c
-inoremap <c-c> <ESC>
-" 延迟弹窗,这样提示更加流畅
-let ncm2#popup_delay = 5
-"输入几个字母开始提醒:[[最小优先级,最小长度]]
-"如果是输入的是[[1,3],[7,2]],那么优先级在1-6之间,会在输入3个字符弹出,如果大于等于7,则2个字符弹出----优先级概念请参考文档中 ncm2-priority
-let ncm2#complete_length = [[1, 1]]
-"模糊匹配模式,详情请输入:help ncm2查看相关文档
-let g:ncm2#matcher = 'substrfuzzy'
-" 回车即选中当前项
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-"使用tab键向下选择弹框菜单
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
-"inoremap <expr> <S> pumvisible() ? "\<C-p>" : "\<S>"
-" 指定 Python 版本
-let g:ncm2_jedi#python_version = 3
-let g:ncm2#match_highlight = 'sans-serif'
+"""""""""""""""""""""""""""""""""""" NCM2 配置 """""""""""""""""
+""缓存
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"" 补全模式,具体详情请看下文
+"set completeopt=menu,noinsert
+"set shortmess+=c
+"inoremap <c-c> <ESC>
+"" 延迟弹窗,这样提示更加流畅
+"let ncm2#popup_delay = 5
+""输入几个字母开始提醒:[[最小优先级,最小长度]]
+""如果是输入的是[[1,3],[7,2]],那么优先级在1-6之间,会在输入3个字符弹出,如果大于等于7,则2个字符弹出----优先级概念请参考文档中 ncm2-priority
+"let ncm2#complete_length = [[1, 1]]
+""模糊匹配模式,详情请输入:help ncm2查看相关文档
+"let g:ncm2#matcher = 'substrfuzzy'
+"" 回车即选中当前项
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+""使用tab键向下选择弹框菜单
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
+""inoremap <expr> <S> pumvisible() ? "\<C-p>" : "\<S>"
+"" 指定 Python 版本
+"let g:ncm2_jedi#python_version = 3
+"let g:ncm2#match_highlight = 'sans-serif'
 
-au User Ncm2Plugin call ncm2#register_source({
-        \ 'name' : 'css',
-        \ 'priority': 9,
-        \ 'subscope_enable': 1,
-        \ 'scope': ['css','scss'],
-        \ 'mark': 'css',
-        \ 'word_pattern': '[\w\-]+',
-        \ 'complete_pattern': ':\s*',
-        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-        \ })
+"au User Ncm2Plugin call ncm2#register_source({
+"        \ 'name' : 'css',
+"        \ 'priority': 9,
+"        \ 'subscope_enable': 1,
+"        \ 'scope': ['css','scss'],
+"        \ 'mark': 'css',
+"        \ 'word_pattern': '[\w\-]+',
+"        \ 'complete_pattern': ':\s*',
+"        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+"        \ })
 
 """""""""""""""""""""""""""""""""""Ycraigemery/vim-autotag 配置 """"""""""""""""""""""""""""""""""""""""""
 let g:autotagTagsFile=".tags"
@@ -3053,28 +3052,6 @@ let g:autotagStartMethod='fork'
 autocmd FileType python noremap <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
 
 
-""""""""""""""""""""""""""""""  majutsushi/tagbar配置 """"""""""""""""""""""""""""""""""""""
-
-" 设置 tagbar 使用的 ctags 的插件，必须要设置对
-
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-" 设置 tagbar 的窗口宽度
-let g:tagbar_width=20
-" 设置 tagbar 的窗口显示的位置，为右边
-" let g:tagbar_right = 1
-let g:tagbar_left = 1
-" 打开文件自动 打开
-autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
-
-
-" 将开启tagbar的快捷键设置为　 tb
-nnoremap  tb :TagbarToggle<CR>
-map! tb <Esc> :TagbarToggle<CR>
-"开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
-let g:tagbar_autopreview = 0
-"关闭排序,即按标签本身在文件中的位置排序
-let g:tagbar_sort = 0
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""""   ludovicchabant/vim-gutentags  """"""""""""""""""""""""""""""""""""""""""""""
@@ -3098,6 +3075,99 @@ let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 
+
+"""""""""""""""""""""""""""Ctags配置""""""""""""""""""""""""""""""""
+" 配置为生产ctags的快捷键
+map <Leader>ct :!ctags <CR>
+
+"更新ctags标签文件快捷键设置
+noremap <Leader>ct :!ctags -R<CR>
+
+" 只需要将vim光标移动到函数名或宏定义名称上，使用快捷键“Ctrl+]”，即可跳转到kernel中的函数或宏定义的地方进行查看，有多个要跳转的路径时会在vim下边出现几行选项，直接输入数字加回车可以进行对应的函数或宏定义选择；要想返回上一级函数或宏定义，只需要使用快捷键“Ctrl+o”，即可跳会上次的查看的函数。
+
+" ctags的配置 ctrl+f12快速生成tags
+map <Leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""  cscope  """"""""""""""""""""""""""""""""""""""""""""""""
+
+" 接下去就是配置cscope，因为使用cscope查找函数定义等，需要用到cscope.out数据库，通过下面命令即可递归所有源码文件生成.out文件：
+" cscope -Rbkq
+" 当然我们也可以将相关文件汇集到某一个文件(如cscope.files)，然后再使用cscope -bkq -i cscope.files生成out文件，如下：
+
+" vim支持cscope
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+" 添加 cscope.out
+"进入vim后 :cs add /home/jack/xx/xx/cscope.out
+
+" :cs find {querytype} {name}
+" 其中：
+" {querytype} 即相对应于实际的cscope行接口数字，同时也相对应于nvi命令：
+"  0或者s   —— 查找这个C符号
+"  1或者g  —— 查找这个定义
+"  2或者d  —— 查找被这个函数调用的函数（们）
+"  3或者c  —— 查找调用这个函数的函数（们）
+"  4或者t   —— 查找这个字符串
+"  6或者e  —— 查找这个egrep匹配模式
+"  7或者f   —— 查找这个文件
+"  8或者i   —— 查找#include这个文件的文件（们）
+
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+
+
+" 　使用时，将光标停留在要查找的对象上，按下<C-@>g，即先按“Ctrl+@”，然后很快再按“g”，将会查找该对象的定义。
+nmap ws :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap wg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap wc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap wt :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap we :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap wf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap wi :cs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap wd :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+
+nmap Ws :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap Wg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap Wc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap Wt :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap We :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap Wf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap Wi :vert scs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap Wd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""  majutsushi/tagbar配置 """"""""""""""""""""""""""""""""""""""
+
+" 设置 tagbar 使用的 ctags 的插件，必须要设置对
+
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+" 设置 tagbar 的窗口宽度
+let g:tagbar_width=20
+" 设置 tagbar 的窗口显示的位置，为右边
+" let g:tagbar_right = 1
+let g:tagbar_left = 1
+" 打开文件自动 打开
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
+
+
+" 将开启tagbar的快捷键设置为　 tb
+nnoremap  tb :TagbarToggle<CR>
+map! tb <Esc> :TagbarToggle<CR>
+"开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
+let g:tagbar_autopreview = 0
+"关闭排序,即按标签本身在文件中的位置排序
+let g:tagbar_sort = 0
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""   Tag List  """"""""""""""""""""""""""""""""""""""""""""""
 
@@ -3146,7 +3216,7 @@ let Tlist_Auto_Update = 1
 
 "设置taglist窗口大小
 "let Tlist_WinHeight = 100
-let Tlist_WinWidth = 20
+let Tlist_WinWidth = 30
 
 "设置taglist打开关闭的快捷键F10，就是F10会显示代码中的函数，变量，类，宏等
 " map tl <Esc>:TlistToggle<Cr>
@@ -3254,13 +3324,6 @@ map pc :PreviousColorScheme<CR>
 
 
 
-"""""""""""""""""""""""""""Ctags配置""""""""""""""""""""""""""""""""
-" 配置为生产ctags的快捷键
-map <Leadf>ct :!ctags <CR>
-
-"更新ctags标签文件快捷键设置
-noremap <Leadf>ct :!ctags -R<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""iamcco/markdown-preview.nvim配置""""""""""""""""""""""""""
