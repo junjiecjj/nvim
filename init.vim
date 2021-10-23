@@ -1005,74 +1005,36 @@ let g:interestingWordsRandomiseColors = 1
 " 查看已安装:CocList extensions
 " 更新命令:CocUpdate
 let g:coc_global_extensions = [
-    \ 'coc-angular',
-    \ 'coc-browser',
-    \ 'coc-cfn-lint',
-    \ 'coc-clangd',
-    \ 'coc-cmake',
-    \ 'coc-css',
-    \ 'coc-cssmodules',
-    \ 'coc-deno',
-    \ 'coc-denoland',
-    \ 'coc-diagnostic',
-    \ 'coc-discord',
-    \ 'coc-discord-rpc',
-    \ 'coc-dash-complete',
-    \ 'coc-dot-complete',
-    \ 'coc-erlang_ls',
-    \ 'coc-eslint',
-    \ 'coc-explorer',
-    \ 'coc-floaterm',
-    \ 'coc-gist',
-    \ 'coc-git',
-    \ 'coc-glslx',
-    \ 'coc-go',
-    \ 'coc-graphql',
-    \ 'coc-highlight',
-    \ 'coc-html',
-    \ 'coc-htmlhint',
-    \ 'coc-html-css-support',
-    \ 'coc-java',
-    \ 'coc-jedi',
-    \ 'coc-json',
-    \ 'coc-julia',
-    \ 'coc-just-complete',
-    \ 'coc-lists',
-    \ 'coc-lsp-wl',
-    \ 'coc-markdownlint',
-    \ 'coc-omnisharp',
-    \ 'coc-perl',
-    \ 'coc-php-cs-fixer',
-    \ 'coc-phpactor',
-    \ 'coc-phpls',
-    \ 'coc-psalm',
-    \ 'coc-powershell',
-    \ 'coc-prettier',
-    \ 'coc-prisma',
-    \ 'coc-pyright',
-    \ 'coc-python',
-    \ 'coc-r-lsp',
-    \ 'coc-reason',
-    \ 'coc-rls',
-    \ 'coc-rust-analyzer',
-    \ 'coc-sh',
-    \ 'coc-stylelintplus',
-    \ 'coc-stylelint',
-    \ 'coc-solargraph',
-    \ 'coc-spell-checker',
-    \ 'coc-svg',
-    \ 'coc-swagger',
-    \ 'coc-tabnine',
-    \ 'coc-tailwindcss',
-    \ 'coc-tasks',
-    \ 'coc-texlab',
-    \ 'coc-toml',
-    \ 'coc-translator',
-    \ 'coc-vetur',
-    \ 'coc-vimlsp',
-    \ 'coc-xml',
-    \ 'coc-yaml',
+	\ 'coc-css',
+	\ 'coc-diagnostic',
+	\ 'coc-docker',
+	\ 'coc-eslint',
+	\ 'coc-explorer',
+	\ 'coc-flutter-tools',
+	\ 'coc-gitignore',
+	\ 'coc-html',
+	\ 'coc-import-cost',
+	\ 'coc-jest',
+	\ 'coc-json',
+	\ 'coc-lists',
+	\ 'coc-omnisharp',
+	\ 'coc-prettier',
+	\ 'coc-prisma',
+	\ 'coc-pyright',
+	\ 'coc-snippets',
+	\ 'coc-sourcekit',
+	\ 'coc-stylelint',
+	\ 'coc-syntax',
+	\ 'coc-tailwindcss',
+	\ 'coc-tasks',
+	\ 'coc-translator',
+	\ 'coc-tslint-plugin',
+	\ 'coc-tsserver',
+	\ 'coc-vetur',
+	\ 'coc-vimlsp',
+	\ 'coc-yaml',
     \ 'coc-yank']
+
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "\<TAB>" : coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -2388,7 +2350,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
-"""""""""""""""""""""'lucasicf/vim-smooth-scroll插件""""""""""""""""""""""""""""""
+""""""""""""""""""""'lucasicf/vim-smooth-scroll插件""""""""""""""""""""""""""""""
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
@@ -3466,6 +3428,8 @@ let g:bullets_enabled_file_types = [
 
 let g:SimpleFold_docstring_preview=1 "看到折叠代码的字符串
 "********************************************************************************************
+
+
 """"""""""""""""""""""""Vista设置"""""""""""""""""""""""""""""""
 noremap <LEADER>v :Vista<CR>
 let g:vista#renderer#enable_icon = 1
@@ -3473,6 +3437,12 @@ let g:vista_disable_statusline = 1
 let g:vista_default_executive = 'ctags'
 let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista_vimwiki_executive = 'markdown'
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 let g:vista_executive_for = {
 			\ 'vimwiki': 'markdown',
 			\ 'pandoc': 'markdown',
