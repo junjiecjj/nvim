@@ -179,15 +179,15 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 
 
 "美化
-" Plug 'akinsho/nvim-bufferline.lua'    " 基于lua编写的 buffer栏插件
-" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}    "基于lua编写的 状态栏插件
+" Plug 'akinsho/nvim-bufferline.lua'                                        " 基于lua编写的 buffer栏插件
+" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}                       "基于lua编写的 状态栏插件
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
-" Plug 'nathanaelkane/vim-indent-guides'    " 缩进指示线
-Plug 'fadein/vim-FIGlet'                " 出现有趣的文字图像
-Plug 'lambdalisue/suda.vim'             " do stuff like :sudowrite
-Plug 'junegunn/goyo.vim'                " 提供一个专注阅读和写作的环境
+" Plug 'nathanaelkane/vim-indent-guides'                                    " 缩进指示线
+Plug 'fadein/vim-FIGlet'                                                    " 出现有趣的文字图像
+Plug 'lambdalisue/suda.vim'                                                 " do stuff like :sudowrite
+Plug 'junegunn/goyo.vim'                                                    " 提供一个专注阅读和写作的环境
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'dpelle/vim-LanguageTool'
@@ -283,7 +283,7 @@ Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 Plug 'vim-scripts/taglist.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
-Plug 'liuchengxu/vista.vim',  "{ 'on': ['Vista'] }       tagbar的增强版
+Plug 'liuchengxu/vista.vim',                " tagbar的增强版
 Plug 'mbbill/undotree'                                  " Undo Tree
 Plug 'scrooloose/nerdtree'                              " 添加树形目录
 Plug 'jistr/vim-nerdtree-tabs'                          " 想用tab键
@@ -3460,7 +3460,19 @@ let g:vista_executive_for = {
 			\ 'yaml': 'coc',
 			\ 'typescript': 'coc',
 			\ 'typescriptreact': 'coc',
+            \ 'cpp': 'vim_lsp',
+            \ 'php': 'vim_lsp',
 			\ }
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+let g:vista_ctags_cmd = {
+      \ 'haskell': 'hasktags -x -o - -c',
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""配置w0rp/ale"""""""""""""""""""""""""""""""""""""""
 "let g:ale_set_loclist = 0
