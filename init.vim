@@ -3441,6 +3441,7 @@ let g:SimpleFold_docstring_preview=1 "看到折叠代码的字符串
 
 
 """"""""""""""""""""""""Vista设置"""""""""""""""""""""""""""""""
+" https://github.com/liuchengxu/vista.vim#:~:text=In%20addition%20to%20being%20a%20tags%20viewer%2C%20vista.vim,understands%20the%20semantics%20instead%20of%20the%20regex%20only.
 noremap <LEADER>v :Vista<CR>
 let g:vista#renderer#enable_icon = 1
 let g:vista_disable_statusline = 1
@@ -3469,7 +3470,7 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
-
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_ctags_cmd = {
       \ 'haskell': 'hasktags -x -o - -c',
       \ }
@@ -3849,6 +3850,7 @@ let g:bufferline_rotate = 2
 "             \   'filename': 'LightlineFilename',
 "             \   'mode': 'LightlineMode',
 "             \   'filetype': 'LightlineFiletype',
+"             \    \   'method': 'NearestMethodOrFunction',
 "             \ },
 "             \ }
 
