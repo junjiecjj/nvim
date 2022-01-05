@@ -433,13 +433,14 @@ if has('gui_running')
         " set guifont=JetBrainsMono_NF:h8:cANSI
         " set guifont=JetBrainsMono_Nerd_Font_Mono:h8:cANSI
         " set guifont=SauceCodePro_Nerd_Font_Mono:h8:cANSI
-        
-	" set guifont=Monaco:h8:cANSI
-	" set guifont=InconsolataGo_Nerd_Font:h8:cANSI
-	" set guifont=InconsolataGo_Nerd_Font_Mono:h8:cANSI
-	" set guifont=InconsolataLGC_Nerd_Font_Medium:h8:cANSI
-	" set guifont=YaHei_Consolas_Hybrid_Regular:h8:cANSI
-	set guifont=YaHei_Consolas_Hybrid_YaHei_Consolas_Hybrid_Regular:h8:cANSI
+
+
+        " set guifont=Monaco:h8:cANSI
+        " set guifont=InconsolataGo_Nerd_Font:h8:cANSI
+        " set guifont=InconsolataGo_Nerd_Font_Mono:h8:cANSI
+        " set guifont=InconsolataLGC_Nerd_Font_Medium:h8:cANSI
+        set guifont=YaHei_Consolas_Hybrid:h8:cANSI
+        " set guifont=YaHei_Consolas_Hybrid_YaHei_Consolas_Hybrid_Regular:h8:cANSI
     else
         " set guifont=DejaVu\ Sans\ Mono\ 12
         " set guifont=Fira\ Code\ 12
@@ -450,15 +451,16 @@ if has('gui_running')
         " set guifont=JetBrainsMono\ Nerd\ Font\ Mono\ 9
         " set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 9
         " set guifont=DejaVu\ Sans\ Mono\ 10
-      
-	" set guifont=Monaco:h8:cANSI
-	" set guifont=InconsolataGo\ Nerd\ Font:h8:cANSI
-	" set guifont=InconsolataGo\ Nerd\ Font\ Mono:h8:cANSI
-	" set guifont=InconsolataLGC\ Nerd\ Font\ Medium:h8:cANSI
-	" set guifont=YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
-	set guifont=YaHei\ Consolas\ Hybrid\ YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
+
+        " set guifont=Monaco:h8:cANSI
+        " set guifont=InconsolataGo\ Nerd\ Font:h8:cANSI
+        " set guifont=InconsolataGo\ Nerd\ Font\ Mono:h8:cANSI
+        " set guifont=InconsolataLGC\ Nerd\ Font\ Medium:h8:cANSI
+        set guifont=YaHei\ Consolas\ Hybrid:h8:cANSI
+        " set guifont=YaHei\ Consolas\ Hybrid\ YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
     endif
   endif
+
 
 
 " ===
