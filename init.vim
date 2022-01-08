@@ -424,6 +424,21 @@ set linespace=0
 
 if has('gui_running')
     "colorscheme desert
+    " 下面的滚动条开启
+    " let g:netrw_winsize = 20
+    "添加水平滚动条。如果你指定了不折行，那为窗口添加一个水平滚动条就非常有必要了
+    :set guioptions+=b
+
+    " " 隐藏/不隐藏工具栏
+    set guioptions+=T
+    " " 隐藏/不隐藏菜单栏
+    set guioptions+=m
+
+    set guioptions+=r
+    set guioptions+=L
+    " 设置为双字宽显示，否则无法完整显示如:☆
+    set lines=60 columns=108 linespace=0
+
     if has('gui_win32')
         " set guifont=DejaVu_Sans_Mono:h10:cANSI
         " set guifont=Fira_Code:h10:cANSI
@@ -594,20 +609,6 @@ set autowrite
 
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
-
-" 下面的滚动条开启
-" let g:netrw_winsize = 20
-"添加水平滚动条。如果你指定了不折行，那为窗口添加一个水平滚动条就非常有必要了
-:set guioptions+=b
-
-" " 隐藏/不隐藏工具栏
-set guioptions+=T
-" " 隐藏/不隐藏菜单栏
-set guioptions+=m
-
-set guioptions+=r
-set guioptions+=L
-" 设置为双字宽显示，否则无法完整显示如:☆
 
 
 set laststatus=2
