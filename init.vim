@@ -423,7 +423,7 @@ set linespace=0
 " 在Gvim中我设置了英文用Hermit， 中文使用 YaHei Mono "
 
 if has('gui_running')
-    "colorscheme desert
+    " colorscheme desert
     " 下面的滚动条开启
     " let g:netrw_winsize = 20
     "添加水平滚动条。如果你指定了不折行，那为窗口添加一个水平滚动条就非常有必要了
