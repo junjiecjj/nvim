@@ -214,6 +214,7 @@ Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                            " 函数参数提示
 Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 Plug 'mtdl9/vim-log-highlighting'                    "日志高亮
+Plug 'myusuf3/numbers.vim'                           "相对行号
 
 " 时钟
 Plug 'danilamihailov/beacon.nvim'
@@ -863,8 +864,9 @@ function! NumberToggle()
 endfunction
 
 
-" ar进行相对行号/绝对行号切换
-nnoremap <Leader>ar :call NumberToggle()<cr>
+" TN进行相对行号/绝对行号切换
+nnoremap  TN :call NumberToggle()<cr>
+
 
 
 let &t_SI = "\<Esc>]12;green\x7"
@@ -948,6 +950,11 @@ au BufReadPost *.nfo call RestoreFileEncodings()
 if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
+"""""""""""""""""""""""""""""""""""  Numbers.vim   """""""""""""""""""""""""""""""""""
+let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
+
+nnoremap NT :NumbersToggle<CR>
+nnoremap NO :NumbersOnOff<CR>
 
 
 """""""""""""""""""""""""""" danilamihailov/beacon.nvim """"""""""""""""""""""""""""
