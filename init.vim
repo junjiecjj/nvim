@@ -278,7 +278,7 @@ Plug 'honza/vim-snippets'                  " 安装代码块集合
 Plug 'tell-k/vim-autopep8'                 " 按照pep8的标准自动格式化代码
 Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 " Plug 'rhysd/vim-clang-format'
-
+Plug 'skywind3000/vim-rt-format'
 
 " 目录树
 Plug 'vim-scripts/taglist.vim'
@@ -1303,6 +1303,14 @@ let g:signify_vcs_list = ['git','svn']
 nnoremap <LEADER>gl :Agit<CR>
 let g:agit_no_default_mappings = 1
 
+"""""""""""""""""""""""""" skywind3000/vim-rt-format插件"""""""""""""""""""""""""""""""""""""""""
+" 默认情况下，它将在插入模式下由“ENTER”触发。
+" 将此设置为 1 以使用`CTRL+ENTER`，并保持
+" 默认的“ENTER”行为不变。
+let g:rtf_ctrl_enter = 0
+
+" 离开 INSERT 模式的时候再格式化一次
+let g:rtf_on_insert_leave = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""" jesseduffield/lazygit.nvim插件"""""""""""""""""""""""""""""""""""""
