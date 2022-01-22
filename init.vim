@@ -279,6 +279,8 @@ Plug 'tell-k/vim-autopep8'                 " 按照pep8的标准自动格式化�
 Plug 'sbdchd/neoformat', {'on':'Neoformat'}
 " Plug 'rhysd/vim-clang-format'
 Plug 'skywind3000/vim-rt-format'
+Plug 'nvie/vim-flake8'
+
 
 " 目录树
 Plug 'vim-scripts/taglist.vim'
