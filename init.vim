@@ -2968,6 +2968,37 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""Kite 插件配置开始""""""""""""""""""""""""""""""""""""""""""
+" Python, JavaScript, Go
+" let g:kite_supported_languages = ['python', 'javascript', 'go']
+
+" All the languages Kite supports
+let g:kite_supported_languages = ['*']
+
+" Turn off Kite
+" let g:kite_supported_languages = []
+
+let g:kite_auto_complete=0
+let g:kite_completions=0
+let g:kite_snippets=0
+
+let g:kite_tab_complete=1
+
+set completeopt+=menuone
+
+set completeopt+=noselect
+set completeopt+=noinsert
+set completeopt+=preview
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg  " if vim beeps during completion
+
+let g:kite_previous_placeholder = '<C-H>'
+let g:kite_next_placeholder = '<C-L>'
+
+nmap <silent> <buffer> gK <Plug>(kite-docs)
+let g:kite_documentation_continual=1
+
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
