@@ -1271,6 +1271,134 @@ let g:db_ui_use_nerd_fonts=1
 """""""""""""""""""""""""""""""""""""""""""""""""" francoiscabrol/ranger.vim """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:ranger_map_keys = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""" francoiscabrol/ranger.vim """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:ranger_map_keys = 0
+
+nnoremap ;rg :Ranger<CR>
+let g:NERDTreeHijackNetrw = 0 " add this line if you use NERDTree
+let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""  kevinhwang91/rnvimr """""""""""""""""""""""""""""""""""""""""""""""""
+
+" 设置<F3> 启动文件管理器
+nnoremap ;rn :RnvimrToggle<CR>
+" 让Ranger取代Netrw并成为文件浏览器
+let g:rnvimr_enable_ex = 1
+" 选择文件后隐藏游侠
+let g:rnvimr_enable_picker = 1
+" 使用multipane模式启动(单列)可以按~手动切换
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set viewmode multipane"'
+
+" Draw border with both
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+
+
+" Replace `$EDITOR` candidate with this command to open the selected file
+let g:rnvimr_edit_cmd = 'drop'
+
+" Disable a border for floating window
+let g:rnvimr_draw_border = 0
+
+" Hide the files included in gitignore
+let g:rnvimr_hide_gitignore = 1
+
+" Change the border's color
+let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+
+" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+let g:rnvimr_enable_bw = 1
+
+" Add a shadow window, value is equal to 100 will disable shadow
+let g:rnvimr_shadow_winblend = 70
+
+
+" Link CursorLine into RnvimrNormal highlight in the Floating window
+highlight link RnvimrNormal CursorLine
+
+nnoremap <silent> <M-o> :RnvimrToggle<CR>
+tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
+
+" Resize floating window by all preset layouts
+tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
+
+" Resize floating window by special preset layouts
+tnoremap <silent> <M-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
+
+" Resize floating window by single preset layout
+tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
+
+" Map Rnvimr action
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+
+" Add views for Ranger to adapt the size of floating window
+let g:rnvimr_ranger_views = [
+            \ {'minwidth': 90, 'ratio': []},
+            \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
+            \ {'maxwidth': 49, 'ratio': [1]}
+            \ ]
+
+" Customize the initial layout
+let g:rnvimr_layout = {
+            \ 'relative': 'editor',
+            \ 'width': float2nr(round(0.7 * &columns)),
+            \ 'height': float2nr(round(0.7 * &lines)),
+            \ 'col': float2nr(round(0.15 * &columns)),
+            \ 'row': float2nr(round(0.15 * &lines)),
+            \ 'style': 'minimal'
+            \ }
+
+" Customize multiple preset layouts
+" '{}' represents the initial layout
+let g:rnvimr_presets = [
+            \ {'width': 0.600, 'height': 0.600},
+            \ {},
+            \ {'width': 0.800, 'height': 0.800},
+            \ {'width': 0.950, 'height': 0.950},
+            \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0},
+            \ {'width': 0.500, 'height': 0.500, 'col': 0, 'row': 0.5},
+            \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0},
+            \ {'width': 0.500, 'height': 0.500, 'col': 0.5, 'row': 0.5},
+            \ {'width': 0.500, 'height': 1.000, 'col': 0, 'row': 0},
+            \ {'width': 0.500, 'height': 1.000, 'col': 0.5, 'row': 0},
+            \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0},
+            \ {'width': 1.000, 'height': 0.500, 'col': 0, 'row': 0.5}
+            \ ]
+
+" Fullscreen for initial layout
+let g:rnvimr_layout = {
+           \ 'relative': 'editor',
+           \ 'width': &columns,
+           \ 'height': &lines - 2,
+           \ 'col': 0,
+           \ 'row': 0,
+           \ 'style': 'minimal'
+           \ }
+"
+" Only use initial preset layout
+" let g:rnvimr_presets = [{}]
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""" Lokaltog/neoranger """"""""""""""""""""""""""""""""""""""""""""""""""
+" Open ranger at current file with "-"
+nnoremap <silent> - :RangerCurrentFile<CR>
+
+" Open ranger in current working directory
+nnoremap <silent> ;R :Ranger<CR>
+" for setting ranger viewmode values
+let g:neoranger_viewmode='multipane' " supported values are ['multipane', 'miller']
+
+" for setting any extra option passed to ranger params
+let g:neoranger_opts='--cmd="set show_hidden true"' " this line makes ranger show hidden files by default
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""" dkarter/bullets.vim """"""""""""""""""""""""""""""""""""""""""""""""""
 " Bullets.vim
 let g:bullets_enabled_file_types = [
