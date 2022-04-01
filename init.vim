@@ -111,6 +111,9 @@ Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'vim-scripts/nightshade.vim'
 Plug 'rainglow/vim'
+Plug 'rafamadriz/neon'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'shaunsingh/moonlight.nvim'
 
 
 " 超强插件
@@ -182,6 +185,8 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 " Plug 'akinsho/nvim-bufferline.lua'                                        " 基于lua编写的 buffer栏插件
 " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}                       "基于lua编写的 状态栏插件
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'yamatsum/nvim-nonicons'
+Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
 " Plug 'nathanaelkane/vim-indent-guides'                                    " 缩进指示线
@@ -206,6 +211,7 @@ Plug 'glepnir/dashboard-nvim'                " 启动vim时启动界面美化
 Plug 'mhinz/vim-startify'                   " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
+Plug 'goolord/alpha-nvim'
 Plug 'chxuan/change-colorscheme'                     "快速改变颜色主题
 " Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进制值文本的背景颜色
 Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
@@ -4176,7 +4182,7 @@ else
     set background=dark
     let ayucolor="mirage"  " for light version of theme
     let themes = [
-        \ 'solarized8_dark_high' , 'github','NeoSolarized',
+        \ 'solarized8_dark_high' , 'github','NeoSolarized','neonwave',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
         \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
         \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel',
