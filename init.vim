@@ -185,6 +185,9 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 " Plug 'akinsho/nvim-bufferline.lua'                                        " 基于lua编写的 buffer栏插件
 " Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}                       "基于lua编写的 状态栏插件
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'kdheepak/tabline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'yamatsum/nvim-nonicons'
 Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
@@ -273,6 +276,7 @@ Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 
 " 浮动终端
 Plug 'voldikss/vim-floaterm', { 'on': 'FloatermNew' }
+Plug 'nikvdp/neomux'
 
 "代码块
 Plug 'SirVer/ultisnips'                    " 安装引擎
