@@ -197,10 +197,12 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-
-
 " 代码调试
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
+
+" 调整窗口大小
+Plug 'justincampbell/vim-eighties'
+Plug 'wahidrahim/resize-font'
 
 
 "美化
@@ -1226,6 +1228,34 @@ augroup ScrollbarInit
   autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
   autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
 augroup end
+
+""""""""""""""""""""""""""""" gelguy/wilder.nvim配置"""""""""""""""""""""""""""""""""""""""""
+call wilder#setup({'modes': [':', '/', '?']})
+
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     wilder#cmdline_pipeline(),
+      \     wilder#search_pipeline(),
+      \   ),
+      \ ])
+
+call wilder#set_option('renderer', wilder#wildmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ }))
+
+
+""""""""""""""""""""""""""""" justincampbell/vim-eighties配置"""""""""""""""""""""""""""""""""""""""""
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 80
+let g:eighties_extra_width = 0 " Increase this if you want some extra room
+let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
+let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
+
+
+""""""""""""""""""""""""""""" wahidrahim/resize-font配置"""""""""""""""""""""""""""""""""""""""""
+map ;fs :ResizeFontSmaller<CR>
+map ;fl :ResizeFontBigger<CR>
+
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
 
@@ -4496,6 +4526,167 @@ endfunction
 map <C-;> :call AdjustFontSize(1) <CR>
 map <C-.> :call AdjustFontSize(-1) <CR>
 map <C-Home> :call AdjustFontSize(10) <CR>
+
+
+"""""""""""""""""""""""""""""" 更改字体 """"""""""""""""""""""""""""""
+let s:fontsize = 12
+function! AdjustFontSize(amount)
+  let s:fontsize = s:fontsize+a:amount
+  :execute "GuiFont! Consolas:h" . s:fontsize
+endfunction
+
+noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
+noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
+inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
+inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
+
+" In normal mode, pressing numpad's+ increases the font
+noremap <kPlus> :call AdjustFontSize(1)<CR>
+noremap <kMinus> :call AdjustFontSize(-1)<CR>
+
+" In insert mode, pressing ctrl + numpad's+ increases the font
+inoremap <C-kPlus> <Esc>:call AdjustFontSize(1)<CR>a
+inoremap <C-kMinus> <Esc>:call AdjustFontSize(-1)<CR>a
+
+
+function! AdjustFontSize(amount)
+    if !has("gui_running")
+        return
+    endif
+
+    let l:min_font_size = 5
+    let l:max_font_size = 23
+
+    let l:font_info = GetFontInfo()
+    if l:font_info.name == '' || l:font_info.size == ''
+        return
+    endif
+
+    let l:font_name = l:font_info.name
+    let l:font_size = l:font_info.size
+
+    " Decrease font size.
+    if a:amount == '-'
+        let l:font_size = l:font_size - 1
+
+    " Increase font size.
+    elseif a:amount == '+'
+        let l:font_size = l:font_size + 1
+
+    " Use a specific font size.
+    elseif str2nr(a:amount)
+        let l:font_size = str2nr(a:amount)
+    endif
+
+    " Clamp font size.
+    let l:font_size = max([l:min_font_size, min([l:max_font_size, l:font_size])])
+
+    if matchstr(&guifont, ':') == '' " Linux guifont style.
+        " \v           Very magical.
+        " (\d+$)       Capture group:       Match [0-9] one-or-more times, at the end of the string.
+        let l:font_size_pattern = '\v(\d+$)'
+    else " Windows and macOS guifont style.
+        " \v           Very magical.
+        " (:h)@<=      Positive lookbehind: Match ':h'.
+        " (\d+)        Capture group:       Match [0-9] one-or-more times.
+        let l:font_size_pattern = '\v(:h)@<=(\d+)'
+    endif
+
+    " Update vim font size.
+    let &guifont = substitute(&guifont, l:font_size_pattern, l:font_size, '')
+
+    call DisplayFontInfo()
+endfunction
+
+function! DisplayFontSelector()
+    if !has("gui_running")
+        return
+    endif
+
+    " Display font selector.
+    " NOTE: This only changes &guifont to '*' in terminal vim.
+    set guifont=*
+
+    call DisplayFontInfo()
+endfunction
+
+function! DisplayFontInfo()
+    let l:font_info = GetFontInfo()
+    if l:font_info.name == '' || l:font_info.size == ''
+        return
+    endif
+
+    " Display font name and size.
+    redraw | echomsg l:font_info.name . ' ' . l:font_info.size . '%'
+endfunction
+
+function! GetFontInfo()
+    " Windows and macOS &guifont: Hack NF:h11:cANSI
+    "                             3270Medium_NF:h10:W500:cANSI:qDRAFT
+    " Linux &guifont: Hack Nerd Font Mono Regular 10
+
+    if matchstr(&guifont, ':') == '' " Linux guifont style.
+        " \v           Very magical.
+        " (^.{-1,})    Capture group:       Anchored at the start of the string, match any character one-or-more times non-greedy.
+        " ( \d+$)@=    Positive lookahead:  Match ' ' followed by [0-9] one-or-more times, at the end of the string.
+        let l:font_name_pattern = '\v(^.{-1,})( \d+$)@='
+
+        " \v           Very magical.
+        " (\d+$)       Capture group:       Match [0-9] one-or-more times, at the end of the string.
+        let l:font_size_pattern = '\v(\d+$)'
+    else " Windows and macOS guifont style.
+        " \v           Very magical.
+        " (^.{-1,})    Capture group:       Anchored at the start of the string, match any character one-or-more times non-greedy.
+        " (:)@=        Positive lookahead:  Match ':'.
+        let l:font_name_pattern = '\v(^.{-1,})(:)@='
+
+        " \v           Very magical.
+        " (:h)@<=      Positive lookbehind: Match ':h'.
+        " (\d+)        Capture group:       Match [0-9] one-or-more times.
+        let l:font_size_pattern = '\v(:h)@<=(\d+)'
+    endif
+
+    let l:font_name = matchstr(&guifont, l:font_name_pattern)
+    let l:font_size = matchstr(&guifont, l:font_size_pattern)
+
+    return { 'name' : l:font_name, 'size' : l:font_size }
+endfunction
+
+" Bind Control + Mouse-wheel to zoom text.
+" NOTE: This event only works in Linux and macOS. SEE: :h scroll-mouse-wheel
+map <silent> <C-ScrollWheelDown> :call AdjustFontSize('-')<CR>
+map <silent> <C-ScrollWheelUp> :call AdjustFontSize('+')<CR>
+
+" Decrease font size.
+nnoremap <silent> <F11> :call AdjustFontSize('-')<CR>
+inoremap <silent> <F11> <Esc>:call AdjustFontSize('-')<CR>
+vnoremap <silent> <F11> <Esc>:call AdjustFontSize('-')<CR>
+cnoremap <silent> <F11> <Esc>:call AdjustFontSize('-')<CR>
+onoremap <silent> <F11> <Esc>:call AdjustFontSize('-')<CR>
+
+" Increase font size.
+nnoremap <silent> <F12> :call AdjustFontSize('+')<CR>
+inoremap <silent> <F12> <Esc>:call AdjustFontSize('+')<CR>
+vnoremap <silent> <F12> <Esc>:call AdjustFontSize('+')<CR>
+cnoremap <silent> <F12> <Esc>:call AdjustFontSize('+')<CR>
+onoremap <silent> <F12> <Esc>:call AdjustFontSize('+')<CR>
+
+" Set font size to my preferred size.
+nnoremap <silent> <S-F11> :call AdjustFontSize(10)<CR>
+inoremap <silent> <S-F11> <Esc>:call AdjustFontSize(10)<CR>
+vnoremap <silent> <S-F11> <Esc>:call AdjustFontSize(10)<CR>
+cnoremap <silent> <S-F11> <Esc>:call AdjustFontSize(10)<CR>
+onoremap <silent> <S-F11> <Esc>:call AdjustFontSize(10)<CR>
+
+" Display font selector.
+nnoremap <silent> <S-F12> :call DisplayFontSelector()<CR>
+inoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
+vnoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
+cnoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
+onoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
+
+
+
 
 ""--------------------vim原本的快捷键映射变更-----------------------------
 "###################################################
