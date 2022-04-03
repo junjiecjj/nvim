@@ -114,7 +114,7 @@ Plug 'rainglow/vim'
 Plug 'rafamadriz/neon'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'shaunsingh/moonlight.nvim'
-
+Plug 'mangeshrex/everblush.vim'
 
 " 超强插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -177,6 +177,28 @@ Plug 'easymotion/vim-easymotion'                " 强大的搜索定位，快速
 Plug 'tpope/vim-surround'                         "快速将括号、‘’、“”、[]等替换
 
 
+" 滚动条
+Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'dstein64/nvim-scrollview'
+
+if has('nvim')
+  function! UpdateRemotePlugins(...)
+    " Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
+else
+  Plug 'gelguy/wilder.nvim'
+
+  " To use Python remote plugin features in Vim, can be skipped
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+
+
 " 代码调试
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
 
@@ -187,7 +209,6 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kdheepak/tabline.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'yamatsum/nvim-nonicons'
 Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
@@ -335,6 +356,7 @@ Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] 
 Plug 'dkarter/bullets.vim'
 Plug 'ferrine/md-img-paste.vim'        "从粘贴板 paste
 Plug 'demonlord1997/markdown-org', {'for':'markdown'}
+Plug 'ellisonleao/glow.nvim'
 
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
@@ -1197,6 +1219,13 @@ augroup END
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
 
+""""""""""""""""""""""""""""" Xuyuanp/scrollbar.nvim配置"""""""""""""""""""""""""""""""""""""""""
+augroup ScrollbarInit
+  autocmd!
+  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+augroup end
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
 
