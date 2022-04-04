@@ -115,6 +115,8 @@ Plug 'rafamadriz/neon'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'shaunsingh/moonlight.nvim'
 Plug 'mangeshrex/everblush.vim'
+Plug 'Iron-E/nvim-highlite'
+Plug 'folke/twilight.nvim'
 
 " 超强插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -132,6 +134,7 @@ Plug 'itchyny/vim-cursorword'
 " General Highlighter
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
+Plug 'winston0410/range-highlight.nvim'
 
 " 多层括号配色
 Plug 'luochen1990/rainbow'
@@ -2795,6 +2798,48 @@ nmap ;7 <Plug>BuffetSwitch(7)
 nmap ;8 <Plug>BuffetSwitch(8)
 nmap ;9 <Plug>BuffetSwitch(9)
 nmap ;0 <Plug>BuffetSwitch(10)
+
+""""""""""""""""""""" romgrk/barbar.nvim 设置""""""""""""""""""""""
+" Move to previous/next
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    ;1 :BufferGoto 1<CR>
+nnoremap <silent>    ;2 :BufferGoto 2<CR>
+nnoremap <silent>    ;3 :BufferGoto 3<CR>
+nnoremap <silent>    ;4 :BufferGoto 4<CR>
+nnoremap <silent>    ;5 :BufferGoto 5<CR>
+nnoremap <silent>    ;6 :BufferGoto 6<CR>
+nnoremap <silent>    ;7 :BufferGoto 7<CR>
+nnoremap <silent>    ;8 :BufferGoto 8<CR>
+nnoremap <silent>    ;9 :BufferLast<CR>
+" Pin/unpin buffer
+nnoremap <silent>    <A-p> :BufferPin<CR>
+" Close buffer
+nnoremap <silent>    <A-c> :BufferClose<CR>
+" Wipeout buffer
+"                          :BufferWipeout<CR>
+" Close commands
+"                          :BufferCloseAllButCurrent<CR>
+"                          :BufferCloseAllButPinned<CR>
+"                          :BufferCloseBuffersLeft<CR>
+"                          :BufferCloseBuffersRight<CR>
+" Magic buffer-picking mode
+nnoremap <silent> <C-s>    :BufferPick<CR>
+" Sort automatically by...
+nnoremap <silent> <Space>bb :BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
+
+" Other:
+" :BarbarEnable - enables barbar (enabled by default)
+" :BarbarDisable - very bad command, should never be used
+
+
 
 " """"""""""""""""""""""""""""""""""""" WinManager 配置 """""""""""""""""""""""""""""""""""""
 
