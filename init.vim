@@ -2769,9 +2769,9 @@ map <Leader>hm :MBEToggle<cr>
 
 " buffer 切换快捷键
 " ctrl + tab下一个buffer
-map <C-tab> :MBEbn<CR>
+map bn :MBEbn<CR>
 " ctrl + shift + tab下一个buffer
-map <C-M-tab> :MBEbp<CR>
+map bp :MBEbp<CR>
 
 
 " MiniBufExpl 配色
