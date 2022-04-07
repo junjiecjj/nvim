@@ -463,9 +463,10 @@ set linespace=0
 " set guifont=-misc-simsun-medium-r-normal-*-*-120-*-*-c-*-iso10646-1
 " 在Gvim中我设置了英文用Hermit， 中文使用 YaHei Mono "
 
-if has('gui_running')
-    " colorscheme desert
-    " 下面的滚动条开启
+
+  
+ if has('gui_running')
+    "colorscheme desert" 下面的滚动条开启
     " let g:netrw_winsize = 20
     "添加水平滚动条。如果你指定了不折行，那为窗口添加一个水平滚动条就非常有必要了
     :set guioptions+=b
@@ -479,7 +480,6 @@ if has('gui_running')
     set guioptions+=L
     " 设置为双字宽显示，否则无法完整显示如:☆
     set lines=60 columns=108 linespace=0
-
     if has('gui_win32')
         " set guifont=DejaVu_Sans_Mono:h10:cANSI
         " set guifont=Fira_Code:h10:cANSI
@@ -495,9 +495,10 @@ if has('gui_running')
         " set guifont=InconsolataGo_Nerd_Font:h8:cANSI
         " set guifont=InconsolataGo_Nerd_Font_Mono:h8:cANSI
         " set guifont=InconsolataLGC_Nerd_Font_Medium:h8:cANSI
-        set guifont=YaHei_Consolas_Hybrid:h8:cANSI
+        set guifont=YaHei_Consolas_Hybrid:h12:cANSI
         " set guifont=YaHei_Consolas_Hybrid_YaHei_Consolas_Hybrid_Regular:h8:cANSI
-        set guifont=Cascadia_Code:h8:cANSI
+        set guifont=Cascadia_Code:h12:cANSI
+        set guifont=CaskaydiaCove_Nerd_Font_Mono:h12:cANSI
     else
         " set guifont=DejaVu\ Sans\ Mono\ 12
         " set guifont=Fira\ Code\ 12
@@ -513,12 +514,12 @@ if has('gui_running')
         " set guifont=InconsolataGo\ Nerd\ Font:h8:cANSI
         " set guifont=InconsolataGo\ Nerd\ Font\ Mono:h8:cANSI
         " set guifont=InconsolataLGC\ Nerd\ Font\ Medium:h8:cANSI
-        set guifont=YaHei\ Consolas\ Hybrid:h8:cANSI
+        set guifont=YaHei\ Consolas\ Hybrid:h12:cANSI
         " set guifont=YaHei\ Consolas\ Hybrid\ YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
-        set guifont=Cascadia\ Code:h8:cANSI
+        set guifont=Cascadia\ Code:h12:cANSI
+        set guifont=CascadiaCove\ Nerd\ Font\ Mono:h12:cANSI
     endif
   endif
-
 
 
 " ===
