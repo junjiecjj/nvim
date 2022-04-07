@@ -499,6 +499,7 @@ if has('gui_running')
         set guifont=YaHei_Consolas_Hybrid:h12:cANSI
         " set guifont=YaHei_Consolas_Hybrid_YaHei_Consolas_Hybrid_Regular:h8:cANSI
         set guifont=Cascadia_Code:h12:cANSI
+	set guifont=CaskaydiaCove_Nerd_Font_Mono:h12:cANSI
     else
         " set guifont=DejaVu\ Sans\ Mono\ 12
         " set guifont=Fira\ Code\ 12
@@ -517,6 +518,7 @@ if has('gui_running')
         set guifont=YaHei\ Consolas\ Hybrid:h12:cANSI
         " set guifont=YaHei\ Consolas\ Hybrid\ YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
         set guifont=Cascadia\ Code:h12:cANSI
+	set guifont=CascadiaCove\ Nerd\ Font\ Mono:h12:cANSI
     endif
   endif
 
