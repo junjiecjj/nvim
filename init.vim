@@ -4757,6 +4757,8 @@ inoremap <C-a> <Esc>ggvG$
 
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
+"sudo apt install xclip, vim-gtk
+"sudo pacman -S xsel
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
