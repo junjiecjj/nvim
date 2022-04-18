@@ -4293,7 +4293,7 @@ else
     let themes = [
         \ 'solarized8_dark_high' , 'github','NeoSolarized','neonwave',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
-        \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
+        \ 'solarized8_flat', 'solarized8_low', 'solarized8_high','solarized8' ,'lilydjwg_dark',
         \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel',
         \ 'shades_of_purple','cobalt','cobaltish','cosmic-barf','tokyonight','true','purpura',
         \ ]
