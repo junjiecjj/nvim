@@ -1236,7 +1236,7 @@ augroup end
 """"""""""""""""""""""""""""" dstein64/nvim-scrollview配置"""""""""""""""""""""""""""""""""""""""""
 let g:scrollview_excluded_filetypes = ['nerdtree','defx','tarbar','taglist']
 let g:scrollview_current_only = 1
-let g:scrollview_winblend = 15
+let g:scrollview_winblend = 10
 " Position the scrollbar at the 80th character of the buffer
 let g:scrollview_base = 'buffer'
 let g:scrollview_column = 200
