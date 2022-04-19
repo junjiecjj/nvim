@@ -1233,6 +1233,15 @@ augroup ScrollbarInit
   autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
 augroup end
 
+""""""""""""""""""""""""""""" dstein64/nvim-scrollview配置"""""""""""""""""""""""""""""""""""""""""
+let g:scrollview_excluded_filetypes = ['nerdtree','defx','tarbar','taglist']
+let g:scrollview_current_only = 1
+let g:scrollview_winblend = 15
+" Position the scrollbar at the 80th character of the buffer
+let g:scrollview_base = 'buffer'
+let g:scrollview_column = 200
+
+
 """"""""""""""""""""""""""""" gelguy/wilder.nvim配置"""""""""""""""""""""""""""""""""""""""""
 call wilder#setup({'modes': [':', '/', '?']})
 
