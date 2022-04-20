@@ -4975,15 +4975,15 @@ noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
 noremap <silent><tab><right> :tabnext<cr>
 noremap <silent>]t :tabnext<cr>
-noremap <silent>`n :tabnext<cr>
-nnoremap tn  :tabnext<CR>
-nnoremap <M-k>  :tabnext<CR>
+noremap <silent>;n :tabnext<cr>
+" nnoremap tn  :tabnext<CR>
+" nnoremap <M-k>  :tabnext<CR>
 " 上一个标签页
 noremap <silent><tab><left> :tabprevious<cr>
 noremap <silent>[t :tabprevious<cr>
-noremap <silent>`p :tabprevious<cr>
-nnoremap tp  :tabprevious<CR>
-nnoremap <M-j>  :tabprevious<CR>
+noremap <silent>;p :tabprevious<cr>
+" nnoremap tp  :tabprevious<CR>
+" nnoremap <M-j>  :tabprevious<CR>
 
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
@@ -5042,15 +5042,15 @@ noremap <leader>0 :tablast<CR>
 " nnoremap <C-tab> :bn<CR>
 nnoremap  ]b :bn<CR>
 nnoremap  ;e :bn<CR>
-nnoremap  `e :bn<CR>
-nnoremap  <M-l> :bn<CR>
+" nnoremap  `e :bn<CR>
+" nnoremap  <M-l> :bn<CR>
 " ctrl + shift + tab下一个buffer
 " map <C-M-tab> :bp<CR>
 " nnoremap <C-M-tab> :bp<CR>
 nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
-nnoremap  `a :bp<CR>
-nnoremap  <M-h> :bp<CR>
+" nnoremap  `a :bp<CR>
+" nnoremap  <M-h> :bp<CR>
 
 " :buffers或:ls或:files 显示缓冲区列表。
 " ctrl+^：在最近两个缓冲区间切换。
