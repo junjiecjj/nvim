@@ -2889,14 +2889,29 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 """"""""""""""""""""""""""""" mg979/vim-visual-multi(vim多重光标选取插件)   """""""""""""""""""""""""""""
-let g:VM_theme = 'iceblue'
-let g:VM_maps = {}
-let g:VM_maps["Select Cursor Down"] = '<C-Down>'
-let g:VM_maps["Select Cursor Up"]   = '<C-Up>'
-let g:VM_maps["Select l"] = '<C-Right>'
-let g:VM_maps["Select h"] = '<C-Left>'
+
+" https://yaocc.cc/2021/05/17/VIM%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94%E6%95%88%E7%8E%87MAX/
+let g:VM_maps = {}                            "取消默认按键映射。
 let g:VM_theme = 'iceblue'
 let g:VM_highlight_matches = 'underline'
+let g:VM_maps['Find Under']         = '<c-n>' "进入多光标模式并选中光标下字符串。
+let g:VM_maps['Find Subword Under'] = '<c-n>' "选中下一个字符串。
+let g:VM_maps['Select All']         = '<c-d>'   "进入多光标模式并选中所有同光标下的字符串。
+let g:VM_maps["Select h"]           = '<C-Left>' " 从光标往左选中文本(ctrl+n继续向下选中相同文本)
+let g:VM_maps["Select l"]           = '<C-Right>' "从光标往右选中文本(ctrl+n继续向下选中相同文本)
+let g:VM_maps['Add Cursor Up']      = '<C-Up>'   " 向上添加一个光标(原光标+上光标 继续使用则继续添加)
+let g:VM_maps['Add Cursor Down']    = '<C-Down>' " 向下添加一个光标(原光标+下光标 继续使用则继续添加)
+let g:VM_maps["Select Cursor Up"]   = '<C-Up>'   " 
+let g:VM_maps["Select Cursor Down"] = '<C-Down>'
+let g:VM_maps['Add Cursor At Pos']  = '<C-x>'    " 将当前光标添加入多光标列表中
+let g:VM_maps['Add Cursor At Word'] = '<C-w>'    " 将当前光标所在词的词首加上多光标列表中
+let g:VM_maps['Find Next']          = 'n'     "往下查找并增加光标。
+let g:VM_maps['Find Prev']          = 'N'     "网上查找并增加光标。
+let g:VM_maps['Skip Region']        = 'q'     "跳过当前光标到下一个。
+let g:VM_maps['Remove Region']      = 'Q'     "取消当前光标。
+let g:VM_maps['Undo']               = 'u'     "Undo.
+let g:VM_maps['Redo']               = '<c-r>' "Redo.
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
