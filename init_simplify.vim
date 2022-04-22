@@ -206,8 +206,8 @@ endif
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
 
 " 调整窗口大小
-Plug 'justincampbell/vim-eighties'
-Plug 'wahidrahim/resize-font'
+" Plug 'justincampbell/vim-eighties'
+" Plug 'wahidrahim/resize-font'
 
 
 "美化
@@ -229,7 +229,7 @@ Plug 'reedes/vim-wordy'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'junegunn/limelight.vim'               " 与 Goyo, seoul256 为同一开发者，联合使用效果最佳。不适用于写代码和看代码
-Plug 'junegunn/vim-peekaboo'                "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
+Plug 'junegunn/vim-peekaboo'                "  当你按下(normal)双引号键或者@,(insert)按下ctrl+r时，它会在右侧打开一个寄存器备忘单
 " Plug 'matze/vim-move'                     " 代码块移动
 " Plug 'DoxygenToolkit.vim'                 " 注释文档生成
 " Plug 'VimTweak'                            " 背景透明插件
@@ -242,9 +242,9 @@ Plug 'glepnir/dashboard-nvim'                " 启动vim时启动界面美化
 Plug 'mhinz/vim-startify'                   " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
-Plug 'goolord/alpha-nvim'
+" Plug 'goolord/alpha-nvim'
 Plug 'chxuan/change-colorscheme'                     "快速改变颜色主题
-" Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进制值文本的背景颜色
+Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进制值文本的背景颜色
 " Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
 Plug 'tyru/open-browser.vim'                         " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
@@ -260,7 +260,7 @@ Plug 'danilamihailov/beacon.nvim'
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
 " 编辑器配置插件。
-Plug 'editorconfig/editorconfig-vim'   
+Plug 'editorconfig/editorconfig-vim'
 
 "FPGA
 " Plug 'vhda/verilog_systemverilog.vim'     "verilog
@@ -499,7 +499,7 @@ if has('gui_running')
         set guifont=YaHei_Consolas_Hybrid:h12:cANSI
         " set guifont=YaHei_Consolas_Hybrid_YaHei_Consolas_Hybrid_Regular:h8:cANSI
         set guifont=Cascadia_Code:h12:cANSI
-	set guifont=CaskaydiaCove_Nerd_Font_Mono:h12:cANSI
+        set guifont=CaskaydiaCove_Nerd_Font_Mono:h12:cANSI
     else
         " set guifont=DejaVu\ Sans\ Mono\ 12
         " set guifont=Fira\ Code\ 12
@@ -518,7 +518,7 @@ if has('gui_running')
         set guifont=YaHei\ Consolas\ Hybrid:h12:cANSI
         " set guifont=YaHei\ Consolas\ Hybrid\ YaHei\ Consolas\ Hybrid\ Regular:h8:cANSI
         set guifont=Cascadia\ Code:h12:cANSI
-	set guifont=CascadiaCove\ Nerd\ Font\ Mono:h12:cANSI
+        set guifont=CascadiaCove\ Nerd\ Font\ Mono:h12:cANSI
     endif
   endif
 
@@ -1235,6 +1235,15 @@ augroup ScrollbarInit
   autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
 augroup end
 
+
+""""""""""""""""""""""""""""" dstein64/nvim-scrollview配置"""""""""""""""""""""""""""""""""""""""""
+let g:scrollview_excluded_filetypes = ['nerdtree','defx','tagbar','taglist']
+let g:scrollview_current_only = 1
+let g:scrollview_winblend = 10
+" Position the scrollbar at the 80th character of the buffer
+let g:scrollview_base = 'buffer'
+let g:scrollview_column = 200
+
 """"""""""""""""""""""""""""" gelguy/wilder.nvim配置"""""""""""""""""""""""""""""""""""""""""
 call wilder#setup({'modes': [':', '/', '?']})
 
@@ -1250,17 +1259,17 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
       \ }))
 
 
-""""""""""""""""""""""""""""" justincampbell/vim-eighties配置"""""""""""""""""""""""""""""""""""""""""
-let g:eighties_enabled = 1
-let g:eighties_minimum_width = 80
-let g:eighties_extra_width = 0 " Increase this if you want some extra room
-let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
-let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
+" """"""""""""""""""""""""""""" justincampbell/vim-eighties配置"""""""""""""""""""""""""""""""""""""""""
+" let g:eighties_enabled = 0
+" let g:eighties_minimum_width = 80
+" let g:eighties_extra_width = 0 " Increase this if you want some extra room
+" let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
+" let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
 
 
-""""""""""""""""""""""""""""" wahidrahim/resize-font配置"""""""""""""""""""""""""""""""""""""""""
-map ;fs :ResizeFontSmaller<CR>
-map ;fl :ResizeFontBigger<CR>
+" """"""""""""""""""""""""""""" wahidrahim/resize-font配置"""""""""""""""""""""""""""""""""""""""""
+" map ;fs :ResizeFontSmaller<CR>
+" map ;fl :ResizeFontBigger<CR>
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
 
@@ -1360,11 +1369,10 @@ let g:rnvimr_enable_ex = 1
 " 选择文件后隐藏游侠
 let g:rnvimr_enable_picker = 1
 " 使用multipane模式启动(单列)可以按~手动切换
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set viewmode multipane"'
+" let g:rnvimr_ranger_cmd = 'ranger --cmd="set viewmode multipane"'
 
 " Draw border with both
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-
 
 " Replace `$EDITOR` candidate with this command to open the selected file
 let g:rnvimr_edit_cmd = 'drop'
@@ -1958,7 +1966,7 @@ vmap . S>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""vimspector插件"""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""vimspector插件"""""""""""""""""""""""""""""""""""""
 ""安装对应语言调试工具
 "" cd ~/.vim/plugged/vimspector
 "" # c, c++
@@ -2627,6 +2635,7 @@ let g:webdevicons_enable_airline_tabline = 1
 "adding to vim-airline's statusline
 let g:webdevicons_enable_airline_statusline = 1
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -2877,14 +2886,28 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 """"""""""""""""""""""""""""" mg979/vim-visual-multi(vim多重光标选取插件)   """""""""""""""""""""""""""""
-let g:VM_theme = 'iceblue'
-let g:VM_maps = {}
-let g:VM_maps["Select Cursor Down"] = '<C-Down>'
-let g:VM_maps["Select Cursor Up"]   = '<C-Up>'
-let g:VM_maps["Select l"] = '<C-Right>'
-let g:VM_maps["Select h"] = '<C-Left>'
+
+" https://yaocc.cc/2021/05/17/VIM%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94%E6%95%88%E7%8E%87MAX/
+let g:VM_maps = {}                            "取消默认按键映射。
 let g:VM_theme = 'iceblue'
 let g:VM_highlight_matches = 'underline'
+let g:VM_maps['Find Under']         = '<c-n>' "进入多光标模式并选中光标下字符串。
+let g:VM_maps['Find Subword Under'] = '<c-n>' "选中下一个字符串。
+let g:VM_maps['Select All']         = '<c-d>'   "进入多光标模式并选中所有同光标下的字符串。
+let g:VM_maps["Select h"]           = '<C-Left>' " 从光标往左选中文本(ctrl+n继续向下选中相同文本)
+let g:VM_maps["Select l"]           = '<C-Right>' "从光标往右选中文本(ctrl+n继续向下选中相同文本)
+let g:VM_maps['Add Cursor Up']      = '<C-Up>'   " 向上添加一个光标(原光标+上光标 继续使用则继续添加)
+let g:VM_maps['Add Cursor Down']    = '<C-Down>' " 向下添加一个光标(原光标+下光标 继续使用则继续添加)
+let g:VM_maps["Select Cursor Up"]   = '<C-Up>'   " 
+let g:VM_maps["Select Cursor Down"] = '<C-Down>'
+let g:VM_maps['Add Cursor At Pos']  = '<C-x>'    " 将当前光标添加入多光标列表中
+let g:VM_maps['Add Cursor At Word'] = '<C-w>'    " 将当前光标所在词的词首加上多光标列表中
+let g:VM_maps['Find Next']          = 'n'     "往下查找并增加光标。
+let g:VM_maps['Find Prev']          = 'N'     "网上查找并增加光标。
+let g:VM_maps['Skip Region']        = 'q'     "跳过当前光标到下一个。
+let g:VM_maps['Remove Region']      = 'Q'     "取消当前光标。
+let g:VM_maps['Undo']               = 'u'     "Undo.
+let g:VM_maps['Redo']               = '<c-r>' "Redo.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -3084,7 +3107,7 @@ noremap  ftt :FloatermToggle<CR>
 
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
 "寻找全局配置文件
-let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 
 "开始补全的字符数
 let g:ycm_min_num_of_chars_for_completion = 2
@@ -4211,6 +4234,8 @@ let g:any_jump_references_only_for_current_filetype = 0
 " Disable search engine ignore vcs untracked files
 " (default: false, search engine will ignore vcs untracked files)
 let g:any_jump_disable_vcs_ignore = 0
+
+
 """"""""""""""""""""''prettier/vim-prettier配置""""""""""""""""""""""""""""""
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
@@ -4723,9 +4748,12 @@ inoremap <C-a> <Esc>ggvG$
 
 
 " set clipboard=unnamedplus  "使得vim剪切板和系统剪切板一致，这样就可以使用ctrl c/v了
+"sudo apt install xclip, vim-gtk
+"sudo pacman -S xsel
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
+nnoremap <C-p> "*p  # 支持在normal模式下，通过C-p粘贴系统剪切板
 nnoremap <C-s> "+p
 inoremap <C-s> <Esc>"+pa
 nnoremap <C-s> "+gp
@@ -4930,15 +4958,15 @@ noremap <silent><tab>c :tabclose<cr>
 "下一个标签页
 noremap <silent><tab><right> :tabnext<cr>
 noremap <silent>]t :tabnext<cr>
-noremap <silent>`n :tabnext<cr>
-nnoremap tn  :tabnext<CR>
-nnoremap <M-j>  :tabnext<CR>
+noremap <silent>;n :tabnext<cr>
+" nnoremap tn  :tabnext<CR>
+" nnoremap <M-j>  :tabnext<CR>
 " 上一个标签页
 noremap <silent><tab><left> :tabprevious<cr>
 noremap <silent>[t :tabprevious<cr>
-noremap <silent>`p :tabprevious<cr>
-nnoremap tp  :tabprevious<CR>
-nnoremap <M-k>  :tabprevious<CR>
+noremap <silent>;p :tabprevious<cr>
+" nnoremap tp  :tabprevious<CR>
+" nnoremap <M-k>  :tabprevious<CR>
 
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
@@ -4997,15 +5025,15 @@ noremap <leader>0 :tablast<CR>
 " nnoremap <C-tab> :bn<CR>
 nnoremap  ]b :bn<CR>
 nnoremap  ;e :bn<CR>
-nnoremap  `e :bn<CR>
-nnoremap  <M-l> :bn<CR>
+" nnoremap  `e :bn<CR>
+" nnoremap  <M-l> :bn<CR>
 " ctrl + shift + tab下一个buffer
 " map <C-M-tab> :bp<CR>
 " nnoremap <C-M-tab> :bp<CR>
 nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
-nnoremap  `a :bp<CR>
-nnoremap  <M-h> :bp<CR>
+" nnoremap  `a :bp<CR>
+" nnoremap  <M-h> :bp<CR>
 
 " :buffers或:ls或:files 显示缓冲区列表。
 " ctrl+^：在最近两个缓冲区间切换。
