@@ -129,8 +129,9 @@ Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
 Plug 'bronson/vim-trailing-whitespace'   
 
 " 让光标所在单词高亮或者下划线
-Plug 'lfv89/vim-interestingwords'
-Plug 'itchyny/vim-cursorword'
+" 让光标所在单词高亮或者下划线
+Plug 'lfv89/vim-interestingwords'  "可以使用不同颜色同时高亮多个单词，浏览或者给别人讲解代码的时候比较有用
+Plug 'itchyny/vim-cursorword'  "给当前光标下的单词增加下划线
 " General Highlighter
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
