@@ -4049,6 +4049,12 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
+" pip install pynvim
+" pip install jedi
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""" davidhalter/jedi-vim """""""""""""""""""""""""""""""""""""""""""""
 " disable autocompletion, cause we use deoplete for completion
 let g:jedi#completions_enabled = 0
