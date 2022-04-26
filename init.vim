@@ -367,6 +367,8 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+
 Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " Plug 'w0rp/ale'
 
@@ -3757,6 +3759,14 @@ map <LEADER>tm :TableModeToggle<CR>
 
 """""""""""""""""""Neoformat设置"""""""""""""""""""
 nnoremap <LEADER>fm :Neoformat<CR>
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
 
 """"""""""""""""""""""dkarter/bullets.vim"""""""""""""""
 
@@ -4038,6 +4048,19 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""" davidhalter/jedi-vim """""""""""""""""""""""""""""""""""""""""""""
+" disable autocompletion, cause we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+" <leader>d: go to definition
+" K: check documentation of class or method
+" <leader>n: show the usage of a name in current file
+" <leader>r: rename a name
+
 
 """""""""""""""""""""""""""""""""""" 设置状态栏主题风格 airline """"""""""""""""""""""""""""""
 
