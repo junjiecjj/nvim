@@ -1998,6 +1998,12 @@ sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
+""""""""""""""""""machakann/vim-highlightedyank 设置""""""""""""""""""""""""""""""
+
+hi HighlightedyankRegion cterm=reverse gui=reverse
+let g:highlightedyank_highlight_duration = 1000 " 高亮持续时间为 1000 毫秒
+
+
 
 """"""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
 " let g:dashboard_default_header = "eval"
@@ -3344,6 +3350,28 @@ let g:autotagTagsFile=".tags"
 let g:autotagStartMethod='fork'
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
+
+""设置保存时自动格式化(*表示所有文件)"
+""au BufWrite * :Autoformat"
+"au BufWrite *.cpp,*.hpp :Autoformat
+"au BufWrite *.c,*.h :Autoformat
+
+""设置clang-format格式化,style后面的格式是VS的格式"
+"let g:formatdef_clangformat_Microsoft = '"clang-format -style=Microsoft"'
+
+"let g:formatters_cpp = ['clangformat_Microsoft']
+"let g:formatters_cc = ['clangformat_Microsoft']
+"let g:formatters_hpp = ['clangformat_Microsoft']
+"let g:formatters_c = ['clangformat_Microsoft']
+"let g:formatters_h = ['clangformat_Microsoft']
+""F3自动格式化代码
+"noremap <F3> :Autoformat<CR>
+"let g:autoformat_verbosemode=1
+"也可以通过下面方式，设置保存时自动对指定格式代码进行格式化，或对所有格式进行格式化。
+""保存时自动格式化代码，针对所有支持的文件
+"au BufWrite * :Autoformat
+""保存时自动格式化PHP代码
+""au BufWrite *.php :Autoformat
 
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
