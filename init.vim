@@ -4194,8 +4194,6 @@ let g:bufferline_show_bufnr = 1
 let g:bufferline_rotate = 2
 
 
-
-
 " " """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
 "
 " let g:spaceline_seperate_style = 'arrow'
