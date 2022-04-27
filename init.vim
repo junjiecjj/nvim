@@ -248,7 +248,6 @@ Plug 't9md/vim-choosewin'                            " 指定窗口中打开文�
 Plug 'tyru/open-browser.vim'                         " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                            " 函数参数提示
-Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 Plug 'mtdl9/vim-log-highlighting'                    "日志高亮
 Plug 'myusuf3/numbers.vim'                           "相对行号
 
@@ -375,6 +374,7 @@ Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " 美化状态栏
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
+Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 " Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
@@ -4176,6 +4176,7 @@ let g:bufferline_echo = 1
 
 " 缓冲区左侧使用的分隔符
 let g:bufferline_active_buffer_left = '['
+let g:bufferline_active_buffer_right = ']'
 
 " 表示缓冲区已修改的符号
 let g:bufferline_modified = '+'
@@ -4191,6 +4192,7 @@ let g:bufferline_show_bufnr = 1
 
 " 在没有固定当前缓冲区位置的情况下滚动
 let g:bufferline_rotate = 2
+
 
 
 
@@ -4332,19 +4334,91 @@ let g:prettier#autoformat = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 
-" """""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
-"
-" set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
-" set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
-" set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
-" set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
-" set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
-" hi User1 cterm=none ctermfg=25 ctermbg=0
-" hi User2 cterm=none ctermfg=208 ctermbg=0
-" hi User3 cterm=none ctermfg=169 ctermbg=0
-" hi User4 cterm=none ctermfg=100 ctermbg=0
-" hi User5 cterm=none ctermfg=green ctermbg=0
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+
+set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
+set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
+set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
+set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
+set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
+hi User1 cterm=none ctermfg=25 ctermbg=0
+hi User2 cterm=none ctermfg=208 ctermbg=0
+hi User3 cterm=none ctermfg=169 ctermbg=0
+hi User4 cterm=none ctermfg=100 ctermbg=0
+hi User5 cterm=none ctermfg=green ctermbg=0
+hi Normal ctermfg=252 ctermbg=none
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+""statusline
+"set statusline=
+"set statusline+=%7*\[%n]                                  "buffernr
+"set statusline+=%1*\ %<%F\                                "文件路径
+"set statusline+=%2*\ %y\                                  "文件类型
+"set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "编码1
+"set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "编码2
+"set statusline+=%4*\ %{&ff}\                              "文件系统(dos/unix..) 
+"set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "语言 & 是否高亮，H表示高亮?
+"set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "光标所在行号/总行数 (百分比)
+"set statusline+=%9*\ col:%03c\                            "光标所在列
+"set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Read only? Top/bottom
+"function! HighlightSearch()
+"      if &hls
+"          return 'H'
+"      else
+"          return ''
+"      endif
+"endfunction
+"hi User1 ctermfg=white  ctermbg=darkred
+"hi User2 ctermfg=blue  ctermbg=58
+"hi User3 ctermfg=white  ctermbg=100
+"hi User4 ctermfg=darkred  ctermbg=95
+"hi User5 ctermfg=darkred  ctermbg=77
+"hi User7 ctermfg=darkred  ctermbg=blue  cterm=bold
+"hi User8 ctermfg=231  ctermbg=blue
+""hi User9 ctermfg=#ffffff  ctermbg=#810085
+"hi User0 ctermfg=yellow  ctermbg=138
+
+""""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+"function! Buf_total_num()
+ "   return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+"endfunction
+"function! File_size(f)
+ "   let l:size = getfsize(expand(a:f))
+ "   if l:size == 0 || l:size == -1 || l:size == -2
+ "       return ''
+ "   endif
+ "   if l:size < 1024
+ "       return l:size.' bytes'
+ "   elseif l:size < 1024*1024
+ "       return printf('%.1f', l:size/1024.0).'k'
+ "   elseif l:size < 1024*1024*1024
+ "       return printf('%.1f', l:size/1024.0/1024.0) . 'm'
+ "   else
+ "       return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
+ "   endif
+"endfunction
+"set statusline=%<%1*[B-%n]%*
+"" TOT is an abbreviation for total
+"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
+"set statusline+=%3*\ %{File_size(@%)}\ %*
+"set statusline+=%4*\ %F\ %*
+"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
+"set statusline+=%6*\ %m%r%y\ %*
+"set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
+"set statusline+=%8*\ %P\ %*
+"" default bg for statusline is 236 in space-vim-dark
+"hi User1 cterm=bold ctermfg=232 ctermbg=179
+"hi User2 cterm=None ctermfg=214 ctermbg=242
+"hi User3 cterm=None ctermfg=251 ctermbg=240
+"hi User4 cterm=bold ctermfg=169 ctermbg=239
+"hi User5 cterm=None ctermfg=208 ctermbg=238
+"hi User6 cterm=None ctermfg=246 ctermbg=237
+"hi User7 cterm=None ctermfg=250 ctermbg=238
+"hi User8 cterm=None ctermfg=249 ctermbg=240
+
+
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""自定义"配色方案"""""""""""""""""""""""""""""""""""'""'""
 
@@ -5085,6 +5159,23 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<CR>
 
+:nn <M-1> 1gt
+:nn <M-2> 2gt
+:nn <M-3> 3gt
+:nn <M-4> 4gt
+:nn <M-5> 5gt
+:nn <M-6> 6gt
+:nn <M-7> 7gt
+:nn <M-8> 8gt
+:nn <M-9> 9gt
+:nn <M-0> :tablast<CR>
+
+
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+" noremap <C-t> :tabnew split<CR>
 
 
 " 命令:tabs可以显示已打开标签页的列表，并用“>”标识出当前页面，用“+”标识出已更改的页面。
