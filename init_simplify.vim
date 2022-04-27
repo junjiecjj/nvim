@@ -130,8 +130,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bronson/vim-trailing-whitespace'   
 
 " 让光标所在单词高亮或者下划线
-Plug 'lfv89/vim-interestingwords'
-Plug 'itchyny/vim-cursorword'
+Plug 'lfv89/vim-interestingwords'  "可以使用不同颜色同时高亮多个单词，浏览或者给别人讲解代码的时候比较有用
+Plug 'itchyny/vim-cursorword'  "给当前光标下的单词增加下划线
 " General Highlighter
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
@@ -238,7 +238,7 @@ Plug 'makerj/vim-pdf'                       "阅读pdf
 Plug 'chrisbra/changesPlugin'               " 显示vim文档哪些行被修改
 Plug 'vim-utils/vim-man'                    " 在vim中查看相关函数等的man手册，支持水平窗口和垂直窗口打开。
 Plug 'machakann/vim-highlightedyank'        " 使 yank 的文档半透明高亮
-Plug 'glepnir/dashboard-nvim'                " 启动vim时启动界面美化
+" Plug 'glepnir/dashboard-nvim'                " 启动vim时启动界面美化
 Plug 'mhinz/vim-startify'                   " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
@@ -249,7 +249,6 @@ Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进
 Plug 'tyru/open-browser.vim'                         " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                            " 函数参数提示
-Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 Plug 'mtdl9/vim-log-highlighting'                    "日志高亮
 Plug 'myusuf3/numbers.vim'                           "相对行号
 
@@ -270,7 +269,7 @@ Plug 'godlygeek/tabular'                            " 快速对齐
 Plug 'junegunn/vim-easy-align'                      " 用来对齐指定符号的工具
 
 Plug 'fholgado/minibufexpl.vim'                           " 多文档编辑
-Plug 'bagrat/vim-buffet'                                  " 类似minibuf管理多buffer的
+" Plug 'bagrat/vim-buffet'                                  " 类似minibuf管理多buffer的
 Plug 'vim-scripts/winmanager'                             " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'                       " vim多重光标选取插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}       " 比vim-multiple-cursor更好用的多光标插件
@@ -281,7 +280,7 @@ Plug 'vim-scripts/indentpython.vim'        " 写python代码自动缩进
 Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 Plug 'Valloric/YouCompleteMe'              " 自动补全
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
+Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 Plug 'ervandew/supertab'                   " 补全记忆插件
 " Plug 'ncm2/ncm2'
 " Plug 'ncm2/ncm2-bufword'
@@ -369,17 +368,19 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " Plug 'w0rp/ale'
 
 " 美化状态栏
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
+Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 " Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
-" Plug 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 
 "python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -412,8 +413,7 @@ set secure   "会关闭项目中的 shell autocmd write 等命令。
 let &t_ut=''     " 防止vim背景颜色错误
 set indentexpr=
 
-set t_Co=256
-
+set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
 set virtualedit=block,onemore
 
 
@@ -1991,6 +1991,10 @@ vmap . S>
 "sign define vimspectorBPDisabled text=☞ texthl=Normal
 "sign define vimspectorPC text=🔶 texthl=SpellBad
 
+""""""""""""""""""machakann/vim-highlightedyank 设置""""""""""""""""""""""""""""""
+
+hi HighlightedyankRegion cterm=reverse gui=reverse
+let g:highlightedyank_highlight_duration = 1000 " 高亮持续时间为 1000 毫秒
 
 """"""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
 " let g:dashboard_default_header = "eval"
@@ -2630,10 +2634,10 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
 "adding to vim-airline's tabline
-let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_tabline = 0
 
 "adding to vim-airline's statusline
-let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_statusline = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2776,9 +2780,9 @@ map <Leader>hm :MBEToggle<cr>
 
 " buffer 切换快捷键
 " ctrl + tab下一个buffer
-map bn :MBEbn<CR>
+" map bn :MBEbn<CR>
 " ctrl + shift + tab下一个buffer
-map bp :MBEbp<CR>
+" map bp :MBEbp<CR>
 
 
 " MiniBufExpl 配色
@@ -2789,23 +2793,24 @@ hi MBEVisibleChanged       guifg=#F1266F guibg=fg   ctermfg=1     ctermbg=240
 hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg   ctermfg=118   ctermbg=253
 hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg   ctermfg=196   ctermbg=240
 
-"""""""""""""""""""""bagrat/vim-buffet设置""""""""""""""""""""""
-" Note: Make sure the function is defined before `vim-buffet` is loaded.
-function! g:BuffetSetCustomColors()
-  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
-endfunction
-"Vim-buffet设置
-nmap ;1 <Plug>BuffetSwitch(1)
-nmap ;2 <Plug>BuffetSwitch(2)
-nmap ;3 <Plug>BuffetSwitch(3)
-nmap ;4 <Plug>BuffetSwitch(4)
-nmap ;5 <Plug>BuffetSwitch(5)
-nmap ;6 <Plug>BuffetSwitch(6)
-nmap ;7 <Plug>BuffetSwitch(7)
-nmap ;8 <Plug>BuffetSwitch(8)
-nmap ;9 <Plug>BuffetSwitch(9)
-nmap ;0 <Plug>BuffetSwitch(10)
+"""""""""""""""""""""""bagrat/vim-buffet设置""""""""""""""""""""""
+"" Note: Make sure the function is defined before `vim-buffet` is loaded.
+"function! g:BuffetSetCustomColors()
+"  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+"endfunction
+"let g:buffet_always_show_tabline=1
 
+""Vim-buffet设置
+"nmap ;1 <Plug>BuffetSwitch(1)
+"nmap ;2 <Plug>BuffetSwitch(2)
+"nmap ;3 <Plug>BuffetSwitch(3)
+"nmap ;4 <Plug>BuffetSwitch(4)
+"nmap ;5 <Plug>BuffetSwitch(5)
+"nmap ;6 <Plug>BuffetSwitch(6)
+"nmap ;7 <Plug>BuffetSwitch(7)
+"nmap ;8 <Plug>BuffetSwitch(8)
+"nmap ;9 <Plug>BuffetSwitch(9)
+"nmap ;0 <Plug>BuffetSwitch(10)
 
 """"""""""""""""""""" romgrk/barbar.nvim 设置""""""""""""""""""""""
 " Move to previous/next
@@ -3306,7 +3311,27 @@ let g:autotagTagsFile=".tags"
 let g:autotagStartMethod='fork'
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
+""设置保存时自动格式化(*表示所有文件)"
+""au BufWrite * :Autoformat"
+"au BufWrite *.cpp,*.hpp :Autoformat
+"au BufWrite *.c,*.h :Autoformat
 
+""设置clang-format格式化,style后面的格式是VS的格式"
+"let g:formatdef_clangformat_Microsoft = '"clang-format -style=Microsoft"'
+
+"let g:formatters_cpp = ['clangformat_Microsoft']
+"let g:formatters_cc = ['clangformat_Microsoft']
+"let g:formatters_hpp = ['clangformat_Microsoft']
+"let g:formatters_c = ['clangformat_Microsoft']
+"let g:formatters_h = ['clangformat_Microsoft']
+""F3自动格式化代码
+"noremap <F3> :Autoformat<CR>
+"let g:autoformat_verbosemode=1
+"也可以通过下面方式，设置保存时自动对指定格式代码进行格式化，或对所有格式进行格式化。
+""保存时自动格式化代码，针对所有支持的文件
+"au BufWrite * :Autoformat
+""保存时自动格式化PHP代码
+""au BufWrite *.php :Autoformat
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremap <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
@@ -3720,8 +3745,16 @@ let g:vmt_fence_closing_text = '/TOC'
 map <LEADER>tm :TableModeToggle<CR>
 
 """""""""""""""""""Neoformat设置"""""""""""""""""""
+" pip install yapf
 nnoremap <LEADER>fm :Neoformat<CR>
+" Enable alignment
+let g:neoformat_basic_format_align = 1
 
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
 """"""""""""""""""""""dkarter/bullets.vim"""""""""""""""
 
 " let g:bullets_set_mappings = 0
@@ -4003,6 +4036,25 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
+" pip install pynvim
+" pip install jedi
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""" davidhalter/jedi-vim """""""""""""""""""""""""""""""""""""""""""""
+" disable autocompletion, cause we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+" <leader>d: go to definition
+" K: check documentation of class or method
+" <leader>n: show the usage of a name in current file
+" <leader>r: rename a name
 """""""""""""""""""""""""""""""""""" 设置状态栏主题风格 airline """"""""""""""""""""""""""""""
 
 "选择主题
@@ -4022,7 +4074,7 @@ let g:airline_powerline_fonts = 1
 "打开tabline功能,方便查看Buffer和切换，这个功能比较不错,我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer"
 let g:airline#extensions#tabline#enabled = 1
 " tabline中buffer显示编号
-let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline_section_b = '%{strftime("%m/%d/%y - %H:%M")}'
 " let g:airline_section_y = 'BN: %{bufnr("%")}'
@@ -4053,7 +4105,7 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 
-
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 " 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
 nmap <Leader>1 <Plug>AirlineSelectTab1
 nmap <Leader>2 <Plug>AirlineSelectTab2
@@ -4065,9 +4117,9 @@ nmap <Leader>7 <Plug>AirlineSelectTab7
 nmap <Leader>8 <Plug>AirlineSelectTab8
 nmap <Leader>9 <Plug>AirlineSelectTab9
 " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
-nmap ;- <Plug>AirlineSelectPrevTab
+nmap ;p <Plug>AirlineSelectPrevTab
 " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
-nmap ;= <Plug>AirlineSelectNextTab
+nmap ;n <Plug>AirlineSelectNextTab
 " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
 nmap ;q :bp<cr>:bd #<cr>
 " 修改了一些个人不喜欢的字符
@@ -4077,12 +4129,14 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """"""""""""""""""""""""""""""""""""""""""" bling/vim-bufferline """""""""""""""""""""""""""""""""""""""""""
 " 表示缓冲线是否应自动回显到命令栏
 let g:bufferline_echo = 1
 
 " 缓冲区左侧使用的分隔符
 let g:bufferline_active_buffer_left = '['
+let g:bufferline_active_buffer_right = ']'
 
 " 表示缓冲区已修改的符号
 let g:bufferline_modified = '+'
@@ -4101,7 +4155,7 @@ let g:bufferline_rotate = 2
 
 
 
-" " """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
 "
 " let g:spaceline_seperate_style = 'arrow'
 " let g:spaceline_colorscheme = 'space'
@@ -4243,19 +4297,88 @@ let g:prettier#autoformat = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 
-" """""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
-"
-" set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
-" set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
-" set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
-" set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
-" set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
-" hi User1 cterm=none ctermfg=25 ctermbg=0
-" hi User2 cterm=none ctermfg=208 ctermbg=0
-" hi User3 cterm=none ctermfg=169 ctermbg=0
-" hi User4 cterm=none ctermfg=100 ctermbg=0
-" hi User5 cterm=none ctermfg=green ctermbg=0
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+
+set statusline=%1*\%<%.50F\             "显示文件名和文件路径 (%<应该可以去掉)
+set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
+set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
+set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
+set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
+hi User1 cterm=none ctermfg=25 ctermbg=0
+hi User2 cterm=none ctermfg=208 ctermbg=0
+hi User3 cterm=none ctermfg=169 ctermbg=0
+hi User4 cterm=none ctermfg=100 ctermbg=0
+hi User5 cterm=none ctermfg=green ctermbg=0
+hi Normal ctermfg=252 ctermbg=none
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+""statusline
+"set statusline=
+"set statusline+=%7*\[%n]                                  "buffernr
+"set statusline+=%1*\ %<%F\                                "文件路径
+"set statusline+=%2*\ %y\                                  "文件类型
+"set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "编码1
+"set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "编码2
+"set statusline+=%4*\ %{&ff}\                              "文件系统(dos/unix..) 
+"set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "语言 & 是否高亮，H表示高亮?
+"set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "光标所在行号/总行数 (百分比)
+"set statusline+=%9*\ col:%03c\                            "光标所在列
+"set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Read only? Top/bottom
+"function! HighlightSearch()
+"      if &hls
+"          return 'H'
+"      else
+"          return ''
+"      endif
+"endfunction
+"hi User1 ctermfg=white  ctermbg=darkred
+"hi User2 ctermfg=blue  ctermbg=58
+"hi User3 ctermfg=white  ctermbg=100
+"hi User4 ctermfg=darkred  ctermbg=95
+"hi User5 ctermfg=darkred  ctermbg=77
+"hi User7 ctermfg=darkred  ctermbg=blue  cterm=bold
+"hi User8 ctermfg=231  ctermbg=blue
+""hi User9 ctermfg=#ffffff  ctermbg=#810085
+"hi User0 ctermfg=yellow  ctermbg=138
+
+""""""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
+"function! Buf_total_num()
+ "   return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+"endfunction
+"function! File_size(f)
+ "   let l:size = getfsize(expand(a:f))
+ "   if l:size == 0 || l:size == -1 || l:size == -2
+ "       return ''
+ "   endif
+ "   if l:size < 1024
+ "       return l:size.' bytes'
+ "   elseif l:size < 1024*1024
+ "       return printf('%.1f', l:size/1024.0).'k'
+ "   elseif l:size < 1024*1024*1024
+ "       return printf('%.1f', l:size/1024.0/1024.0) . 'm'
+ "   else
+ "       return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
+ "   endif
+"endfunction
+"set statusline=%<%1*[B-%n]%*
+"" TOT is an abbreviation for total
+"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
+"set statusline+=%3*\ %{File_size(@%)}\ %*
+"set statusline+=%4*\ %F\ %*
+"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
+"set statusline+=%6*\ %m%r%y\ %*
+"set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
+"set statusline+=%8*\ %P\ %*
+"" default bg for statusline is 236 in space-vim-dark
+"hi User1 cterm=bold ctermfg=232 ctermbg=179
+"hi User2 cterm=None ctermfg=214 ctermbg=242
+"hi User3 cterm=None ctermfg=251 ctermbg=240
+"hi User4 cterm=bold ctermfg=169 ctermbg=239
+"hi User5 cterm=None ctermfg=208 ctermbg=238
+"hi User6 cterm=None ctermfg=246 ctermbg=237
+"hi User7 cterm=None ctermfg=250 ctermbg=238
+"hi User8 cterm=None ctermfg=249 ctermbg=240
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""自定义"配色方案"""""""""""""""""""""""""""""""""""'""'""
 
@@ -4994,7 +5117,22 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<CR>
+:nn <M-1> 1gt
+:nn <M-2> 2gt
+:nn <M-3> 3gt
+:nn <M-4> 4gt
+:nn <M-5> 5gt
+:nn <M-6> 6gt
+:nn <M-7> 7gt
+:nn <M-8> 8gt
+:nn <M-9> 9gt
+:nn <M-0> :tablast<CR>
 
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+" noremap <C-t> :tabnew split<CR>
 
 
 " 命令:tabs可以显示已打开标签页的列表，并用“>”标识出当前页面，用“+”标识出已更改的页面。
