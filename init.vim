@@ -4146,7 +4146,7 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 
-
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 " 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
 nmap <Leader>1 <Plug>AirlineSelectTab1
 nmap <Leader>2 <Plug>AirlineSelectTab2
