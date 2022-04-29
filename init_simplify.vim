@@ -123,12 +123,13 @@ Plug 'folke/twilight.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
-" " 翻译
-" Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
+" 翻译
+Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
 
 " 行尾空格处理
-Plug 'bronson/vim-trailing-whitespace'   
+Plug 'bronson/vim-trailing-whitespace'
 
+" 让光标所在单词高亮或者下划线
 " 让光标所在单词高亮或者下划线
 Plug 'lfv89/vim-interestingwords'  "可以使用不同颜色同时高亮多个单词，浏览或者给别人讲解代码的时候比较有用
 Plug 'itchyny/vim-cursorword'  "给当前光标下的单词增加下划线
@@ -136,7 +137,6 @@ Plug 'itchyny/vim-cursorword'  "给当前光标下的单词增加下划线
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 Plug 'winston0410/range-highlight.nvim'
-
 
 " 多层括号配色
 Plug 'luochen1990/rainbow'
@@ -177,7 +177,7 @@ Plug 'liuchengxu/vim-clap'                              " 在vim中搜索文件
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }       " 在vim中搜索文件
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " 在vim中搜索文件
 Plug 'junegunn/fzf.vim'
-" Plug 'mileszs/ack.vim'                          " 强大的文本搜索工具
+Plug 'mileszs/ack.vim'                          " 强大的文本搜索工具
 Plug 'easymotion/vim-easymotion'                " 强大的搜索定位，快速移动
 Plug 'tpope/vim-surround'                         "快速将括号、‘’、“”、[]等替换
 
@@ -203,11 +203,11 @@ else
 endif
 
 " 代码调试
-" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}  " Debugger,代码调试IDE
 
 " 调整窗口大小
-" Plug 'justincampbell/vim-eighties'
-" Plug 'wahidrahim/resize-font'
+Plug 'justincampbell/vim-eighties'
+Plug 'wahidrahim/resize-font'
 
 
 "美化
@@ -229,7 +229,7 @@ Plug 'reedes/vim-wordy'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'junegunn/limelight.vim'               " 与 Goyo, seoul256 为同一开发者，联合使用效果最佳。不适用于写代码和看代码
-Plug 'junegunn/vim-peekaboo'                "  当你按下(normal)双引号键或者@,(insert)按下ctrl+r时，它会在右侧打开一个寄存器备忘单
+Plug 'junegunn/vim-peekaboo'                "  当你按下双引号键时，它会在右侧打开一个寄存器备忘单
 " Plug 'matze/vim-move'                     " 代码块移动
 " Plug 'DoxygenToolkit.vim'                 " 注释文档生成
 " Plug 'VimTweak'                            " 背景透明插件
@@ -242,35 +242,36 @@ Plug 'machakann/vim-highlightedyank'        " 使 yank 的文档半透明高亮
 Plug 'mhinz/vim-startify'                   " 此插件为 Vim 和 Neovim 提供一个启动屏幕
 " :h startify
 " :h startify-faq
-" Plug 'goolord/alpha-nvim'
+Plug 'goolord/alpha-nvim'
 Plug 'chxuan/change-colorscheme'                     "快速改变颜色主题
-Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进制值文本的背景颜色
-" Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
+" Plug 'norcalli/nvim-colorizer.lua'                 " 自动更改包含十六进制值文本的背景颜色
+Plug 't9md/vim-choosewin'                            " 指定窗口中打开文件
 Plug 'tyru/open-browser.vim'                         " 打开浏览器
 Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                            " 函数参数提示
 Plug 'mtdl9/vim-log-highlighting'                    "日志高亮
 Plug 'myusuf3/numbers.vim'                           "相对行号
 Plug 'MattesGroeger/vim-bookmarks'                   " 书签
+
 " 时钟
 Plug 'danilamihailov/beacon.nvim'
-
 " 快捷键菜单插件
 Plug 'skywind3000/quickmenu.vim'
+
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
 " 编辑器配置插件。
-Plug 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'   
 
 "FPGA
-" Plug 'vhda/verilog_systemverilog.vim'     "verilog
+Plug 'vhda/verilog_systemverilog.vim'     "verilog
 
 " 快速对齐
 Plug 'godlygeek/tabular'                            " 快速对齐
 Plug 'junegunn/vim-easy-align'                      " 用来对齐指定符号的工具
 
 Plug 'fholgado/minibufexpl.vim'                           " 多文档编辑
-" Plug 'bagrat/vim-buffet'                                  " 类似minibuf管理多buffer的
+Plug 'bagrat/vim-buffet'                                  " 类似minibuf管理多buffer的
 Plug 'vim-scripts/winmanager'                             " 多窗口管理器
 Plug 'terryma/vim-multiple-cursors'                       " vim多重光标选取插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}       " 比vim-multiple-cursor更好用的多光标插件
@@ -281,7 +282,7 @@ Plug 'vim-scripts/indentpython.vim'        " 写python代码自动缩进
 Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 Plug 'Valloric/YouCompleteMe'              " 自动补全
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
+" Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
 " Plug 'ervandew/supertab'                   " 补全记忆插件
 " Plug 'ncm2/ncm2'
 " Plug 'ncm2/ncm2-bufword'
@@ -297,7 +298,18 @@ Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 Plug 'Raimondi/delimitMate'
 Plug 'chxuan/cpp-mode'                     " 提供生成函数实现、函数声明/实现跳转、.h .cpp切换等功能
 Plug 'tenfyzhong/CompleteParameter.vim',{'for':['lua', 'c', 'h', 'cpp', 'py', 'go', 'java', 'vim', 'json', 'hs']}
-
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'zchee/deoplete-jedi'
 
 " latex插件
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
@@ -326,10 +338,11 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'                   "taglist的增强版，显示变量函数宏等
 Plug 'liuchengxu/vista.vim',                " tagbar的增强版
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'mattn/vim-lsp-settings'
+Plug 'cquery-project/cquery'
 Plug 'mbbill/undotree'                                  " Undo Tree
 Plug 'scrooloose/nerdtree'                              " 添加树形目录
 Plug 'jistr/vim-nerdtree-tabs'                          " 想用tab键
@@ -370,23 +383,23 @@ Plug 'ferrine/md-img-paste.vim'        "从粘贴板 paste
 Plug 'demonlord1997/markdown-org', {'for':'markdown'}
 Plug 'ellisonleao/glow.nvim'
 
-
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+
 Plug 'sheerun/vim-polyglot'                  " 语法高亮
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " 美化状态栏
 Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正在编辑的文件
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
 Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
+" Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plug 'powerline/powerline' 
 " Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
 Plug 'tpope/vim-commentary'                     " 快速注释插件，相比于 nerdcommenter 更加简洁实用
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 
 "python
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -419,7 +432,8 @@ set secure   "会关闭项目中的 shell autocmd write 等命令。
 let &t_ut=''     " 防止vim背景颜色错误
 set indentexpr=
 
-set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
+set t_Co=256
+
 set virtualedit=block,onemore
 
 
@@ -472,7 +486,9 @@ set linespace=0
 " set guifont=-misc-simsun-medium-r-normal-*-*-120-*-*-c-*-iso10646-1
 " 在Gvim中我设置了英文用Hermit， 中文使用 YaHei Mono "
 
-if has('gui_running')
+
+  
+ if has('gui_running')
     "colorscheme desert" 下面的滚动条开启
     " let g:netrw_winsize = 20
     "添加水平滚动条。如果你指定了不折行，那为窗口添加一个水平滚动条就非常有必要了
@@ -658,7 +674,6 @@ set autowrite
 
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
-
 
 
 set laststatus=2
@@ -917,6 +932,7 @@ endfunction
 nnoremap  TN :call NumberToggle()<cr>
 
 
+
 let &t_SI = "\<Esc>]12;green\x7"
 " let &t_SR = "\<Esc>]12;yellow\x7"
 " let &t_EI = "\<Esc>]12;green\x7"
@@ -998,21 +1014,19 @@ au BufReadPost *.nfo call RestoreFileEncodings()
 if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
-
-
 """""""""""""""""""""""""""""""""""  Numbers.vim   """""""""""""""""""""""""""""""""""
 let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
 
 nnoremap NT :NumbersToggle<CR>
 nnoremap NO :NumbersOnOff<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""" MattesGroeger/vim-bookmarks  配置"""""""""""""""""""""""""""""""""""""""""""""""""""
+" MattesGroeger/vim-bookmarks  配置"""""""""""""""""""""""""""""""""""""""""""""""""""
 highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
 
 
-let g:bookmark_no_default_key_mappings = 1
-" highlight BookmarkSign ctermbg=whatever ctermfg=whatever
+" let g:bookmark_no_default_key_mappings = 1
+highlight BookmarkSign ctermbg=red ctermfg=blue
 " highlight BookmarkAnnotationSign ctermbg=whatever ctermfg=whatever
 " highlight BookmarkLine ctermbg=whatever ctermfg=whatever
 " highlight BookmarkAnnotationLine ctermbg=whatever ctermfg=whatever
@@ -1084,7 +1098,6 @@ let g:beacon_fade = 1
 " :BeaconOn enable Beacon
 " :BeaconOff disable Beacon
 
-
 """"""""""""""""""""""""""""""""""""" 快捷菜单插件 skywind3000/quickmenu.vim 配置""""""""""""""""""""""""""""""""""""""""""""""""
 
 " clear all the items
@@ -1129,6 +1142,8 @@ call g:quickmenu#append('复制当前文件目录地址到剪贴板',   ':call G
 call g:quickmenu#append('# 帮助/助记','')
 call g:quickmenu#append('底部打开命令窗口 快捷键Alt+=',':Term','执行快捷键，或用相关插件的配置Alt+=')
 call g:quickmenu#append('关闭Buff',':bd', '执行:bd')
+
+
 
 """""""""""""""""""""""""""  wakatime/vim-wakatime """"""""""""""""""""""""""""""
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
@@ -1350,14 +1365,14 @@ augroup ScrollbarInit
   autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
 augroup end
 
-
 """"""""""""""""""""""""""""" dstein64/nvim-scrollview配置"""""""""""""""""""""""""""""""""""""""""
-let g:scrollview_excluded_filetypes = ['nerdtree','defx','tagbar','taglist']
+let g:scrollview_excluded_filetypes = ['nerdtree','defx','tarbar','taglist']
 let g:scrollview_current_only = 1
 let g:scrollview_winblend = 10
 " Position the scrollbar at the 80th character of the buffer
 let g:scrollview_base = 'buffer'
 let g:scrollview_column = 200
+
 
 """"""""""""""""""""""""""""" gelguy/wilder.nvim配置"""""""""""""""""""""""""""""""""""""""""
 call wilder#setup({'modes': [':', '/', '?']})
@@ -1374,17 +1389,18 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
       \ }))
 
 
-" """"""""""""""""""""""""""""" justincampbell/vim-eighties配置"""""""""""""""""""""""""""""""""""""""""
-" let g:eighties_enabled = 0
-" let g:eighties_minimum_width = 80
-" let g:eighties_extra_width = 0 " Increase this if you want some extra room
-" let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
-" let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
+""""""""""""""""""""""""""""" justincampbell/vim-eighties配置"""""""""""""""""""""""""""""""""""""""""
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 80
+let g:eighties_extra_width = 0 " Increase this if you want some extra room
+let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
+let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
 
 
-" """"""""""""""""""""""""""""" wahidrahim/resize-font配置"""""""""""""""""""""""""""""""""""""""""
-" map ;fs :ResizeFontSmaller<CR>
-" map ;fl :ResizeFontBigger<CR>
+""""""""""""""""""""""""""""" wahidrahim/resize-font配置"""""""""""""""""""""""""""""""""""""""""
+map ;fs :ResizeFontSmaller<CR>
+map ;fl :ResizeFontBigger<CR>
+
 
 """""""""""""""""""""""""""""luochen1990/rainbow配置"""""""""""""""""""""""""""""""""""""""""
 
@@ -1467,6 +1483,7 @@ let g:rcsv_colorpairs = [['red', 'red'], ['blue', 'blue'], ['green', 'green'], [
 let g:db_ui_use_nerd_fonts=1
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""" francoiscabrol/ranger.vim """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:ranger_map_keys = 0
 
@@ -1484,10 +1501,11 @@ let g:rnvimr_enable_ex = 1
 " 选择文件后隐藏游侠
 let g:rnvimr_enable_picker = 1
 " 使用multipane模式启动(单列)可以按~手动切换
-" let g:rnvimr_ranger_cmd = 'ranger --cmd="set viewmode multipane"'
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set viewmode multipane"'
 
 " Draw border with both
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+
 
 " Replace `$EDITOR` candidate with this command to open the selected file
 let g:rnvimr_edit_cmd = 'drop'
@@ -1592,6 +1610,8 @@ let g:neoranger_viewmode='multipane' " supported values are ['multipane', 'mille
 " for setting any extra option passed to ranger params
 let g:neoranger_opts='--cmd="set show_hidden true"' " this line makes ranger show hidden files by default
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""" dkarter/bullets.vim """"""""""""""""""""""""""""""""""""""""""""""""""
 " Bullets.vim
 let g:bullets_enabled_file_types = [
@@ -1634,6 +1654,7 @@ let g:rtf_ctrl_enter = 0
 
 " 离开 INSERT 模式的时候再格式化一次
 let g:rtf_on_insert_leave = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""" jesseduffield/lazygit.nvim插件"""""""""""""""""""""""""""""""""""""
 noremap <c-g> :LazyGit<CR>
@@ -1967,24 +1988,24 @@ let g:Lf_PreviewInPopup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" """""""""""""""""""""""""""""""""""""""""   ack配置   """""""""""""""""""""""""""""""""""""""""
-" " ack插件首先需要安全ag
-" " # OSX
-" " brew install the_silver_searcher
-" " # ArchLinux
-" " pacman -S the_silver_searcher
-" " # Ubuntu
-" " apt-get install silversearcher-ag
+"""""""""""""""""""""""""""""""""""""""""   ack配置   """""""""""""""""""""""""""""""""""""""""
+" ack插件首先需要安全ag
+" # OSX
+" brew install the_silver_searcher
+" # ArchLinux
+" pacman -S the_silver_searcher
+" # Ubuntu
+" apt-get install silversearcher-ag
 
-" let g:ackprg = 'ag --nogroup --nocolor --column'
-" let g:ack_prg = "ag --vimgrep --smart-case"
+let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ack_prg = "ag --vimgrep --smart-case"
 
 
-" " map <F4> :Ack -i
-" " imap <F4> :Ack -i
+" map <F4> :Ack -i
+" imap <F4> :Ack -i
 
-" " 以后在普通模式下输入Ctrl+U便可以自动输入:Ack 了
-" map <Leader>ak :Ack <space>-i<space>
+" 以后在普通模式下输入Ctrl+U便可以自动输入:Ack 了
+map <Leader>ak :Ack <space>-i<space>
 
 
 """""""""""""""""""""""""""""""""""""" easymotion/vim-easymotion配置 """"""""""""""""""""""""""""""""""""""
@@ -2081,35 +2102,37 @@ vmap . S>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""vimspector插件"""""""""""""""""""""""""""""""""""""
-""安装对应语言调试工具
-"" cd ~/.vim/plugged/vimspector
-"" # c, c++
-"" ./install_gadget.py --enable-c
-"" # python
-"" ./install_gadget.py --enable-python
-"" # go
-"" ./install_gadget.py --enable-go
+"""""""""""""""""""""""""""""""""""""""vimspector插件"""""""""""""""""""""""""""""""""""""
+"安装对应语言调试工具
+" cd ~/.vim/plugged/vimspector
+" # c, c++
+" ./install_gadget.py --enable-c
+" # python
+" ./install_gadget.py --enable-python
+" # go
+" ./install_gadget.py --enable-go
 
-"let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-"function! s:read_template_into_buffer(template)
-"    " has to be a function to avoid the extra space fzf#run insers otherwise
-"    execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
-"endfunction
-"command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-"            \   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-"            \   'down': 20,
-"            \   'sink': function('<sid>read_template_into_buffer')
-"            \ })
-"" noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-"sign define vimspectorBP text=☛ texthl=Normal
-"sign define vimspectorBPDisabled text=☞ texthl=Normal
-"sign define vimspectorPC text=🔶 texthl=SpellBad
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+function! s:read_template_into_buffer(template)
+    " has to be a function to avoid the extra space fzf#run insers otherwise
+    execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+endfunction
+command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+            \   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+            \   'down': 20,
+            \   'sink': function('<sid>read_template_into_buffer')
+            \ })
+" noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
 
 """"""""""""""""""machakann/vim-highlightedyank 设置""""""""""""""""""""""""""""""
 
 hi HighlightedyankRegion cterm=reverse gui=reverse
 let g:highlightedyank_highlight_duration = 1000 " 高亮持续时间为 1000 毫秒
+
+
 
 """"""""""""""""""glepnir/dashboard-nvim设置""""""""""""""""""""""""""""""
 " let g:dashboard_default_header = "eval"
@@ -2697,9 +2720,9 @@ let g:defx_icons_mark_icon = ''
 let g:defx_icons_parent_icon = ""
 
 
-""""""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
-"" if you want to use overlay feature
-"let g:choosewin_overlay_enable = 1
+"""""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
+" if you want to use overlay feature
+let g:choosewin_overlay_enable = 1
 
 """""""""""""""""""""""""""""""""""open-browser配置打开浏览器""""""""""""""""""""""""""""""""""""""""""
 " 参考：https://mounui.com/343.html
@@ -2749,91 +2772,90 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
 "adding to vim-airline's tabline
-let g:webdevicons_enable_airline_tabline = 0
+let g:webdevicons_enable_airline_tabline = 1
 
 "adding to vim-airline's statusline
-let g:webdevicons_enable_airline_statusline = 0
-
+let g:webdevicons_enable_airline_statusline = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-"""""""""""""""""""""""""""""""""""""""""""vhda/verilog_systemverilog.vim配置""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""vhda/verilog_systemverilog.vim配置""""""""""""""""""""""""""""""""""""""""""""
 
-"au BufRead,BufNewFile *.sv,  set filetype=verilog_systemverilog
-"au! BufNewFile,BufRead *.vh,*.vp,*.sv,*.svi,*.svh,*.svp set filetype verilog_systemverilog
+au BufRead,BufNewFile *.sv,  set filetype=verilog_systemverilog
+au! BufNewFile,BufRead *.vh,*.vp,*.sv,*.svi,*.svh,*.svp set filetype verilog_systemverilog
 
-"au! BufNewFile,BufRead *.v set filetype verilog_systemverilog.verilog
-"au BufNewFile,BufRead *.sv,*.v set autoindent
+au! BufNewFile,BufRead *.v set filetype verilog_systemverilog.verilog
+au BufNewFile,BufRead *.sv,*.v set autoindent
 
-"autocmd filetype verilog setlocal tabstop=3 softtabstop=3 shiftwidth=3 expandtab
-"autocmd filetype systemverilog setlocal tabstop=3 softtabstop=3 shiftwidth=3
-"autocmd filetype verilog set autoindent
-"autocmd filetype systemverilog set autoindent
+autocmd filetype verilog setlocal tabstop=3 softtabstop=3 shiftwidth=3 expandtab
+autocmd filetype systemverilog setlocal tabstop=3 softtabstop=3 shiftwidth=3
+autocmd filetype verilog set autoindent
+autocmd filetype systemverilog set autoindent
 
-"set tags=tags
+set tags=tags
 
-""   let mapleader="\<Space>"
-"nnoremap <leader><Space>i :VerilogFollowInstance<CR>
-"nnoremap <leader><Space>I :VerilogFollowPort<CR>
-"nnoremap <leader><Space>u :VerilogGotoInstanceStart<CR>
-"set foldmethod=syntax
-"let b:match_ignorecase=0
-"let b:match_words=
-"  \ '\<begin\>:\<end\>,' .
-"  \ '\<if\>:\<else\>,' .
-"  \ '\<module\>:\<endmodule\>,' .
-"  \ '\<class\>:\<endclass\>,' .
-"  \ '\<program\>:\<endprogram\>,' .
-"  \ '\<clocking\>:\<endclocking\>,' .
-"  \ '\<property\>:\<endproperty\>,' .
-"  \ '\<sequence\>:\<endsequence\>,' .
-"  \ '\<package\>:\<endpackage\>,' .
-"  \ '\<covergroup\>:\<endgroup\>,' .
-"  \ '\<primitive\>:\<endprimitive\>,' .
-"  \ '\<specify\>:\<endspecify\>,' .
-"  \ '\<generate\>:\<endgenerate\>,' .
-"  \ '\<interface\>:\<endinterface\>,' .
-"  \ '\<function\>:\<endfunction\>,' .
-"  \ '\<task\>:\<endtask\>,' .
-"  \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
-"  \ '\<fork\>:\<join\>\|\<join_any\>\|\<join_none\>,' .
-"  \ '`ifdef\>:`else\>:`endif\>,'
+"   let mapleader="\<Space>"
+nnoremap <leader><Space>i :VerilogFollowInstance<CR>
+nnoremap <leader><Space>I :VerilogFollowPort<CR>
+nnoremap <leader><Space>u :VerilogGotoInstanceStart<CR>
+set foldmethod=syntax
+let b:match_ignorecase=0
+let b:match_words=
+  \ '\<begin\>:\<end\>,' .
+  \ '\<if\>:\<else\>,' .
+  \ '\<module\>:\<endmodule\>,' .
+  \ '\<class\>:\<endclass\>,' .
+  \ '\<program\>:\<endprogram\>,' .
+  \ '\<clocking\>:\<endclocking\>,' .
+  \ '\<property\>:\<endproperty\>,' .
+  \ '\<sequence\>:\<endsequence\>,' .
+  \ '\<package\>:\<endpackage\>,' .
+  \ '\<covergroup\>:\<endgroup\>,' .
+  \ '\<primitive\>:\<endprimitive\>,' .
+  \ '\<specify\>:\<endspecify\>,' .
+  \ '\<generate\>:\<endgenerate\>,' .
+  \ '\<interface\>:\<endinterface\>,' .
+  \ '\<function\>:\<endfunction\>,' .
+  \ '\<task\>:\<endtask\>,' .
+  \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
+  \ '\<fork\>:\<join\>\|\<join_any\>\|\<join_none\>,' .
+  \ '`ifdef\>:`else\>:`endif\>,'
 
 
-":ab zuhe always @(*)<Enter>begin<Enter>if ()begin<Enter><Enter>end<Enter>else begin<Enter><Enter>end<Enter>end
-":ab shixu always @(posedge clk_i or negedge rst_n_i)<Enter>begin<Enter>if ()begin<Enter>end<Enter>else begin<Enter>end<Enter>end
-":ab zhushi //
+:ab zuhe always @(*)<Enter>begin<Enter>if ()begin<Enter><Enter>end<Enter>else begin<Enter><Enter>end<Enter>end
+:ab shixu always @(posedge clk_i or negedge rst_n_i)<Enter>begin<Enter>if ()begin<Enter>end<Enter>else begin<Enter>end<Enter>end
+:ab zhushi //
 
-""建立一个库
-"nmap <Leader>vb <Esc>:!vlib work<CR>
-""编译一个vhd/v文件
-"nmap <silent> <Leader>ms :ModSimComp<cr><cr>
-""------------------------------------------------------------------------------
-""Function    : Model_Sim_Compile()
-" "Description : Compile with ModelSim
-""------------------------------------------------------------------------------
-"function! Model_Sim_Compile()
-"    let l:file_type_temp = expand("%:e")
-"    if l:file_type_temp == "vhd"
-"        set makeprg=vcom\ -work\ work\ %
-"        execute ':make'
-"        execute ':cw'
-"    else
-"        if l:file_type_temp == "v"
-"            set makeprg=vlog\ -work\ work\ %
-"            execute ':make'
-"            execute ':cw'
-"        else
-"            echohl ErrorMsg
-"            echo "This filetype can't be compiled by modelsim vcom/vlog!"
-"            echohl None
-"        endif
-"    endif
-" endfunction
+"建立一个库
+nmap <Leader>vb <Esc>:!vlib work<CR>
+"编译一个vhd/v文件
+nmap <silent> <Leader>ms :ModSimComp<cr><cr>
+"------------------------------------------------------------------------------
+"Function    : Model_Sim_Compile()
+ "Description : Compile with ModelSim
+"------------------------------------------------------------------------------
+function! Model_Sim_Compile()
+    let l:file_type_temp = expand("%:e")
+    if l:file_type_temp == "vhd"
+        set makeprg=vcom\ -work\ work\ %
+        execute ':make'
+        execute ':cw'
+    else
+        if l:file_type_temp == "v"
+            set makeprg=vlog\ -work\ work\ %
+            execute ':make'
+            execute ':cw'
+        else
+            echohl ErrorMsg
+            echo "This filetype can't be compiled by modelsim vcom/vlog!"
+            echohl None
+        endif
+    endif
+ endfunction
 
-""set error format
-"set errorformat=\*\*\ %tRROR:\ %f(%l):\ %m,\*\*\ %tRROR:\ %m,\*\*\ %tARNING:\ %m,\*\*\ %tOTE:\ %m,%tRROR:\ %f(%l):\ %m,%tARNING\[%*[0-9]\]:\ %f(%l):\ %m,%tRROR:\ %m,%tARNING\[%*[0-9]\]:\ %m
+"set error format
+set errorformat=\*\*\ %tRROR:\ %f(%l):\ %m,\*\*\ %tRROR:\ %m,\*\*\ %tARNING:\ %m,\*\*\ %tOTE:\ %m,%tRROR:\ %f(%l):\ %m,%tARNING\[%*[0-9]\]:\ %f(%l):\ %m,%tRROR:\ %m,%tARNING\[%*[0-9]\]:\ %m
 
 
 
@@ -2895,9 +2917,9 @@ map <Leader>hm :MBEToggle<cr>
 
 " buffer 切换快捷键
 " ctrl + tab下一个buffer
-" map bn :MBEbn<CR>
+map bn :MBEbn<CR>
 " ctrl + shift + tab下一个buffer
-" map bp :MBEbp<CR>
+map bp :MBEbp<CR>
 
 
 " MiniBufExpl 配色
@@ -2908,29 +2930,27 @@ hi MBEVisibleChanged       guifg=#F1266F guibg=fg   ctermfg=1     ctermbg=240
 hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg   ctermfg=118   ctermbg=253
 hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg   ctermfg=196   ctermbg=240
 
-"""""""""""""""""""""""bagrat/vim-buffet设置""""""""""""""""""""""
-"" Note: Make sure the function is defined before `vim-buffet` is loaded.
-"function! g:BuffetSetCustomColors()
-"  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
-"endfunction
-"let g:buffet_always_show_tabline=1
-
-""Vim-buffet设置
-"nmap ;1 <Plug>BuffetSwitch(1)
-"nmap ;2 <Plug>BuffetSwitch(2)
-"nmap ;3 <Plug>BuffetSwitch(3)
-"nmap ;4 <Plug>BuffetSwitch(4)
-"nmap ;5 <Plug>BuffetSwitch(5)
-"nmap ;6 <Plug>BuffetSwitch(6)
-"nmap ;7 <Plug>BuffetSwitch(7)
-"nmap ;8 <Plug>BuffetSwitch(8)
-"nmap ;9 <Plug>BuffetSwitch(9)
-"nmap ;0 <Plug>BuffetSwitch(10)
+"""""""""""""""""""""bagrat/vim-buffet设置""""""""""""""""""""""
+" Note: Make sure the function is defined before `vim-buffet` is loaded.
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+endfunction
+"Vim-buffet设置
+nmap ;1 <Plug>BuffetSwitch(1)
+nmap ;2 <Plug>BuffetSwitch(2)
+nmap ;3 <Plug>BuffetSwitch(3)
+nmap ;4 <Plug>BuffetSwitch(4)
+nmap ;5 <Plug>BuffetSwitch(5)
+nmap ;6 <Plug>BuffetSwitch(6)
+nmap ;7 <Plug>BuffetSwitch(7)
+nmap ;8 <Plug>BuffetSwitch(8)
+nmap ;9 <Plug>BuffetSwitch(9)
+nmap ;0 <Plug>BuffetSwitch(10)
 
 """"""""""""""""""""" romgrk/barbar.nvim 设置""""""""""""""""""""""
 " Move to previous/next
-nnoremap <silent>    <M-,> :BufferPrevious<CR>
-nnoremap <silent>    <M-.> :BufferNext<CR>
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
 " Re-order to previous/next
 nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
 nnoremap <silent>    <A->> :BufferMoveNext<CR>
@@ -2956,7 +2976,7 @@ nnoremap <silent>    <A-c> :BufferClose<CR>
 "                          :BufferCloseBuffersLeft<CR>
 "                          :BufferCloseBuffersRight<CR>
 " Magic buffer-picking mode
-nnoremap <silent> ;bs    :BufferPick<CR>
+nnoremap <silent>   ;bs    :BufferPick<CR>
 " Sort automatically by...
 nnoremap <silent> <Space>bb :BufferOrderByBufferNumber<CR>
 nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
@@ -2966,6 +2986,7 @@ nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 " Other:
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
+
 
 
 " """"""""""""""""""""""""""""""""""""" WinManager 配置 """""""""""""""""""""""""""""""""""""
@@ -3028,6 +3049,7 @@ let g:VM_maps['Skip Region']        = 'q'     "跳过当前光标到下一个。
 let g:VM_maps['Remove Region']      = 'Q'     "取消当前光标。
 let g:VM_maps['Undo']               = 'u'     "Undo.
 let g:VM_maps['Redo']               = '<c-r>' "Redo.
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -3213,21 +3235,136 @@ noremap  ftk :FloatermKill<CR>
 noremap  ftd :FloatermNext<CR>
 noremap  ftp :FloatermPrev<CR>
 noremap  ftt :FloatermToggle<CR>
-" """"""""""""""""""""""""""""""""""""""" SirVer/ultisnips插件 """""""""""""""""""""""""""""""""""""""""""
-"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-" " 使用 UltiSnipsEdit 命令时垂直分割屏幕
-" let g:UltiSnipsEditSplit="vertical"
+""""""""""""""""""""""""""""""""""""""" SirVer/ultisnips插件 """""""""""""""""""""""""""""""""""""""""""
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" 使用 UltiSnipsEdit 命令时垂直分割屏幕
+let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""'""""vim-clang-format插件"""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""Kite 插件配置开始""""""""""""""""""""""""""""""""""""""""""
+" Python, JavaScript, Go
+" let g:kite_supported_languages = ['python', 'javascript', 'go']
 
+" All the languages Kite supports
+let g:kite_supported_languages = ['*']
+
+" Turn off Kite
+" let g:kite_supported_languages = []
+
+let g:kite_auto_complete=0
+let g:kite_completions=0
+let g:kite_snippets=0
+
+let g:kite_tab_complete=1
+
+set completeopt+=menuone
+
+set completeopt+=noselect
+set completeopt+=noinsert
+set completeopt+=preview
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg  " if vim beeps during completion
+
+let g:kite_previous_placeholder = '<C-H>'
+let g:kite_next_placeholder = '<C-L>'
+
+nmap <silent> <buffer> gK <Plug>(kite-docs)
+let g:kite_documentation_continual=1
+
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
+" pip install pynvim
+" pip install jedi
+" pip3 install pynvim --user
+" pip3 install --user pynvim
+" pip3 install --user neovim
+" sudo apt-get install -y python-pip  python3-pip
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"" 回车即选中当前项
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+""使用tab键向下选择弹框菜单
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" 自启动
+let g:deoplete#enable_at_startup = 1
+set pyxversion=3
+" Python3的可执行文件位置
+let g:python3_host_prog = "/home/jack/anaconda3/bin/python3"
+
+" smart case不解释
+let g:deoplete#enable_smart_case = 1
+
+" 用户输入至少两个字符时再开始提示补全
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+
+" 字符串中不补全
+" call deoplete#custom#source('_',
+"             \ 'disabled_syntaxes', ['String']
+"             \ )
+
+" 补全结束或离开插入模式时，关闭预览窗口
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" 为每个语言定义completion source
+" 是的vim script和zsh script都有，这就是deoplete
+" call deoplete#custom#option('sources', {
+"             \ 'cpp': ['LanguageClient'],
+"             \ 'c': ['LanguageClient'],
+"             \ 'vim': ['vim'],
+"             \ 'zsh': ['zsh']
+"             \})
+
+" 忽略一些没意思的completion source。
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources = ['buffer', 'around']
+
+
+""""""""""""""""""""""""""""""""""autozimu/LanguageClient-neovim""""""""""""""""""""""""""""""""""""""""""
+
+" abandoned的Buffer隐藏起来，这是vim的设置。
+" 如果没有这个设置，修改过的文件需要保存了才能换buffer
+" 这会影响全局重命名，因为Vim提示保存因此打断下一个文件的重命名。
+set hidden
+" 告诉LS那个文件夹才是project root，同时也告诉它compile_commands在哪里
+let g:LanguageClient_rootMarkers = {
+            \ 'cpp': ['compile_commands.json', 'build'],
+            \ 'c': ['compile_commands.json', 'build']
+            \ }
+" 为语言指定Language server和server的参数
+let g:LanguageClient_serverCommands = {
+            \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+            \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+            \ }
+
+" Server加一个参数就放在下列文件中
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = '/home/jack/.config/nvim/settings.json'
+" 把Server的补全API提交给Vim
+" 一般有deoplete就可以用了，加上一条以防万一。
+set completefunc=LanguageClient#complete
+" 把Server的格式化API提交给Vim
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+" nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+" nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
 "寻找全局配置文件
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 "开始补全的字符数
 let g:ycm_min_num_of_chars_for_completion = 2
@@ -3314,7 +3451,7 @@ nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
 let g:ycm_show_diagnostics_ui = 0
 
 "离开插入模式后自动关闭预览窗口
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "回车即选中当前项
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
@@ -3426,6 +3563,7 @@ let g:autotagTagsFile=".tags"
 let g:autotagStartMethod='fork'
 
 """""""""""""""""""""""""""""""""""""""Chiel92/vim-autoformat配置"""""""""""""""""""""""""""""""""""""""
+
 ""设置保存时自动格式化(*表示所有文件)"
 ""au BufWrite * :Autoformat"
 "au BufWrite *.cpp,*.hpp :Autoformat
@@ -3447,6 +3585,7 @@ let g:autotagStartMethod='fork'
 "au BufWrite * :Autoformat
 ""保存时自动格式化PHP代码
 ""au BufWrite *.php :Autoformat
+
 
 """""""""""""""""""""""""""""""""""""""Autopep8配置"""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremap <buffer> \ap :call Autopep8()<CR> "设置快捷键代替autopep8
@@ -3860,7 +3999,6 @@ let g:vmt_fence_closing_text = '/TOC'
 map <LEADER>tm :TableModeToggle<CR>
 
 """""""""""""""""""Neoformat设置"""""""""""""""""""
-" pip install yapf
 nnoremap <LEADER>fm :Neoformat<CR>
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -3870,6 +4008,7 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+
 """"""""""""""""""""""dkarter/bullets.vim"""""""""""""""
 
 " let g:bullets_set_mappings = 0
@@ -3960,49 +4099,87 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " set mouse+=a
 " set mousehide
 " " }}} mouse
-
 """""""""""""""""""""""""""""""""""""""""配置vim-lsp"""""""""""""""""""""""""""""""""""""""
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" https://www.cnblogs.com/zi-wang/p/13550305.html
+" bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+" 或
+" wget https://apt.llvm.org/llvm.sh
+" sudo bash llvm.sh
+" sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-10 100
+" 或
+" sudo apt-get install clangd
+" which clangd
+" :LspHover      悬停信息
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
+" :LspDeclaration     转到声明
+" :LspDefinition      转到定义
+" :LspImplementation  转到实现
+" :LspTypeDefinition  转到类型定义
+
+" :LspPeekDeclaration     预览声明
+" :LspPeekDefinition      预览定义
+" :LspPeekImplementation  预览实现
+" :LspPeekTypeDefinition  预览类型定义
+
+" :LspRename               重命名符号
+" :LspDocumentFormat       格式化整个文档
+" :LspDocumentRangeFormat  格式化选中文档
+
+" :LspDocumentSymbol   显示文档符号
+" :LspWorkspaceSymbol  搜索/显示 工作区符号
+
+" :LspNextError     跳到下一个错误
+" :LspPreviousError 跳到上一个错误
+
+" :LspReferences        查找引用
+" :LspNextReference     跳到下一个引用
+" :LspPreviousReference 跳到上一个引用
+
+" :LspDocumentDiagnostics 获取文旦诊断信息
+
+" :LspStatus      显示语言服务器信息
+" :LspCodeAction  获取可以应用到这个文件可能的命令列表
+
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" if executable('pyls')
+"     " pip install python-language-server
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'whitelist': ['python'],
+"         \ })
+" endif
+
+if &runtimepath =~ 'vim-lsp'
+    nmap gd :LspDefinition<cr>
+    " nmap <leader>f :LspDocumentFormat<cr>
+    let g:lsp_diagnostics_float_cursor=1
+    let g:lsp_diagnostics_virtual_text_enabled=1
 endif
 
 
+" vim-lsc
+let g:lsc_server_commands = {'cpp': '/usr/local/llvm80/bin/clangd', 'python': 'python3.6 -m pyls'}
+let g:lsc_auto_map = v:true
 
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+" au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+"     \ 'name': 'file',
+"     \ 'whitelist': ['*'],
+"     \ 'priority': 10,
+"     \ 'completor': function('asyncomplete#sources#file#completor')
+"     \ }))
 
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-
-
-if executable('bash-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-        \ 'whitelist': ['sh'],
-        \ })
-endif
+" if executable('bash-language-server')
+"   au User lsp_setup call lsp#register_server({
+"         \ 'name': 'bash-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+"         \ 'whitelist': ['sh'],
+"         \ })
+" endif
 
 
 function! s:on_lsp_buffer_enabled() abort
@@ -4034,10 +4211,32 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
+let g:lsp_fold_enabled = 0
+let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+
+let g:lsp_document_highlight_enabled = 0
+
+highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
 
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
 
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
+" if executable('cquery')
+"    au User lsp_setup call lsp#register_server({
+"       \ 'name': 'cquery',
+"       \ 'cmd': {server_info->['cquery']},
+"       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"       \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+"       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"       \ })
+" endif
 
 
 """""""""""""""""""""""""""""""""""""""""配置w0rp/ale"""""""""""""""""""""""""""""""""""""""
@@ -4269,13 +4468,6 @@ let g:PaperColor_Theme_Options = {
   \ }
 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
-" pip install pynvim
-" pip install jedi
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 """"""""""""""""""""""""""""""""""""""""""""""""""" davidhalter/jedi-vim """""""""""""""""""""""""""""""""""""""""""""
 " disable autocompletion, cause we use deoplete for completion
 let g:jedi#completions_enabled = 0
@@ -4287,6 +4479,8 @@ let g:jedi#use_splits_not_buffers = "right"
 " K: check documentation of class or method
 " <leader>n: show the usage of a name in current file
 " <leader>r: rename a name
+
+
 """""""""""""""""""""""""""""""""""" 设置状态栏主题风格 airline """"""""""""""""""""""""""""""
 
 "选择主题
@@ -4306,7 +4500,7 @@ let g:airline_powerline_fonts = 1
 "打开tabline功能,方便查看Buffer和切换，这个功能比较不错,我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer"
 let g:airline#extensions#tabline#enabled = 1
 " tabline中buffer显示编号
-let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline_section_b = '%{strftime("%m/%d/%y - %H:%M")}'
 " let g:airline_section_y = 'BN: %{bufnr("%")}'
@@ -4349,9 +4543,9 @@ nmap <Leader>7 <Plug>AirlineSelectTab7
 nmap <Leader>8 <Plug>AirlineSelectTab8
 nmap <Leader>9 <Plug>AirlineSelectTab9
 " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
-nmap ;p <Plug>AirlineSelectPrevTab
+nmap ;- <Plug>AirlineSelectPrevTab
 " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
-nmap ;n <Plug>AirlineSelectNextTab
+nmap ;= <Plug>AirlineSelectNextTab
 " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
 nmap ;q :bp<cr>:bd #<cr>
 " 修改了一些个人不喜欢的字符
@@ -4360,7 +4554,6 @@ if !exists('g:airline_symbols')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """"""""""""""""""""""""""""""""""""""""""" bling/vim-bufferline """""""""""""""""""""""""""""""""""""""""""
 " 表示缓冲线是否应自动回显到命令栏
@@ -4386,87 +4579,86 @@ let g:bufferline_show_bufnr = 1
 let g:bufferline_rotate = 2
 
 
+ " " """"""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""配置spaceline""""""""""""""""""""""""""""""""
-"
-" let g:spaceline_seperate_style = 'arrow'
-" let g:spaceline_colorscheme = 'space'
-" let g:spaceline_scroll_chars = [
-"   \  ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'
-"   \  ]
-"
-" " two char wide fade-in blocks
-" let g:spaceline_scroll_chars = [
-"   \ '  ', '░ ', '▒ ', '▓ ', '█ ', '█░', '█▒', '█▓', '██'
-"   \ ]
-"
-" " three char wide solid horizontal bar
-" let g:spaceline_scroll_chars = [
-"   \ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
-"   \ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
-"   \ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
-"   \ '█▉ ', '██ ', '██▏', '██▎', '██▍',
-"   \ '██▌', '██▋', '██▊', '██▉', '███'
-"   \ ]
-"
-" let g:spaceline_scroll_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
-"
+ " let g:spaceline_seperate_style = 'arrow'
+ " let g:spaceline_colorscheme = 'space'
+ " let g:spaceline_scroll_chars = [
+ "   \  ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'
+ "   \  ]
 
-" """"""""""""""""""""""""""""""""配置lightline""""""""""""""""""""""""""""""""
-" " wombat, solarized, powerline, powerlineish,jellybeans, molokai, seoul256, darcula, selenized_dark,
-" " Tomorrow, Tomorrow_Night, Tomorrow_Night_Blue,Tomorrow_Night_Bright, Tomorrow_Night_Eighties,
-" " PaperColor,landscape, one, materia, material, OldHope, nord, deus,srcery_drk, ayu_mirage and 16color
+ " " two char wide fade-in blocks
+ " let g:spaceline_scroll_chars = [
+ "   \ '  ', '░ ', '▒ ', '▓ ', '█ ', '█░', '█▒', '█▓', '██'
+ "   \ ]
 
-" "molokai,landscape,solarized,
+ " " three char wide solid horizontal bar
+ " let g:spaceline_scroll_chars = [
+ "   \ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
+ "   \ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
+ "   \ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
+ "   \ '█▉ ', '██ ', '██▏', '██▎', '██▍',
+ "   \ '██▌', '██▋', '██▊', '██▉', '███'
+ "   \ ]
 
-" let g:lightline = {
-"             \ 'colorscheme': 'ayu_mirage',
-"             \ 'active': {
-"             \   'left': [ [ 'mode', 'paste' ],
-"             \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ],
-"             \   'right': [ [ 'lineinfo' ],
-"             \              [ 'percent' ],
-"             \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
-"             \ },
-"             \ 'component': {
-"             \   'charvaluehex': '0x%B',
-"             \   'gitbranch': 'fugitive#head',
-"             \ },
-"             \ 'component_function': {
-"             \   'filename': 'LightlineFilename',
-"             \   'mode': 'LightlineMode',
-"             \   'filetype': 'LightlineFiletype',
-"             \    \   'method': 'NearestMethodOrFunction',
-"             \ },
-"             \ }
-
-" "\   'helloworld': 'I am writing something...'
+ " let g:spaceline_scroll_chars = ['⎺', '⎻', '⎼', '⎽', '⎯']
 
 
-" function! LightlineMode()
-"     return expand('%:t') =~# '^__Tagbar__' ? 'Tagbar':
-"                 \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
-"                 \ &filetype ==# 'unite' ? 'Unite' :
-"                 \ &filetype ==# 'vimfiler' ? 'VimFiler' :
-"                 \ &filetype ==# 'vimshell' ? 'VimShell' :
-"                 \ lightline#mode()
-" endfunction
+"""""""""""""""""""""""""""""""""配置lightline""""""""""""""""""""""""""""""""
+"" wombat, solarized, powerline, powerlineish,jellybeans, molokai, seoul256, darcula, selenized_dark,
+"" Tomorrow, Tomorrow_Night, Tomorrow_Night_Blue,Tomorrow_Night_Bright, Tomorrow_Night_Eighties,
+"" PaperColor,landscape, one, materia, material, OldHope, nord, deus,srcery_drk, ayu_mirage and 16color
+
+""molokai,landscape,solarized,
+
+"let g:lightline = {
+"            \ 'colorscheme': 'ayu_mirage',
+"            \ 'active': {
+"            \   'left': [ [ 'mode', 'paste' ],
+"            \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ],
+"            \   'right': [ [ 'lineinfo' ],
+"            \              [ 'percent' ],
+"            \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
+"            \ },
+"            \ 'component': {
+"            \   'charvaluehex': '0x%B',
+"            \   'gitbranch': 'fugitive#head',
+"            \ },
+"            \ 'component_function': {
+"            \   'filename': 'LightlineFilename',
+"            \   'mode': 'LightlineMode',
+"            \   'filetype': 'LightlineFiletype',
+"            \   'method': 'NearestMethodOrFunction',
+"            \ },
+"            \ }
+
+""\   'helloworld': 'I am writing something...'
 
 
-" function! LightlineFilename()
-"     return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-"                 \ &filetype ==# 'unite' ? unite#get_status_string() :
-"                 \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-"                 \ expand('%:t') !=# '' ? expand('%:t') : '[未命名]'
-" endfunction
+"function! LightlineMode()
+"    return expand('%:t') =~# '^__Tagbar__' ? 'Tagbar':
+"                \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
+"                \ &filetype ==# 'unite' ? 'Unite' :
+"                \ &filetype ==# 'vimfiler' ? 'VimFiler' :
+"                \ &filetype ==# 'vimshell' ? 'VimShell' :
+"                \ lightline#mode()
+"endfunction
 
-" let g:unite_force_overwrite_statusline = 0
-" let g:vimfiler_force_overwrite_statusline = 0
-" let g:vimshell_force_overwrite_statusline = 0
 
-" function! LightlineFiletype()
-"     return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-" endfunction
+"function! LightlineFilename()
+"    return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+"                \ &filetype ==# 'unite' ? unite#get_status_string() :
+"                \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+"                \ expand('%:t') !=# '' ? expand('%:t') : '[未命名]'
+"endfunction
+
+"let g:unite_force_overwrite_statusline = 0
+"let g:vimfiler_force_overwrite_statusline = 0
+"let g:vimshell_force_overwrite_statusline = 0
+
+"function! LightlineFiletype()
+"    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+"endfunction
 
 
 """"""""""""""""""""""""""""any-jump配置"""""""""""""""""""""""""
@@ -4483,8 +4675,6 @@ nnoremap <leader>ab :AnyJumpBack<CR>
 nnoremap <leader>al :AnyJumpLastResults<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
-let g:any_jump_window_top_offset   = 4
-
 
 " Or override all default colors
 let g:any_jump_colors = {
@@ -4520,13 +4710,12 @@ let g:any_jump_references_only_for_current_filetype = 0
 " Disable search engine ignore vcs untracked files
 " (default: false, search engine will ignore vcs untracked files)
 let g:any_jump_disable_vcs_ignore = 0
-
-
 """"""""""""""""""""''prettier/vim-prettier配置""""""""""""""""""""""""""""""
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#autoformat = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 
 
 """""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
@@ -4536,7 +4725,7 @@ set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
 set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
 set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
 set statusline+=%5*\%3p%%\%*            "显示光标前文本所占总文本的比例
-hi User1 cterm=none ctermfg=25 ctermbg=0
+hi User1 cterm=none ctermfg=25 ctermbg=58
 hi User2 cterm=none ctermfg=208 ctermbg=0
 hi User3 cterm=none ctermfg=169 ctermbg=0
 hi User4 cterm=none ctermfg=100 ctermbg=0
@@ -4576,22 +4765,22 @@ hi Normal ctermfg=252 ctermbg=none
 
 """"""""""""""""""""""""""""""""""""""""""配置底部状态栏"""""""""""""""""""""""""""""""""""""""""
 "function! Buf_total_num()
- "   return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+"    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 "endfunction
 "function! File_size(f)
- "   let l:size = getfsize(expand(a:f))
- "   if l:size == 0 || l:size == -1 || l:size == -2
- "       return ''
- "   endif
- "   if l:size < 1024
- "       return l:size.' bytes'
- "   elseif l:size < 1024*1024
- "       return printf('%.1f', l:size/1024.0).'k'
- "   elseif l:size < 1024*1024*1024
- "       return printf('%.1f', l:size/1024.0/1024.0) . 'm'
- "   else
- "       return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
- "   endif
+"    let l:size = getfsize(expand(a:f))
+"    if l:size == 0 || l:size == -1 || l:size == -2
+"        return ''
+"    endif
+"    if l:size < 1024
+"        return l:size.' bytes'
+"    elseif l:size < 1024*1024
+"        return printf('%.1f', l:size/1024.0).'k'
+"    elseif l:size < 1024*1024*1024
+"        return printf('%.1f', l:size/1024.0/1024.0) . 'm'
+"    else
+"        return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
+"    endif
 "endfunction
 "set statusline=%<%1*[B-%n]%*
 "" TOT is an abbreviation for total
@@ -4611,6 +4800,11 @@ hi Normal ctermfg=252 ctermbg=none
 "hi User6 cterm=None ctermfg=246 ctermbg=237
 "hi User7 cterm=None ctermfg=250 ctermbg=238
 "hi User8 cterm=None ctermfg=249 ctermbg=240
+
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+
+" set rtp+=/home/jack/.local/lib/python3.9/site-packages/powerline/powerline/bindings/vim
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""自定义"配色方案"""""""""""""""""""""""""""""""""""'""'""
 
@@ -4639,9 +4833,9 @@ else
     set background=dark
     let ayucolor="mirage"  " for light version of theme
     let themes = [
-        \ 'solarized8_dark_high' , 'github','NeoSolarized',
+        \ 'solarized8_dark_high' , 'github','NeoSolarized','neonwave',
         \ 'flattened_dark' ,  'lilydjwg_dark_modified', 'molokai','umber_green','petrel','detorte',
-        \ 'solarized8_flat', 'solarized8_low', 'solarized8_higt','solarized8' ,'lilydjwg_dark',
+        \ 'solarized8_flat', 'solarized8_low', 'solarized8_high','solarized8' ,'lilydjwg_dark',
         \ 'PaperColor', 'gruvbox8_soft','gruvbox8_hard','violet','lucario','palenight','rigel',
         \ 'shades_of_purple','cobalt','cobaltish','cosmic-barf','tokyonight','true','purpura',
         \ ]
@@ -4799,6 +4993,9 @@ nnoremap ]e :<c-u>execute  'move +'.v:count1<cr>
 " 速添加空行
 nnoremap [s :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]s :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <space>i i<space><esc>
+nnoremap <space>a a<space><esc>
+
 "快速跳转到源/头文件
 autocmd BufLeave *.{c,cpp} mark C
 autocmd BufLeave *.h mark H
@@ -5080,6 +5277,8 @@ cnoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
 onoremap <silent> <S-F12> <Esc>:call DisplayFontSelector()<CR>
 
 
+
+
 ""--------------------vim原本的快捷键映射变更-----------------------------
 "###################################################
 "复制粘贴快捷键
@@ -5108,7 +5307,6 @@ inoremap <C-a> <Esc>ggvG$
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y<Esc>
 
-nnoremap <C-p> "*p  # 支持在normal模式下，通过C-p粘贴系统剪切板
 nnoremap <C-s> "+p
 inoremap <C-s> <Esc>"+pa
 nnoremap <C-s> "+gp
@@ -5315,13 +5513,13 @@ noremap <silent><tab><right> :tabnext<cr>
 noremap <silent>]t :tabnext<cr>
 noremap <silent>;n :tabnext<cr>
 " nnoremap tn  :tabnext<CR>
-" nnoremap <M-j>  :tabnext<CR>
+" nnoremap <M-k>  :tabnext<CR>
 " 上一个标签页
 noremap <silent><tab><left> :tabprevious<cr>
 noremap <silent>[t :tabprevious<cr>
 noremap <silent>;p :tabprevious<cr>
 " nnoremap tp  :tabprevious<CR>
-" nnoremap <M-k>  :tabprevious<CR>
+" nnoremap <M-j>  :tabprevious<CR>
 
 "下一个标签页,循环
 noremap <silent><S-tab> :tabnext<CR>
@@ -5349,6 +5547,7 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<CR>
+
 :nn <M-1> 1gt
 :nn <M-2> 2gt
 :nn <M-3> 3gt
@@ -5359,6 +5558,7 @@ noremap <leader>0 :tablast<CR>
 :nn <M-8> 8gt
 :nn <M-9> 9gt
 :nn <M-0> :tablast<CR>
+
 
 noremap <Tab> :bn<CR>
 noremap <S-Tab> :bp<CR>
@@ -5725,6 +5925,7 @@ endfunc
 """"""""""""""""""""""""""""""""""""""""C语言的编译运行"""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " 功能：使用第三方软件快速打开当前文件或当前文件夹，同时不阻塞当前窗口。
 " 例： 日志实时查看 BareTailProfessional 打开文件
 "        chrome、firefox浏览器打开预览
@@ -5774,6 +5975,7 @@ endfunction
 :command Sublime     :call ViewInBrowser("sublime_text3")<cr> " 用sublime_text3打开当前文件
 :command Notepad     :call ViewInBrowser("Notepad++")<cr>     " 用sublime_text3打开当前文件
 :command Typora      :call ViewInBrowser("Typora")<cr>        " 用MarkDown编辑查看器Typora打开
+
 
 "====================================30s,自动保存文件========================================="
 let autosave=10
@@ -6231,3 +6433,5 @@ endfunc
 " df:     删除直到:的内容
 " yf:     复制直到:的内容
 " cf:     删除直到:并进入插入模式
+
+
