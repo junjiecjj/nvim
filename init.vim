@@ -4609,26 +4609,27 @@ let g:bufferline_rotate = 2
 
 " "molokai,landscape,solarized,
 
-" let g:lightline = {
-"             \ 'colorscheme': 'ayu_mirage',
-"             \ 'active': {
-"             \   'left': [ [ 'mode', 'paste' ],
-"             \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ],
-"             \   'right': [ [ 'lineinfo' ],
-"             \              [ 'percent' ],
-"             \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
-"             \ },
-"             \ 'component': {
-"             \   'charvaluehex': '0x%B',
-"             \   'gitbranch': 'fugitive#head',
-"             \ },
-"             \ 'component_function': {
-"             \   'filename': 'LightlineFilename',
-"             \   'mode': 'LightlineMode',
-"             \   'filetype': 'LightlineFiletype',
-"             \    \   'method': 'NearestMethodOrFunction',
-"             \ },
-"             \ }
+"let g:lightline = {
+"            \ 'colorscheme': 'ayu_mirage',
+"            \ 'active': {
+"            \   'left': [ [ 'mode', 'paste' ],
+"            \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ],
+"            \   'right': [ [ 'lineinfo' ],
+"            \              [ 'percent' ],
+"            \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ],
+"            \ },
+"            \ 'component': {
+"            \   'charvaluehex': '0x%B',
+"            \   'gitbranch': 'fugitive#head',
+"            \ },
+"            \ 'component_function': {
+"            \   'filename': 'LightlineFilename',
+"            \   'mode': 'LightlineMode',
+"            \   'filetype': 'LightlineFiletype',
+"            \   'method': 'NearestMethodOrFunction',
+"            \ },
+"            \ }
+
 
 " "\   'helloworld': 'I am writing something...'
 
