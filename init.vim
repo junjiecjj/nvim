@@ -305,7 +305,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -3325,8 +3324,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "             \})
 
 " 忽略一些没意思的completion source。
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources._ = ['buffer', 'around']
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources._ = ['buffer', 'around']
 
 
 """"""""""""""""""""""""""""""""""autozimu/LanguageClient-neovim""""""""""""""""""""""""""""""""""""""""""
