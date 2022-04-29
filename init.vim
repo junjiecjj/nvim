@@ -3819,10 +3819,7 @@ let g:SimpleFold_docstring_preview=1 "看到折叠代码的字符串
 noremap <LEADER>v :Vista<CR>
 let g:vista#renderer#enable_icon = 1
 let g:vista_disable_statusline = 1
-let g:vista_default_executive = 'ctags'
-let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista_vimwiki_executive = 'markdown'
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
@@ -3848,6 +3845,49 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_ctags_cmd = {
       \ 'haskell': 'hasktags -x -o - -c',
       \ }
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'method' ] ]
+      \ },
+      \ 'component_function': {
+      \   'method': 'NearestMethodOrFunction'
+      \ },
+      \ }
+let g:vista_finder_alternative_executives = ['coc']
+" 优先选择lsp作为标签来源，其次ctags
+let g:vista_cpp_executive = 'vim_lsp'
+let g:vista_default_executive = 'ctags'
+" 启用悬浮窗预览
+let g:vista_echo_cursor_strategy ='floating_win'
+" 侧边栏宽度.
+let g:vista_sidebar_width = 30
+" 设置为0，以禁用光标移动时的回显.
+let g:vista_echo_cursor = 1
+" 当前游标上显示详细符号信息的时间延迟.
+let g:vista_cursor_delay = 400
+" 跳转到一个符号时，自动关闭vista窗口.
+let g:vista_close_on_jump = 0
+"打开vista窗口后移动到它.
+let g:vista_stay_on_open = 1
+" 跳转到标记后闪烁光标2次，间隔100ms.
+let g:vista_blink = [2, 100]
+" 展示样式
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" " 系统寄存器粘贴复制键{{{
+" nmap "+gp
+" vmap "+gp
+" vmap "+y
+" " }}}系统寄存器粘贴复制键
+
+" " mouse {{{
+" set mouse+=a
+" set mousehide
+" " }}} mouse
+
+
 
 """""""""""""""""""""""""""""""""""""""""配置w0rp/ale"""""""""""""""""""""""""""""""""""""""
 "let g:ale_set_loclist = 0
