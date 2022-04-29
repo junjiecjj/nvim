@@ -1012,11 +1012,11 @@ highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
 
 
-let g:bookmark_no_default_key_mappings = 1
-highlight BookmarkSign ctermbg=whatever ctermfg=whatever
-highlight BookmarkAnnotationSign ctermbg=whatever ctermfg=whatever
-highlight BookmarkLine ctermbg=whatever ctermfg=whatever
-highlight BookmarkAnnotationLine ctermbg=whatever ctermfg=whatever
+t g:bookmark_no_default_key_mappings = 1
+" highlight BookmarkSign ctermbg=whatever ctermfg=whatever
+" highlight BookmarkAnnotationSign ctermbg=whatever ctermfg=whatever
+" highlight BookmarkLine ctermbg=whatever ctermfg=whatever
+" highlight BookmarkAnnotationLine ctermbg=whatever ctermfg=whatever
 
 " 书签可视化插件  MattesGroeger/vim-bookmarks  配置
 
