@@ -1,4 +1,5 @@
 
+
 "基本键位设置
 "============
 "     ^
@@ -126,7 +127,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
 
 " 行尾空格处理
-Plug 'bronson/vim-trailing-whitespace'   
+Plug 'bronson/vim-trailing-whitespace'
 
 " 让光标所在单词高亮或者下划线
 " 让光标所在单词高亮或者下划线
@@ -151,7 +152,7 @@ Plug 'craigemery/vim-autotag'
 
 " Git
 Plug 'rhysd/conflict-marker.vim'          " Highlight, jump and resolve conflict markers quickly.
-Plug 'tpope/vim-fugitive'                 " 在vim中执行git命令
+" Plug 'tpope/vim-fugitive'                 " 在vim中执行git命令
 " Plug 'gisphm/vim-gitignore', " { 'for': ['gitignore', 'vim-plug'] }
 if has('nvim') || has('patch-8.0.902')
     Plug 'mhinz/vim-signify'          " git/svn版本控制插件vim-signify
@@ -215,7 +216,7 @@ Plug 'wahidrahim/resize-font'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kdheepak/tabline.nvim'
-Plug 'yamatsum/nvim-nonicons'
+" Plug 'yamatsum/nvim-nonicons'
 Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'itchyny/calendar.vim'             "日历，:Calendar 在 Vim 中查看日历
 Plug 'Yggdroot/indentLine', { 'for': ['lua', 'c', 'h', 'cpp', 'py', 'json', 'go', 'java', 'vim', 'hs'] }              " 缩进指示线
@@ -282,7 +283,7 @@ Plug 'jiangmiao/auto-pairs'                " 自动补全括号等
 Plug 'Valloric/YouCompleteMe'              " 自动补全
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Plug 'davidhalter/jedi-vim'                " Python自动补齐和静态分析的开源库
-Plug 'ervandew/supertab'                   " 补全记忆插件
+" Plug 'ervandew/supertab'                   " 补全记忆插件
 " Plug 'ncm2/ncm2'
 " Plug 'ncm2/ncm2-bufword'
 " Plug 'ncm2/ncm2-path'
@@ -297,7 +298,19 @@ Plug 'octol/vim-cpp-enhanced-highlight'    " C++  IDE
 Plug 'Raimondi/delimitMate'
 Plug 'chxuan/cpp-mode'                     " 提供生成函数实现、函数声明/实现跳转、.h .cpp切换等功能
 Plug 'tenfyzhong/CompleteParameter.vim',{'for':['lua', 'c', 'h', 'cpp', 'py', 'go', 'java', 'vim', 'json', 'hs']}
-
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'zchee/deoplete-jedi'
 
 " latex插件
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
@@ -330,6 +343,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
+Plug 'cquery-project/cquery'
 Plug 'mbbill/undotree'                                  " Undo Tree
 Plug 'scrooloose/nerdtree'                              " 添加树形目录
 Plug 'jistr/vim-nerdtree-tabs'                          " 想用tab键
@@ -372,8 +386,6 @@ Plug 'ellisonleao/glow.nvim'
 
 Plug 'tmhedberg/SimpylFold'                " 自动折叠
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 
 Plug 'sheerun/vim-polyglot'                  " 语法高亮
 " Plug 'w0rp/ale'
@@ -1012,7 +1024,7 @@ highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
 
 
-t g:bookmark_no_default_key_mappings = 1
+" let g:bookmark_no_default_key_mappings = 1
 " highlight BookmarkSign ctermbg=whatever ctermfg=whatever
 " highlight BookmarkAnnotationSign ctermbg=whatever ctermfg=whatever
 " highlight BookmarkLine ctermbg=whatever ctermfg=whatever
@@ -3265,6 +3277,86 @@ let g:kite_documentation_continual=1
 set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
+" pip install pynvim
+" pip install jedi
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"" 回车即选中当前项
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+""使用tab键向下选择弹框菜单
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+set pyxversion=3
+" Python3的可执行文件位置
+let g:python3_host_prog = "/home/jack/anaconda3/bin/python3"
+
+" 自启动
+let g:deoplete#enable_at_startup = 1
+" smart case不解释
+let g:deoplete#enable_smart_case = 1
+
+" 用户输入至少两个字符时再开始提示补全
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+
+" 字符串中不补全
+" call deoplete#custom#source('_',
+"             \ 'disabled_syntaxes', ['String']
+"             \ )
+
+" 补全结束或离开插入模式时，关闭预览窗口
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" 为每个语言定义completion source
+" 是的vim script和zsh script都有，这就是deoplete
+" call deoplete#custom#option('sources', {
+"             \ 'cpp': ['LanguageClient'],
+"             \ 'c': ['LanguageClient'],
+"             \ 'vim': ['vim'],
+"             \ 'zsh': ['zsh']
+"             \})
+
+" 忽略一些没意思的completion source。
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources._ = ['buffer', 'around']
+
+
+""""""""""""""""""""""""""""""""""autozimu/LanguageClient-neovim""""""""""""""""""""""""""""""""""""""""""
+
+" abandoned的Buffer隐藏起来，这是vim的设置。
+" 如果没有这个设置，修改过的文件需要保存了才能换buffer
+" 这会影响全局重命名，因为Vim提示保存因此打断下一个文件的重命名。
+set hidden
+" 告诉LS那个文件夹才是project root，同时也告诉它compile_commands在哪里
+let g:LanguageClient_rootMarkers = {
+            \ 'cpp': ['compile_commands.json', 'build'],
+            \ 'c': ['compile_commands.json', 'build']
+            \ }
+" 为语言指定Language server和server的参数
+let g:LanguageClient_serverCommands = {
+            \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+            \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+            \ }
+
+" Server加一个参数就放在下列文件中
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = '/home/jack/.config/nvim/settings.json'
+" 把Server的补全API提交给Vim
+" 一般有deoplete就可以用了，加上一条以防万一。
+set completefunc=LanguageClient#complete
+" 把Server的格式化API提交给Vim
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+" nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+" nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 """""""""""""""""""""""""""""""""""YouCompleteMe插件配置开始""""""""""""""""""""""""""""""""""""""""""
 "寻找全局配置文件
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
@@ -4003,9 +4095,49 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " set mousehide
 " " }}} mouse
 """""""""""""""""""""""""""""""""""""""""配置vim-lsp"""""""""""""""""""""""""""""""""""""""
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" https://www.cnblogs.com/zi-wang/p/13550305.html
+" bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+" 或
+" wget https://apt.llvm.org/llvm.sh
+" sudo bash llvm.sh
+" sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-10 100
+" 或
+" sudo apt-get install clangd
+" which clangd
+" :LspHover      悬停信息
+
+" :LspDeclaration     转到声明
+" :LspDefinition      转到定义
+" :LspImplementation  转到实现
+" :LspTypeDefinition  转到类型定义
+
+" :LspPeekDeclaration     预览声明
+" :LspPeekDefinition      预览定义
+" :LspPeekImplementation  预览实现
+" :LspPeekTypeDefinition  预览类型定义
+
+" :LspRename               重命名符号
+" :LspDocumentFormat       格式化整个文档
+" :LspDocumentRangeFormat  格式化选中文档
+
+" :LspDocumentSymbol   显示文档符号
+" :LspWorkspaceSymbol  搜索/显示 工作区符号
+
+" :LspNextError     跳到下一个错误
+" :LspPreviousError 跳到上一个错误
+
+" :LspReferences        查找引用
+" :LspNextReference     跳到下一个引用
+" :LspPreviousReference 跳到上一个引用
+
+" :LspDocumentDiagnostics 获取文旦诊断信息
+
+" :LspStatus      显示语言服务器信息
+" :LspCodeAction  获取可以应用到这个文件可能的命令列表
+
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 if executable('pyls')
     " pip install python-language-server
@@ -4016,25 +4148,24 @@ if executable('pyls')
         \ })
 endif
 
+if &runtimepath =~ 'vim-lsp'
+    nmap gd :LspDefinition<cr>
+    " nmap <leader>f :LspDocumentFormat<cr>
+    let g:lsp_diagnostics_float_cursor=1
+    let g:lsp_diagnostics_virtual_text_enabled=1
+endif
 
 
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+" vim-lsc
+let g:lsc_server_commands = {'cpp': '/usr/local/llvm80/bin/clangd', 'python': 'python3.6 -m pyls'}
+let g:lsc_auto_map = v:true
 
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+"     \ 'name': 'file',
+"     \ 'whitelist': ['*'],
+"     \ 'priority': 10,
+"     \ 'completor': function('asyncomplete#sources#file#completor')
+"     \ }))
 
 
 if executable('bash-language-server')
@@ -4075,9 +4206,32 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
+let g:lsp_fold_enabled = 0
+let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+
+let g:lsp_document_highlight_enabled = 0
+
+highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 
 
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
 
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+if executable('cquery')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'cquery',
+      \ 'cmd': {server_info->['cquery']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""配置w0rp/ale"""""""""""""""""""""""""""""""""""""""
@@ -4308,11 +4462,6 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
-" pip install pynvim
-" pip install jedi
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""" davidhalter/jedi-vim """""""""""""""""""""""""""""""""""""""""""""
 " disable autocompletion, cause we use deoplete for completion
@@ -6273,3 +6422,5 @@ endfunc
 " df:     删除直到:的内容
 " yf:     复制直到:的内容
 " cf:     删除直到:并进入插入模式
+
+
