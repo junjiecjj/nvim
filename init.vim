@@ -250,10 +250,12 @@ Plug 'lucasicf/vim-smooth-scroll'                    " 支持平滑滚动
 Plug 'Shougo/echodoc.vim'                            " 函数参数提示
 Plug 'mtdl9/vim-log-highlighting'                    "日志高亮
 Plug 'myusuf3/numbers.vim'                           "相对行号
+Plug 'MattesGroeger/vim-bookmarks'                   " 书签
 
 " 时钟
 Plug 'danilamihailov/beacon.nvim'
-
+" 快捷键菜单插件
+Plug 'skywind3000/quickmenu.vim'
 
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
@@ -1005,6 +1007,68 @@ let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
 nnoremap NT :NumbersToggle<CR>
 nnoremap NO :NumbersOnOff<CR>
 
+" MattesGroeger/vim-bookmarks  配置"""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+
+
+let g:bookmark_no_default_key_mappings = 1
+highlight BookmarkSign ctermbg=whatever ctermfg=whatever
+highlight BookmarkAnnotationSign ctermbg=whatever ctermfg=whatever
+highlight BookmarkLine ctermbg=whatever ctermfg=whatever
+highlight BookmarkAnnotationLine ctermbg=whatever ctermfg=whatever
+
+" 书签可视化插件  MattesGroeger/vim-bookmarks  配置
+
+" 使用说明
+" 功能                                    快捷键          命令
+" 添加/删除书签(当前行)                     mm        :BookmarkToggle
+" 添加/编辑/删除当前行注释书签              mi        :BookmarkAnnotate <TEXT>
+" 跳转到当前 buffer 的下一个书签            mn        :BookmarkNext
+" 跳转到当前 buffer 的前一个书签            mp        :BookmarkPrev
+" 在 quickfix 窗口中列出所有书签(toggle)    ma        :BookmarkShowAll
+" 清除当前 buffer 内的所有书签              mc        :BookmarkClear
+" 清除所有 buffer 内的书签                  mx        :BookmarkClearAll
+" 保存书签到文件                                      :BookmarkSave <FILE_PATH>
+" 从文件加载书签                                      :BookmarkLoad <FILE_PATH>
+let g:bookmark_no_default_key_mappings = 1
+function! BookmarkMapKeys()
+    nmap mm :BookmarkToggle<CR>
+    nmap mi :BookmarkAnnotate<CR>
+    nmap mn :BookmarkNext<CR>
+    nmap mp :BookmarkPrev<CR>
+    nmap ma :BookmarkShowAll<CR>
+    nmap mc :BookmarkClear<CR>
+    nmap mx :BookmarkClearAll<CR>
+    nmap mkk :BookmarkMoveUp
+    nmap mjj :BookmarkMoveDown
+endfunction
+function! BookmarkUnmapKeys()
+    unmap mm
+    unmap mi
+    unmap mn
+    unmap mp
+    unmap ma
+    unmap mc
+    unmap mx
+    unmap mkk
+    unmap mjj
+endfunction
+autocmd BufEnter * :call BookmarkMapKeys()
+autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+" 配置
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'                     " 书签符号设置（默认⚑）
+"let g:bookmark_annotation_sign = '##'          " 注释(说明)书签符号(默认☰)
+"let g:bookmark_highlight_lines = 1             " 默认值为0(否)，是否高亮显示书签行
+"let g:bookmark_no_default_key_mappings = 1     " 默认值为0(否)，是否使用默认的快捷键
+let g:bookmark_center = 1                      " 默认值为0(否)，是否跳转后的书签行居中
+let g:bookmark_show_warning = 0                " 默认值为1(是)，删除所有书签时，是否显示警告信息
+let g:bookmark_highlight_lines = 1             " 默认值为0(否)，是否高亮书签行
+let g:bookmark_auto_close = 1                  " 默认值为0(否)，在 quickfix 窗口选中书签后，是否自动关闭 quickfix 窗口
+let g:bookmark_save_per_working_dir = 1        " 默认值为0(否)，是否针对工作目录保存书签
+let g:bookmark_auto_save = 0                   " 默认值为1(是)，是否自动保存书签
 
 """""""""""""""""""""""""""" danilamihailov/beacon.nvim """"""""""""""""""""""""""""
 highlight Beacon guibg=white ctermbg=15
@@ -1020,6 +1084,53 @@ let g:beacon_fade = 1
 " :BeaconToggle toggle g:beacon_enable variable
 " :BeaconOn enable Beacon
 " :BeaconOff disable Beacon
+
+""""""""""""""""""""""""""""""""""""" 快捷菜单插件 skywind3000/quickmenu.vim 配置""""""""""""""""""""""""""""""""""""""""""""""""
+
+" clear all the items
+call quickmenu#reset()
+
+" enable cursorline (L) and cmdline help (H)
+let g:quickmenu_options = "HL"
+
+" use your favorite key to show / hide quickmenu
+noremap <silent><F12> :call quickmenu#toggle(0)
+
+
+" 由井号开始的字符串表示一个分组
+" 分组1 : UI
+call g:quickmenu#append('# UI', '')
+call g:quickmenu#append('打开首页',               ':Startify',               '执行:Startify')
+call g:quickmenu#append('自动换行',               ':set wrap!',              '执行:set wrap! 快捷键 <leader>sw')
+call g:quickmenu#append('制表符换行符显隐',       ':set list!',              '执行:set list! 快捷键 <leader>sl')
+call g:quickmenu#append('目录树NERDTree',         ':NERDTReeToggle',         '执行:NERDTReeToggle')
+call g:quickmenu#append('撤销树Undotree',         ':UndotreeToggle',         '执行:UndotreeToggle')
+call g:quickmenu#append('标签列表Tlist',          ':TlistToggle',            '执行:TlistToggle')
+call g:quickmenu#append('任务标签列表Tasklist',   ':TaslistToggle',          '执行:TaslistToggle')
+call g:quickmenu#append('缩进指示线indentLine',   ':IndentLinesToggle',      '执行:IndentLinesToggle')
+
+" 分组2 : Git
+call g:quickmenu#append('# Git', '')
+call g:quickmenu#append('查看git日志',   ':Glog',   '执行:Glog')
+call g:quickmenu#append('查看git blame', ':Gblame', ':执行:Gblame')
+
+" 第三方软件打开
+call g:quickmenu#append('# 第三方软件预览', '')
+call g:quickmenu#append('chrome预览',   ':Chrome', '执行:Chrome')
+call g:quickmenu#append('PowerShell',   'call OpenFolderWithApp("PowerShell")', ':执行:call OpenFolderWithApp("PowerShell")')
+"call g:quickmenu#append('Git-bash',     'call OpenFolderWithApp("Git-Bash")', ':执行:call OpenFolderWithApp("Git-Bash")')
+"call g:quickmenu#append('Git-gui',      'call OpenFolderWithApp("Git-Gui")', ':执行:call OpenFolderWithApp("Git-Gui")')
+
+" 自定义函数
+call g:quickmenu#append('# 自定义函数', '')
+call g:quickmenu#append('复制当前文件目录地址到剪贴板',   ':call GetCurFilePath()', '执行: call GetCurFilePath()')
+
+" 帮助/助记
+call g:quickmenu#append('# 帮助/助记','')
+call g:quickmenu#append('底部打开命令窗口 快捷键Alt+=',':Term','执行快捷键，或用相关插件的配置Alt+=')
+call g:quickmenu#append('关闭Buff',':bd', '执行:bd')
+
+
 
 """""""""""""""""""""""""""  wakatime/vim-wakatime """"""""""""""""""""""""""""""
 let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
@@ -5654,6 +5765,56 @@ endfunc
 """"""""""""""""""""""""""""""""""""""""C语言的编译运行"""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" 功能：使用第三方软件快速打开当前文件或当前文件夹，同时不阻塞当前窗口。
+" 例： 日志实时查看 BareTailProfessional 打开文件
+"        chrome、firefox浏览器打开预览
+
+function ViewInBrowser(name)
+    let file = expand("%:p")
+    echo "当前文件：" . file
+    if has('win32') || has('win64') || has('win16') || has('win95')
+        let l:browsers = {
+            \"gvim":"gvim",
+            \"Chrome":"C\:\\Program Files\ \(x86\)\\Google\\Chrome\\Application\\chrome.exe",
+            \"FireFox":"C\:\\Program\ Files\\Mozilla\ Firefox\\firefox.exe",
+            \"sublime_text3":"D:\\XWindowsToolSoftware\\Tool_Sublime_Text3_for_Windows\\SublimeText3\\sublime_text.exe",
+            \"Notepad++":"C:\\Program\ Files\ \(x86\)\\Notepad++\\notepad++.exe",
+            \"baregreppro":"D:\\XWindowsToolSoftware\\BareTailProfessional\\baregreppro.exe",
+            \"baretailpro":"D:\\XWindowsToolSoftware\\BareTailProfessional\\baretailpro.exe",
+            \"Typora":"C:\\Program Files\\Typora\\Typora.exe",
+        \}
+        " 执行命令用相应程序打开文件
+        execute "!start "  l:browsers[a:name] file
+    else
+        let l:browsers = {
+            \"gvim":"gvim",
+            \"Chrome":"chromium",
+            \"FireFox":"firefox",
+            \"sublime_text3":"sublime-text",
+            \"Typora":"typora",
+            \}
+        " 执行命令用相应程序打开文件
+    execute "silent !"  l:browsers[a:name] file
+    endif
+
+endfunction
+
+" 前缀键命令映射
+" nmap <leader>cr    :call ViewInBrowser("Chrome")<cr>      " 用谷歌浏览器大开 
+" nmap <leader>ff    :call ViewInBrowser("FireFox")<cr>     " 用火狐浏览器打开
+" nmap <leader>bt    :call ViewInBrowser("baretailpro")<cr> " 用日志文件实时查看软件器Baretailpro打开当前文件
+
+" 自定命令
+:command Gvim        :call ViewInBrowser("gvim")<cr>          " 用Gvim再打开
+
+:command Chrome      :call ViewInBrowser("Chrome")<cr>        " 用谷歌浏览器大开 
+:command Firefox     :call ViewInBrowser("FireFox")<cr>       " 用火狐浏览器打开
+:command Baretail    :call ViewInBrowser("baretailpro")<cr>   " 用日志文件实时查看软件器Baretailpro打开当前文件
+:command Baregrep    :call ViewInBrowser("baregreppro")<cr>   " 用日志文件检索实时查看器baregreppr打开当前文件
+:command Sublime     :call ViewInBrowser("sublime_text3")<cr> " 用sublime_text3打开当前文件
+:command Notepad     :call ViewInBrowser("Notepad++")<cr>     " 用sublime_text3打开当前文件
+:command Typora      :call ViewInBrowser("Typora")<cr>        " 用MarkDown编辑查看器Typora打开
 
 
 "====================================30s,自动保存文件========================================="
