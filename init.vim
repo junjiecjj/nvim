@@ -3282,6 +3282,10 @@ set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 """""""""""""""""""""""""""""""""""""""""""""""""""  Shougo/deoplete.nvim"""""""""""""""""""""""""""""""""""""""""""""
 " pip install pynvim
 " pip install jedi
+" pip3 install pynvim --user
+" pip3 install --user pynvim
+" pip3 install --user neovim
+" sudo apt-get install -y python-pip python3-pip
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 ""使用shift+tab键向上选择弹窗菜单,这里不设置因为笔记本比较难操作.如果向下太多我通常习惯使用Backspace键再重新操作一遍
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -4985,6 +4989,9 @@ nnoremap ]e :<c-u>execute  'move +'.v:count1<cr>
 " 速添加空行
 nnoremap [s :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]s :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <space>i i<space><esc>
+nnoremap <space>a a<space><esc>
+
 "快速跳转到源/头文件
 autocmd BufLeave *.{c,cpp} mark C
 autocmd BufLeave *.h mark H
