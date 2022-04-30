@@ -1792,6 +1792,8 @@ let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
 
 " vim-clap
 nnoremap <silent><nowait> <space>op  :<C-u>Clap<CR>
+nnoremap <silent><nowait> <space>ol  :<C-u>Clap blines<CR>
+nnoremap <silent><nowait> <space>oL  :<C-u>Clap lines<CR>
 nnoremap <silent><nowait> <space>ob  :<C-u>Clap buffers<CR>
 nnoremap <silent><nowait> <space>oc  :<C-u>Clap command<CR>
 nnoremap <silent><nowait> <space>oh  :<C-u>Clap history<CR>
@@ -1803,6 +1805,7 @@ nnoremap <silent><nowait> <space>ow  :<C-u>Clap windows<CR>
 nnoremap <silent><nowait> <space>ot  :<C-u>Clap tags<CR>
 nnoremap <silent><nowait> <space>os  :<C-u>Clap colors<CR>
 nnoremap <silent><nowait> <space>og  :<C-u>Clap grep2<CR>
+
 
 let g:which_key_map = {
 			\ 'name' : '+clap',
@@ -1824,8 +1827,8 @@ let g:clap_provider_quick_open = {
       \ 'sink': 'e',
       \ 'description': 'Quick open some dotfiles',
       \ }
+      
 """"""""""""""""""""""""""""""""""""""""""""" junegunn/fzf.vim配置""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " Ctrl + , 查看当前 Buffer，两次 Ctrl + e 快速切换上次打开的 Buffer
 nmap <C-,> :Buffers<CR>
@@ -1834,17 +1837,18 @@ let g:fzf_action = { 'ctrl-e': 'edit' }
 "<Leader>f在当前目录搜索文件
 " Ctrl + f 查看文件列表
 nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent>         ff :Files<CR>
 
 
 "<Leader>b切换Buffer中的文件
 nnoremap <silent> <Leader>fb :Buffers<CR>
 
 "<Leader>p在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
-nnoremap <silent> <Leader>fp :Lines<CR>
+nnoremap <silent> <Leader>fl :Lines<CR>
+nnoremap <silent>         fl :Lines<CR>
 
 "<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
 nnoremap <silent> <Leader>fh :History<CR>
-
 
 
 
@@ -1935,6 +1939,7 @@ command! -bang -nargs=? -complete=dir Files
 
 
 
+
 """"""""""""""""""""""""""""""""""""""""" LeaderF 设置  """""""""""""""""""""""""""""""""""""""""""""""
 
 " 安装ctags
@@ -1957,6 +1962,7 @@ nnoremap <silent> <Leader>lh :LeaderfMru<CR>
 "Buffer
 nnoremap <silent> <Leader>lb :Leaderf buffer<CR>
 nnoremap <silent> <Leader>lb :LeaderfBuffer<CR>
+
 
 " 搜索当前文件中有的某个单词
 nnoremap <silent> <Leader>lw :Leaderf line<CR>
