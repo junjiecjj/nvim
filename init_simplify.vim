@@ -1793,6 +1793,8 @@ let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
 
 " vim-clap
 nnoremap <silent><nowait> <space>op  :<C-u>Clap<CR>
+nnoremap <silent><nowait> <space>ol  :<C-u>Clap blines<CR>
+nnoremap <silent><nowait> <space>oL  :<C-u>Clap lines<CR>
 nnoremap <silent><nowait> <space>ob  :<C-u>Clap buffers<CR>
 nnoremap <silent><nowait> <space>oc  :<C-u>Clap command<CR>
 nnoremap <silent><nowait> <space>oh  :<C-u>Clap history<CR>
@@ -1827,7 +1829,6 @@ let g:clap_provider_quick_open = {
       \ }
 """"""""""""""""""""""""""""""""""""""""""""" junegunn/fzf.vim配置""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Ctrl + , 查看当前 Buffer，两次 Ctrl + e 快速切换上次打开的 Buffer
 nmap <C-,> :Buffers<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
@@ -1841,7 +1842,8 @@ nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent> <Leader>fb :Buffers<CR>
 
 "<Leader>p在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
-nnoremap <silent> <Leader>fp :Lines<CR>
+nnoremap <silent> <Leader>fl :Lines<CR>
+nnoremap <silent>         fl :Lines<CR>
 
 "<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
 nnoremap <silent> <Leader>fh :History<CR>
@@ -2382,7 +2384,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap fl :NERDTreeToggle<CR>
+" nmap fl :NERDTreeToggle<CR>
 
 " ctrl + d 打开目录
 " map <C-d> :NERDTreeToggle<CR>
