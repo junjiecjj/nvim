@@ -108,7 +108,6 @@ Plug 'stulzer/mitormk-laser'
 Plug 'atrnh/magical-girl-vim'
 Plug 'rktjmp/lush.nvim'
 Plug 'alaric/nortia.nvim'
-Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'vim-scripts/nightshade.vim'
 Plug 'rainglow/vim'
@@ -5498,7 +5497,7 @@ set showtabline=1
 
 
 " 若要在右上角启用关闭按钮，请将以下内容添加到 ~/.vimrc
-
+set suffixes=.bak,~,.o,.h,.info,.swp,.obj
 let g:tablineclosebutton=1
 
 "#################################### 多标签页切换####################################
