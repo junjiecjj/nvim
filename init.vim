@@ -4054,6 +4054,12 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+
+" Position to open the vista sidebar. On the right by default.
+" Change to 'vertical topleft' to open on the left.
+let g:vista_sidebar_position = 'vertical botright'
+
+
 let g:vista_executive_for = {
 			\ 'vimwiki': 'markdown',
 			\ 'pandoc': 'markdown',
@@ -4087,7 +4093,11 @@ let g:lightline = {
 let g:vista_finder_alternative_executives = ['coc']
 " 优先选择lsp作为标签来源，其次ctags
 let g:vista_cpp_executive = 'vim_lsp'
-let g:vista_default_executive = 'ctags'
+
+let g:vista_default_executive = 'coc'
+let g:vista_finder_alternative_executives = 'ctags'
+" let g:vista_default_executive = 'ctags'
+
 " 启用悬浮窗预览
 let g:vista_echo_cursor_strategy ='floating_win'
 " 侧边栏宽度.
