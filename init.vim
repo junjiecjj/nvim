@@ -1836,18 +1836,22 @@ let g:fzf_action = { 'ctrl-e': 'edit' }
 "<Leader>f在当前目录搜索文件
 " Ctrl + f 查看文件列表
 nnoremap <silent> <Leader>ff :Files<CR>
-nnoremap <silent>         ff :Files<CR>
+nnoremap <silent>        ff :Files<CR>
+nnoremap <silent>        ]f :Files<CR>
 
 
 "<Leader>b切换Buffer中的文件
 nnoremap <silent> <Leader>fb :Buffers<CR>
+nnoremap <silent>  ]b :Buffers<CR>
 
 "<Leader>p在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
 nnoremap <silent> <Leader>fl :Lines<CR>
 nnoremap <silent>         fl :Lines<CR>
+nnoremap <silent>         ]l :Lines<CR>
 
 "<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
 nnoremap <silent> <Leader>fh :History<CR>
+nnoremap <silent> ]h :History<CR>
 
 
 
@@ -1930,13 +1934,12 @@ command! -bang -nargs=* Ag
             \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
             \                 <bang>0)
 nnoremap <silent> <Leader>A :Ag<CR>
+nnoremap <silent> ]A :Ag<CR>
 
 
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""" LeaderF 设置  """""""""""""""""""""""""""""""""""""""""""""""
@@ -1949,30 +1952,44 @@ let g:Lf_ShortcutF = '<C-s>'
 
 "\p 打开函数列表
 noremap lf :LeaderfFunction<cr>
+noremap [f :LeaderfFunction<cr>
+
 "函数搜索（仅当前文件里），依赖ctags插件
 nnoremap <silent> lf :Leaderf function<CR>
 nnoremap <silent> lf :LeaderfFunction<CR>
+nnoremap <silent> [f :Leaderf function<CR>
+nnoremap <silent> [f :LeaderfFunction<CR>
+
+
 "文件搜索
 nnoremap <silent> <Leader>lf :Leaderf file<CR>
 nnoremap <silent> <Leader>lf :LeaderfFile<CR>
+nnoremap <silent> [lf :Leaderf file<CR>
+nnoremap <silent> [lf :LeaderfFile<CR>
+
+
 "历史打开过的文件
 nnoremap <silent> <Leader>lh :Leaderf mru<CR>
+nnoremap <silent> [h :Leaderf mru<CR>
 nnoremap <silent> <Leader>lh :LeaderfMru<CR>
 "Buffer
 nnoremap <silent> <Leader>lb :Leaderf buffer<CR>
+nnoremap <silent> [b :Leaderf buffer<CR>
 nnoremap <silent> <Leader>lb :LeaderfBuffer<CR>
-
 
 " 搜索当前文件中有的某个单词
 nnoremap <silent> <Leader>lw :Leaderf line<CR>
+nnoremap <silent> [w :Leaderf line<CR>
 
 " 更换颜色
 nnoremap <silent> <Leader>lc :Leaderf colorscheme<CR>
+nnoremap <silent> [c :Leaderf colorscheme<CR>
 
 " 是召回上一个命令的最后搜索结果
 nnoremap <silent> <Leader>lr Leaderf --recall<CR>
 "模糊搜索，很强大的功能，迅速秒搜
 nnoremap <silent> <Leader>rg :Leaderf rg<CR>
+nnoremap <silent> [rg :Leaderf rg<CR>
 
 " <C-C>, <ESC> : 退出 LeaderF.
 " <C-R> : 在模糊匹配和正则式匹配之间切换
@@ -2617,10 +2634,9 @@ func! ArgFunc() abort
 endfunc
 autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
 
-
 call defx#custom#option('_', {
 			\ 'resume': 1,
-			\ 'winwidth': 30,
+			\ 'winwidth': 20,
 			\ 'split': 'vertical',
 			\ 'direction': 'topleft',
 			\ 'show_ignored_files': 0,
@@ -2732,6 +2748,7 @@ endfunction
 let g:defx_icons_column_length = 2
 let g:defx_icons_mark_icon = ''
 let g:defx_icons_parent_icon = ""
+
 
 let g:defx_icons_enable_syntax_highlight = 1
 
@@ -4043,6 +4060,7 @@ let g:SimpleFold_docstring_preview=1 "看到折叠代码的字符串
 "********************************************************************************************
 
 
+
 """"""""""""""""""""""""Vista设置"""""""""""""""""""""""""""""""
 " https://github.com/liuchengxu/vista.vim#:~:text=In%20addition%20to%20being%20a%20tags%20viewer%2C%20vista.vim,understands%20the%20semantics%20instead%20of%20the%20regex%20only.
 noremap <LEADER>v :Vista<CR>
@@ -4055,10 +4073,10 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
+
 " Position to open the vista sidebar. On the right by default.
 " Change to 'vertical topleft' to open on the left.
 let g:vista_sidebar_position = 'vertical botright'
-
 
 let g:vista_executive_for = {
 			\ 'vimwiki': 'markdown',
@@ -4093,11 +4111,9 @@ let g:lightline = {
 let g:vista_finder_alternative_executives = ['coc']
 " 优先选择lsp作为标签来源，其次ctags
 let g:vista_cpp_executive = 'vim_lsp'
-
 let g:vista_default_executive = 'coc'
 let g:vista_finder_alternative_executives = 'ctags'
 " let g:vista_default_executive = 'ctags'
-
 " 启用悬浮窗预览
 let g:vista_echo_cursor_strategy ='floating_win'
 " 侧边栏宽度.
@@ -4125,6 +4141,7 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " set mouse+=a
 " set mousehide
 " " }}} mouse
+
 """""""""""""""""""""""""""""""""""""""""配置vim-lsp"""""""""""""""""""""""""""""""""""""""
 " https://www.cnblogs.com/zi-wang/p/13550305.html
 " bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
