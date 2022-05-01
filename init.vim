@@ -2606,6 +2606,17 @@ noremap <LEADER>df :Defx<CR>
 noremap <LEADER>df :Defx  -search=`expand('%:p')` -toggle <cr>
 nnoremap <silent> df :Defx  -search=`expand('%:p')` -toggle <cr>
 
+"打开vim自动打开defx
+func! ArgFunc() abort
+    let s:arg = argv(0)
+    if isdirectory(s:arg)
+        return s:arg
+    else
+        return fnamemodify(s:arg, ':h')
+    endif
+endfunc
+autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
+
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
@@ -2721,6 +2732,8 @@ endfunction
 let g:defx_icons_column_length = 2
 let g:defx_icons_mark_icon = ''
 let g:defx_icons_parent_icon = ""
+
+let g:defx_icons_enable_syntax_highlight = 1
 
 
 """""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
