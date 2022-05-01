@@ -1837,18 +1837,21 @@ let g:fzf_action = { 'ctrl-e': 'edit' }
 " Ctrl + f 查看文件列表
 nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent>        ff :Files<CR>
+nnoremap <silent>        ]f :Files<CR>
 
 
 "<Leader>b切换Buffer中的文件
 nnoremap <silent> <Leader>fb :Buffers<CR>
+nnoremap <silent>  ]b :Buffers<CR>
 
 "<Leader>p在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
 nnoremap <silent> <Leader>fl :Lines<CR>
 nnoremap <silent>         fl :Lines<CR>
+nnoremap <silent>         ]l :Lines<CR>
 
 "<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
 nnoremap <silent> <Leader>fh :History<CR>
-
+nnoremap <silent> ]h :History<CR>
 
 
 
@@ -1931,6 +1934,7 @@ command! -bang -nargs=* Ag
             \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
             \                 <bang>0)
 nnoremap <silent> <Leader>A :Ag<CR>
+nnoremap <silent> ]A :Ag<CR>
 
 
 " Likewise, Files command with preview window
@@ -1949,29 +1953,44 @@ let g:Lf_ShortcutF = '<C-s>'
 
 "\p 打开函数列表
 noremap lf :LeaderfFunction<cr>
+noremap [f :LeaderfFunction<cr>
+
 "函数搜索（仅当前文件里），依赖ctags插件
 nnoremap <silent> lf :Leaderf function<CR>
 nnoremap <silent> lf :LeaderfFunction<CR>
+nnoremap <silent> [f :Leaderf function<CR>
+nnoremap <silent> [f :LeaderfFunction<CR>
+
+
 "文件搜索
 nnoremap <silent> <Leader>lf :Leaderf file<CR>
 nnoremap <silent> <Leader>lf :LeaderfFile<CR>
+nnoremap <silent> [lf :Leaderf file<CR>
+nnoremap <silent> [lf :LeaderfFile<CR>
+
+
 "历史打开过的文件
 nnoremap <silent> <Leader>lh :Leaderf mru<CR>
+nnoremap <silent> [h :Leaderf mru<CR>
 nnoremap <silent> <Leader>lh :LeaderfMru<CR>
 "Buffer
 nnoremap <silent> <Leader>lb :Leaderf buffer<CR>
+nnoremap <silent> [b :Leaderf buffer<CR>
 nnoremap <silent> <Leader>lb :LeaderfBuffer<CR>
 
 " 搜索当前文件中有的某个单词
 nnoremap <silent> <Leader>lw :Leaderf line<CR>
+nnoremap <silent> [w :Leaderf line<CR>
 
 " 更换颜色
 nnoremap <silent> <Leader>lc :Leaderf colorscheme<CR>
+nnoremap <silent> [c :Leaderf colorscheme<CR>
 
 " 是召回上一个命令的最后搜索结果
 nnoremap <silent> <Leader>lr Leaderf --recall<CR>
 "模糊搜索，很强大的功能，迅速秒搜
 nnoremap <silent> <Leader>rg :Leaderf rg<CR>
+nnoremap <silent> [rg :Leaderf rg<CR>
 
 " <C-C>, <ESC> : 退出 LeaderF.
 " <C-R> : 在模糊匹配和正则式匹配之间切换
@@ -2618,7 +2637,7 @@ autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
-			\ 'winwidth': 30,
+			\ 'winwidth': 20,
 			\ 'split': 'vertical',
 			\ 'direction': 'topleft',
 			\ 'show_ignored_files': 0,
@@ -3315,7 +3334,8 @@ set pyxversion=3
 let g:python3_host_prog = "/home/jack/anaconda3/bin/python3"
 
 " smart case不解释
-let g:deoplete#enable_smart_case = 1
+" let g:deoplete#custom#option("smart_case", {1})
+" let g:deoplete#enable_smart_case = 1
 
 " 用户输入至少两个字符时再开始提示补全
 call deoplete#custom#source('LanguageClient',
@@ -5042,7 +5062,7 @@ xnoremap < <gv
 xnoremap > >gv
 
 "选择当前行至末尾，排除换行符
-nnoremap L g_
+nnoremap sL g_
 
 " 重新载入保存文件
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -5347,13 +5367,13 @@ inoremap <C-x> <Esc>"+x
 :inoremap ( ()<ESC>i
 :inoremap { {<CR>}<ESC>O
 :inoremap [ []<ESC>i
-:inoremap 《 《》<ESC>i
+" :inoremap 《 《》<ESC>i
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap 》 <c-r>=ClosePair('》')<CR>
+" :inoremap 》 <c-r>=ClosePair('》')<CR>
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
@@ -5414,25 +5434,6 @@ nnoremap U 10k
 nnoremap D 10j
 nnoremap H 10h
 nnoremap L 10l
-
-" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-" 向左分屏
-map sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-" 向下分屏
-map sj :set splitbelow<CR>:split<CR>
-" 向左分屏
-map sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-" 向右分屏
-map sl :set splitright<CR>:vsplit<CR>
-
-" Place the two screens up and down
-nnoremap sh <C-w>t<C-w>K
-" Place the two screens side by side
-nnoremap sv <C-w>t<C-w>H
-
-" Rotate screens
-nnoremap srh <C-w>b<C-w>K
-nnoremap srv <C-w>b<C-w>H
 
 "---------------- 窗口、标签页、缓冲区的切换--------------------------------
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -5510,6 +5511,30 @@ nnoremap <M-right> :vertical resize +2<cr>
 
 
 nnoremap html :%TOhtml<cr>
+
+
+" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+" 向下分屏
+map sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+" map sk :set nosplitbelow<CR>:split<CR>
+" 向下分屏
+map sj :set splitbelow<CR>:split<CR>
+" 向左分屏
+map sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+" map sh :set nosplitright<CR>:vs<CR>
+" 向右分屏
+map sl :set splitright<CR>:vsplit<CR>
+
+" Place the two screens up and down
+nnoremap su <C-w>t<C-w>K
+" Place the two screens side by side
+nnoremap sv <C-w>t<C-w>H
+
+" Rotate screens
+nnoremap srh <C-w>b<C-w>K
+nnoremap srv <C-w>b<C-w>H
+
+
 "#################################### 多标签页配置####################################
 " 不显示标签栏
 " set showtabline=0
@@ -5626,6 +5651,17 @@ nnoremap  [b :bp<CR>
 nnoremap  ;a :bp<CR>
 " nnoremap  `a :bp<CR>
 " nnoremap  <M-h> :bp<CR>
+
+
+" nnoremap  ;1 :b1<CR>
+" nnoremap  ;2 :b2<CR>
+" nnoremap  ;3 :b3<CR>
+" nnoremap  ;4 :b4<CR>
+" nnoremap  ;5 :b5<CR>
+" nnoremap  ;6 :b6<CR>
+" nnoremap  ;7 :b7<CR>
+" nnoremap  ;8 :b8<CR>
+" nnoremap  ;9 :b9<CR>
 
 " :buffers或:ls或:files 显示缓冲区列表。
 " ctrl+^：在最近两个缓冲区间切换。
