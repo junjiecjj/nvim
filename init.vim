@@ -4428,6 +4428,19 @@ let g:NERDToggleCheckAllLines    = 1
 " gcc: 注释或反注释,ngcc,n为行数
 " gcap: 注释一段
 " gc: visual 模式下直接注释所有已选择的行
+" gcu 可以撤销注释
+if !hasmapto('<Plug>Commentary') || maparg('gc','n') ==# ''
+  xmap gc  <Plug>Commentary
+  nmap gc  <Plug>Commentary
+  omap gc  <Plug>Commentary
+  nmap <Space>cc <Plug>CommentaryLine
+  nmap gcc <Plug>CommentaryLine
+  nmap gcu <Plug>Commentary<Plug>Commentary
+endif
+
+autocmd FileType python,shell set commentstring=#\ %s                 " 设置Python注释字符
+autocmd FileType mako set cms=##\ %s
+
 
 """"""""""""""""""""""""""""""""vim-emmet配置""""""""""""""""""""""""""""""""
 
