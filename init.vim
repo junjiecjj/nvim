@@ -316,6 +316,8 @@ Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 " 浮动终端
 Plug 'voldikss/vim-floaterm', { 'on': 'FloatermNew' }
 Plug 'nikvdp/neomux'
+Plug 'skywind3000/vim-terminal-help'
+Plug 'google/vim-searchindex'
 
 "代码块
 Plug 'SirVer/ultisnips'                    " 安装引擎
