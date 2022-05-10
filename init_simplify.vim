@@ -2620,6 +2620,7 @@ let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """"""""""""""""""""Shougo/defx.nvim设置"""""""""""""""""""""""""""""""""''
 noremap <LEADER>df :Defx<CR>
 
@@ -2636,11 +2637,11 @@ func! ArgFunc() abort
         return fnamemodify(s:arg, ':h')
     endif
 endfunc
-autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
+" autocmd VimEnter * Defx `ArgFunc()` -no-focus  -search=`expand('%:p')`
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
-			\ 'winwidth': 20,
+			\ 'winwidth': 25,
 			\ 'split': 'vertical',
 			\ 'direction': 'topleft',
 			\ 'show_ignored_files': 0,
@@ -2755,6 +2756,7 @@ let g:defx_icons_parent_icon = ""
 
 
 let g:defx_icons_enable_syntax_highlight = 1
+
 
 """""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
 " if you want to use overlay feature
