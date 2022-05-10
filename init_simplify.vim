@@ -260,7 +260,7 @@ Plug 'skywind3000/quickmenu.vim'
 " Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accelerated_jk_gk)']}
 
 " 编辑器配置插件。
-Plug 'editorconfig/editorconfig-vim'   
+Plug 'editorconfig/editorconfig-vim'
 
 "FPGA
 Plug 'vhda/verilog_systemverilog.vim'     "verilog
@@ -318,7 +318,6 @@ Plug 'voldikss/vim-floaterm', { 'on': 'FloatermNew' }
 Plug 'nikvdp/neomux'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'google/vim-searchindex'
-
 
 "代码块
 Plug 'SirVer/ultisnips'                    " 安装引擎
@@ -396,7 +395,7 @@ Plug 'vim-airline/vim-airline'                   " 美化状态栏，显示正�
 Plug 'vim-airline/vim-airline-themes'            " 美化状态栏，显示正在编辑的文件
 Plug 'ryanoasis/vim-devicons'                        " 在目录中为文件增加图标
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Plug 'powerline/powerline' 
+" Plug 'powerline/powerline'
 " Plug 'itchyny/lightline.vim'                     " 美化状态栏，显示正在编辑的文件
 " Plug 'glepnir/spaceline.vim'                    " 美化状态栏，
 Plug 'scrooloose/nerdcommenter'                   "快速注释，取消注释
@@ -489,7 +488,7 @@ set linespace=0
 " 在Gvim中我设置了英文用Hermit， 中文使用 YaHei Mono "
 
 
-  
+
  if has('gui_running')
     "colorscheme desert" 下面的滚动条开启
     " let g:netrw_winsize = 20
@@ -1017,7 +1016,7 @@ if has("autocmd")
        autocmd BufNewFile,Bufread *.txt set syntax=help
 endif
 """""""""""""""""""""""""""""""""""  Numbers.vim   """""""""""""""""""""""""""""""""""
-let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
+let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree','defx']
 
 nnoremap NT :NumbersToggle<CR>
 nnoremap NO :NumbersOnOff<CR>
@@ -2620,7 +2619,6 @@ let g:NERDTreeExtensionHighlightColor['c++'] = s:green
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """"""""""""""""""""Shougo/defx.nvim设置"""""""""""""""""""""""""""""""""''
 noremap <LEADER>df :Defx<CR>
 
@@ -2638,12 +2636,15 @@ func! ArgFunc() abort
     endif
 endfunc
 " autocmd VimEnter * Defx `ArgFunc()` -no-focus  -search=`expand('%:p')`
+" autocmd VimEnter * if &filetype !=# 'gitcommit' | Defx | wincmd w | endif
+
+autocmd BufWritePost * call defx#redraw()
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
-			\ 'winwidth': 25,
+			\ 'winwidth': 30,
 			\ 'split': 'vertical',
-			\ 'direction': 'topleft',
+			\ 'direction': 'botright',
 			\ 'show_ignored_files': 0,
 			\ 'columns': 'mark:indent:git:icons:filename',
 			\ 'root_marker': '',
@@ -2666,11 +2667,29 @@ call defx#custom#column('git', {
 
 call defx#custom#column('mark', { 'readonly_icon': '', 'selected_icon': '' })
 
+autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
+      \ * if isdirectory(expand('<amatch>'))
+      \   | call s:browse_check(expand('<amatch>')) | endif
+
+function! s:browse_check(path) abort
+  if bufnr('%') != expand('<abuf>')
+    return
+  endif
+
+  " Disable netrw.
+  augroup FileExplorer
+    autocmd!
+  augroup END
+
+  execute 'Defx' a:path
+endfunction
+
 augroup user_plugin_defx
 	autocmd!
 	autocmd FileType defx call <SID>defx_mappings()
 	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
 	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
+    autocmd BufNewFile,BufRead * Defx  `getcwd()` -no-focus -search=`expand('%:p')`
 augroup END
 
 function! s:jump_dirty(dir) abort
@@ -2689,6 +2708,7 @@ function! s:defx_mappings() abort
   nnoremap <silent><buffer><expr> z     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
   nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
   nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
+  setlocal cursorline
 endfunction
 " 上面的配置我们可以使用. 键来显示和隐藏忽略文件，l 键来打开关闭文件或者文件夹。其他的内容就需要你们自己配置了。
 
@@ -2756,7 +2776,6 @@ let g:defx_icons_parent_icon = ""
 
 
 let g:defx_icons_enable_syntax_highlight = 1
-
 
 """""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
 " if you want to use overlay feature
@@ -3077,7 +3096,7 @@ let g:VM_maps["Select h"]           = '<C-Left>' " 从光标往左选中文本(c
 let g:VM_maps["Select l"]           = '<C-Right>' "从光标往右选中文本(ctrl+n继续向下选中相同文本)
 let g:VM_maps['Add Cursor Up']      = '<C-Up>'   " 向上添加一个光标(原光标+上光标 继续使用则继续添加)
 let g:VM_maps['Add Cursor Down']    = '<C-Down>' " 向下添加一个光标(原光标+下光标 继续使用则继续添加)
-let g:VM_maps["Select Cursor Up"]   = '<C-Up>'   " 
+let g:VM_maps["Select Cursor Up"]   = '<C-Up>'   "
 let g:VM_maps["Select Cursor Down"] = '<C-Down>'
 let g:VM_maps['Add Cursor At Pos']  = '<C-x>'    " 将当前光标添加入多光标列表中
 let g:VM_maps['Add Cursor At Word'] = '<C-w>'    " 将当前光标所在词的词首加上多光标列表中
@@ -3245,13 +3264,13 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 
-let g:vimtex_toc_config = { 
-    \ 'name' : 'TOC', 
-    \ 'layers' : ['content', 'todo', 'include'], 
-    \ 'split_width' : 25, 
-    \ 'todo_sorted' : 0, 
-    \ 'show_help' : 1, 
-    \ 'show_numbers' : 1, 
+let g:vimtex_toc_config = {
+    \ 'name' : 'TOC',
+    \ 'layers' : ['content', 'todo', 'include'],
+    \ 'split_width' : 25,
+    \ 'todo_sorted' : 0,
+    \ 'show_help' : 1,
+    \ 'show_numbers' : 1,
     \}
 " 这样，我们使用命令 :VimtexTocToggle 即可唤出 vimtex 自动生成的 TOC：
 
@@ -3732,12 +3751,12 @@ nmap Wd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 " 设置 tagbar 的窗口宽度
-let g:tagbar_width=20
+let g:tagbar_width=30
 " 设置 tagbar 的窗口显示的位置，为右边
 " let g:tagbar_right = 1
-let g:tagbar_left = 0
+let g:tagbar_left = 1
 " 打开文件自动 打开
-autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
+" autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
 
 
 " 将开启tagbar的快捷键设置为　 tb
@@ -3782,7 +3801,7 @@ let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 
 " 显示taglist菜单
-" let Tlist_Show_Menu=1
+let Tlist_Show_Menu=1
 
 " 鼠标单击跳转到tag定义, 要开启鼠标功能
 let Tlist_Use_SingleClick=1
@@ -3803,7 +3822,6 @@ let Tlist_WinWidth = 30
 
 "将 \t 表示为在命令行模式下输入命令：
 nnoremap  tl <Esc>:TlistToggle<Cr>
-
 
 
 " """""""""""""""""""""""""""""""""""""""""""" vim-go配置   """"""""""""""""""""""""""""""""""""""""""""
@@ -4248,7 +4266,7 @@ function! s:on_lsp_buffer_enabled() abort
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
+
     " refer to doc to add more commands
 endfunction
 
@@ -4442,8 +4460,6 @@ endif
 
 autocmd FileType python,shell set commentstring=#\ %s                 " 设置Python注释字符
 autocmd FileType mako set cms=##\ %s
-
-
 
 """"""""""""""""""""""""""""""""vim-emmet配置""""""""""""""""""""""""""""""""
 
@@ -4802,7 +4818,7 @@ hi Normal ctermfg=252 ctermbg=none
 "set statusline+=%2*\ %y\                                  "文件类型
 "set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "编码1
 "set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "编码2
-"set statusline+=%4*\ %{&ff}\                              "文件系统(dos/unix..) 
+"set statusline+=%4*\ %{&ff}\                              "文件系统(dos/unix..)
 "set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "语言 & 是否高亮，H表示高亮?
 "set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "光标所在行号/总行数 (百分比)
 "set statusline+=%9*\ col:%03c\                            "光标所在列
@@ -6038,14 +6054,14 @@ function ViewInBrowser(name)
 endfunction
 
 " 前缀键命令映射
-" nmap <leader>cr    :call ViewInBrowser("Chrome")<cr>      " 用谷歌浏览器大开 
+" nmap <leader>cr    :call ViewInBrowser("Chrome")<cr>      " 用谷歌浏览器大开
 " nmap <leader>ff    :call ViewInBrowser("FireFox")<cr>     " 用火狐浏览器打开
 " nmap <leader>bt    :call ViewInBrowser("baretailpro")<cr> " 用日志文件实时查看软件器Baretailpro打开当前文件
 
 " 自定命令
 :command Gvim        :call ViewInBrowser("gvim")<cr>          " 用Gvim再打开
 
-:command Chrome      :call ViewInBrowser("Chrome")<cr>        " 用谷歌浏览器大开 
+:command Chrome      :call ViewInBrowser("Chrome")<cr>        " 用谷歌浏览器大开
 :command Firefox     :call ViewInBrowser("FireFox")<cr>       " 用火狐浏览器打开
 :command Baretail    :call ViewInBrowser("baretailpro")<cr>   " 用日志文件实时查看软件器Baretailpro打开当前文件
 :command Baregrep    :call ViewInBrowser("baregreppro")<cr>   " 用日志文件检索实时查看器baregreppr打开当前文件
