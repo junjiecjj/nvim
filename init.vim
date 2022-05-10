@@ -2634,13 +2634,16 @@ func! ArgFunc() abort
         return fnamemodify(s:arg, ':h')
     endif
 endfunc
-autocmd VimEnter * Defx `ArgFunc()` -no-focus -search=`expand('%:p')`
+" autocmd VimEnter * Defx `ArgFunc()` -no-focus  -search=`expand('%:p')`
+" autocmd VimEnter * if &filetype !=# 'gitcommit' | Defx | wincmd w | endif
+
+autocmd BufWritePost * call defx#redraw()
 
 call defx#custom#option('_', {
 			\ 'resume': 1,
-			\ 'winwidth': 20,
+			\ 'winwidth': 30,
 			\ 'split': 'vertical',
-			\ 'direction': 'topleft',
+			\ 'direction': 'botright',
 			\ 'show_ignored_files': 0,
 			\ 'columns': 'mark:indent:git:icons:filename',
 			\ 'root_marker': '',
@@ -2663,11 +2666,29 @@ call defx#custom#column('git', {
 
 call defx#custom#column('mark', { 'readonly_icon': '', 'selected_icon': '' })
 
+autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
+      \ * if isdirectory(expand('<amatch>'))
+      \   | call s:browse_check(expand('<amatch>')) | endif
+
+function! s:browse_check(path) abort
+  if bufnr('%') != expand('<abuf>')
+    return
+  endif
+
+  " Disable netrw.
+  augroup FileExplorer
+    autocmd!
+  augroup END
+
+  execute 'Defx' a:path
+endfunction
+
 augroup user_plugin_defx
 	autocmd!
 	autocmd FileType defx call <SID>defx_mappings()
 	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
 	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
+    autocmd BufNewFile,BufRead * Defx  `getcwd()` -no-focus -search=`expand('%:p')`
 augroup END
 
 function! s:jump_dirty(dir) abort
@@ -2686,6 +2707,7 @@ function! s:defx_mappings() abort
   nnoremap <silent><buffer><expr> z     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
   nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
   nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
+  setlocal cursorline
 endfunction
 " 上面的配置我们可以使用. 键来显示和隐藏忽略文件，l 键来打开关闭文件或者文件夹。其他的内容就需要你们自己配置了。
 
@@ -2753,7 +2775,6 @@ let g:defx_icons_parent_icon = ""
 
 
 let g:defx_icons_enable_syntax_highlight = 1
-
 
 """""""""""""""""""""""""""""""""""t9md/vim-choosewin配置""""""""""""""""""""""""""""""""""""""""""
 " if you want to use overlay feature
@@ -3728,12 +3749,12 @@ nmap Wd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 " 设置 tagbar 的窗口宽度
-let g:tagbar_width=20
+let g:tagbar_width=30
 " 设置 tagbar 的窗口显示的位置，为右边
 " let g:tagbar_right = 1
 let g:tagbar_left = 1
 " 打开文件自动 打开
-autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
+" autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.py,*.cc,*.cxx call tagbar#autoopen()
 
 
 " 将开启tagbar的快捷键设置为　 tb
@@ -3743,6 +3764,7 @@ map! tb <Esc> :TagbarToggle<CR>
 let g:tagbar_autopreview = 0
 "关闭排序,即按标签本身在文件中的位置排序
 let g:tagbar_sort = 0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""   Tag List  """"""""""""""""""""""""""""""""""""""""""""""
