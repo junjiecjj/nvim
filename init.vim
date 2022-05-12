@@ -177,8 +177,12 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }       " 在vim中搜索文件
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " 在vim中搜索文件
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'                          " 强大的文本搜索工具
-Plug 'easymotion/vim-easymotion'                " 强大的搜索定位，快速移动
 Plug 'tpope/vim-surround'                         "快速将括号、‘’、“”、[]等替换
+Plug 'easymotion/vim-easymotion'                " 强大的搜索定位，快速移动
+Plug 'haya14busa/incsearch.vim'                 " 增量搜索
+Plug 'haya14busa/incsearch-easymotion.vim'      " 增量搜索
+Plug 'haya14busa/incsearch-fuzzy.vim'           " 增量搜索
+Plug 'tpope/vim-repeat'
 
 
 " 滚动条
@@ -2030,22 +2034,24 @@ let g:ack_prg = "ag --vimgrep --smart-case"
 map <Leader>ak :Ack <space>-i<space>
 
 
+
 """""""""""""""""""""""""""""""""""""" easymotion/vim-easymotion配置 """"""""""""""""""""""""""""""""""""""
 " \\w    # 向后查找单词(find word after),定位到词首
-" \\W    # 向后查找单词(find word before)
+" \\W    # 向后查找单词(find word before),同\\w
 " \\e    # 向后查找，定位到词尾(find word end after)
-" \\E    # 向后查找，位位到词尾(find word end before)
-" \\b    # 向前查找单字，定位到词尾(find word end after)
-" \\B    # 向前查找单字，位位到词尾(find word end before)
-" \\f    # 向后查找单字(find letter after)
-" \\F    # 向前查找单字(find letter before)
+" \\E    # 向后查找，位位到词尾(find word end before),同\\e
+" \\b    # 向前查找单字，定位到词首(find word end after)
+" \\B    # 向前查找单字，位位到词尾(find word end before),同\\b
+
+" \\f    # 向后查找单字(find letter after),输入搜索的单词才会有结果
+" \\F    # 向前查找单字(find letter before),输入搜索的单词才会有结果
 " \\s    #快捷键<leader><leader>s(即\\s), 然后输入要搜索的字母, 这个跳转是双向的
 
 let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " 行内跳转(hl)
-map <Leader><leader>h <Plug>()
+map <Leader><leader>h <Plug>(easymotion-linebackward)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 
 " 行级跳转(jk)
@@ -2054,9 +2060,107 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
 " 使用 ss 启用
 nmap ss <Plug>(easymotion-s2)
+nmap ,t <Plug>(easymotion-t2)
+" s{char}{char} to move to {char}{char}
+nmap ,s <Plug>(easymotion-overwin-f2)
+
+" <Leader>f{char} to move to {char}
+map  ,f <Plug>(easymotion-bd-f)
+nmap ,,f <Plug>(easymotion-overwin-f)
+
+
+" Move to line,在当前屏幕的所有行之间选择跳转
+map  ,h <Plug>(easymotion-bd-jk)
+nmap ,l <Plug>(easymotion-overwin-line)
+
+" Move to word,在当前屏幕的所有单词之间选择跳转
+map  ,e <Plug>(easymotion-bd-w)
+nmap ,w <Plug>(easymotion-overwin-w)
+
+
+" 匹配n个字符
+map  n/ <Plug>(easymotion-sn)
+omap n/ <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
 "注意：以上操作都是在本界面，也就是在当前所在屏幕的大小里面能显示的界面
+
+
+" Integration with incsearch.vim
+" haya14busa/incsearch.vim
+" haya14busa/incsearch-easymotion.vim
+" You can use other keymappings like <C-l> instead of <CR> if you want to
+" use these mappings as default search and sometimes want to move cursor with
+" EasyMotion.
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {
+  \     "\<CR>": '<Over>(easymotion)'
+  \   },
+  \   'is_expr': 0
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
+
+""""""""""""""""""""""""""""""""""""" haya14busa/incsearch.vim """""""""""""""""""""""""""""""""""""
+map s/  <Plug>(incsearch-forward)
+map s?  <Plug>(incsearch-backward)
+map sg/ <Plug>(incsearch-stay)
+
+
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+function! s:noregexp(pattern) abort
+  return '\V' . escape(a:pattern, '\')
+endfunction
+
+function! s:config() abort
+  return {'converters': [function('s:noregexp')]}
+endfunction
+
+" noremap <silent><expr> z/ incsearch#go(<SID>config())
+
+""""""""""""""""""""""""""""""""""""" haya14busa/incsearch-easymotion.vim """""""""""""""""""""""""""""""""""""
+
+map e/ <Plug>(incsearch-easymotion-/)
+map e? <Plug>(incsearch-easymotion-?)
+map eg/ <Plug>(incsearch-easymotion-stay)
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
 
 """""""""""""""""""""""""""""""""" 'tpope/vim-surround'配置 """"""""""""""""""""""""""""""""""""""""""
 " 命令行模式
