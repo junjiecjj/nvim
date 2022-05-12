@@ -2046,7 +2046,7 @@ let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " 行内跳转(hl)
-map <Leader><leader>h <Plug>()
+map <Leader><leader>h <Plug>(easymotion-linebackward)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 
 " 行级跳转(jk)
@@ -2055,8 +2055,38 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
 " 使用 ss 启用
 nmap ss <Plug>(easymotion-s2)
+nmap ,t <Plug>(easymotion-t2)
+" s{char}{char} to move to {char}{char}
+nmap ,s <Plug>(easymotion-overwin-f2)
+
+" <Leader>f{char} to move to {char}
+map  ,,f <Plug>(easymotion-bd-f)
+nmap ,,f <Plug>(easymotion-overwin-f)
+
+
+" Move to line,在当前屏幕的所有行之间选择跳转
+map  ,h <Plug>(easymotion-bd-jk)
+nmap ,l <Plug>(easymotion-overwin-line)
+
+" Move to word,在当前屏幕的所有单词之间选择跳转
+map  ,e <Plug>(easymotion-bd-w)
+nmap ,w <Plug>(easymotion-overwin-w)
+
+
+" Gif config
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
+
 "注意：以上操作都是在本界面，也就是在当前所在屏幕的大小里面能显示的界面
 
 """""""""""""""""""""""""""""""""" 'tpope/vim-surround'配置 """"""""""""""""""""""""""""""""""""""""""
@@ -2689,7 +2719,7 @@ augroup user_plugin_defx
 	autocmd FileType defx call <SID>defx_mappings()
 	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
 	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
-    autocmd BufNewFile,BufRead * Defx  `getcwd()` -no-focus -search=`expand('%:p')`
+    " autocmd BufNewFile,BufRead * Defx  `getcwd()` -no-focus -search=`expand('%:p')`
 augroup END
 
 function! s:jump_dirty(dir) abort
@@ -5430,8 +5460,6 @@ nnoremap tee :w !sudo tee %<cr>
 
 " shift+up上翻半页，向上滚半个屏幕；
 nmap <S-up>  <C-u>
-vmap <S-up>  <C-u>
-
 " shift+down下翻半页，向下滚半个屏幕
 nmap <S-down>  <C-d>
 vmap <S-down>  <C-d>
