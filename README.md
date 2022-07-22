@@ -43,3 +43,8 @@ cd ccls
 `cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_PREFIX_PATH=/path/to/clang+llvm`
 
 sudo  cmake --build Release --target install
+
+
+## 复制粘贴
+
+`sudo apt install xclip`
